@@ -1,0 +1,35 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "A simple Bookstore",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GiacomoFusetti/Hypermedia-Application.git"
+  },
+  "keywords": [
+    "swagger",
+    "nodejs"
+  ],
+  "author": "Giovanni",
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.2.0",
+    "cookie-parser": "1.4.4",
+    "cookie-session": "1.3.3",
+    "js-yaml": "^3.3.0",
+    "knex": "0.16.3",
+    "pg": "7.8.2",
+    "serve-static": "1.13.2",
+    "swagger-tools": "^0.10.4"
+  },
+  "bugs": {
+    "url": "https://github.com/GiacomoFusetti/Hypermedia-Application/issues"
+  },
+  "homepage": "https://github.com/GiacomoFusetti/Hypermedia-Application#readme"
+}
