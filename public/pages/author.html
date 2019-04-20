@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Author</title>
+  <title>EstateAgency Bootstrap Template</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -22,7 +22,6 @@
   <link href="../assets/lib/animate/animate.min.css" rel="stylesheet">
   <link href="../assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="../assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
   <!-- Main Stylesheet File -->
   <link href="../assets/css/style.css" rel="stylesheet">
@@ -31,46 +30,151 @@
 
 <body>
 
-  <!--==========================
-    Header Nav Star
-    ============================-->
-    <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-        <div class="container">
-            <!-- Burger button -->
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <!-- Icon + App Name -->
-            <a class="navbar-brand text-brand" href="../index.html">Book<span class="color-b">Store</span></a>
-            <!-- Cart icon in case of small resolution -->
-            <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
-                <span class="fa fa-shopping-cart fa-lg" aria-hidden="true"></span>
-            </button>
-            
-            <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="books.html">Books</a></li>
-                    <li class="nav-item"><a class="nav-link" href="authors.html">Authors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
-                </ul>
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed ion-ios-close"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label for="Type">Keyword</label>
+              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
             </div>
-            
-            <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="pages/contact.html">Log in</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/contact.html">Sign in</a></li>
-                </ul>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="Type">Type</label>
+              <select class="form-control form-control-lg form-control-a" id="Type">
+                <option>All Type</option>
+                <option>For Rent</option>
+                <option>For Sale</option>
+                <option>Open House</option>
+              </select>
             </div>
-            
-            <!-- Cart Icon -->
-            <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
-                <span class="fa fa-shopping-cart fa-lg" aria-hidden="true"></span>
-            </button>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="city">City</label>
+              <select class="form-control form-control-lg form-control-a" id="city">
+                <option>All City</option>
+                <option>Alabama</option>
+                <option>Arizona</option>
+                <option>California</option>
+                <option>Colorado</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="bedrooms">Bedrooms</label>
+              <select class="form-control form-control-lg form-control-a" id="bedrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="garages">Garages</label>
+              <select class="form-control form-control-lg form-control-a" id="garages">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="bathrooms">Bathrooms</label>
+              <select class="form-control form-control-lg form-control-a" id="bathrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="price">Min Price</label>
+              <select class="form-control form-control-lg form-control-a" id="price">
+                <option>Unlimite</option>
+                <option>$50,000</option>
+                <option>$100,000</option>
+                <option>$150,000</option>
+                <option>$200,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Search Property</button>
+          </div>
         </div>
-    </nav>
+      </form>
+    </div>
+  </div>
+  <!--/ Form Search End /-->
+
+  <!--/ Nav Star /-->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="index.html">Estate<span class="color-b">Agency</span></a>
+      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
+        data-target="#navbarTogglerDemo01" aria-expanded="false">
+        <span class="fa fa-search" aria-hidden="true"></span>
+      </button>
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="property-grid.html">Property</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog-grid.html">Blog</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Pages
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="book.html">Property Single</a>
+              <a class="dropdown-item" href="blog-single.html">Blog Single</a>
+              <a class="dropdown-item" href="agents-grid.html">Agents Grid</a>
+              <a class="dropdown-item active" href="agent-single.html">Agent Single</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
+        data-target="#navbarTogglerDemo01" aria-expanded="false">
+        <span class="fa fa-search" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
   <!--/ Nav End /-->
 
   <!--/ Intro Single star /-->
@@ -79,21 +183,21 @@
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">Author_Name</h1>
-            <span class="color-text-a">Author_Surename</span>
+            <h1 class="title-single">Margaret Stone</h1>
+            <span class="color-text-a">Agent Immobiliari</span>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
           <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="../index.html">Home</a>
+                <a href="#">Home</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="authors.html">Authors</a>
+                <a href="#">Agents</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
-                Author_Surname
+                Margaret Stone
               </li>
             </ol>
           </nav>
@@ -111,15 +215,15 @@
           <div class="row">
             <div class="col-md-6">
               <div class="agent-avatar-box">
-                <img src="../assets/img/agent-7.jpg" alt="" class="agent-avatar img-fluid">
+                <img src="../assets/assets/img/agent-7.jpg" alt="" class="agent-avatar img-fluid">
               </div>
             </div>
             <div class="col-md-5 section-md-t3">
               <div class="agent-info-box">
                 <div class="agent-title">
                   <div class="title-box-d">
-                    <h3 class="title-d">Author_Name
-                      <br> Author_Surname</h3>
+                    <h3 class="title-d">Margaret Stone
+                      <br> Escala</h3>
                   </div>
                 </div>
                 <div class="agent-content mb-3">
@@ -128,38 +232,57 @@
                     Vivamus suscipit tortor
                     eget felis porttitor volutpat. Vivamus suscipit tortor eget felis porttitor volutpat.
                   </p>
-                </div>
-                <div class="socials-a">
-                    <p class="copyright color-text-a">
-                        Social
+                  <div class="info-agents color-a">
+                    <p>
+                      <strong>Phone: </strong>
+                      <span class="color-text-a"> +54 356 945234 </span>
                     </p>
-                    <ul class="list-inline">
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-facebook" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-twitter" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-instagram" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-pinterest-p" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-dribbble" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                    </ul>
+                    <p>
+                      <strong>Mobile: </strong>
+                      <span class="color-text-a"> 999 123 456 789</span>
+                    </p>
+                    <p>
+                      <strong>Email: </strong>
+                      <span class="color-text-a"> agents@example.com</span>
+                    </p>
+                    <p>
+                      <strong>skype: </strong>
+                      <span class="color-text-a"> Margaret.Es</span>
+                    </p>
+                    <p>
+                      <strong>Email: </strong>
+                      <span class="color-text-a"> agents@example.com</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="socials-footer">
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-dribbble" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -167,7 +290,7 @@
         </div>
         <div class="col-md-12 section-t8">
           <div class="title-box-d">
-            <h3 class="title-d">Written Books</h3>
+            <h3 class="title-d">My Properties (6)</h3>
           </div>
         </div>
         <div class="row property-grid grid">
@@ -184,238 +307,286 @@
             </div>
           </div>
           <div class="col-md-4">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="../assets/img/property-6.jpg" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="property-single.html">Book - Title
-                          <br />Author - Name</a>
-                      </h2>
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="../assets/assets/img/property-1.jpg" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="#">204 Mount
+                        <br /> Olive Road Two</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">rent | $ 12.000</span>
                     </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">price | € 12.90</span>
-                      </div>
-                      <a href="#" class="link-a">Click here to view
-                        <span class="ion-ios-arrow-forward"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                        <ul class="card-info d-flex justify-content-around">
-                            <h4 class="card-info-title">Rating</h4>
-                            <li>
-                              <span>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="far fa-star" aria-hidden="true"></i> 
-                                  <i class="far fa-star" aria-hidden="true"></i> 
-                              </span>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href="#" class="link-a">Click here to view
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Area</h4>
+                        <span>340m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Beds</h4>
+                        <span>2</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Baths</h4>
+                        <span>4</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garages</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
           <div class="col-md-4">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="../assets/img/property-3.jpg" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="property-single.html">Book - Title
-                          <br />Author - Name</a>
-                      </h2>
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="../assets/assets/img/property-3.jpg" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="#">204 Mount
+                        <br /> Olive Road Two</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">rent | $ 12.000</span>
                     </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">price | € 12.90</span>
-                      </div>
-                      <a href="#" class="link-a">Click here to view
-                        <span class="ion-ios-arrow-forward"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                        <ul class="card-info d-flex justify-content-around">
-                            <h4 class="card-info-title">Rating</h4>
-                            <li>
-                              <span>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i> 
-                                  <i class="far fa-star" aria-hidden="true"></i> 
-                              </span>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href="#" class="link-a">Click here to view
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Area</h4>
+                        <span>340m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Beds</h4>
+                        <span>2</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Baths</h4>
+                        <span>4</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garages</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
           <div class="col-md-4">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="../assets/img/property-6.jpg" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="property-single.html">Book - Title
-                          <br />Author - Name</a>
-                      </h2>
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="../assets/assets/img/property-6.jpg" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="#">204 Mount
+                        <br /> Olive Road Two</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">rent | $ 12.000</span>
                     </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">price | € 12.90</span>
-                      </div>
-                      <a href="#" class="link-a">Click here to view
-                        <span class="ion-ios-arrow-forward"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                        <ul class="card-info d-flex justify-content-around">
-                            <h4 class="card-info-title">Rating</h4>
-                            <li>
-                              <span>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="far fa-star" aria-hidden="true"></i>
-                                  <i class="far fa-star" aria-hidden="true"></i> 
-                                  <i class="far fa-star" aria-hidden="true"></i> 
-                              </span>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href="#" class="link-a">Click here to view
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Area</h4>
+                        <span>340m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Beds</h4>
+                        <span>2</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Baths</h4>
+                        <span>4</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garages</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
           <div class="col-md-4">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="../assets/img/property-7.jpg" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="property-single.html">Book - Title
-                          <br />Author - Name</a>
-                      </h2>
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="../assets/assets/img/property-7.jpg" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="#">204 Mount
+                        <br /> Olive Road Two</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">rent | $ 12.000</span>
                     </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">price | € 12.90</span>
-                      </div>
-                      <a href="#" class="link-a">Click here to view
-                        <span class="ion-ios-arrow-forward"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                        <ul class="card-info d-flex justify-content-around">
-                            <h4 class="card-info-title">Rating</h4>
-                            <li>
-                              <span>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i> 
-                                  <i class="fas fa-star" aria-hidden="true"></i> 
-                              </span>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href="#" class="link-a">Click here to view
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Area</h4>
+                        <span>340m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Beds</h4>
+                        <span>2</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Baths</h4>
+                        <span>4</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garages</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
           <div class="col-md-4">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="../assets/img/property-8.jpg" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="property-single.html">Book - Title
-                          <br />Author - Name</a>
-                      </h2>
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="../assets/assets/img/property-8.jpg" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="#">204 Mount
+                        <br /> Olive Road Two</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">rent | $ 12.000</span>
                     </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">price | € 12.90</span>
-                      </div>
-                      <a href="#" class="link-a">Click here to view
-                        <span class="ion-ios-arrow-forward"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                        <ul class="card-info d-flex justify-content-around">
-                            <h4 class="card-info-title">Rating</h4>
-                            <li>
-                              <span>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i> 
-                                  <i class="far fa-star" aria-hidden="true"></i> 
-                              </span>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href="#" class="link-a">Click here to view
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Area</h4>
+                        <span>340m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Beds</h4>
+                        <span>2</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Baths</h4>
+                        <span>4</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garages</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
           <div class="col-md-4">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="../assets/img/property-10.jpg" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="property-single.html">Book - Title
-                          <br />Author - Name</a>
-                      </h2>
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="../assets/assets/img/property-10.jpg" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="#">204 Mount
+                        <br /> Olive Road Two</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">rent | $ 12.000</span>
                     </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">price | € 12.90</span>
-                      </div>
-                      <a href="#" class="link-a">Click here to view
-                        <span class="ion-ios-arrow-forward"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                        <ul class="card-info d-flex justify-content-around">
-                            <h4 class="card-info-title">Rating</h4>
-                            <li>
-                              <span>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="fas fa-star" aria-hidden="true"></i>
-                                  <i class="far fa-star" aria-hidden="true"></i> 
-                                  <i class="far fa-star" aria-hidden="true"></i> 
-                              </span>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href="#" class="link-a">Click here to view
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Area</h4>
+                        <span>340m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Beds</h4>
+                        <span>2</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Baths</h4>
+                        <span>4</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garages</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </div>
@@ -423,115 +594,166 @@
   </section>
   <!--/ Agent Single End /-->
 
-  <!--==========================
-    Footer & Contact & Ask Us
-    ============================-->
-    <section class="section-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-4">
-                    <div class="widget-a">
-                        <div class="w-header-a">
-                            <h3 class="w-title-a text-brand">Services</h3>
-                        </div>
-                        <div class="w-body-a">
-                            <ul class="list-unstyled">
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="#">Gift Card</a></li>
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="#">Shipping</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4 section-md-t3">
-                    <div class="widget-a">
-                        <div class="w-header-a">
-                            <h3 class="w-title-a text-brand">Information</h3>
-                        </div>
-                        <div class="w-body-a">
-                            <ul class="list-unstyled">
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="#">Contact Us</a></li>
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="#">About Us</a></li>
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="#">Terms and Privacy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4 section-md-t3">
-                    <div class="widget-a">
-                        <div class="w-header-a">
-                            <h3 class="w-title-a text-brand">Quick Help</h3>
-                        </div>
-                        <div class="w-body-a">
-                            <ul class="list-unstyled">
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="#">FAQ</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+  <!--/ footer Star /-->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">EstateAgency</h3>
             </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="socials-a">
-                        <p class="copyright color-text-a">
-                            Social
-                        </p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fab fa-facebook" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fab fa-pinterest-p" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fab fa-dribbble" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="socials-a">
-                        <p class="copyright color-text-a">
-                            Payments
-                        </p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><img src="../assets/img/payments/visa.png"></li>
-                            <li class="list-inline-item"><img src="../assets/img/payments/mastercard.png"></li>
-                            <li class="list-inline-item"><img src="../assets/img/payments/paypal.png"></li>
-                            <li class="list-inline-item"><img src="../assets/img/payments/ebay.png"></li>
-                            <li class="list-inline-item"><img src="../assets/img/payments/americanexpress.png"></li>
-                        </ul>
-                    </div>
-                    <div class="copyright-footer">
-                        <p class="copyright color-text-a">
-                            &copy; Copyright
-                            <span class="color-a">BookStore</span> All Rights Reserved.
-                        </p>
-                    </div>
-                    <div class="credits">
-                        Designed by <a href="https://www.facebook.com/giacomo.fusetti1">Gio & Gia</a>
-                    </div>
-                </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
+                sed aute irure.
+              </p>
             </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> contact@example.com</li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> +54 356 945234</li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </footer><!-- #footer -->
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">The Company</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Site Map</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Legal</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Agent Admin</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Careers</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Affiliate</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">International sites</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">Venezuela</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">China</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">Hong Kong</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">Argentina</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">Singapore</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">Philippines</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">About</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Property</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Blog</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-dribbble" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">EstateAgency</span> All Rights Reserved.
+            </p>
+          </div>
+          <div class="credits">
+            <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
+            -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--/ Footer End /-->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <div id="preloader"></div>
