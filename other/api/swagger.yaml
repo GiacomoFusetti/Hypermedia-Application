@@ -13,46 +13,50 @@ basePath: "/v2"
 tags:
 - name: "book"
   description: "Available book"
+- name: "author"
+  description: "Available authors"
+- name: "event"
+  description: "Available events"
 - name: "cart"
   description: "Access to the cart"
 - name: "user"
   description: "Operations about user"
-- name: "events"
-  description: "Available events"
+- name: "faq"
+  description: "Operations about faq"
 schemes:
 - "http"
 paths:
   /books:
-      get:
-        tags:
-        - "book"
-        summary: "Books available in the inventory"
-        description: "List of books available in the inventory"
-        operationId: "booksGET"
-        produces:
-        - "application/json"
-        parameters:
-        - name: "offset"
-          in: "query"
-          description: "Pagination offset. Default is 0."
-          required: false
-          type: "integer"
-        - name: "limit"
-          in: "query"
-          description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
-          required: false
-          type: "integer"
-        responses:
-          200:
-            description: "A collection of Books"
-            schema:
-              type: "array"
-              items:
-                $ref: "#/definitions/Book"
-          404:
-            description: "Unexpected error"
-        x-swagger-router-controller: "Book"
-  /books/{bookId}:
+    get:
+      tags:
+      - "book"
+      summary: "Books available in the inventory"
+      description: "List of books available in the inventory"
+      operationId: "booksGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0."
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "A collection of Books"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
+        404:
+          description: "Unexpected error"
+      x-swagger-router-controller: "Book"
+  /books/{Id_book}:
     get:
       tags:
       - "book"
@@ -62,7 +66,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "bookId"
+      - name: "Id_book"
         in: "path"
         description: "ID of book to return"
         required: true
@@ -78,6 +82,178 @@ paths:
         404:
           description: "Book not found"
       x-swagger-router-controller: "Book"
+  /books_by_genre:
+    get:
+      tags:
+      - "book"
+      summary: "Books available in the inventory by genre"
+      description: "List of books available in the inventory by genre"
+      operationId: "booksbygenreGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0."
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "A collection of Books by genre"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
+        404:
+          description: "Unexpected error"
+      x-swagger-router-controller: "Book"
+  /books_by_theme:
+    get:
+      tags:
+      - "book"
+      summary: "Books available in the inventory by theme"
+      description: "List of books available in the inventory by theme"
+      operationId: "booksbythemeGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0."
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "A collection of Books by theme"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
+        404:
+          description: "Unexpected error"
+      x-swagger-router-controller: "Book"
+  /authors:
+    get:
+      tags:
+      - "author"
+      summary: "Authors available in the inventory"
+      description: "List of authors available in the inventory"
+      operationId: "authorsGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0."
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "A collection of Authors"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Author"
+        404:
+          description: "Unexpected error"
+      x-swagger-router-controller: "Author"
+  /authors/{Id_author}:
+    get:
+      tags:
+      - "author"
+      summary: "Find author by ID"
+      description: "Returns a author"
+      operationId: "getAuthorById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Id_author"
+        in: "path"
+        description: "ID of author to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Author"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Author not found"
+      x-swagger-router-controller: "Author"
+  /events:
+    get:
+      tags:
+      - "event"
+      summary: "Events available in the inventory"
+      description: "List of events available in the inventory"
+      operationId: "eventsGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0."
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "A collection of Events"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        404:
+          description: "Unexpected error"
+      x-swagger-router-controller: "Event"
+  /events/{Id_event}:
+    get:
+      tags:
+      - "event"
+      summary: "Find event by ID"
+      description: "Returns a event"
+      operationId: "getEventById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Id_event"
+        in: "path"
+        description: "ID of event to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Event"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Event not found"
+      x-swagger-router-controller: "Event"
   /user/login:
     post:
       tags:
@@ -132,7 +308,7 @@ paths:
       tags:
       - "cart"
       summary: "View the content of the cart"
-      operationId: "cartCartIdGET"
+      operationId: "cartIdGET"
       produces:
       - "application/json"
       parameters:
@@ -149,6 +325,28 @@ paths:
         404:
           description: "unauthorized"
       x-swagger-router-controller: "Cart"
+  /faq:
+    get:
+      tags:
+      - "faq"
+      summary: "View all the faqs"
+      operationId: "faqGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "faqId"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "succesful operartion"
+          schema:
+            $ref: "#/definitions/Faq"
+        404:
+          description: "unauthorized"
+      x-swagger-router-controller: "Faq"
 definitions:
   User:
     type: "object"
@@ -157,9 +355,7 @@ definitions:
         type: "integer"
       name:
         type: "string"
-      address:
-        type: "string"
-      creditcard:
+      email:
         type: "string"
     title: "User"
     description: "A user"
@@ -168,6 +364,51 @@ definitions:
       name: "Giacomo"
       address: "DEIB"
       creditcard: "xyzabc"
+  Author:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      surname:
+        type: "string"
+      bio:
+        type: "string"
+      photo:
+        type: "string"
+    title: "Author"
+    description: "An author"
+    example:
+      id: 1
+      name: "Giacomo"
+      surname: "Fuse"
+      bio: "not today"
+      photo: "pathname"
+  Event:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      id_book:
+        type: "integer"
+      name:
+        type: "string"
+      date:
+        type: "string"
+      description:
+        type: "string"
+      image:
+        type: "string"
+    title: "Event"
+    description: "An event"
+    example:
+      id: 1
+      id_book: "1"
+      name: "Cool event"
+      date: "1 Jan 2019"
+      description: "book presentation"
+      image: "pathname"
   Cart:
     type: "object"
     properties:
@@ -206,10 +447,25 @@ definitions:
       id:
         type: "integer"
         format: "int64"
+      id_genre:
+        type: "integer"
+        format: "int64"
+      id_authors:
+        type: "integer"
+        format: "int64"
+      id_themes:
+        type: "integer"
+        format: "int64"
       title:
         type: "string"
-      author:
+      description:
         type: "string"
+      cover_img:
+        type: "string"
+      pages:
+        type: "string"
+      rating:
+        type: "integer"
       price:
         $ref: "#/definitions/Amount"
       status:
@@ -218,6 +474,13 @@ definitions:
         enum:
         - "available"
         - "out of stock"
+      support:
+        type: "string"
+        description: "book support in the inventory"
+        enum:
+        - "paper_based"
+        - "ebook"
+        - "both"
     title: "Book"
     description: "A book for sale in the store"
     example:
@@ -228,6 +491,21 @@ definitions:
         value: 10
         currency: "eur"
       status: "available"
+  Faq:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      question:
+        type: "string"
+      answer:
+        type: "string"
+    title: "Faq"
+    description: "A Faq"
+    example:
+      id: 1
+      question: "What is love?"
+      answer: "baby don't hurt me"
   Amount:
     type: "object"
     required:
