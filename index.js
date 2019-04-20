@@ -4,15 +4,21 @@ var fs = require("fs"),
   path = require("path"),
   http = require("http");
 
-var app = require("connect")();
-var swaggerTools = require("swagger-tools");
-var jsyaml = require("js-yaml");
-var serverPort = process.env.PORT || 8080;
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const process = require("process");
+const _ = require("lodash");
+
 let cookieSession = require("cookie-session");
 let cookieParser = require("cookie-parser");
 let serveStatic = require("serve-static");
 
-let { setupDataLayer } = require("./other/service/DataLayer");
+var swaggerTools = require("swagger-tools");
+var jsyaml = require("js-yaml");
+var serverPort = process.env.PORT || 8080;
+
+let { initsqlDB } = require("./other/service/DataLayer");
 
 // swaggerRouter configuration
 var options = {
@@ -43,9 +49,9 @@ swaggerTools.initializeMiddleware(swaggerDoc, function(middleware) {
   // Serve the Swagger documents and Swagger UI
   app.use(middleware.swaggerUi());
 
-  app.use(serveStatic(__dirname + "/other/www"));
+  app.use(express.static(__dirname + "/public"));
 
-  setupDataLayer().then(() => {
+Promise.all(initsqlDB()).then(() => {
     // Start the server
     http.createServer(app).listen(serverPort, function() {
       console.log(

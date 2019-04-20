@@ -1,26 +1,82 @@
 const sqlDbFactory = require("knex");
+const fs = require('fs');
 
-let { genresDbSetup } = require("./GenreService");
-let { booksDbSetup } = require("./BookService");
+let sqlDB;
+let tableLoc = "./other/data_json/";
+let relativeTableLoc = "../data_json/";
+let tableDB = [];
 
-let sqlDb = sqlDbFactory({
-  client: "pg",
-  connection: { host: process.env.DATABASE_URL,
-               user : 'postgres',
-               password : 'ciao',
-              database : 'bookstore'},
-  ssl: true,
-  debug: true
-});
+fs.readdirSync(tableLoc).forEach(file => {
+  tableDB.push(file.split(".")[0]);
+})
 
-function setupDataLayer() {
-  console.log("Setting up data layer");
-  console.log(process.env.DATABASE_URL);
-
-  console.log(sqlDb.connection.database);
-  genresDbSetup(sqlDb).then(() => {
-      return booksDbSetup(sqlDb);
-  }); 
+//INIT DB IN LOCALE CON SQLITE3 (viene creato un file del db) O IN REMOTO SU HEROKU (PG) (knex permette di astrarre il db)
+function initsqlDB()
+{
+  /* Locally we should launch the app with TEST=true to use SQLlite: > set TEST=true; node ./index.js */
+  if (process.env.TEST)
+  {
+    sqlDB = sqlDbFactory({
+      client: "sqlite3",
+      debug: true, //attivare per stampare query nel log del server
+      connection: {
+        filename: "./other/storeDB.sqlite"
+      },
+      useNullAsDefault: true
+    });
+  }
+    else
+    {
+    sqlDB = sqlDbFactory({
+      debug: false,
+      client: "pg",
+      connection: process.env.DATABASE_URL,
+      ssl: true
+        });
+    }
+    return initDB();
+}
+//AGGIUNGO TUTTE LE TABELLE PRESENTI IN OTHER AL DB, CARICANDOLE DAI JSON, SE NON ESISTONO GIà
+function initDB()
+{
+    var tab
+    var promises = []
+	for(tab in tableDB)
+    {   
+        if (tableDB[tab] != "")
+        {
+            promises.push(createDB(tableDB,tab));
+        }
+    }
+    return promises
 }
 
-module.exports = { database: sqlDb, setupDataLayer };
+function createDB(tableDB, tab)
+{
+	var currentTable;
+	var attributeCurrentTable = [];
+    currentTable = tableDB[tab];
+    var json = require(relativeTableLoc + currentTable + ".json");
+
+    for(var attr in json[0] )
+        attributeCurrentTable.push(attr);
+    return sqlDB.schema.hasTable(currentTable).then(exists => {
+        if (!exists) {
+          sqlDB.schema
+            .createTable(currentTable, table => {
+              console.log("Table '" + tableDB[tab] + "' created");
+              for(var i in attributeCurrentTable)
+                table.string(attributeCurrentTable[i],10000);
+            })
+            .then(() => {
+              return Promise.all(
+                _.map(json, p => {
+                  return sqlDB(currentTable).insert(p);
+                })
+              );
+            });
+        }
+    });
+}
+
+module.exports = {initsqlDB, initDB };

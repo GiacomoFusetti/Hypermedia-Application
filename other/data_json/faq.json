@@ -1,0 +1,22 @@
+[
+    {
+        "id_faq" : 1,
+        "question" : "What causes down syndrome?"
+    },
+    
+    {
+        "id_faq" : 2,
+        "question" : "What is “mongoloid”?"
+    },
+    
+    {
+        "id_faq" : 3,
+        "question" : "Is Down syndrome genetic? How is Down syndrome inherited?"
+    },
+    
+    {
+        "id_faq" : 4,
+        "question" : "What is the history of Down syndrome?"
+    }
+]
+
