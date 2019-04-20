@@ -101,7 +101,7 @@
 	});
 
 	/*--/ Property owl owl /--*/
-	$('#property-single-carousel').owlCarousel({
+	$('#book-carousel').owlCarousel({
 		loop: true,
 		margin: 0,  
 		nav: true,
