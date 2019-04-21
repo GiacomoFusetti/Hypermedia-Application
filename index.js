@@ -16,7 +16,7 @@ let serveStatic = require("serve-static");
 
 var swaggerTools = require("swagger-tools");
 var jsyaml = require("js-yaml");
-var serverPort = process.env.PORT || 8080;
+var serverPort = process.env.PORT || 8082;
 
 let { initsqlDB } = require("./other/service/DataLayer");
 
@@ -49,7 +49,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function(middleware) {
   // Serve the Swagger documents and Swagger UI
   app.use(middleware.swaggerUi());
 
-  app.use(express.static(__dirname + "/public"));
+  app.use(express.static(__dirname + "/other/www"));
 
 Promise.all(initsqlDB()).then(() => {
     // Start the server

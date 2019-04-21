@@ -1,10 +1,30 @@
 const sqlDbFactory = require("knex");
 const fs = require('fs');
+const _ = require("lodash");
 
 let sqlDB;
 let tableLoc = "./other/data_json/";
 let relativeTableLoc = "../data_json/";
 let tableDB = [];
+
+/* Locally we should launch the app with TEST=true to use SQLlite: > set TEST=true; node ./index.js */
+if (process.env.TEST){
+    sqlDB = sqlDbFactory({
+        client: "sqlite3",
+        debug: true, //attivare per stampare query nel log del server
+        connection: {
+            filename: "./other/storeDB.sqlite"
+        },
+        useNullAsDefault: true
+    });
+}else{
+    sqlDB = sqlDbFactory({
+        debug: false,
+        client: "pg",
+        connection: process.env.DATABASE_URL,
+        ssl: true
+    });
+}
 
 fs.readdirSync(tableLoc).forEach(file => {
   tableDB.push(file.split(".")[0]);
@@ -13,27 +33,6 @@ fs.readdirSync(tableLoc).forEach(file => {
 //INIT DB IN LOCALE CON SQLITE3 (viene creato un file del db) O IN REMOTO SU HEROKU (PG) (knex permette di astrarre il db)
 function initsqlDB()
 {
-  /* Locally we should launch the app with TEST=true to use SQLlite: > set TEST=true; node ./index.js */
-  if (process.env.TEST)
-  {
-    sqlDB = sqlDbFactory({
-      client: "sqlite3",
-      debug: true, //attivare per stampare query nel log del server
-      connection: {
-        filename: "./other/storeDB.sqlite"
-      },
-      useNullAsDefault: true
-    });
-  }
-    else
-    {
-    sqlDB = sqlDbFactory({
-      debug: false,
-      client: "pg",
-      connection: process.env.DATABASE_URL,
-      ssl: true
-        });
-    }
     return initDB();
 }
 //AGGIUNGO TUTTE LE TABELLE PRESENTI IN OTHER AL DB, CARICANDOLE DAI JSON, SE NON ESISTONO GIà
@@ -78,5 +77,4 @@ function createDB(tableDB, tab)
         }
     });
 }
-
-module.exports = {initsqlDB, initDB };
+module.exports = {initsqlDB, database: sqlDB};

@@ -12,7 +12,7 @@ host: "localhost:8080"
 basePath: "/v2"
 tags:
 - name: "book"
-  description: "Available book"
+  description: "Available books"
 - name: "author"
   description: "Available authors"
 - name: "event"
@@ -23,6 +23,8 @@ tags:
   description: "Operations about user"
 - name: "faq"
   description: "Operations about faq"
+- name: "genre"
+  description: "Available genres"
 schemes:
 - "http"
 paths:
@@ -303,7 +305,7 @@ paths:
         404:
           description: "unauthorized"
       x-swagger-router-controller: "User"
-  /cart/{cartId}:
+  /cart/{Id_cart}:
     get:
       tags:
       - "cart"
@@ -312,7 +314,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "cartId"
+      - name: "Id_cart"
         in: "path"
         required: true
         type: "integer"
@@ -334,11 +336,16 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "faqId"
-        in: "path"
-        required: true
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0."
+        required: false
         type: "integer"
-        format: "int64"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
+        required: false
+        type: "integer"
       responses:
         200:
           description: "succesful operartion"
@@ -347,6 +354,33 @@ paths:
         404:
           description: "unauthorized"
       x-swagger-router-controller: "Faq"
+  /genres:
+    get:
+      tags:
+      - "genre"
+      summary: "View all the genres"
+      operationId: "genresGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0."
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "succesful operartion"
+          schema:
+            $ref: "#/definitions/Genre"
+        404:
+          description: "unauthorized"
+      x-swagger-router-controller: "Genre"
 definitions:
   User:
     type: "object"
@@ -440,7 +474,6 @@ definitions:
   Book:
     type: "object"
     required:
-    - "author"
     - "price"
     - "title"
     properties:
@@ -448,9 +481,6 @@ definitions:
         type: "integer"
         format: "int64"
       id_genre:
-        type: "integer"
-        format: "int64"
-      id_authors:
         type: "integer"
         format: "int64"
       id_themes:
@@ -506,6 +536,18 @@ definitions:
       id: 1
       question: "What is love?"
       answer: "baby don't hurt me"
+  Genre:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+    title: "Genre"
+    description: "A Genre"
+    example:
+      id: 1
+      name: "Fantasy"
   Amount:
     type: "object"
     required:

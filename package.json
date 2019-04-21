@@ -17,9 +17,6 @@
   ],
   "author": "Giovanni",
   "license": "Unlicense",
-  "engines": {
-    "node": "8.9.1"
-  },
   "private": true,
   "dependencies": {
     "body-parser": "^1.18.3",

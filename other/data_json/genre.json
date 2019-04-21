@@ -1,0 +1,21 @@
+[
+    {
+        "id_genre" : 1,
+        "name" : "Fantasy"
+    },
+    
+    {
+        "id_genre" : 2,
+        "name" : "Cooking"
+    },
+    
+    {
+        "id_genre" : 3,
+        "name" : "Kid"
+    },
+    
+    {
+        "id_genre" : 4,
+        "name" : "Information Technology"
+    }
+]

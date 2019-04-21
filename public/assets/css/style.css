@@ -9,6 +9,17 @@
 //--//-->   STYLES GENERALES
 ======================================*/
 
+
+/* TEST */
+.sidebar .module .module-header {
+    background: #644f84;
+}
+.category-list>li>ul>.active,
+.category-list>.sub-category-list>a {
+    color: #5c497a;
+}
+
+
 body {
   font-family: 'Poppins', sans-serif;
   color: #555555;

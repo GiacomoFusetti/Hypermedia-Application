@@ -1,17 +1,25 @@
 "use strict";
 
+let { database } = require("./DataLayer");
 let sqlDb;
 
-exports.genresDbSetup = function(database) {
-  sqlDb = database;
-  console.log("Checking if genres table exists");
-  return database.schema.hasTable("genres").then(exists => {
-    if (!exists) {
-      console.log("It doesn't so we create it");
-      return database.schema.createTable("genres", table => {
-            table.increments("genreId");
-            table.text("name");
-      });
-    }
-  });
+/**
+ * Books available in the inventory
+ * List of books available in the inventory
+ *
+ * offset Integer Pagination offset. Default is 0. (optional)
+ * limit Integer Maximum number of items per page. Default is 20 and cannot exceed 500. (optional)
+ * returns List
+ **/
+exports.genresGET = function(offset, limit) {
+    sqlDb = database;
+    console.log("genreService.js");    
+    return sqlDb("genre")
+        .limit(limit)
+        .offset(offset)
+        .then(data => {
+          return data.map(e => {
+            return e;
+          });
+        });
 };
