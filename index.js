@@ -16,9 +16,9 @@ let serveStatic = require("serve-static");
 
 var swaggerTools = require("swagger-tools");
 var jsyaml = require("js-yaml");
-var serverPort = process.env.PORT || 8082;
+var serverPort = process.env.PORT || 8080;
 
-let { initsqlDB } = require("./other/service/DataLayer");
+let { setupDataLayer } = require("./other/service/DataLayer");
 
 // swaggerRouter configuration
 var options = {
@@ -33,7 +33,12 @@ var swaggerDoc = jsyaml.safeLoad(spec);
 
 // Add cookies to responses
 app.use(cookieParser());
-app.use(cookieSession({ name: "session", keys: ["abc", "def"] }));
+app.use(cookieSession({
+    name: "bookStoreSession",
+    keys: ["k1", "k2"],
+    // Cookie Options
+    maxAge: 5 * 60 * 1000 // 5 minutes
+}));
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function(middleware) {
@@ -49,9 +54,9 @@ swaggerTools.initializeMiddleware(swaggerDoc, function(middleware) {
   // Serve the Swagger documents and Swagger UI
   app.use(middleware.swaggerUi());
 
-  app.use(express.static(__dirname + "/other/www"));
+  app.use(express.static(__dirname + "/public"));
 
-Promise.all(initsqlDB()).then(() => {
+Promise.all(setupDataLayer()).then(() => {
     // Start the server
     http.createServer(app).listen(serverPort, function() {
       console.log(

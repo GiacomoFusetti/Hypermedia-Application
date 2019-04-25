@@ -1,5 +1,66 @@
+checkSession();
+let user;
+
+function checkSession(){
+    fetch('../session', {
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        method: "GET",
+        credentials: 'include'
+    }).then(function(response) {
+         return response.json();
+     }).then(function(json) {
+        console.log(json);
+        user = json;
+        toggleLogin(user);
+     });
+}
+
+function toggleLogin(user){
+    $('#navbarLogin').empty();
+    if(!jQuery.isEmptyObject(user)){
+        $('#navbarLogin').append(
+            `
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Welcome ${user.name}!
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a id="logOutButton" class="dropdown-item" href="#">Log out</a>
+                </div>
+            </li>
+            `
+         );
+    }else{
+        var pathname = window.location.pathname;
+        var pages = "";
+        
+        if(pathname === '/' || pathname === '/index.html')
+            pages = "pages/";
+        $('#navbarLogin').append(
+            `
+            <li class="nav-item"><a class="nav-link" href="${pages}login.html?login">Log in</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pages}login.html?register">Register</a></li>
+            `
+         );
+    }
+}
+
 (function ($) {
   "use strict";
+    
+    $('#navbarLogin').on("click", "#logOutButton", function(){
+        fetch('../user/logout', {
+            headers: {"Content-Type": "application/x-www-form-urlencoded"},
+            method: "DELETE",
+            credentials: 'include'
+        }).then(function(response) {
+             return response.json();
+         }).then(function(json) {
+            user = json;
+            toggleLogin(user);
+         });
+    });
   
   // Preloader
   $(window).on('load', function () {

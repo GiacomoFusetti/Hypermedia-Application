@@ -11,7 +11,7 @@ let tableDB = [];
 if (process.env.TEST){
     sqlDB = sqlDbFactory({
         client: "sqlite3",
-        debug: true, //attivare per stampare query nel log del server
+        debug: false, //attivare per stampare query nel log del server
         connection: {
             filename: "./other/storeDB.sqlite"
         },
@@ -21,7 +21,10 @@ if (process.env.TEST){
     sqlDB = sqlDbFactory({
         debug: false,
         client: "pg",
-        connection: process.env.DATABASE_URL,
+        connection: { host: process.env.DATABASE_URL,
+               user : 'postgres',
+               password : 'ciao',
+              database : 'postgres'},
         ssl: true
     });
 }
@@ -31,12 +34,8 @@ fs.readdirSync(tableLoc).forEach(file => {
 })
 
 //INIT DB IN LOCALE CON SQLITE3 (viene creato un file del db) O IN REMOTO SU HEROKU (PG) (knex permette di astrarre il db)
-function initsqlDB()
-{
-    return initDB();
-}
 //AGGIUNGO TUTTE LE TABELLE PRESENTI IN OTHER AL DB, CARICANDOLE DAI JSON, SE NON ESISTONO GIà
-function initDB()
+function setupDataLayer()
 {
     var tab
     var promises = []
@@ -77,4 +76,4 @@ function createDB(tableDB, tab)
         }
     });
 }
-module.exports = {initsqlDB, database: sqlDB};
+module.exports = {setupDataLayer, database: sqlDB};

@@ -9,7 +9,7 @@ info:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 host: "localhost:8080"
-basePath: "/v2"
+basePath: "/"
 tags:
 - name: "book"
   description: "Available books"
@@ -25,6 +25,8 @@ tags:
   description: "Operations about faq"
 - name: "genre"
   description: "Available genres"
+- name: "session"
+  description: "get current session"
 schemes:
 - "http"
 paths:
@@ -268,7 +270,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "username"
+      - name: "email"
         in: "formData"
         required: true
         type: "string"
@@ -279,6 +281,27 @@ paths:
       responses:
         200:
           description: "succesfull login"
+        400:
+          description: "bad request"
+        404:
+          description: "unauthorized"
+      x-swagger-router-controller: "User"
+  /user/logout:
+    delete:
+      tags:
+      - "user"
+      summary: "Logout"
+      description: "Logout, delete session"
+      operationId: "userLogoutDELETE"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "succesfull logout"
+        400:
+          description: "bad request"
         404:
           description: "unauthorized"
       x-swagger-router-controller: "User"
@@ -381,6 +404,19 @@ paths:
         404:
           description: "unauthorized"
       x-swagger-router-controller: "Genre"
+  /session:
+    get:
+      tags:
+        - "session"
+      operationId: "sessionGET"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Current session"
+        404:
+          description: "Unexpected error"
+      x-swagger-router-controller: "Session"
 definitions:
   User:
     type: "object"

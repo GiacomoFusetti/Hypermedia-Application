@@ -25,6 +25,12 @@ body {
   color: #555555;
 }
 
+/* General sizing */
+ul.dropdown-lr {
+  width: 300px;
+}
+
+
 h1,
 h2,
 h3,
@@ -111,6 +117,13 @@ a:hover {
 
 .color-text-a {
   color: #555555;
+}
+
+.error-text {
+  color: red;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
 .no-margin {
@@ -916,6 +929,14 @@ a:hover {
   padding-left: 1rem;
 }
 
+.intro .intro-body .button-black {
+  color: #000000;
+  padding: 1rem 1.5rem;
+  border: 2px solid #2eca6a;
+  border-radius: 50px;
+  letter-spacing: 0.030em;
+}
+
 .intro .intro-body .price-a {
   color: #ffffff;
   padding: 1rem 1.5rem;
@@ -1066,6 +1087,13 @@ a:hover {
 
 .card-body-a .price-box {
   padding-bottom: .5rem;
+}
+
+.button-black {
+  color: #000000;
+  border: 2px solid #2eca6a;
+  border-radius: 50px;
+  letter-spacing: 0.030em;
 }
 
 .price-a {
