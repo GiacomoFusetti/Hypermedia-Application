@@ -21,10 +21,10 @@ if (process.env.TEST){
     sqlDB = sqlDbFactory({
         debug: false,
         client: "pg",
-        connection: { host: process.env.DATABASE_URL,
-               user : 'postgres',
-               password : 'ciao',
-              database : 'postgres'},
+connection: {host: process.env.DATABASE_URL,
+    user: "postgres",
+    password: "ZibriJack92", 
+    database: "postgres"},
         ssl: true
     });
 }
