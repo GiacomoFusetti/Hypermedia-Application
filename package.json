@@ -19,6 +19,7 @@
   "license": "Unlicense",
   "private": true,
   "dependencies": {
+    "node-pre-gyp": "0.13.0",
     "body-parser": "^1.18.3",
     "connect": "^3.2.0",
     "cookie-parser": "1.4.4",
