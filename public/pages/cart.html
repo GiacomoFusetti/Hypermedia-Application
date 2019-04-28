@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Event</title>
+  <title>Events</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -71,15 +71,15 @@
         </div>
     </nav>
   <!--/ Nav End /-->
-
-  <!--/ Intro Single star /-->
+    
+    <!--/ Intro Single star /-->
   <section class="intro-single">
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">Event - Title</h1>
-            <span class="color-text-a">Book - Title</span>
+            <h1 class="title-single">Cart</h1>
+            <span class="color-text-a">Subtitle.</span>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -89,10 +89,7 @@
                 <a href="../index.html">Home</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
-                <a href="../pages/events.html">Events</a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">
-                  <span>Event - Title</span>
+                Cart
               </li>
             </ol>
           </nav>
@@ -101,74 +98,102 @@
     </div>
   </section>
   <!--/ Intro Single End /-->
-
-  <!--/ News Single Star /-->
-  <section class="news-single nav-arrow-b">
+    
+    <!--==========================
+        Shopping cart
+    ============================-->
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="news-img-box">
-            <img src="../assets/img/slide-3.jpg" alt="" class="img-fluid">
-          </div>
-        </div>
-        <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-          <div class="post-information">
-            <ul class="list-inline text-center color-a">
-              <li class="list-inline-item mr-2">
-                <strong>Author: </strong>
-                <span class="color-text-a">Morgan Jimenez</span>
-              </li>
-              <li class="list-inline-item">
-                <strong>Date: </strong>
-                <span class="color-text-a">19 Apr. 2017</span>
-              </li>
-            </ul>
-          </div>
-          <div class="post-content color-text-a">
-            <p>
-              <strong>Event</strong> - Description
-            </p>
-          </div>
-              <div class="contact-map box">
-                <div id="map" class="contact-map">
-                  <iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Piazza Leonardo da Vinci, 32, 20133 Milano MI+()&amp;ie=UTF8&amp;iwloc=A&amp;output=embed"
-                    width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-              </div>
-          <div class="post-footer">
-            <div class="post-share">
-              <span>Share: </span>
-              <ul class="list-inline socials">
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fab fa-facebook" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fab fa-pinterest-p" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
+        <div class="card shopping-cart">
+            <div class="card-header bg-dark text-light">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Shipping cart
+                <div class="clearfix"></div>
             </div>
-          </div>
+            <div class="card-body">
+                    <!-- PRODUCT -->
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-2 text-center">
+                                <img class="img-responsive" src="../assets/img/books/book-1.jpg" alt="BookCover" width="80" height="120">
+                        </div>
+                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                            <h4 class="product-name"><strong>Product Name</strong></h4>
+                            <h4>
+                                <small>Product description</small>
+                            </h4>
+                        </div>
+                        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                            <div class="col-6 col-sm-6 col-md-6 text-md-right" style="padding-top: 5px">
+                                <h6><strong>30.00 <span class="text-muted">x</span></strong></h6>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 pad">
+                                <div class="quantity">
+                                    <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty" size="4">
+                                </div>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 text-right">
+                                <button type="button" class="btn btn-outline-danger btn-xs">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- END PRODUCT -->
+                    <!-- PRODUCT -->
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-2 text-center">
+                                <img class="img-responsive" src="http://placehold.it/80x120" alt="BookCover" width="80" height="120">
+                        </div>
+                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                            <h4 class="product-name"><strong>Product Name</strong></h4>
+                            <h4>
+                                <small>Product description</small>
+                            </h4>
+                        </div>
+                        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                            <div class="col-6 col-sm-6 col-md-6 text-md-right" style="padding-top: 10px">
+                                <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 pad">
+                                <div class="quantity">
+                                    <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
+                                           size="4">
+                                </div>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2">
+                                <button type="button" class="btn btn-outline-danger btn-xs">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                <!-- END PRODUCT -->
+            </div>
+            <div class="card-footer">
+                <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left" style="margin: 10px">
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="cupone code">
+                        </div>
+                        <div class="col-6">
+                            <input type="submit" class="btn btn-default" value="Use cupone">
+                        </div>
+                    </div>
+                </div>
+                <div class="pull-right" style="margin: 10px">
+                    <a href="" class="btn btn-success pull-right">Checkout</a>
+                    <div class="pull-right" style="margin: 5px">
+                        Total price: <b>50.00€</b>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
-  <!--/ News Single End /-->
+    
 
-      <!--==========================
+
+  <!--==========================
     Footer & Contact & Ask Us
     ============================-->
     <section class="section-footer">
@@ -194,7 +219,8 @@
                         </div>
                         <div class="w-body-a">
                             <ul class="list-unstyled">
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="about.html">About Us</a></li>
+                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="#">Contact Us</a></li>
+                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="#">About Us</a></li>
                                 <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="#">Terms and Privacy</a></li>
                             </ul>
                         </div>
@@ -207,7 +233,6 @@
                         </div>
                         <div class="w-body-a">
                             <ul class="list-unstyled">
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="contact.html">Contact Us</a></li>
                                 <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="#">FAQ</a></li>
                             </ul>
                         </div>
