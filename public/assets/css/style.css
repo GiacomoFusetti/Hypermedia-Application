@@ -7,7 +7,6 @@
     text-align: justify;
 }
 
-
 /*======================================
 //--//-->   STYLES BOOKS GRID
 ======================================*/
@@ -28,6 +27,27 @@
 
 .book_title{
     padding-top: 0px;
+}
+
+@media screen and (max-width: 1200px) {
+    .book_rating {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .book_title{
+        font-size: 15px !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .book_rating {
+        display: block !important;
+    }
+    .book_title{
+        font-size: initial !important;
+    }
 }
 
 /*======================================
