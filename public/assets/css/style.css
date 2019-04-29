@@ -1,6 +1,24 @@
 /*======================================
-//--//-->   STYLES GENERALES
+//--//-->   STYLES BOOKS GRID
 ======================================*/
+
+.book_desc{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.book_rating{
+    text-align: center;
+}
+
+.book_author{
+    padding-top: 10px; 
+    padding-bottom: 0px;
+}
+
+.book_title{
+    padding-top: 0px;
+}
 
 /*======================================
 //--//-->   shopping cart
