@@ -117,25 +117,16 @@
 							<p class="color-text-a"> Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Quisque velit nisi, pretium ut lacinia in, elementum id enim. </p>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col text-center">
-							<a>Paper version</a>
-						</div>
-						<div class=" col text-center">
-							<a>eBook version</a>
-						</div>
-						<div class="col-xs-12 col-md-12 col-lg-4">
-						</div>
-					</div>
+
 					<div class="row" style="line-height: 40px;">
 						<div class="col price-box text-center">
 							<div class="text-center">
-								<span id="paper-button" class="price-button active">price | € 12.90</span>
+								<span id="paper-button" class="price-button active">Paper | € 19.90</span>
 							</div>
 						</div>
 						<div class="col price-box text-center">
 							<div class="text-center">
-								<span id="ebook-button" class="price-button">price | € 9.90</span>
+								<span id="ebook-button" class="price-button">eBook | € 9.90</span>
 							</div>
 						</div>
 						<div class="col-xs-12 col-md-12 col-lg-4 price-box">
@@ -145,68 +136,67 @@
 							</div>
 						</div>
 					</div>
-                    <div class="row">
-                        <div class="property-agent" style="padding: 0px 15px 0px 15px;">
-                            <div class="title-box-d section-t1">
-                                <h3 class="title-d">Where it is presented?</h3>
-                            </div>
-                            <div>
-                                <div class="summary-list">
-                                    <strong><a href="event.html">Event - Title</a></strong>
-                                    <p class="color-text-a"> Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Quisque velit nisi, pretium ut lacinia in, elementum id enim. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 			</div>
 			<div class="property-summary">
 				<div class="row">
-					<div class="col">
+					<div class="col-6">
 						<div class="title-box-d section-t3">
 							<h3 class="title-d">Details</h3>
 						</div>
+                        <div class="summary-list">
+                            <ul class="list">
+                                <li class="d-flex justify-content-between">
+                                    <strong>Book ID:</strong>
+                                    <span>1</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <strong>Availability:</strong>
+                                    <span>Available</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <strong>Publisher:</strong>
+                                    <span>Bompiani</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <strong>Pages:</strong>
+                                    <span>666</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <strong>Genre:</strong>
+                                    <span>Fantasy</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <strong>Themes:</strong>
+                                    <span>Friendship - War - Dwarfs</span>
+                                </li>
+                            </ul>
+                        </div>
+					</div>
+                    <div class="col-6">
+						<div class="card-box-c foo section-t3">
+                            <div class="card-header-c d-flex">
+                                <div class="card-box-ico">
+                                    <span class="fa fa-calendar-check-o"></span>
+                                </div>
+                                <div class="card-title-c align-self-center">
+                                    <h2 class="title-c">Event</h2>
+                                </div>
+                            </div>
+                            <div class="card-body-c">
+                                <p class="content-c">
+                                    Stay up to date on the presentation events of the book you like the most.
+                                </p>
+                            </div>
+                            <div class="card-footer-c">
+                                <a href="#" class="link-c link-icon">Read more
+                                <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>
+                        </div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col">
-						<div class="summary-list">
-							<ul class="list">
-								<li class="d-flex justify-content-between">
-									<strong>Book ID:</strong>
-									<span>1</span>
-								</li>
-								<li class="d-flex justify-content-between">
-									<strong>Availability:</strong>
-									<span>Available</span>
-								</li>
-								<li class="d-flex justify-content-between">
-									<strong>Publisher:</strong>
-									<span>Bompiani</span>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col">
-						<div class="summary-list">
-							<ul class="list">
-								<li class="d-flex justify-content-between">
-									<strong>Pages:</strong>
-									<span>666</span>
-								</li>
-								<li class="d-flex justify-content-between">
-									<strong>Genre:</strong>
-									<span>Fantasy</span>
-								</li>
-								<li class="d-flex justify-content-between">
-									<strong>Themes:</strong>
-									<span>Friendship - War - Dwarfs</span>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+            </div>
 		</div>
 	</section>
 	<!--/ Property book End /-->
@@ -222,8 +212,8 @@
 					</div>
 				</div>
 			</div>
-			<div id="property-carousel" class="owl-carousel owl-theme">
-				<div class="carousel-item-b">
+			<div id="books-carousel" class="owl-carousel owl-theme ">
+				<div class="book_carousel">
 					<div class="card-box-a">
 						<div class="img-box-a">
 							<a href="book.html"><img src="../assets/img/books/book-1.jpg" alt="" class="img-a img-fluid" width="200" height="100"></a>
@@ -233,17 +223,16 @@
 						<h5 class="card-titl-a book_author"><a href="author.html">J.R.R. Tolkien</a></h5>
 						<h6 class="card-titl-a book_title"><a href="book.html"><i>Il Signore degli Anelli - Il Ritorno del Re</i></a></h6>
 						<div class="book_rating">
-							<p> Rating <i class="fas fa-star color-b" aria-hidden="true"></i>
+							<p> <i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="far fa-star color-b" aria-hidden="true"></i>
 								<i class="far fa-star color-b" aria-hidden="true"></i>
-								<br>Price <strong class="color-b">€ 12.90</strong>
 							</p>
 						</div>
 					</div>
 				</div>
-				<div class="carousel-item-b">
+				<div class="book_carousel">
 					<div class="card-box-a">
 						<div class="img-box-a">
 							<a href="book.html"><img src="../assets/img/books/book-2.jpg" alt="" class="img-a img-fluid"></a>
@@ -253,17 +242,16 @@
 						<h5 class="card-titl-a book_author"><a href="author.html">J.R.R. Tolkien</a></h5>
 						<h6 class="card-titl-a book_title"><a href="book.html"><i>Il Signore degli Anelli - Il Ritorno del Re</i></a></h6>
 						<div class="book_rating">
-							<p> Rating <i class="fas fa-star color-b" aria-hidden="true"></i>
+							<p> <i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="far fa-star color-b" aria-hidden="true"></i>
 								<i class="far fa-star color-b" aria-hidden="true"></i>
-								<br>Price <strong class="color-b">€ 12.90</strong>
 							</p>
 						</div>
 					</div>
 				</div>
-				<div class="carousel-item-b">
+				<div class="book_carousel">
 					<div class="card-box-a">
 						<div class="img-box-a">
 							<a href="book.html"><img src="../assets/img/books/book-3.jpg" alt="" class="img-a img-fluid"></a>
@@ -273,17 +261,16 @@
 						<h5 class="card-titl-a book_author"><a href="author.html">J.R.R. Tolkien</a></h5>
 						<h6 class="card-titl-a book_title"><a href="book.html"><i>Il Signore degli Anelli - Il Ritorno del Re</i></a></h6>
 						<div class="book_rating">
-							<p> Rating <i class="fas fa-star color-b" aria-hidden="true"></i>
+							<p><i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="far fa-star color-b" aria-hidden="true"></i>
 								<i class="far fa-star color-b" aria-hidden="true"></i>
-								<br>Price <strong class="color-b">€ 12.90</strong>
 							</p>
 						</div>
 					</div>
 				</div>
-				<div class="carousel-item-b">
+				<div class="book_carousel">
 					<div class="card-box-a">
 						<div class="img-box-a">
 							<a href="book.html"><img src="../assets/img/books/book-4.jpg" alt="" class="img-a img-fluid"></a>
@@ -293,12 +280,68 @@
 						<h5 class="card-titl-a book_author"><a href="author.html">J.R.R. Tolkien</a></h5>
 						<h6 class="card-titl-a book_title"><a href="book.html"><i>Il Signore degli Anelli - Il Ritorno del Re</i></a></h6>
 						<div class="book_rating">
-							<p> Rating <i class="fas fa-star color-b" aria-hidden="true"></i>
+							<p><i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="fas fa-star color-b" aria-hidden="true"></i>
 								<i class="far fa-star color-b" aria-hidden="true"></i>
 								<i class="far fa-star color-b" aria-hidden="true"></i>
-								<br>Price <strong class="color-b">€ 12.90</strong>
+							</p>
+						</div>
+					</div>
+				</div>
+                <div class="book_carousel">
+					<div class="card-box-a">
+						<div class="img-box-a">
+							<a href="book.html"><img src="../assets/img/books/book-5.jpg" alt="" class="img-a img-fluid"></a>
+						</div>
+					</div>
+					<div class="book_desc">
+						<h5 class="card-titl-a book_author"><a href="author.html">J.R.R. Tolkien</a></h5>
+						<h6 class="card-titl-a book_title"><a href="book.html"><i>Il Signore degli Anelli - Il Ritorno del Re</i></a></h6>
+						<div class="book_rating">
+							<p><i class="fas fa-star color-b" aria-hidden="true"></i>
+								<i class="fas fa-star color-b" aria-hidden="true"></i>
+								<i class="fas fa-star color-b" aria-hidden="true"></i>
+								<i class="far fa-star color-b" aria-hidden="true"></i>
+								<i class="far fa-star color-b" aria-hidden="true"></i>
+							</p>
+						</div>
+					</div>
+				</div>
+                <div class="book_carousel">
+					<div class="card-box-a">
+						<div class="img-box-a">
+							<a href="book.html"><img src="../assets/img/books/book-6.jpg" alt="" class="img-a img-fluid"></a>
+						</div>
+					</div>
+					<div class="book_desc">
+						<h5 class="card-titl-a book_author"><a href="author.html">J.R.R. Tolkien</a></h5>
+						<h6 class="card-titl-a book_title"><a href="book.html"><i>Il Signore degli Anelli - Il Ritorno del Re</i></a></h6>
+						<div class="book_rating">
+							<p><i class="fas fa-star color-b" aria-hidden="true"></i>
+								<i class="fas fa-star color-b" aria-hidden="true"></i>
+								<i class="fas fa-star color-b" aria-hidden="true"></i>
+								<i class="far fa-star color-b" aria-hidden="true"></i>
+								<i class="far fa-star color-b" aria-hidden="true"></i>
+							</p>
+						</div>
+					</div>
+				</div>
+                <div class="item book_carousel ">
+					<div class="card-box-a">
+						<div class="img-box-a">
+							<a href="book.html"><img src="../assets/img/books/book-7.jpg" alt="" class="img-a img-fluid"></a>
+						</div>
+					</div>
+					<div class="book_desc">
+						<h5 class="card-titl-a book_author"><a href="author.html">J.R.R. Tolkien</a></h5>
+						<h6 class="card-titl-a book_title"><a href="book.html"><i>Il Signore degli Anelli - Il Ritorno del Re</i></a></h6>
+						<div class="book_rating">
+							<p><i class="fas fa-star color-b" aria-hidden="true"></i>
+								<i class="fas fa-star color-b" aria-hidden="true"></i>
+								<i class="fas fa-star color-b" aria-hidden="true"></i>
+								<i class="far fa-star color-b" aria-hidden="true"></i>
+								<i class="far fa-star color-b" aria-hidden="true"></i>
 							</p>
 						</div>
 					</div>

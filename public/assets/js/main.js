@@ -115,7 +115,6 @@ function toggleLogin(user){
 		$('.intro-content .intro-price').addClass('fadeInUp animated').show();
 		$('.intro-content .intro-title-top, .intro-content .spacial').addClass('fadeIn animated').show();
 	});
-
 	/*--/ Navbar Collapse /--*/
 	$('.navbar-toggle-box-collapse').on('click', function () {
 		$('body').removeClass('box-collapse-closed').addClass('box-collapse-open');
@@ -143,8 +142,8 @@ function toggleLogin(user){
 			$('.scrolltop-mf').fadeOut(1000, "easeInOutExpo");
 		}
 	});
-
-	/*--/ Property owl /--*/
+    
+    /*--/ Property owl /--*/
 	$('#property-carousel').owlCarousel({
 		loop: true,
 		margin: 30,
@@ -207,5 +206,8 @@ function toggleLogin(user){
 			}
 		}
 	});
+    
 
 })(jQuery);
+
+
