@@ -1,8 +1,20 @@
 /*======================================
+//--//-->   STYLES AUTHORS
+======================================*/
+
+.card-footer-e{
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  background-color: #2eca6a;
+  margin-top: 100%;
+}
+
+/*======================================
 //--//-->   STYLES TERMS
 ======================================*/
 
-.terms_title{
+.terms_title {
     padding-top: 0px;
     text-align: justify;
 }
@@ -11,16 +23,16 @@
 //--//-->   STYLES BOOKS GRID
 ======================================*/
 
-.book_desc{
+.book_desc {
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.book_rating{
+.book_rating {
     text-align: center;
 }
 
-.book_author{
+.book_author {
     padding-top: 10px; 
     padding-bottom: 0px;
 }

@@ -1,824 +1,814 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>BookStore</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
-  <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Libraries CSS Files -->
-  <link href="assets/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="assets/lib/animate/animate.min.css" rel="stylesheet">
-  <link href="assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-  <!-- Main Stylesheet File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-</head>
-
-<body>
-    
-    <!--==========================
-    Header Nav Star
-    ============================-->
-    <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-        <div class="container">
-            <!-- Burger button -->
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <head>
+        <meta charset="utf-8">
+        <title>BookStore</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+        
+        <!-- Favicons -->
+        <link href="assets/img/favicon.png" rel="icon">
+        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+       
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+        
+        <!-- Bootstrap CSS File -->
+        <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Libraries CSS Files -->
+        <link href="assets/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="assets/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+        <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        
+        <!-- Main Stylesheet File -->
+        <link href="assets/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <!--==========================Header Nav Star============================-->
+        <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+            <div class="container">
+                <!-- Burger button -->
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
-            <!-- Icon + App Name -->
-            <a class="navbar-brand text-brand" href="index.html">Book<span class="color-b">Store</span></a>
-            <!-- Cart icon in case of small resolution -->
-            <a href="pages/cart.html" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" aria-expanded="false">
+                </button>
+                <!-- Icon + App Name -->
+                <a class="navbar-brand text-brand" href="index.html">Book<span class="color-b">Store</span></a>
+                <!-- Cart icon in case of small resolution -->
+                <a href="pages/cart.html" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" aria-expanded="false">
                 <span class="fa fa-shopping-cart fa-lg" aria-hidden="true"></span>
-            </a>
-            
-            <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/books.html">Books</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/authors.html">Authors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/events.html">Events</a></li>
-                </ul>
-            </div>
-            
-            <div class="navbar-collapse collapse navbar-right" id="navbarDefault">
-                <ul id="navbarLogin" class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="pages/login.html?login">Log in</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/login.html?register">Register</a></li>
-                </ul>
-            </div>
-            
-            <!-- Cart Icon -->
-            <a href="pages/cart.html" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" aria-expanded="false">
-                <span class="fa fa-shopping-cart fa-lg" aria-hidden="true"></span>
-            </a>
-        </div>
-    </nav>
-  <!--/ Nav End /-->
-  
-    <!--==========================
-    Carousel
-    ============================-->
-  <div class="intro intro-carousel">
-    <div id="carousel" class="owl-carousel owl-theme">
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(./assets/img/slider/slide-1.jpg)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top">
-                      <br> </p>
-                    <h1 class="intro-title mb-4">
-                      <span class="color-b">Best </span> seller
-                      <br> </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">View More</span></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(./assets/img/slider/slide-2.jpg)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top">
-                      <br> </p>
-                    <h1 class="intro-title mb-4">
-                      <span class="color-b">Find </span> authors
-                      <br> </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">View More</span></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(./assets/img/slider/slide-3.jpg)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top">
-                      <br> </p>
-                    <h1 class="intro-title mb-4">
-                      <span class="color-b">Be ready </span> for the  
-                      <br> next event</h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">View More</span></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--/ Carousel end /-->
-
-  <!--==========================
-    Our Services
-    ============================-->
-  <section class="section-services section-t8">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Our Services</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card-box-c foo">
-            <div class="card-header-c d-flex">
-              <div class="card-box-ico">
-                <span class="fas fa-book"></span>
-              </div>
-              <div class="card-title-c align-self-center">
-                <h2 class="title-c">Store</h2>
-              </div>
-            </div>
-            <div class="card-body-c">
-              <p class="content-c">
-                Buy or book a book online from our collection.
-              </p>
-            </div>
-            <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card-box-c foo">
-            <div class="card-header-c d-flex">
-              <div class="card-box-ico">
-                <span class="fa fa-calendar-check-o"></span>
-              </div>
-              <div class="card-title-c align-self-center">
-                <h2 class="title-c">Event</h2>
-              </div>
-            </div>
-            <div class="card-body-c">
-              <p class="content-c">
-                Stay up to date on the presentation events of the book you like the most.
-              </p>
-            </div>
-            <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/ Services End /-->
-
-  <!--==========================
-    New Books
-    ============================-->
-  <section class="section-property section-t8">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">New Books</h2>
-            </div>
-            <div class="title-link">
-              <a href="property-grid.html">All Books
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="property-carousel" class="owl-carousel owl-theme">
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="assets/img/property-6.jpg" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="book.html">Book - Title
-                      <br />Author - Name</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">price | € 12.90</span>
-                  </div>
-                  <a href="#" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                    <ul class="card-info d-flex justify-content-around">
-                        <h4 class="card-info-title">Rating</h4>
-                        <li>
-                          <span>
-                              <i class="fas fa-star" aria-hidden="true"></i>
-                              <i class="fas fa-star" aria-hidden="true"></i>
-                              <i class="fas fa-star" aria-hidden="true"></i>
-                              <i class="far fa-star" aria-hidden="true"></i> 
-                              <i class="far fa-star" aria-hidden="true"></i> 
-                          </span>
-                        </li>
+                </a>
+                <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/books.html">Books</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/authors.html">Authors</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/events.html">Events</a></li>
                     </ul>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="assets/img/property-3.jpg" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="book.html">157 West
-                      <br /> Central Park</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">rent | $ 12.000</span>
-                  </div>
-                  <a href="book.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                    <ul class="card-info d-flex justify-content-around">
-                        <h4 class="card-info-title">Rating</h4>
-                        <li>
-                          <span>
-                              <i class="fas fa-star" aria-hidden="true"></i>
-                              <i class="fas fa-star" aria-hidden="true"></i>
-                              <i class="fas fa-star" aria-hidden="true"></i>
-                              <i class="far fa-star" aria-hidden="true"></i> 
-                              <i class="far fa-star" aria-hidden="true"></i> 
-                          </span>
-                        </li>
+                <div class="navbar-collapse collapse navbar-right" id="navbarDefault">
+                    <ul id="navbarLogin" class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="pages/login.html?login">Log in</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/login.html?register">Register</a></li>
                     </ul>
                 </div>
-              </div>
+                <!-- Cart Icon -->
+                <a href="pages/cart.html" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" aria-expanded="false">
+                <span class="fa fa-shopping-cart fa-lg" aria-hidden="true"></span>
+                </a>
             </div>
-          </div>
-        </div>
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="assets/img/property-7.jpg" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="book.html">245 Azabu
-                      <br /> Nishi Park let</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">rent | $ 12.000</span>
-                  </div>
-                  <a href="book.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Area</h4>
-                      <span>340m
-                        <sup>2</sup>
-                      </span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Baths</h4>
-                      <span>4</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="assets/img/property-10.jpg" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="book.html">204 Montal
-                      <br /> South Bela Two</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">rent | $ 12.000</span>
-                  </div>
-                  <a href="book.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Area</h4>
-                      <span>340m
-                        <sup>2</sup>
-                      </span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Baths</h4>
-                      <span>4</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/ Property End /-->
-
-  <!--==========================
-    Featured Authors
-    ============================-->
-  <section class="section-agents section-t8">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Featured Author</h2>
-            </div>
-            <div class="title-link">
-              <a href="authors.html">All Authors
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card-box-d">
-            <div class="card-img-d">
-              <img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid">
-            </div>
-            <div class="card-overlay card-overlay-hover">
-              <div class="card-header-d">
-                <div class="card-title-d align-self-center">
-                  <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two">Author - Name
-                      <br> Author - Surname</a>
-                  </h3>
-                </div>
-              </div>
-                <div class="card-footer-d">
-                    <div class="socials-footer d-flex justify-content-center">
-                        <a href="book.html" class="link-a">Click here to view books
-                            <span class="ion-ios-arrow-forward"></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-box-d">
-            <div class="card-img-d">
-              <img src="assets/img/agent-1.jpg" alt="" class="img-d img-fluid">
-            </div>
-            <div class="card-overlay card-overlay-hover">
-              <div class="card-header-d">
-                <div class="card-title-d align-self-center">
-                  <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two">Stiven Spilver
-                      <br> Darw</a>
-                  </h3>
-                </div>
-              </div>
-              <div class="card-body-d">
-                <p class="content-d color-text-a">
-                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                </p>
-                <div class="info-agents color-a">
-                  <p>
-                    <strong>Phone: </strong> +54 356 945234</p>
-                  <p>
-                    <strong>Email: </strong> agents@example.com</p>
-                </div>
-              </div>
-              <div class="card-footer-d">
-                <div class="socials-footer d-flex justify-content-center">
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-dribbble" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-box-d">
-            <div class="card-img-d">
-              <img src="assets/img/agent-5.jpg" alt="" class="img-d img-fluid">
-            </div>
-            <div class="card-overlay card-overlay-hover">
-              <div class="card-header-d">
-                <div class="card-title-d align-self-center">
-                  <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two">Emma Toledo
-                      <br> Cascada</a>
-                  </h3>
-                </div>
-              </div>
-              <div class="card-body-d">
-                <p class="content-d color-text-a">
-                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                </p>
-                <div class="info-agents color-a">
-                  <p>
-                    <strong>Phone: </strong> +54 356 945234</p>
-                  <p>
-                    <strong>Email: </strong> agents@example.com</p>
-                </div>
-              </div>
-              <div class="card-footer-d">
-                <div class="socials-footer d-flex justify-content-center">
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-dribbble" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/ Agents End /-->
-
-  <!--==========================
-    Latest Events
-    ============================-->
-  <section class="section-news section-t8">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Latest Events</h2>
-            </div>
-            <div class="title-link">
-              <a href="blog-grid.html">All Events
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="new-carousel" class="owl-carousel owl-theme">
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="assets/img/post-2.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Location</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">Event - Name
-                      <br> Book - Title</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">Date</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="assets/img/post-5.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Travel</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">Travel is comming
-                      <br> new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="assets/img/post-7.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Park</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">Park is comming
-                      <br> new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="assets/img/post-3.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Travel</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="#">Travel is comming
-                      <br> new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/ News End /-->
-
-  <!--==========================
-    Footer & Contact & Ask Us
-    ============================-->
-    <section class="section-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-4">
-                    <div class="widget-a">
-                        <div class="w-header-a">
-                            <h3 class="w-title-a text-brand">Services</h3>
-                        </div>
-                        <div class="w-body-a">
-                            <ul class="list-unstyled">
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="gift.html">Gift Card</a></li>
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="shipping.html">Shipping</a></li>
-                            </ul>
+        </nav>
+        <!--/ Nav End /-->
+        
+        <!--==========================Carousel============================-->
+        <div class="intro intro-carousel">
+            <div id="carousel" class="owl-carousel owl-theme">
+                <div class="carousel-item-a intro-item bg-image" style="background-image: url(./assets/img/slider/slide-1.jpg)">
+                    <div class="overlay overlay-a"></div>
+                    <div class="intro-content display-table">
+                        <div class="table-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="intro-body">
+                                            <p class="intro-title-top">
+                                                <br> 
+                                            </p>
+                                            <h1 class="intro-title mb-4">
+                                                <span class="color-b">Best </span> seller
+                                                <br> 
+                                            </h1>
+                                            <p class="intro-subtitle intro-price">
+                                                <a href="#"><span class="price-a">View More</span></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-4 section-md-t3">
-                    <div class="widget-a">
-                        <div class="w-header-a">
-                            <h3 class="w-title-a text-brand">Information</h3>
-                        </div>
-                        <div class="w-body-a">
-                            <ul class="list-unstyled">
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="pages/about.html">About Us</a></li>
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="pages/terms.html">Terms and Privacy</a></li>
-                            </ul>
+                <div class="carousel-item-a intro-item bg-image" style="background-image: url(./assets/img/slider/slide-2.jpg)">
+                    <div class="overlay overlay-a"></div>
+                    <div class="intro-content display-table">
+                        <div class="table-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="intro-body">
+                                            <p class="intro-title-top">
+                                                <br> 
+                                            </p>
+                                            <h1 class="intro-title mb-4">
+                                                <span class="color-b">Find </span> authors
+                                                <br> 
+                                            </h1>
+                                            <p class="intro-subtitle intro-price">
+                                                <a href="#"><span class="price-a">View More</span></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-4 section-md-t3">
-                    <div class="widget-a">
-                        <div class="w-header-a">
-                            <h3 class="w-title-a text-brand">Quick Help</h3>
-                        </div>
-                        <div class="w-body-a">
-                            <ul class="list-unstyled">
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="pages/contact.html">Contact Us</a></li>
-                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="pages/faq.html">FAQ</a></li>
-                            </ul>
+                <div class="carousel-item-a intro-item bg-image" style="background-image: url(./assets/img/slider/slide-3.jpg)">
+                    <div class="overlay overlay-a"></div>
+                    <div class="intro-content display-table">
+                        <div class="table-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="intro-body">
+                                            <p class="intro-title-top">
+                                                <br> 
+                                            </p>
+                                            <h1 class="intro-title mb-4">
+                                                <span class="color-b">Be ready </span> for the  
+                                                <br> next event
+                                            </h1>
+                                            <p class="intro-subtitle intro-price">
+                                                <a href="#"><span class="price-a">View More</span></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="socials-a">
-                        <p class="copyright color-text-a">
-                            Social
-                        </p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <a href="#">
+        <!--/ Carousel end /-->
+        
+        <!--==========================Our Services============================-->
+        <section class="section-services section-t8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title-wrap d-flex justify-content-between">
+                            <div class="title-box">
+                                <h2 class="title-a">Our Services</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card-box-c foo">
+                            <div class="card-header-c d-flex">
+                                <div class="card-box-ico">
+                                    <span class="fas fa-book"></span>
+                                </div>
+                                <div class="card-title-c align-self-center">
+                                    <h2 class="title-c">Store</h2>
+                                </div>
+                            </div>
+                            <div class="card-body-c">
+                                <p class="content-c">
+                                    Buy or book a book online from our collection.
+                                </p>
+                            </div>
+                            <div class="card-footer-c">
+                                <a href="#" class="link-c link-icon">Read more
+                                <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-box-c foo">
+                            <div class="card-header-c d-flex">
+                                <div class="card-box-ico">
+                                    <span class="fa fa-calendar-check-o"></span>
+                                </div>
+                                <div class="card-title-c align-self-center">
+                                    <h2 class="title-c">Event</h2>
+                                </div>
+                            </div>
+                            <div class="card-body-c">
+                                <p class="content-c">
+                                    Stay up to date on the presentation events of the book you like the most.
+                                </p>
+                            </div>
+                            <div class="card-footer-c">
+                                <a href="#" class="link-c link-icon">Read more
+                                <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ Services End /-->
+        
+        <!--==========================New Books============================-->
+        <section class="section-property section-t8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title-wrap d-flex justify-content-between">
+                            <div class="title-box">
+                                <h2 class="title-a">New Books</h2>
+                            </div>
+                            <div class="title-link">
+                                <a href="property-grid.html">All Books
+                                <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="property-carousel" class="owl-carousel owl-theme">
+                    <div class="carousel-item-b">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="assets/img/property-6.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="book.html">Book - Title
+                                            <br />Author - Name</a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">price | € 12.90</span>
+                                        </div>
+                                        <a href="#" class="link-a">Click here to view
+                                        <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <h4 class="card-info-title">Rating</h4>
+                                            <li>
+                                                <span>
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                                <i class="far fa-star" aria-hidden="true"></i> 
+                                                <i class="far fa-star" aria-hidden="true"></i> 
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item-b">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="assets/img/property-3.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="book.html">157 West
+                                            <br /> Central Park</a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">rent | $ 12.000</span>
+                                        </div>
+                                        <a href="book.html" class="link-a">Click here to view
+                                        <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <h4 class="card-info-title">Rating</h4>
+                                            <li>
+                                                <span>
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                                <i class="far fa-star" aria-hidden="true"></i> 
+                                                <i class="far fa-star" aria-hidden="true"></i> 
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item-b">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="assets/img/property-7.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="book.html">245 Azabu
+                                            <br /> Nishi Park let</a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">rent | $ 12.000</span>
+                                        </div>
+                                        <a href="book.html" class="link-a">Click here to view
+                                        <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Area</h4>
+                                                <span>340m
+                                                <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item-b">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="assets/img/property-10.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="book.html">204 Montal
+                                            <br /> South Bela Two</a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">rent | $ 12.000</span>
+                                        </div>
+                                        <a href="book.html" class="link-a">Click here to view
+                                        <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Area</h4>
+                                                <span>340m
+                                                <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ Property End /-->
+        
+        <!--==========================Featured Authors============================-->
+        <section class="section-agents section-t8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title-wrap d-flex justify-content-between">
+                            <div class="title-box">
+                                <h2 class="title-a">Featured Author</h2>
+                            </div>
+                            <div class="title-link">
+                                <a href="authors.html">All Authors
+                                <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card-box-d">
+                            <div class="card-img-d">
+                                <img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid">
+                            </div>
+                            <div class="card-overlay card-overlay-hover">
+                                <div class="card-header-d">
+                                    <div class="card-title-d align-self-center">
+                                        <h3 class="title-d">
+                                            <a href="agent-single.html" class="link-two">Author - Name
+                                            <br> Author - Surname</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="card-footer-d">
+                                    <div class="socials-footer d-flex justify-content-center">
+                                        <a href="book.html" class="link-a">Click here to view books
+                                        <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-box-d">
+                            <div class="card-img-d">
+                                <img src="assets/img/agent-1.jpg" alt="" class="img-d img-fluid">
+                            </div>
+                            <div class="card-overlay card-overlay-hover">
+                                <div class="card-header-d">
+                                    <div class="card-title-d align-self-center">
+                                        <h3 class="title-d">
+                                            <a href="agent-single.html" class="link-two">Stiven Spilver
+                                            <br> Darw</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="card-body-d">
+                                    <p class="content-d color-text-a">
+                                        Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                                    </p>
+                                    <div class="info-agents color-a">
+                                        <p>
+                                            <strong>Phone: </strong> +54 356 945234
+                                        </p>
+                                        <p>
+                                            <strong>Email: </strong> agents@example.com
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-footer-d">
+                                    <div class="socials-footer d-flex justify-content-center">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                <i class="fa fa-dribbble" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-box-d">
+                            <div class="card-img-d">
+                                <img src="assets/img/agent-5.jpg" alt="" class="img-d img-fluid">
+                            </div>
+                            <div class="card-overlay card-overlay-hover">
+                                <div class="card-header-d">
+                                    <div class="card-title-d align-self-center">
+                                        <h3 class="title-d">
+                                            <a href="agent-single.html" class="link-two">Emma Toledo
+                                            <br> Cascada</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="card-body-d">
+                                    <p class="content-d color-text-a">
+                                        Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                                    </p>
+                                    <div class="info-agents color-a">
+                                        <p>
+                                            <strong>Phone: </strong> +54 356 945234
+                                        </p>
+                                        <p>
+                                            <strong>Email: </strong> agents@example.com
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-footer-d">
+                                    <div class="socials-footer d-flex justify-content-center">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                <i class="fa fa-dribbble" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ Agents End /-->
+        
+        <!--==========================Latest Events============================-->
+        <section class="section-news section-t8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title-wrap d-flex justify-content-between">
+                            <div class="title-box">
+                                <h2 class="title-a">Latest Events</h2>
+                            </div>
+                            <div class="title-link">
+                                <a href="blog-grid.html">All Events
+                                <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="new-carousel" class="owl-carousel owl-theme">
+                    <div class="carousel-item-c">
+                        <div class="card-box-b card-shadow news-box">
+                            <div class="img-box-b">
+                                <img src="assets/img/post-2.jpg" alt="" class="img-b img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-header-b">
+                                    <div class="card-category-b">
+                                        <a href="#" class="category-b">Location</a>
+                                    </div>
+                                    <div class="card-title-b">
+                                        <h2 class="title-2">
+                                            <a href="blog-single.html">Event - Name
+                                            <br> Book - Title</a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-date">
+                                        <span class="date-b">Date</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item-c">
+                        <div class="card-box-b card-shadow news-box">
+                            <div class="img-box-b">
+                                <img src="assets/img/post-5.jpg" alt="" class="img-b img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-header-b">
+                                    <div class="card-category-b">
+                                        <a href="#" class="category-b">Travel</a>
+                                    </div>
+                                    <div class="card-title-b">
+                                        <h2 class="title-2">
+                                            <a href="blog-single.html">Travel is comming
+                                            <br> new</a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-date">
+                                        <span class="date-b">18 Sep. 2017</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item-c">
+                        <div class="card-box-b card-shadow news-box">
+                            <div class="img-box-b">
+                                <img src="assets/img/post-7.jpg" alt="" class="img-b img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-header-b">
+                                    <div class="card-category-b">
+                                        <a href="#" class="category-b">Park</a>
+                                    </div>
+                                    <div class="card-title-b">
+                                        <h2 class="title-2">
+                                            <a href="blog-single.html">Park is comming
+                                            <br> new</a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-date">
+                                        <span class="date-b">18 Sep. 2017</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item-c">
+                        <div class="card-box-b card-shadow news-box">
+                            <div class="img-box-b">
+                                <img src="assets/img/post-3.jpg" alt="" class="img-b img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-header-b">
+                                    <div class="card-category-b">
+                                        <a href="#" class="category-b">Travel</a>
+                                    </div>
+                                    <div class="card-title-b">
+                                        <h2 class="title-2">
+                                            <a href="#">Travel is comming
+                                            <br> new</a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-date">
+                                        <span class="date-b">18 Sep. 2017</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ News End /-->
+        
+        <!--==========================Footer & Contact & Ask Us============================-->
+        <section class="section-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="widget-a">
+                            <div class="w-header-a">
+                                <h3 class="w-title-a text-brand">Services</h3>
+                            </div>
+                            <div class="w-body-a">
+                                <ul class="list-unstyled">
+                                    <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="pages/gift.html">Gift Card</a></li>
+                                    <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="pages/shipping.html">Shipping</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 section-md-t3">
+                        <div class="widget-a">
+                            <div class="w-header-a">
+                                <h3 class="w-title-a text-brand">Information</h3>
+                            </div>
+                            <div class="w-body-a">
+                                <ul class="list-unstyled">
+                                    <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="pages/about.html">About Us</a></li>
+                                    <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="pages/terms.html">Terms and Privacy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 section-md-t3">
+                        <div class="widget-a">
+                            <div class="w-header-a">
+                                <h3 class="w-title-a text-brand">Quick Help</h3>
+                            </div>
+                            <div class="w-body-a">
+                                <ul class="list-unstyled">
+                                    <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="pages/contact.html">Contact Us</a></li>
+                                    <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="pages/faq.html">FAQ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="socials-a">
+                            <p class="copyright color-text-a">
+                                Social
+                            </p>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#">
                                     <i class="fab fa-facebook" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
                                     <i class="fab fa-twitter" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
                                     <i class="fab fa-instagram" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
                                     <i class="fab fa-pinterest-p" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
                                     <i class="fab fa-dribbble" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="socials-a">
-                        <p class="copyright color-text-a">
-                            Payments
-                        </p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><img src="assets/img/payments/visa.png"></li>
-                            <li class="list-inline-item"><img src="assets/img/payments/mastercard.png"></li>
-                            <li class="list-inline-item"><img src="assets/img/payments/paypal.png"></li>
-                            <li class="list-inline-item"><img src="assets/img/payments/ebay.png"></li>
-                            <li class="list-inline-item"><img src="assets/img/payments/americanexpress.png"></li>
-                        </ul>
-                    </div>
-                    <div class="copyright-footer">
-                        <p class="copyright color-text-a">
-                            &copy; Copyright
-                            <span class="color-a">BookStore</span> All Rights Reserved.
-                        </p>
-                    </div>
-                    <div class="credits">
-                        Designed by <a href="https://www.facebook.com/giacomo.fusetti1">Gio & Gia</a>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="socials-a">
+                            <p class="copyright color-text-a">
+                                Payments
+                            </p>
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><img src="assets/img/payments/visa.png"></li>
+                                <li class="list-inline-item"><img src="assets/img/payments/mastercard.png"></li>
+                                <li class="list-inline-item"><img src="assets/img/payments/paypal.png"></li>
+                                <li class="list-inline-item"><img src="assets/img/payments/ebay.png"></li>
+                                <li class="list-inline-item"><img src="assets/img/payments/americanexpress.png"></li>
+                            </ul>
+                        </div>
+                        <div class="copyright-footer">
+                            <p class="copyright color-text-a">
+                                &copy; Copyright
+                                <span class="color-a">BookStore</span> All Rights Reserved.
+                            </p>
+                        </div>
+                        <div class="credits">
+                            Designed by <a href="https://www.facebook.com/giacomo.fusetti1">Gio & Gia</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer><!-- #footer -->
-
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-    <div id="preloader"></div>
-
-    <!-- JavaScript Libraries -->
-    <script src="assets/lib/jquery/jquery.min.js"></script>
-    <script src="assets/lib/jquery/jquery-migrate.min.js"></script>
-    <script src="assets/lib/popper/popper.min.js"></script>
-    <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/lib/easing/easing.min.js"></script>
-    <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="assets/lib/scrollreveal/scrollreveal.min.js"></script>
-
-    <!-- Template Main Javascript File -->
-    <script src="assets/js/main.js"></script>
-
-</body>
+        </footer>
+        <!-- #footer -->
+        
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <div id="preloader"></div>
+        <!-- JavaScript Libraries -->
+        <script src="assets/lib/jquery/jquery.min.js"></script>
+        <script src="assets/lib/jquery/jquery-migrate.min.js"></script>
+        <script src="assets/lib/popper/popper.min.js"></script>
+        <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/lib/easing/easing.min.js"></script>
+        <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="assets/lib/scrollreveal/scrollreveal.min.js"></script>
+        <!-- Template Main Javascript File -->
+        <script src="assets/js/main.js"></script>
+    </body>
 </html>
+
