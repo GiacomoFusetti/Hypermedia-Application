@@ -20,7 +20,6 @@ $(function() {
 		$(this).addClass('active');
 		e.preventDefault();
 	});
-
 });
 
 function checkInputs(dom) {
