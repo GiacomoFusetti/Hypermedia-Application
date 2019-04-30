@@ -1,0 +1,78 @@
+/*======================================
+//--//-->   STYLES BOOK 
+======================================*/
+
+.price-button {
+  color: #000000;
+  padding: .6rem .8rem;
+  border: 2px solid #555555;
+  border-radius: 0px;
+  text-transform: uppercase;
+  letter-spacing: 0.030em;
+}
+
+.price-button.active {
+  border: 2px solid #2eca6a;
+}
+
+.price-box{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+    display: inherit;
+}
+
+/*======================================
+//--//-->   STYLES BOOKS GRID
+======================================*/
+
+.book_desc{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.book_rating{
+    text-align: center;
+}
+
+.book_author{
+    padding-top: 10px; 
+    padding-bottom: 0px;
+}
+
+.book_title{
+    padding-top: 0px;
+}
+
+.price_text,
+.rating_text{
+    display: inline;
+}
+
+@media screen and (max-width: 1200px) {
+    .price_text,
+    .rating_text{
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    .book_title{
+        font-size: 15px !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .book_title{
+        font-size: initial !important;
+    }
+    .price_text,
+    .rating_text{
+        display: inline;
+    }
+}
