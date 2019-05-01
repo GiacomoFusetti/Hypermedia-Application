@@ -28,12 +28,17 @@
     display: inherit;
 }
 
-/*======================================
-//--//-->   STYLES BOOKS GRID
-======================================*/
 .book_carousel{
     width: 175px!important;
     margin-right: 10px!important;
+}
+
+
+/*======================================
+//--//-->   STYLES BOOKS GRID
+======================================*/
+.h6_sidebar_margin{
+    margin-bottom: 0px;
 }
 
 .book_desc{
