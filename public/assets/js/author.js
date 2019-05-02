@@ -1,4 +1,4 @@
-console.log("Loading author's written book ");
+console.log("Loading author page ");
 
 $(function() {    
     $('.owl-carousel').owlCarousel({
