@@ -10,6 +10,11 @@
   margin-top: 100%;
 }
 
+.book_carousel{
+    width: 175px!important;
+    margin-right: 10px!important;
+}
+
 .card-info-title-color {
     color: #ffffff !important;
 }
