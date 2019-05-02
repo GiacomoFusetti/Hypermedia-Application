@@ -13,3 +13,23 @@
 .card-info-title-color {
     color: #ffffff !important;
 }
+
+.container_img{
+    position: relative; 
+    max-width: 800px; /* Maximum width */
+}
+
+/* Bottom left text */
+.bottom_center {
+  position: absolute; /* Position the background text */
+  bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+  background: #2eca6a; /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1; /* Grey text */
+  width: 100%; /* Full width */
+  padding: 20px; /* Some padding */
+}
+
+.color_white{
+    color: #f1f1f1; /* Grey text */
+}
