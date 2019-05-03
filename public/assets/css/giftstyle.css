@@ -1,0 +1,23 @@
+/*======================================
+//--//-->   STYLES BOOK 
+======================================*/
+
+.price-button {
+  color: #000000;
+  padding: .6rem .8rem;
+  border: 2px solid #555555;
+  border-radius: 0px;
+  letter-spacing: 0.030em;
+  cursor: pointer;
+  line-height: initial;
+
+}
+
+.price-button.active {
+  border: 3px solid #2eca6a;
+}
+
+.price-box{
+    padding: 20px 10px 20px 10px;
+    line-height: 45px;
+}
