@@ -142,10 +142,59 @@
 						</div>
 						<div class="col-xs-12 col-md-12 col-lg-4 price-box">
 							<div class="text-center">
-								<button class="btn btn-success">
-									<span style="margin-right:20px" class="fa fa-shopping-cart fa-lg" aria-hidden="true"></span> Add to Cart </button>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">		<span style="margin-right:20px" class="fa fa-shopping-cart fa-lg" aria-hidden="true"></span> Add to Cart </button>
 							</div>
+                            
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="form-a contactForm">
+                                        ...
+                                        <div id="sendmessage">Your message has been sent. Thank you!</div>
+                                        <div id="errormessage"></div>
+                                        <div class="row">
+                                          <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                              <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                              <div class="validation"></div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                              <input name="email" type="email" class="form-control form-control-lg form-control-a" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                                              <div class="validation"></div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12 mb-3">
+                                            <div class="form-group">
+                                              <input type="url" name="subject" class="form-control form-control-lg form-control-a" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                                              <div class="validation"></div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12 mb-3">
+                                            <div class="form-group">
+                                              <textarea name="message" class="form-control" name="message" cols="45" rows="8" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                              <div class="validation"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
 						</div>
+                        
 					</div>
                 </div>
 			</div>
