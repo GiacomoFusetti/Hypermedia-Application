@@ -10,7 +10,8 @@
   letter-spacing: 0.030em;
   cursor: pointer;
   line-height: initial;
-
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .price-button.active {
