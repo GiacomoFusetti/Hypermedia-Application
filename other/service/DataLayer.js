@@ -19,14 +19,12 @@ if(process.env.TEST==='true'){
     });
 }else{
     sqlDB = sqlDbFactory({
-        debug: false,
         client: "pg",
-connection: {host: process.env.DATABASE_URL,
-    user: "postgres",
-    password: "ZibriJack92", 
-    database: "postgres"},
-        ssl: true
+  	connection: process.env.DATABASE_URL,
+  	ssl: true,
+  	debug: true
     });
+	console.log(process.env.DATABASE_URL);
 }
 
 fs.readdirSync(tableLoc).forEach(file => {
