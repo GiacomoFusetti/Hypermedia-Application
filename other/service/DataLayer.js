@@ -20,9 +20,9 @@ if(process.env.TEST==='true'){
 }else{
     sqlDB = sqlDbFactory({
         client: "pg",
-		  connection: process.env.DATABASE_URL,
-		  ssl: true,
-		  debug: true
+  	connection: process.env.DATABASE_URL,
+  	ssl: true,
+  	debug: true
     });
 	console.log(process.env.DATABASE_URL);
 }
