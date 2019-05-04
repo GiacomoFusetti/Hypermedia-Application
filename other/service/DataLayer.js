@@ -24,6 +24,7 @@ if(process.env.TEST==='true'){
 		  ssl: true,
 		  debug: true
     });
+	console.log(process.env.DATABASE_URL);
 }
 
 fs.readdirSync(tableLoc).forEach(file => {
