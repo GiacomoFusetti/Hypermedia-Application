@@ -8,8 +8,6 @@ let relativeTableLoc = "../data_json/";
 let tableDB = [];
 
 /* Locally we should launch the app with TEST=true to use SQLlite: > set TEST=true; node ./index.js */
-console.log(process.env.TEST);
-console.log(Boolean(process.env.TEST));
 if(process.env.TEST==='true'){
     sqlDB = sqlDbFactory({
         client: "sqlite3",

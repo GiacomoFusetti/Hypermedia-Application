@@ -1,29 +1,22 @@
 /*======================================
-//--//-->   STYLES AUTHORS
+//--//-->   STYLES INDEX
 ======================================*/
 
-.card-footer-e {
-  width: 100%;
-  position: absolute;
-  z-index: 2;
-  background-color: #2eca6a;
-  margin-top: 100%;
+/* New Booksa */
+.book_rating{
+    text-align: center;
 }
 
-.book_carousel{
-    width: 175px!important;
-    margin-right: 10px!important;
+.book_author{
+    padding-top: 10px; 
+    padding-bottom: 0px;
 }
 
-.card-info-title-color {
-    color: #ffffff !important;
+.book_title{
+    padding-top: 0px;
 }
 
-.container_img{
-    position: relative; 
-    max-width: 800px; /* Maximum width */
-}
-
+/*feature authir*/
 /* Bottom left text */
 .container_img .bottom_center {
   position: absolute; /* Position the background text */
