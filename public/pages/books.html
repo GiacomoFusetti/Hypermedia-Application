@@ -109,10 +109,10 @@
                     <div class="col-md-3 col-sm-12 col-md-pull-9">
                         <div class="card-box-a">
                             <article class="card-group-item">
-                                <header class="card-header">
-                                    <h6 class="h6_sidebar_margin">Books By </h6>
+                                <header class="card-header" data-toggle="collapse" data-target="#booksby">
+                                    <h6 id="h6booksby" class="h6_sidebar_margin"><i class="far fa-caret-square-down color-b"></i> Books By </h6>
                                 </header>
-                                <div class="filter-content">                            
+                                <div class="filter-content collapse" id="booksby">                            
                                     <div class="list-group list-group-flush">
                                         <a href="booksbygenre.html" class="list-group-item"><i class="float-left badge round fa fa-angle-right color-b"> </i> Genre </a>
                                         <a href="booksbytheme.html" class="list-group-item"><i class="float-left badge round fa fa-angle-right color-b"> </i> Theme </a>
@@ -122,11 +122,11 @@
                             </article> <!-- card-group-item.// -->
 
                             <article class="card-group-item">
-                                <header class="card-header">
-                                    <h6 class="h6_sidebar_margin">Filters </h6>
+                                <header class="card-header" data-toggle="collapse" data-target="#filters">
+                                    <h6 id="h6filters" class="h6_sidebar_margin"><i class="far fa-caret-square-down color-b"></i> Filters </h6>
                                 </header>
-                                <div class="filter-content">
-                                    <div class="card-body">
+                                <div class="filter-content collapse" id="filters">
+                                    <div class="filters-body">
                                         <form>
                                             <div>
                                                 <div class="form-check">
@@ -605,6 +605,7 @@
 
   <!-- Template Main Javascript File -->
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/books.js"></script>
 
 </body>
 </html>

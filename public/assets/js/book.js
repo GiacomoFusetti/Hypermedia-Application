@@ -1,7 +1,7 @@
 console.log("Loading book page");
 
-// Switch between log in and register form
-$(function() {
+
+$(document).ready(function(){
     $('#paper-button').click(function(e) {
 		$('#ebook-button').removeClass('active');
 		$(this).addClass('active');
@@ -35,7 +35,15 @@ $(function() {
 			}
 		}
 	});
+	
 
+  	$("#booksby").on("hide.bs.collapse", function(){
+		console.log("wewe");
+		$(".h6").html('<i class="far fa-caret-square-down color-b"></i> Books By');
+  	});
+  	$("#booksby").on("show.bs.collapse", function(){
+		$(".h6").html('<i class="far fa-caret-square-up color-b"></i> Books By');
+  	});
 });
 
 

@@ -8,11 +8,7 @@
     {
         "id_faq" : 2,
         "question" : "What payment methods are accepted?",
-        "answer" :"Payment methods available through the website are:\n
-                            - Visa Debit/Credit\n
-                            - Mastercard\n
-                            - PayPal\n
-                            - Maestro\n"
+        "answer" :"Payment methods available through the website are:\n- Visa Debit/Credit\n- Mastercard\n- PayPal\n- Maestro\n"
     },
     
     {
