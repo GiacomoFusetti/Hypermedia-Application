@@ -8,23 +8,40 @@ let relativeTableLoc = "../data_json/";
 let tableDB = [];
 
 /* Locally we should launch the app with TEST=true to use SQLlite: > set TEST=true; node ./index.js */
-if(process.env.TEST==='true'){
-    sqlDB = sqlDbFactory({
-        client: "sqlite3",
-        debug: false, //attivare per stampare query nel log del server
-        connection: {
-            filename: "./other/storeDB.sqlite"
-        },
-        useNullAsDefault: true
-    });
-}else{
-    sqlDB = sqlDbFactory({
-        client: "pg",
-  	connection: process.env.DATABASE_URL,
-  	ssl: true,
-  	debug: true
-    });
-	console.log(process.env.DATABASE_URL);
+switch (process.env.TEST) {
+	case "true":
+		console.log("sqlDB: SQLite3" );
+		sqlDB = sqlDbFactory({
+			client: "sqlite3",
+			debug: false, //attivare per stampare query nel log del server
+			connection: {
+				filename: "./other/storeDB.sqlite"
+			},
+			useNullAsDefault: true
+		});
+		break;
+	case "false":
+		console.log("sqlDB: PG - Jack" );
+		sqlDB = sqlDbFactory({
+			debug: false,
+			client: "pg",
+			connection: {
+				host: process.env.DATABASE_URL,
+				user: "postgres",
+				password: "ZibriJack92", 
+				database: "postgres"
+			},
+			ssl: true
+		});
+		break;
+	default:
+		console.log("sqlDB: PG - Heroku" );
+    	sqlDB = sqlDbFactory({
+			client: "pg",
+			connection: process.env.DATABASE_URL,
+			ssl: true,
+			debug: true
+    	});
 }
 
 fs.readdirSync(tableLoc).forEach(file => {
