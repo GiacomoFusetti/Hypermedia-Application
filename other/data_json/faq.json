@@ -1,22 +1,37 @@
 [
     {
         "id_faq" : 1,
-        "question" : "What causes down syndrome?"
+        "question" : "Can I order by email or fax?",
+        "answer" : "We do not accept orders by fax or email due to the obvious personal information security issues.  While we are happy to deal with initial enquiries this way, final orders must be processed on our secure website or by calling our UK Sales Team on +39 345 6789123."       
     },
     
     {
         "id_faq" : 2,
-        "question" : "What is “mongoloid”?"
+        "question" : "What payment methods are accepted?",
+        "answer" :"Payment methods available through the website are:\n
+                            - Visa Debit/Credit\n
+                            - Mastercard\n
+                            - PayPal\n
+                            - Maestro\n"
     },
     
     {
         "id_faq" : 3,
-        "question" : "Is Down syndrome genetic? How is Down syndrome inherited?"
+        "question" : "What happens if my parcel is damaged upon receipt?",
+        "answer" : "If the outer packaging of your parcel is open or damaged we suggest you check all items are present and correct before signing for the parcel. If there are any problems with items missing or damaged REFUSE DELIVERY, contact us immediately and we will make all the arrangements for a replacement."
     },
     
     {
         "id_faq" : 4,
-        "question" : "What is the history of Down syndrome?"
+        "question" : "What should I do if I receive the wrong item?",
+        "answer" : "In the unlikely event we send you the wrong product, we will refund the cost of return postage back to the card used to purchase the item(s). Please send the product back to us by recorded delivery with a covering letter detailing what happened. As soon as we receive the returned item(s) we will dispatch the correct product and issue you with the postage refund (please include the receipt for postage in the parcel)."
+    },
+    
+    {
+        "id_faq" : 5,
+        "question" : "What happens if a price of an item has changed, after it is ordered but before its shipped to me?",
+        "answer" : "Price reduction decisions are not always made in advance so if you notice a price has been reduced after you order has been confirmed, but before you have received it, please contact us by phone or email and we'll credit the difference. If a price is reduced after receipt of the order we cannot refund the difference."
     }
+    
 ]
 

@@ -1,0 +1,65 @@
+[
+    {
+        "id_author":"1",
+        "name":"J. R. R. Tolkien",
+        "bio":"John Ronald Reuel Tolkien was born on January 3, 1892, in Bloemfontein, South Africa. After serving in World War I, he embarked upon a distinguished academic career and was recognized as one of the finest philologists in the world. He was a professor of Anglo-Saxon at Oxford, a fellow of Pembroke College, and a fellow of Merton College until his retirement in 1959. He is, however, beloved throughout the world as the creator of Middle-earth and author of such classic works as The Hobbit and The Lord of the Rings. He died on September 2, 1973, at the age of 81.",
+        "photo":""
+    }
+
+    {
+        "id_author":"2",
+        "name":"J. K. Rowling",
+        "bio":"J. K. Rowling was born in the summer of 1965 at Yate General Hospital in England and grew up in Chepstow, Gwent.  She left Chepstow for Exeter University, where she earned a French and Classics degree. As a postgraduate she moved to London to work at Amnesty International, doing research into human rights abuses in Francophone Africa. She started writing the Harry Potter series during a Manchester to London King’s Cross train journey, and during the next five years, outlined the plots for each book and began writing the first novel.  She then moved to northern Portugal, where she taught English as a foreign language. She married in October 1992 and gave birth to her daughter Jessica in 1993. When her marriage ended, she returned to the UK to live in Edinburgh, where Harry Potter & the Philosopher’s Stone was eventually completed and in 1996 she received an offer of publication. The following summer the world was introduced to Harry Potter.  The Harry Potter series is distributed in over 200 territories and has been translated into 65 languages.",
+        "photo":""
+    }
+    
+    {
+        "id_author":"2",
+        "name":"",
+        "bio":"",
+        "photo":""
+    }
+    
+    {
+        "id_author":"3",
+        "name":"",
+        "bio":"",
+        "photo":""
+    }
+    
+    {
+        "id_author":"4",
+        "name":"",
+        "bio":"",
+        "photo":""
+    }
+    
+    {
+        "id_author":"5",
+        "name":"",
+        "bio":"",
+        "photo":""
+    }
+    
+    {
+        "id_author":"6",
+        "name":"",
+        "bio":"",
+        "photo":""
+    }
+    
+    {
+        "id_author":"7",
+        "name":"",
+        "bio":"",
+        "photo":""
+    }
+    
+    {
+        "id_author":"8",
+        "name":"",
+        "bio":"",
+        "photo":""
+    }
+
+]
