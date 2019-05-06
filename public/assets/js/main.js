@@ -1,6 +1,12 @@
 checkSession();
 let user;
 
+let pathname = window.location.pathname;
+let pages = "";
+        
+if(pathname === '/' || pathname === '/index.html')
+	pages = "pages/";
+
 function checkSession(){
     fetch('../session', {
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
@@ -32,11 +38,6 @@ function toggleLogin(user){
             `
          );
     }else{
-        var pathname = window.location.pathname;
-        var pages = "";
-        
-        if(pathname === '/' || pathname === '/index.html')
-            pages = "pages/";
         $('#navbarLogin').append(
             `
             <li class="nav-item"><a class="nav-link" href="${pages}login.html?login">Log in</a></li>
@@ -48,6 +49,14 @@ function toggleLogin(user){
 
 (function ($) {
   "use strict";
+	
+	//Handle cart button
+	$('.btn').click(function(){
+		if(!jQuery.isEmptyObject(user))
+			window.location.href = pages + "cart.html";
+		else
+			window.location.href = pages + "login.html?login";
+	});
     
     $('#navbarLogin').on("click", "#logOutButton", function(){
         fetch('../user/logout', {

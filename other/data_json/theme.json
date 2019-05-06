@@ -1,0 +1,56 @@
+[
+    {
+        "id_theme" : 1,
+        "name" : "Frienship"     
+    },
+	
+	{
+        "id_theme" : 2,
+        "name" : "War"            
+    },
+	
+	{
+        "id_theme" : 3,
+        "name" : "Hope"         
+    },
+	
+	{
+        "id_theme" : 4,
+        "name" : "Death"         
+    },
+	
+	{
+        "id_theme" : 5,
+        "name" : "Courage"         
+    },
+	
+	{
+        "id_theme" : 6,
+        "name" : "Supernatural"         
+    },
+	
+	{
+        "id_theme" : 7,
+        "name" : "Erotism"         
+    },
+	
+	{
+        "id_theme" : 8,
+        "name" : "Love"         
+    },
+	
+	{
+        "id_theme" : 9,
+        "name" : "Violence"         
+    },
+	
+	{
+        "id_theme" : 10,
+        "name" : "Culture"         
+    },
+	
+	{
+        "id_theme" : 11,
+        "name" : "Educational"         
+    }
+]
