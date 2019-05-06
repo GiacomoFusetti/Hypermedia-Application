@@ -2,13 +2,13 @@
     {
         "id_faq" : 1,
         "question" : "Can I order by email or fax?",
-        "answer" : "We do not accept orders by fax or email due to the obvious personal information security issues.  While we are happy to deal with initial enquiries this way, final orders must be processed on our secure website or by calling our UK Sales Team on +39 345 6789123."       
+        "answer" : "We do not accept orders by fax or email due to the obvious personal information security issues.  While we are happy to deal with initial enquiries this way, final orders must be processed on our secure website or by calling our UK Sales Team on <b>+39 345 6789123</b>."       
     },
     
     {
         "id_faq" : 2,
         "question" : "What payment methods are accepted?",
-        "answer" :"Payment methods available through the website are:\n- Visa Debit/Credit\n- Mastercard\n- PayPal\n- Maestro\n"
+        "answer" :"Payment methods available through the website are:<ul><li>Visa Debit/Credit</li><li>Mastercard</li><li>PayPal</li><li>Maestro</li></ul>"
     },
     
     {

@@ -52,5 +52,10 @@
 	{
         "id_theme" : 11,
         "name" : "Educational"         
+    },
+	
+	{
+        "id_theme" : 12,
+        "name" : "Magic"         
     }
 ]

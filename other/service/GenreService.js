@@ -4,7 +4,7 @@ let { database } = require("./DataLayer");
 let sqlDb;
 
 /**
- * Books available in the inventory
+ * Genres available in the inventory
  * List of books available in the inventory
  *
  * offset Integer Pagination offset. Default is 0. (optional)
