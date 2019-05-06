@@ -1,65 +1,65 @@
 [
     {
-        "id_author":"1",
-        "name":"J. R. R. Tolkien",
-        "bio":"John Ronald Reuel Tolkien was born on January 3, 1892, in Bloemfontein, South Africa. After serving in World War I, he embarked upon a distinguished academic career and was recognized as one of the finest philologists in the world. He was a professor of Anglo-Saxon at Oxford, a fellow of Pembroke College, and a fellow of Merton College until his retirement in 1959. He is, however, beloved throughout the world as the creator of Middle-earth and author of such classic works as The Hobbit and The Lord of the Rings. He died on September 2, 1973, at the age of 81.",
-        "photo":"../assets/img/authors/tolkien.jpg"
+        "id_author": 1,
+        "name": "J. R. R. Tolkien",
+        "bio": "John Ronald Reuel Tolkien was born on January 3, 1892, in Bloemfontein, South Africa. After serving in World War I, he embarked upon a distinguished academic career and was recognized as one of the finest philologists in the world. He was a professor of Anglo-Saxon at Oxford, a fellow of Pembroke College, and a fellow of Merton College until his retirement in 1959. He is, however, beloved throughout the world as the creator of Middle-earth and author of such classic works as The Hobbit and The Lord of the Rings. He died on September 2, 1973, at the age of 81.",
+        "photo": "../assets/img/authors/tolkien.jpg"
     },
 
     {
-        "id_author":"2",
-        "name":"J. K. Rowling",
-        "bio":"J. K. Rowling was born in the summer of 1965 at Yate General Hospital in England and grew up in Chepstow, Gwent.  She left Chepstow for Exeter University, where she earned a French and Classics degree. As a postgraduate she moved to London to work at Amnesty International, doing research into human rights abuses in Francophone Africa. She started writing the Harry Potter series during a Manchester to London King’s Cross train journey, and during the next five years, outlined the plots for each book and began writing the first novel.  She then moved to northern Portugal, where she taught English as a foreign language. She married in October 1992 and gave birth to her daughter Jessica in 1993. When her marriage ended, she returned to the UK to live in Edinburgh, where Harry Potter & the Philosopher’s Stone was eventually completed and in 1996 she received an offer of publication. The following summer the world was introduced to Harry Potter.  The Harry Potter series is distributed in over 200 territories and has been translated into 65 languages.",
-        "photo":"../assets/img/authors/rowling.jpg"
+        "id_author": 2,
+        "name": "J. K. Rowling",
+        "bio": "J. K. Rowling was born in the summer of 1965 at Yate General Hospital in England and grew up in Chepstow, Gwent.  She left Chepstow for Exeter University, where she earned a French and Classics degree. As a postgraduate she moved to London to work at Amnesty International, doing research into human rights abuses in Francophone Africa. She started writing the Harry Potter series during a Manchester to London King’s Cross train journey, and during the next five years, outlined the plots for each book and began writing the first novel.  She then moved to northern Portugal, where she taught English as a foreign language. She married in October 1992 and gave birth to her daughter Jessica in 1993. When her marriage ended, she returned to the UK to live in Edinburgh, where Harry Potter & the Philosopher’s Stone was eventually completed and in 1996 she received an offer of publication. The following summer the world was introduced to Harry Potter.  The Harry Potter series is distributed in over 200 territories and has been translated into 65 languages.",
+        "photo": "../assets/img/authors/rowling.jpg"
     },
     
     {
-        "id_author":"3",
-        "name":"Paulo Coelho",
-        "bio":"Paulo Coelho’s life remains the primary source of inspiration for his books. He has flirted with death, escaped madness, dallied with drugs, withstood torture, experimented with magic and alchemy, studied philosophy and religion, read voraciously, lost and recovered his faith, and experienced the pain and pleasure of love. In searching for his own place in the world, he has discovered answers for the challenges that everyone faces. He believes that within ourselves we have the necessary strength to find our own destiny. Paulo Coelho’s books have been translated into 80 languages and have sold more than 225 million copies in more than 170 countries. His 1988 novel, The Alchemist, has sold more than 65 million copies and has been cited as an inspiration by people as diverse as Malala Yousafzai and Pharrell Williams.He is a member of the Brazilian Academy of Letters and has received the Chevalier de l’Ordre National de la Légion d’Honneur. In 2007, he was named a United Nations Messenger of Peace.",
-        "photo":"../assets/img/authors/coelho.jpg"
+        "id_author": 3,
+        "name": "Paulo Coelho",
+        "bio": "Paulo Coelho’s life remains the primary source of inspiration for his books. He has flirted with death, escaped madness, dallied with drugs, withstood torture, experimented with magic and alchemy, studied philosophy and religion, read voraciously, lost and recovered his faith, and experienced the pain and pleasure of love. In searching for his own place in the world, he has discovered answers for the challenges that everyone faces. He believes that within ourselves we have the necessary strength to find our own destiny. Paulo Coelho’s books have been translated into 80 languages and have sold more than 225 million copies in more than 170 countries. His 1988 novel, The Alchemist, has sold more than 65 million copies and has been cited as an inspiration by people as diverse as Malala Yousafzai and Pharrell Williams.He is a member of the Brazilian Academy of Letters and has received the Chevalier de l’Ordre National de la Légion d’Honneur. In 2007, he was named a United Nations Messenger of Peace.",
+        "photo": "../assets/img/authors/coelho.jpg"
     },
     
     {
-        "id_author":"4",
-        "name":"William Shakespeare",
-        "bio":"William Shakespeare (1564–1616) was a poet, playwright, and actor who is widely regarded as one of the most influential writers in the history of the English language. Often referred to as the Bard of Avon, Shakespeare’s vast body of work includes comedic, tragic, and historical plays; poems; and 154 sonnets. His dramatic works have been translated into every major language and are performed more often than those of any other playwright.",
-        "photo":"../assets/img/authors/shakespeare.jpg"
+        "id_author": 4,
+        "name": "William Shakespeare",
+        "bio": "William Shakespeare (1564–1616) was a poet, playwright, and actor who is widely regarded as one of the most influential writers in the history of the English language. Often referred to as the Bard of Avon, Shakespeare’s vast body of work includes comedic, tragic, and historical plays; poems; and 154 sonnets. His dramatic works have been translated into every major language and are performed more often than those of any other playwright.",
+        "photo": "../assets/img/authors/shakespeare.jpg"
     },
     
     {
-        "id_author":"5",
-        "name":"Jordan Mackay",
-        "bio":"Jordan Mackay is a James-Beard-award winning writer on wine, spirits and food. His work has appeared in Food & Wine, The New York Times, Los Angeles Times, San Francisco Chronicle, Decanter, The Art of Eating, Wine and Spirits, and many others. His first book, Passion for Pinot, was published in 2009, and his second, Secrets of the Sommeliers (with Rajat Parr), was released in October 2010, winning a James Beard award in 2011. Two in the Kitchen was published in 2012. Franklin Barbecue (with Aaron Franklin) was released in April, 2015 and spent many weeks on the New York Times Bestseller list. Knife, written with chef John Tesar, was released in May 2017 by Flatiron Press.  His new book is The Sommelier’s Atlas of Taste, again with Parr, while Franklin Steak comes out Spring of 2018.  Jordan lives in Napa Valley and travels extensively, speaking about wine, spirits and food.",
-        "photo":"../assets/img/authors/mackay.jpg"
+        "id_author": 5,
+        "name": "Jordan Mackay",
+        "bio": "Jordan Mackay is a James-Beard-award winning writer on wine, spirits and food. His work has appeared in Food & Wine, The New York Times, Los Angeles Times, San Francisco Chronicle, Decanter, The Art of Eating, Wine and Spirits, and many others. His first book, Passion for Pinot, was published in 2009, and his second, Secrets of the Sommeliers (with Rajat Parr), was released in October 2010, winning a James Beard award in 2011. Two in the Kitchen was published in 2012. Franklin Barbecue (with Aaron Franklin) was released in April, 2015 and spent many weeks on the New York Times Bestseller list. Knife, written with chef John Tesar, was released in May 2017 by Flatiron Press.  His new book is The Sommelier’s Atlas of Taste, again with Parr, while Franklin Steak comes out Spring of 2018.  Jordan lives in Napa Valley and travels extensively, speaking about wine, spirits and food.",
+        "photo": "../assets/img/authors/mackay.jpg"
     },
     
     {
-        "id_author":"6",
-        "name":"E. L. James",
-        "bio":"E L James is an incurable romantic and a self-confessed fangirl. After twenty-five years of working in television, she decided to pursue a childhood dream and write stories that readers could take to their hearts. The result was the controversial and sensuous romance Fifty Shades of Grey and its two sequels, Fifty Shades Darker and Fifty Shades Freed. In 2015, she published the #1 bestseller Grey, the story of Fifty Shades of Grey from the perspective of Christian Grey, and in 2017, the chart-topping Darker, the second part of the Fifty Shades story from Christian’s point of view. Her books have been published in fifty languages and have sold more than 150 million copies worldwide.",
+        "id_author": 6,
+        "name": "E. L. James",
+        "bio": "E L James is an incurable romantic and a self-confessed fangirl. After twenty-five years of working in television, she decided to pursue a childhood dream and write stories that readers could take to their hearts. The result was the controversial and sensuous romance Fifty Shades of Grey and its two sequels, Fifty Shades Darker and Fifty Shades Freed. In 2015, she published the #1 bestseller Grey, the story of Fifty Shades of Grey from the perspective of Christian Grey, and in 2017, the chart-topping Darker, the second part of the Fifty Shades story from Christian’s point of view. Her books have been published in fifty languages and have sold more than 150 million copies worldwide.",
         "photo":"../assets/img/authors/james.jpg"
     },
     
     {
-        "id_author":"7",
-        "name":"Scott Galloway",
-        "bio":"Scott Galloway is the New York Times bestselling author of The Four: The Hidden DNA of Amazon, Apple, Facebook, and Google and a professor at New York University’s Stern School of Business. A serial entrepreneur, he has founded nine firms, including L2, Red Envelope, and Prophet. In 2012, he was named one of the “World’s 50 Best Business School Professors” by Poets & Quants. His weekly YouTube series, “Winners and Losers,” has generated tens of millions of views. He is the cohost of Pivot with Recode’s Kara Swisher and the author of the newsletter No Mercy/No Malice.",
-        "photo":"../assets/img/authors/galloway.jpg"
+        "id_author": 7,
+        "name": "Scott Galloway",
+        "bio": "Scott Galloway is the New York Times bestselling author of The Four: The Hidden DNA of Amazon, Apple, Facebook, and Google and a professor at New York University’s Stern School of Business. A serial entrepreneur, he has founded nine firms, including L2, Red Envelope, and Prophet. In 2012, he was named one of the “World’s 50 Best Business School Professors” by Poets & Quants. His weekly YouTube series, “Winners and Losers,” has generated tens of millions of views. He is the cohost of Pivot with Recode’s Kara Swisher and the author of the newsletter No Mercy/No Malice.",
+        "photo": "../assets/img/authors/galloway.jpg"
     },
     
     {
-        "id_author":"8",
-        "name":"Aaron Franklin",
-        "bio":"Aaron Franklin is a native of Bryan, Texas, and the co-owner and cofounder (along with his wife, Stacy) of Franklin Barbecue. Franklin Barbecue opened its doors in 2009, and has since gone on to win many awards, including “Best Barbecue in Texas” from Texas Monthly and “Best Barbecue in America” from Bon Appétit. Franklin is also the host of the PBS series BBQ with Franklin. He and Stacy live in Austin with their daughter, Vivian.",
-        "photo":"../assets/img/authors/franklin.jpg"
+        "id_author": 8,
+        "name": "Aaron Franklin",
+        "bio": "Aaron Franklin is a native of Bryan, Texas, and the co-owner and cofounder (along with his wife, Stacy) of Franklin Barbecue. Franklin Barbecue opened its doors in 2009, and has since gone on to win many awards, including “Best Barbecue in Texas” from Texas Monthly and “Best Barbecue in America” from Bon Appétit. Franklin is also the host of the PBS series BBQ with Franklin. He and Stacy live in Austin with their daughter, Vivian.",
+        "photo": "../assets/img/authors/franklin.jpg"
     },
     
     {
-        "id_author":"9",
-        "name":"Aleksandra Crapanzano",
-        "bio":"Aleksandra Crapanzano is a screenwriter and food writer. A recipient of The M.F.K. Fisher Award for Distinguished Writing from The James Beard Foundation, she has been widely published in The New York Times Magazine, Food & Wine, Saveur, Travel & Leisure, Gourmet, Elle, Departures and The Wall Street Journal, where for the last 8 years she’s served as a food columnist.  Her essays have been anthologized, most notably in Best American Food Writing, and she is the author of The London Cookbook: Recipes from the Restaurants, Cafés and Hole-in-the-Wall Gems of a Modern City.",
-        "photo":"../assets/img/authors/crapanzano.jpg"
+        "id_author": 9,
+        "name": "Aleksandra Crapanzano",
+        "bio": "Aleksandra Crapanzano is a screenwriter and food writer. A recipient of The M.F.K. Fisher Award for Distinguished Writing from The James Beard Foundation, she has been widely published in The New York Times Magazine, Food & Wine, Saveur, Travel & Leisure, Gourmet, Elle, Departures and The Wall Street Journal, where for the last 8 years she’s served as a food columnist.  Her essays have been anthologized, most notably in Best American Food Writing, and she is the author of The London Cookbook: Recipes from the Restaurants, Cafés and Hole-in-the-Wall Gems of a Modern City.",
+        "photo": "../assets/img/authors/crapanzano.jpg"
     }
 
 ]
