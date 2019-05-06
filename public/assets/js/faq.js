@@ -12,7 +12,7 @@ function getFaq(){
 	 }).then(function(json) {
 		faqJson = json;
 		if(!jQuery.isEmptyObject(faqJson)){
-			generateHTML();
+			generatesHTML();
 		}else{
 			$("#faqDiv").append( 
 				'<h3 class="title-single">No FAQ available.</h3>'
@@ -21,9 +21,7 @@ function getFaq(){
 	 });
 }
 
-function generateHTML(){
-	
-	
+function generatesHTML(){	
 	for(i = 0; i < faqJson.length; i++){
 		$("#faqDiv").append( 
 			`
