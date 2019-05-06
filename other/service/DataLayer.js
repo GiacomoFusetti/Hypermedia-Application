@@ -39,6 +39,7 @@ switch (process.env.TEST) {
 		break;
 	default:
 		console.log("sqlDB: PG - Heroku" );
+		console.log("DB_URL: " + process.env.DATABASE_URL);
     	sqlDB = sqlDbFactory({
 			client: "pg",
 			connection: process.env.DATABASE_URL,
