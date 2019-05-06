@@ -51,7 +51,7 @@ function toggleLogin(user){
   "use strict";
 	
 	//Handle cart button
-	$('.btn').click(function(){
+	$('.btn-cart').click(function(){
 		if(!jQuery.isEmptyObject(user))
 			window.location.href = pages + "cart.html";
 		else

@@ -8,9 +8,6 @@ let relativeTableLoc = "../data_json/";
 let tableDB = [];
 
 /* Locally we should launch the app with TEST=true to use SQLlite: > set TEST=true; node ./index.js */
-
-console.log(process.env.DATABASE_URL);
-
 switch (process.env.TEST) {
 	case "true":
 		console.log("sqlDB: SQLite3" );

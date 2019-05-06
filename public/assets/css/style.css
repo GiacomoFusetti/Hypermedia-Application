@@ -8,6 +8,13 @@
 }
 
 /*======================================
+//--//-->   STYLES CART BUTTON
+======================================*/
+
+.btn-cart{
+}
+
+/*======================================
 //--//-->   general
 ======================================*/
 
@@ -1693,7 +1700,7 @@ footer .credits {
 .btn.btn-b-n {
   background-color: #2eca6a;
   color: #ffffff;
-  border-radius: 0;
+  <!--border-radius: 0;-->
 }
 
 .btn.btn-b-n:hover {
