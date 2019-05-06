@@ -11,11 +11,32 @@
     
     {
         "id_genre" : 3,
-        "name" : "Kid"
+        "name" : "Children's Middle Grade"
     },
     
     {
         "id_genre" : 4,
-        "name" : "Information Technology"
+        "name" : "Technology"
+    },
+    
+    {
+        "id_genre" : 5,
+        "name" : "Historical Fiction"
+    },
+        
+    {
+        "id_genre" : 6,
+        "name" : "Drama"
+    },
+    
+    {
+        "id_genre" : 7,
+        "name" : "Business"
+    },
+    
+    {
+        "id_genre" : 8,
+        "name" : "Contemporary Romance"
     }
+    
 ]
