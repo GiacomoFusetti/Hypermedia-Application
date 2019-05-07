@@ -4,16 +4,15 @@ let { database } = require("./DataLayer");
 let sqlDb;
 
 /**
- * Authors available in the inventory
+ * Events available in the inventory
  **/
-exports.authorsGET = function(offset, limit) {
+exports.eventsGET = function(offset, limit) {
     sqlDb = database;
-    return sqlDb("author")
+    return sqlDb("event")
         .limit(limit)
         .offset(offset)
         .then(data => {
           return data.map(e => {
-            console.log("Author e: " + e); 
             return e;
           });
         });

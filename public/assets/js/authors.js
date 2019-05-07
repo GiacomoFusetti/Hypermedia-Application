@@ -1,4 +1,4 @@
-console.log("Loading authors page ");
+console.log("Loading authors page");
 
 let authorsJson;
 
@@ -11,6 +11,7 @@ function getAuthors(){
 			 return response.json();
 	 }).then(function(json) {
 		authorsJson = json;
+        console.log("AuthorJson: " + authorsJson);
 		if(!jQuery.isEmptyObject(authorsJson)){
 			generatesHTML();
 		}else{
