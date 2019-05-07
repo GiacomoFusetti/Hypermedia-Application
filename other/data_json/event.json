@@ -1,0 +1,56 @@
+[
+    {
+        "id_event" : 1,
+        "id_book" : 16,
+        "name" : "Author E. L. James meets the fans",
+        "date" : "7-14-2019",
+        "when" : "from 10:00AM to 11.30AM",
+        "location" : "476 5th Ave, New York, NY 10018, United States",
+        "desciption" : "The famous author of the bestseller \"Fifty Shades of Gray\", <b>E. L. James</b>, presents the last masterpiece of the series: \"Fifty Shades of Red\" at the <strong>New York Public Library</strong>. During the meeting it will be possible to have a signed copy of the book, it is an event not to be missed!",
+        "img" : "../assets/img/events/event-1"
+    },
+    
+    {
+        "id_event" : 1,
+        "id_book" : 1,
+        "name" : "Discovering Middle-Earth",
+        "date" : "6-25-2019",
+        "when" : "from 4:00PM to 5.30PM",
+        "location" : "Piazza Gae Aulenti, 1, 20154 Milano MI",
+        "desciption" : "Are you ready to immerse yourself in tales of dwarf elves and hobbits? Don't miss the event scheduled for Thursday, June 26 at the RED Feltrinelli in square Gae Aulenti! Parts of the book that has bewitched millions of fans of the fantasy genre will be read: <b>\"The Lord of the Rings - The Fellowship of the Ring\"<\b>. During the event there will be some actors of the famous saga, don't miss the chance to meet your heroes!",
+        "img" : "../assets/img/events/event-2"
+    },
+    
+    {
+        "id_event" : 1,
+        "id_book" : 4,
+        "name" : "Paulo Coelho presents The Spy",
+        "date" : "9-13-2019",
+        "when" : "from 11:00AM to 12.30AM",
+        "location" : "College Green, Dublin 2, D02 VR66, Ireland",
+        "desciption" : "In the evocative library of the Trinity Collage in Dublin, the book by Paulo Coelho <b>\"The Spy\"</b> is presented, a compelling story of Mata Hari, a woman capable of making her way in society by arousing jealousy and envy. During the event it will be possible to obtain a copy signed by the author, the world famous writer in fact will be present during the event and will answer the questions of the present public. So don't miss this unmissable opportunity!",
+        "img" : "../assets/img/events/event-3"
+    },
+    
+    {
+        "id_event" : 1,
+        "id_book" : 12,
+        "name" : "The Four - are we really free to choose?",
+        "date" : "8-31-2019",
+        "when" : "from 10:00AM to 11.30AM",
+        "location" : "Strada Statale Sempione, 28, 20017 Rho MI",
+        "desciption" : "Discovering the hidden truths of the most famous global companies. <b>\"The Four\"</b> is the brainchild of writer Scott Gallaway who investigated the reasons for the power and success of Amazon, Facebook, Google and Apple. Following this meeting there will be other guests who will address the issue of multinational companies and how they are influencing our world.",
+        "img" : "../assets/img/events/event-4"
+    },
+    
+    {
+        "id_event" : 1,
+        "id_book" : 5,
+        "name" : "Is romance over?",
+        "date" : "6-19-2019",
+        "when" : "from 3:00PM to 4.00PM",
+        "location" : "Galleria Vittorio Emanuele II, 11, 20121 Milan MI",
+        "desciption" : "In today's society, marked by continuous changes, the feelings that have always characterized our history find less and less space. Love, which has won over everything, now seems to be gradually lost in the face of the superficiality of relationships that have formed with social networks. Are Romeo and Juliet, the archetype of perfect love, disappearing?",
+        "img" : "../assets/img/events/event-5"
+    }
+]
