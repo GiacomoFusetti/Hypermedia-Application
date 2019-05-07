@@ -50,6 +50,21 @@ paths:
         description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
         required: false
         type: "integer"
+      - name: "genre"
+        in: "query"
+        description: "Genre for filtering."
+        required: false
+        type: "integer"
+      - name: "theme"
+        in: "query"
+        description: "Theme for filtering."
+        required: false
+        type: "integer"
+      - name: "rating"
+        in: "query"
+        description: "Rating for filtering."
+        required: false
+        type: "integer"
       responses:
         200:
           description: "A collection of Books"
@@ -186,12 +201,12 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "Id_author"
-        in: "path"
+      - in: path
+        name: Id_author
         description: "ID of author to return"
         required: true
-        type: "integer"
         format: "int64"
+        type: integer
       responses:
         200:
           description: "successful operation"
