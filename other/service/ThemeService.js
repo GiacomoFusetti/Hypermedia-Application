@@ -4,13 +4,13 @@ let { database } = require("./DataLayer");
 let sqlDb;
 
 /**
- * Genres available in the inventory
- * List of Genres available in the inventory
+ * Themes available in the inventory
+ * List of Themes available in the inventory
  **/
-exports.genresGET = function() {
+exports.themesGET = function() {
     sqlDb = database;
-    //console.log("genreService.js");    
-    return sqlDb("genre")
+    //console.log("themeService.js");    
+    return sqlDb("theme")
         .then(data => {
           return data.map(e => {
             return e;

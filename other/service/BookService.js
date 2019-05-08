@@ -13,16 +13,21 @@ let sqlDb;
  * returns List
  **/
 exports.booksGET = function(offset, limit, genre, theme, rating) {
-	console.log("service: " + genre + ":" + theme + ":" + rating + ":" + offset + ":" + limit)
-	
 	sqlDb = database;
 	
-	var query = sqlDb("book")
+	var query = sqlDb.select('book.id_book', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support', 'book.rating').from("book")
+				.innerJoin('book_author', {'book.id_book' :  'book_author.id_book'})
+				.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
+				.select('author.id_author', 'author.name')
 				.limit(limit)
 				.offset(offset);
 	
 	if(theme) 
-		query.from('book').innerJoin('book_theme', {'book.id_book' :  'book_theme.id_book'}).innerJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'}).select('book.*', 'theme.name').where('theme.id_theme', theme);
+		query.from('book')
+			.innerJoin('book_theme', {'book.id_book' :  'book_theme.id_book'})
+			.innerJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
+			.select('theme.theme_name')
+			.where('theme.id_theme', theme);
 	if(rating) query.where('rating', rating);
 	if(genre) query.where('id_genre', genre);
 

@@ -1,12 +1,12 @@
 'use strict';
 
 var utils = require('../utils/writer.js');
-var GenreService = require('../service/GenreService.js');
+var ThemeService = require('../service/ThemeService.js');
 
-module.exports.genresGET = function genresGET (req, res, next) {
-    //console.log("genresGET");
+module.exports.themesGET = function themesGET (req, res, next) {
+    //console.log("themesGET");
 	
-    GenreService.genresGET()
+    ThemeService.themesGET()
         .then(function (response) {
             utils.writeJson(res, response);
         })

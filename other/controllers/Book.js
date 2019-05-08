@@ -19,11 +19,8 @@ module.exports.booksGET = function booksGET (req, res, next) {
 	req.swagger.params['theme'].value ? idtheme = req.swagger.params['theme'].value : idtheme = undefined;
 	req.swagger.params['rating'].value ? rating = req.swagger.params['rating'].value : rating = undefined;
 	
-	console.log(idgenre + ":" + idtheme + ":" + rating)
-	
   	BookService.booksGET(offset, limit, idgenre, idtheme, rating)
 	.then(function (response) {
-		console.log(response);
   		utils.writeJson(res, response);
 	})
 	.catch(function (response) {

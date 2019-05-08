@@ -25,6 +25,8 @@ tags:
   description: "Operations about faq"
 - name: "genre"
   description: "Available genres"
+- name: "theme"
+  description: "Available Themes"
 - name: "session"
   description: "get current session"
 schemes:
@@ -373,17 +375,6 @@ paths:
       operationId: "faqGET"
       produces:
       - "application/json"
-      parameters:
-      - name: "offset"
-        in: "query"
-        description: "Pagination offset. Default is 0."
-        required: false
-        type: "integer"
-      - name: "limit"
-        in: "query"
-        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
-        required: false
-        type: "integer"
       responses:
         200:
           description: "succesful operartion"
@@ -400,17 +391,6 @@ paths:
       operationId: "genresGET"
       produces:
       - "application/json"
-      parameters:
-      - name: "offset"
-        in: "query"
-        description: "Pagination offset. Default is 0."
-        required: false
-        type: "integer"
-      - name: "limit"
-        in: "query"
-        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
-        required: false
-        type: "integer"
       responses:
         200:
           description: "succesful operartion"
@@ -419,6 +399,23 @@ paths:
         404:
           description: "unauthorized"
       x-swagger-router-controller: "Genre"
+  /themes:
+    get:
+      tags:
+      - "theme"
+      summary: "View all the themes"
+      operationId: "themesGET"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "succesful operartion"
+          schema:
+            $ref: "#/definitions/Theme"
+        404:
+          description: "unauthorized"
+      x-swagger-router-controller: "Theme"    
+    
   /session:
     get:
       tags:
@@ -599,6 +596,18 @@ definitions:
     example:
       id: 1
       name: "Fantasy"
+  Theme:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+    title: "Theme"
+    description: "A Theme"
+    example:
+      id: 1
+      name: "War"
   Amount:
     type: "object"
     required:

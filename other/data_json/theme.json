@@ -1,61 +1,61 @@
 [
     {
         "id_theme" : 1,
-        "name" : "Frienship"     
+        "theme_name" : "Frienship"     
     },
 	
 	{
         "id_theme" : 2,
-        "name" : "War"            
+        "theme_name" : "War"            
     },
 	
 	{
         "id_theme" : 3,
-        "name" : "Personal Growth"         
+        "theme_name" : "Personal Growth"         
     },
 	
 	{
         "id_theme" : 4,
-        "name" : "Death"         
+        "theme_name" : "Death"         
     },
 	
 	{
         "id_theme" : 5,
-        "name" : "Courage"         
+        "theme_name" : "Courage"         
     },
 	
 	{
         "id_theme" : 6,
-        "name" : "Diet"         
+        "theme_name" : "Diet"         
     },
 	
 	{
         "id_theme" : 7,
-        "name" : "Erotism"         
+        "theme_name" : "Erotism"         
     },
 	
 	{
         "id_theme" : 8,
-        "name" : "Love"         
+        "theme_name" : "Love"         
     },
 	
 	{
         "id_theme" : 9,
-        "name" : "Violence"         
+        "theme_name" : "Violence"         
     },
 	
 	{
         "id_theme" : 10,
-        "name" : "Culture"         
+        "theme_name" : "Culture"         
     },
 	
 	{
         "id_theme" : 11,
-        "name" : "Educational"         
+        "theme_name" : "Educational"         
     },
 	
 	{
         "id_theme" : 12,
-        "name" : "Magic"         
+        "theme_name" : "Magic"         
     }
 ]
