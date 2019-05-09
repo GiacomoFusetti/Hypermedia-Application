@@ -20,6 +20,20 @@ switch (process.env.TEST) {
 			useNullAsDefault: true
 		});
 		break;
+	case "gio":
+		console.log("sqlDB: PG - Gio" );
+		sqlDB = sqlDbFactory({
+			debug: false,
+			client: "pg",
+			connection: {
+				host: process.env.DATABASE_URL,
+				user: "postgres",
+				password: "ciao", 
+				database: "postgres"
+			},
+			ssl: true
+		});
+		break;
 	case "false":
 		console.log("sqlDB: PG - Jack" );
 		sqlDB = sqlDbFactory({

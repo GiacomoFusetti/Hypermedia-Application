@@ -130,7 +130,7 @@ function getBooks(){
 	}).then(function(json) {
 		booksJson = json;
 		$("#booksDiv").empty();
-		
+		console.log(booksJson);
 		if(!jQuery.isEmptyObject(booksJson)){
 			generatesBooksHTML();
 		}else{

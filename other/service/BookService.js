@@ -15,25 +15,25 @@ let sqlDb;
 exports.booksGET = function(offset, limit, genre, theme, rating) {
 	sqlDb = database;
 	
-	var query = sqlDb.select('book.id_book', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support', 'book.rating', 'author.name', 'author.id_author'
-						//sqlDb.raw('GROUP_CONCAT(?) as ?', ['author.name', 'auth_names']),
-						//sqlDb.raw('GROUP_CONCAT(?) as ?', ['author.id_author', 'auth_ids'])
+	var query = sqlDb.select("book.id_book", "book.title", "book.price_paper", "book.price_eBook", "book.cover_img", "book.support", "book.rating", "author.name", "author.id_author"
+						//sqlDb.raw("GROUP_CONCAT(?) as ?", ["author.name", "auth_names"]),
+						//sqlDb.raw("GROUP_CONCAT(?) as ?", ["author.id_author", "auth_ids"])
 							)
 				.from("book")
-				.innerJoin('book_author', {'book.id_book' :  'book_author.id_book'})
-				.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
+				.innerJoin("book_author", {"book.id_book" :  "book_author.id_book"})
+				.innerJoin("author", {"book_author.id_author" : "author.id_author"})
 				.limit(limit)
-				.offset(offset)
-				.groupBy('book.id_book');
+				.offset(offset);
+				//.groupBy("id_book");
 	
 	if(theme) 
-		query.from('book')
-			.innerJoin('book_theme', {'book.id_book' :  'book_theme.id_book'})
-			.innerJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
-			.select('theme.theme_name')
-			.where('theme.id_theme', theme);
-	if(rating) query.where('rating', rating);
-	if(genre) query.where('id_genre', genre);
+		query.from("book")
+			.innerJoin("book_theme", {"book.id_book" :  "book_theme.id_book"})
+			.innerJoin("theme", {"book_theme.id_theme" : "theme.id_theme"})
+			.select("theme.theme_name")
+			.where("theme.id_theme", theme);
+	if(rating) query.where("rating", rating);
+	if(genre) query.where("id_genre", genre);
 
 	return query.then(data => {
 		return data.map(e => {
@@ -50,16 +50,16 @@ exports.booksGET = function(offset, limit, genre, theme, rating) {
 exports.getBooksCount = function(genre, theme, rating){
 	sqlDb = database;
 	
-	var query = sqlDb('book').count();
+	var query = sqlDb("book").count();
 	
 	if(theme) 
-		query.from('book')
-			.innerJoin('book_theme', {'book.id_book' :  'book_theme.id_book'})
-			.innerJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
-			.select('theme.theme_name')
-			.where('theme.id_theme', theme);
-	if(rating) query.where('rating', rating);
-	if(genre) query.where('id_genre', genre);
+		query.from("book")
+			.innerJoin("book_theme", {"book.id_book" :  "book_theme.id_book"})
+			.innerJoin("theme", {"book_theme.id_theme" : "theme.id_theme"})
+			.select("theme.theme_name")
+			.where("theme.id_theme", theme);
+	if(rating) query.where("rating", rating);
+	if(genre) query.where("id_genre", genre);
 	
 	return query;
 }
