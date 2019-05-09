@@ -3,13 +3,20 @@
 var utils = require('../utils/writer.js');
 var EventService = require('../service/EventService.js');
 
+var offset = 0;
+var limit = 0;
+
+var current_month; 
+
 module.exports.eventsGET = function eventsGET (req, res, next) {
     console.log("eventsGET");
-    var offset = 0;
-    var limit = 0;
+
     req.swagger.params['offset'].value ? offset = req.swagger.params['offset'].value : offset = 0;
     req.swagger.params['limit'].value ? limit = req.swagger.params['limit'].value : limit = 6;
-    EventService.eventsGET(offset,limit)
+    
+    req.swagger.params['current_month'].value ? current_month = req.swagger.params['current_month'].value : current_month = undefined;
+    
+    EventService.eventsGET(offset,limit,current_month)
         .then(function (response) {
             utils.writeJson(res, response);
         })

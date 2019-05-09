@@ -6,14 +6,21 @@ let sqlDb;
 /**
  * Events available in the inventory
  **/
-exports.eventsGET = function(offset, limit) {
+exports.eventsGET = function(offset, limit, current_month) {
     sqlDb = database;
-    return sqlDb("event")
+    
+    var query = sqlDb.select('event.id_event','event.name','event.city','event.date_day','event.date_month','event.date_year','event.img').from("event")
         .limit(limit)
         .offset(offset)
-        .then(data => {
-          return data.map(e => {
-            return e;
-          });
-        });
+        .orderBy([{column : 'event.date_year', order: 'desc'}, {column : 'event.date_month', order: 'desc'}, {column : 'event.date_day', order: 'desc'}]);
+    if(current_month)
+        query.where('event.date_month',new Date().getMonth() + 1)
+             .where('event.date_year',new Date().getYear() + 1900);
+    
+	return query.then(data => {
+		return data.map(e => {
+			return e;
+	  	});
+	});
 };
+

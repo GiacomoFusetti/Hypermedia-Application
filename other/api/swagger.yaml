@@ -239,6 +239,16 @@ paths:
         description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
         required: false
         type: "integer"
+      - name: "current_month"
+        in: "query"
+        description: "Retrive events of the current month."
+        required: false
+        type: "integer"  
+      - name: "event_count"
+        in: "query"
+        description: "Retrive the number of events."
+        required: false
+        type: "integer"
       responses:
         200:
           description: "A collection of Events"

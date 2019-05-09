@@ -102,8 +102,19 @@
   <!--/ News Grid Star /-->
   <section class="news-grid grid">
     <div class="container">
+        <div class="col-sm-12">
+              <div class="grid-option">
+                <form>
+                  <select class="custom-select">
+                    <option value="0" selected>All</option>
+                    <option value="1">Events in this month</option>
+                  </select>
+                </form>
+              </div>
+            </div>
       <div id="eventsDiv" class="row">
-        <!--  
+        
+          <!--  
         <div class="row">
             <div class="col-sm-12">
               <div class="grid-option">
@@ -254,6 +265,8 @@
               </div>
             </div>
          </div>
+        -->
+       </div>
         <div class="row">
         <div class="col-sm-12">
           <nav class="pagination-a">
@@ -263,14 +276,14 @@
                   <span class="ion-ios-arrow-back"></span>
                 </a>
               </li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
+              <li id="first" class="page-item active">
+                <a onclick="getPage(1)" class="page-link">1</a>
               </li>
-              <li class="page-item">
-                <a class="page-link" href="#">2</a>
+              <li id="second" class="page-item">
+                <a onclick="getPage(2)" class="page-link">2</a>
               </li>
-              <li class="page-item">
-                <a class="page-link" href="#">3</a>
+              <li id="third" class="page-item">
+                <a onclick="getPage(3)" class="page-link">3</a>
               </li>
               <li class="page-item next">
                 <a class="page-link" href="#">
@@ -280,8 +293,7 @@
             </ul>
           </nav>
         </div>
-      </div>-->
-       </div>
+      </div>
      </div>
   </section>
   <!--/ News Grid End /-->
