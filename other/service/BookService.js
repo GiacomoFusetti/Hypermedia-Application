@@ -15,12 +15,16 @@ let sqlDb;
 exports.booksGET = function(offset, limit, genre, theme, rating) {
 	sqlDb = database;
 	
-	var query = sqlDb.select('book.id_book', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support', 'book.rating').from("book")
+	var query = sqlDb.select('book.id_book', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support', 'book.rating', 'author.name', 'author.id_author'
+						//sqlDb.raw('GROUP_CONCAT(?) as ?', ['author.name', 'auth_names']),
+						//sqlDb.raw('GROUP_CONCAT(?) as ?', ['author.id_author', 'auth_ids'])
+							)
+				.from("book")
 				.innerJoin('book_author', {'book.id_book' :  'book_author.id_book'})
 				.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
-				.select('author.id_author', 'author.name')
 				.limit(limit)
-				.offset(offset);
+				.offset(offset)
+				.groupBy('book.id_book');
 	
 	if(theme) 
 		query.from('book')

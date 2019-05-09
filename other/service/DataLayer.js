@@ -13,7 +13,7 @@ switch (process.env.TEST) {
 		console.log("sqlDB: SQLite3" );
 		sqlDB = sqlDbFactory({
 			client: "sqlite3",
-			debug: false, //attivare per stampare query nel log del server
+			debug: true, //attivare per stampare query nel log del server
 			connection: {
 				filename: "./other/storeDB.sqlite"
 			},

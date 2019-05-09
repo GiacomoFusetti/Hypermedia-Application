@@ -32,18 +32,16 @@ $(document).ready(function(){
 	getGenres();
 	getThemes();
 	
-	getBooks()
+	getBooks();
 });
 
 // -------------- REQUESTS ---------------
 
 function getGenres(){
-	console.log('fetch');
 	fetch('/genres').then(function(response) {
 		return response.json();
 	}).then(function(json) {
 		genreJson = json;
-		console.log(genreJson);
 		if(!jQuery.isEmptyObject(genreJson)){
 			generatesGenresFilterHTML();
 		}
@@ -71,10 +69,10 @@ function getBooks(){
 		return response.json();
 	}).then(function(json) {
 		booksJson = json;
-		console.log(booksJson);
 		if(!jQuery.isEmptyObject(booksJson)){
 			generatesBooksHTML();
 		}else{
+			$("#booksDiv").empty();
 			$("#booksDiv").append( 
 				'<h3 class="title-single">No Books available with the current filters selection.</h3>'
 			);
@@ -82,7 +80,7 @@ function getBooks(){
  	});
 }
 
-// -------------- HTML ---------------
+// -------------- GENERATES HTML ---------------
 
 function generatesGenresFilterHTML(){
 	var genresGroup = 1;
@@ -139,7 +137,6 @@ function generatesBooksHTML(){
 		
 	for(i = 0; i < booksJson.length; i++){
 		var currentBook = booksJson[i];
-		var rating_stars = ratingHTML(currentBook.rating);
 		$("#booksDiv").append( 
 			`
 				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
@@ -155,9 +152,13 @@ function generatesBooksHTML(){
 						<div class="book_rating">
 							<p>
 								<span class="rating_text">Rating</span>
-			`+ rating_stars +
+									`+ ratingHTML(currentBook.rating) +
 			`
-								<br><span class="price_text">price</span> <strong class="color-b">€ 12.90</strong>
+								<br><span class="price_text">price</span> 
+									<strong class="color-b">€ 
+									`+ priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_eBook) +
+									`																		
+									</strong>
 							</p>
 						</div>
 					</div>
@@ -167,13 +168,25 @@ function generatesBooksHTML(){
 	}
 }
 
+// -------------- AUXILIARY FUNCTIONS ---------------
+
 function ratingHTML(rating){
 	var star = ``;
-	for(x = 0; x < rating; x++){
+	for(x = 0; x < rating; x++)
 		star += `<i class="fas fa-star color-b" aria-hidden="true"></i>`;
-	}
-	for(y = 0; y < 5-rating; y++){
-		star += `<i class="far fa-star color-b" aria-hidden="true"></i>`
-	}
+	for(y = 0; y < 5-rating; y++)
+		star += `<i class="far fa-star color-b" aria-hidden="true"></i>`;
 	return star;
+}
+
+function priceHTML(support, price_paper, price_eBook){
+	switch(support){
+		case 'eBook':
+			return price_eBook;
+		case 'paper':
+		case 'both':
+			return price_paper;
+		default:
+			return 'NaN';
+	}
 }
