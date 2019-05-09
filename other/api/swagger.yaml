@@ -86,6 +86,22 @@ paths:
       operationId: "getBooksCount"
       produces:
       - "application/json"
+      parameters:
+      - name: "genre"
+        in: "query"
+        description: "Genre for filtering."
+        required: false
+        type: "integer"
+      - name: "theme"
+        in: "query"
+        description: "Theme for filtering."
+        required: false
+        type: "integer"
+      - name: "rating"
+        in: "query"
+        description: "Rating for filtering."
+        required: false
+        type: "integer"
       responses:
         200:
           description: "successful operation"

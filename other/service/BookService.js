@@ -42,6 +42,29 @@ exports.booksGET = function(offset, limit, genre, theme, rating) {
 	});
 };
 
+
+/**
+* Get number of books in db
+**/
+
+exports.getBooksCount = function(genre, theme, rating){
+	sqlDb = database;
+	
+	var query = sqlDb('book').count();
+	
+	if(theme) 
+		query.from('book')
+			.innerJoin('book_theme', {'book.id_book' :  'book_theme.id_book'})
+			.innerJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
+			.select('theme.theme_name')
+			.where('theme.id_theme', theme);
+	if(rating) query.where('rating', rating);
+	if(genre) query.where('id_genre', genre);
+	
+	return query;
+}
+
+
 /**
  * Find book by ID
  * Returns a book
@@ -69,13 +92,3 @@ exports.getBookById = function(bookId) {
     }
   });
 };
-
-/**
-* Get number of books in db
-**/
-
-exports.getBookCount = function(){
-	sqlDb = database;
-	
-	return sqlDb('book').count()
-}
