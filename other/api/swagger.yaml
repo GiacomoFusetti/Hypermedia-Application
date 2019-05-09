@@ -77,6 +77,21 @@ paths:
         404:
           description: "Unexpected error"
       x-swagger-router-controller: "Book"
+  /books/count:
+    get:
+      tags:
+      - "book"
+      summary: "Number of books in inventory"
+      description: "Returns a number"
+      operationId: "getBooksCount"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "integer"
+      x-swagger-router-controller: "Book"
   /books/{Id_book}:
     get:
       tags:
@@ -193,6 +208,21 @@ paths:
         404:
           description: "Unexpected error"
       x-swagger-router-controller: "Author"
+  /authors/count:
+    get:
+      tags:
+      - "author"
+      summary: "Number of authors in inventory"
+      description: "Returns a number"
+      operationId: "getAuthorsCount"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "integer"
+      x-swagger-router-controller: "Author"
   /authors/{Id_author}:
     get:
       tags:
@@ -244,11 +274,6 @@ paths:
         description: "Retrive events of the current month."
         required: false
         type: "integer"  
-      - name: "event_count"
-        in: "query"
-        description: "Retrive the number of events."
-        required: false
-        type: "integer"
       responses:
         200:
           description: "A collection of Events"
@@ -258,6 +283,21 @@ paths:
               $ref: "#/definitions/Event"
         404:
           description: "Unexpected error"
+      x-swagger-router-controller: "Event"
+  /events/count:
+    get:
+      tags:
+      - "event"
+      summary: "Number of events in inventory"
+      description: "Returns a number"
+      operationId: "getEventsCount"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "integer"
       x-swagger-router-controller: "Event"
   /events/{Id_event}:
     get:

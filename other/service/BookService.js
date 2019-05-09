@@ -69,3 +69,13 @@ exports.getBookById = function(bookId) {
     }
   });
 };
+
+/**
+* Get number of books in db
+**/
+
+exports.getBookCount = function(){
+	sqlDb = database;
+	
+	return sqlDb('book').count()
+}

@@ -69,6 +69,7 @@ function getBooks(){
 		return response.json();
 	}).then(function(json) {
 		booksJson = json;
+		console.log(booksJson);
 		if(!jQuery.isEmptyObject(booksJson)){
 			generatesBooksHTML();
 		}else{
