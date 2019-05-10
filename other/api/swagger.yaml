@@ -265,6 +265,32 @@ paths:
         404:
           description: "Author not found"
       x-swagger-router-controller: "Author"
+  /authors/{Id_author}/written_books:
+    get:
+      tags:
+      - "author"
+      summary: "Find books writen by author by ID"
+      description: "Returns a set of books"
+      operationId: "getBooksByAuthorId"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: Id_author
+        description: "ID of author"
+        required: true
+        format: "int64"
+        type: integer
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Author"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Author not found"
+      x-swagger-router-controller: "Author"
   /events:
     get:
       tags:
