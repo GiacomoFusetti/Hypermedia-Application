@@ -46,12 +46,12 @@ exports.getBooksByAuthorId = function(offset,limit,authorId) {
     
     var query = sqlDb.select("book.id_book", "book.title", "book.price_paper", "book.price_eBook", "book.cover_img", "book.support", "book.rating", "author.name", "author.id_author")
     
-				.from("book")
-                .offset(offset)
-                .limit(limit)
-				.innerJoin("book_author", {"book.id_book" :  "book_author.id_book"})
-				.innerJoin("author", {"book_author.id_author" : "author.id_author"})
-                .where("book_author.id_author", authorId);
+        .from("book")
+        .offset(offset)
+        .limit(limit)
+        .innerJoin("book_author", {"book.id_book" :  "book_author.id_book"})
+        .innerJoin("author", {"book_author.id_author" : "author.id_author"})
+        .where("book_author.id_author", authorId);
     
     return query.then(data => {
 		return data.map(e => {

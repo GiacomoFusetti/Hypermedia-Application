@@ -51,11 +51,11 @@ module.exports.getBooksByAuthorId = function getBooksByAuthorId(req, res, next) 
 };
 
 module.exports.getCountBooksByAuthorId = function getCountBooksByAuthorId (req, res, next) {
-    console.log("getCountBooksByAuthorId");
     var authorId = req.swagger.params['Id_author'].value; 
     
     AuthorService.getCountBooksByAuthorId(authorId)
         .then(function (response) {
+            response = response[0];
             utils.writeJson(res, response);
         })
         .catch(function (response) {

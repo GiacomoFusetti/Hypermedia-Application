@@ -1,9 +1,12 @@
 console.log("Loading author page ");
+
 let urlParams = new URLSearchParams(window.location.search);
 let id_author = urlParams.get('id');
+
 let authorJson;
 let authorBookJson;
 
+let pageNumber;
 
 let offset = 0;
 let limit = 6;
@@ -35,22 +38,20 @@ $(function() {
 });
 
 $(document).ready(function(){
-    console.log("before getAuthorById()");
+    
     getCountWrittenBooks();
+
 	getAuthorsById();
     getWrittenBooks();
 });
 
 function getAuthorsById(){
     var query = '/' + id_author;
-    console.log(query);
     
 	fetch('/authors' + query).then(function(response) {
-        console.log(response.json);
 			 return response.json();
 	 }).then(function(json) {
 		authorJson = json;
-        console.log(authorJson);
 		if(!jQuery.isEmptyObject(authorJson)){
 			generatesAuthorHTML();
 		}else{
@@ -63,18 +64,15 @@ function getAuthorsById(){
 
 function getWrittenBooks(){
     var queryId = id_author;
-    console.log(id_author);
+    
     var query = '?offset=' + offset + '&limit=' + limit;
     
     fetch('/authors/' + queryId + '/written_books' + query).then(function(response) {
-        console.log(response.json);
 			 return response.json();
 	 }).then(function(json) {
 		authorBookJson = json;
-        console.log(authorBookJson);
 		if(!jQuery.isEmptyObject(authorBookJson)){
-            console.log("hey");
-			//generatesAuthorBookHTML();
+			generatesAuthorBookHTML();
 		}else{
 			$("#writtenDiv").append( 
 				'<h3 class="title-single">No Written Books.</h3>'
@@ -85,20 +83,17 @@ function getWrittenBooks(){
 
 function getCountWrittenBooks(){
     var query = id_author;
-    console.log(id_author);
+    
     fetch('/authors/' + query + '/count_books').then(function(response) {
-        console.log(response.json);
-			 return response.json();
+		return response.json();
 	 }).then(function(json) {
-		authorBookJson = json;
-        console.log(authorBookJson);
-		if(!jQuery.isEmptyObject(authorBookJson)){
-            console.log("hey");
-			//generatesAuthorBookHTML();
-		}else{
-			$("#writtenDiv").append( 
-				'<h3 class="title-single">No Written Books.</h3>'
-			);
+        pageNumber = json.count;
+        
+		if(pageNumber){
+			$("#pagDiv").empty(); 
+			pageNumber = Math.ceil(pageNumber/limit);
+            
+			generatesPaginationHTML();
 		}
 	 });
 }
@@ -177,38 +172,39 @@ function generatesAuthorBookHTML(){
         var authorBook = authorBookJson[i];
         writtenDiv +=
             `
-                <div class="book_carousel">
-					<div class="card-box-a">
-						<div class="img-box-a">
-							<a href="book.html"><img src="${authorBook.cover_img}" alt="" class="img-a img-fluid" width="200" height="100"></a>
-						</div>
-					</div>
-					<div class="book_desc">
-						<h5 class="card-titl-a book_author"><a href="author.html?id=${authorBook.id_author}">${authorBook.name}</a></h5>
-						<h6 class="card-titl-a book_title"><a href="${authorBook.id_book}"><i>${authorBook.title}</i></a></h6>
-						<div class="book_rating">
-							<p> 
-                                `
-                                + ratingHTML(authorBook.rating) +
-                                
-				                `
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                    <div class="">
+                        <div class="img-box-a">
+                          <a href="book.html"><img src="${authorBook.cover_img}" alt="" class="img-a img-fluid"></a>
+                        </div>
+
+                    </div>
+                    <div class="book_desc">
+                        <h5 class="card-titl-a book_author"><a href="author.html?id=${authorBook.id_author}">${authorBook.name}</a></h5> 
+                        <h6 class="card-titl-a book_title"><a href="book.html?id=${authorBook.id_book}"><i>${authorBook.title}</i></a></h6>
+                        <div class="book_rating">
+                            <p>
+                                <strong class="color-b">€ 
+									`+ priceHTML(authorBook.support, authorBook.price_paper, authorBook.price_eBook) +
+									`																		
+								</strong>
                             </p>
-						</div>
-					</div>
-				</div>
+                        </div>
+                    </div>
+                </div>
             `;
     }
-    $("#books-carousel").append(writtenDiv);
-    console.log(writtenBook);
+    $("#writtenBookDiv").append(writtenDiv);
 }
 
-// -------------- AUXILIARY FUNCTIONS ---------------
-
-function ratingHTML(rating){
-	var star = ``;
-	for(x = 0; x < rating; x++)
-		star += `<i class="fas fa-star color-b" aria-hidden="true"></i>`;
-	for(y = 0; y < 5-rating; y++)
-		star += `<i class="far fa-star color-b" aria-hidden="true"></i>`;
-	return star;
+function priceHTML(support, price_paper, price_eBook){
+	switch(support){
+		case 'eBook':
+			return parseFloat(price_eBook).toFixed(2);
+		case 'paper':
+		case 'both':
+			return parseFloat(price_paper).toFixed(2);
+		default:
+			return 'NaN';
+	}
 }
