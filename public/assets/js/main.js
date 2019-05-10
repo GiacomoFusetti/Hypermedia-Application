@@ -1,4 +1,5 @@
 checkSession();
+new WOW().init();
 let user;
 
 let pathname = window.location.pathname;

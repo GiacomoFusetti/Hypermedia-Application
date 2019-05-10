@@ -9,6 +9,7 @@ var limit = 0;
 var idgenre;
 var idtheme;
 var rating;
+var filter;
 
 module.exports.booksGET = function booksGET (req, res, next) {
 	
@@ -18,8 +19,9 @@ module.exports.booksGET = function booksGET (req, res, next) {
 	req.swagger.params['genre'].value ? idgenre = req.swagger.params['genre'].value : idgenre = undefined;
 	req.swagger.params['theme'].value ? idtheme = req.swagger.params['theme'].value : idtheme = undefined;
 	req.swagger.params['rating'].value ? rating = req.swagger.params['rating'].value : rating = undefined;
+	req.swagger.params['filter'].value ? filter = req.swagger.params['filter'].value : filter = undefined;
 	
-  	BookService.booksGET(offset, limit, idgenre, idtheme, rating)
+  	BookService.booksGET(offset, limit, idgenre, idtheme, rating, filter)
 	.then(function (response) {
   		utils.writeJson(res, response);
 	})
@@ -33,8 +35,9 @@ module.exports.getBooksCount = function getBooksCount (req, res, next) {
 	req.swagger.params['genre'].value ? idgenre = req.swagger.params['genre'].value : idgenre = undefined;
 	req.swagger.params['theme'].value ? idtheme = req.swagger.params['theme'].value : idtheme = undefined;
 	req.swagger.params['rating'].value ? rating = req.swagger.params['rating'].value : rating = undefined;
+	req.swagger.params['filter'].value ? filter = req.swagger.params['filter'].value : filter = undefined;
 
-  	BookService.getBooksCount(idgenre, idtheme, rating)
+  	BookService.getBooksCount(idgenre, idtheme, rating, filter)
 	.then(function (response) {
 	  response = response[0];
 	  utils.writeJson(res, response);

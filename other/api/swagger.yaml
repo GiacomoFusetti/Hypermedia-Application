@@ -67,6 +67,12 @@ paths:
         description: "Rating for filtering."
         required: false
         type: "integer"
+      - name: "filter"
+        in: "query"
+        description: "All/bestSeller/OurSugestion filter."
+        required: false
+        type: integer
+        enum: [0, 1, 2]
       responses:
         200:
           description: "A collection of Books"
@@ -102,6 +108,12 @@ paths:
         description: "Rating for filtering."
         required: false
         type: "integer"
+      - name: "filter"
+        in: "query"
+        description: "All/bestSeller/OurSugestion filter."
+        required: false
+        type: integer
+        enum: [0, 1, 2]
       responses:
         200:
           description: "successful operation"
@@ -272,42 +284,6 @@ paths:
       summary: "Find books writen by author by ID"
       description: "Returns a set of books"
       operationId: "getBooksByAuthorId"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "offset"
-        in: "query"
-        description: "Pagination offset. Default is 0."
-        required: false
-        type: "integer"
-      - name: "limit"
-        in: "query"
-        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
-        required: false
-        type: "integer"
-      - in: path
-        name: Id_author
-        description: "ID of author"
-        required: true
-        format: "int64"
-        type: integer
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            $ref: "#/definitions/Author"
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Author not found"
-      x-swagger-router-controller: "Author"
-  /authors/{Id_author}/count_books:
-    get:
-      tags:
-      - "author"
-      summary: "Find number of books writen by author by ID"
-      description: "Returns a number"
-      operationId: "getCountBooksByAuthorId"
       produces:
       - "application/json"
       parameters:
