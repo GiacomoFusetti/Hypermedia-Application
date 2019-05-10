@@ -126,15 +126,12 @@ function getBooks(){
 	if(rating) query += '&rating=' + rating;
 	if(mainFilter) query += '&filter=' + mainFilter;
 	
-	console.log(query);
-	
 	fetch('/books' + query).then(function(response) {
 		return response.json();
 	}).then(function(json) {
 		booksJson = json;
 		$("#booksDiv").empty();
 		if(!jQuery.isEmptyObject(booksJson)){
-			console.log(booksJson);
 			generatesBooksHTML();
 		}else{
 			$("#booksDiv").append( 
