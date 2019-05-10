@@ -1,4 +1,5 @@
 console.log("Loading books page");
+new WOW().init();
 
 let pageNumber;
 
