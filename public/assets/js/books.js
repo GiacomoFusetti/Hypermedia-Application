@@ -89,7 +89,6 @@ function getBooksCount(){
 		if(pageNumber){
 			$("#paginationDiv").empty(); 
 			pageNumber = Math.ceil(pageNumber/limit);
-			console.log('pages:' + pageNumber);
 			generatesPaginationHTML();
 		}
  	});
@@ -130,7 +129,6 @@ function getBooks(){
 	}).then(function(json) {
 		booksJson = json;
 		$("#booksDiv").empty();
-		console.log(booksJson);
 		if(!jQuery.isEmptyObject(booksJson)){
 			generatesBooksHTML();
 		}else{
@@ -254,11 +252,11 @@ function generatesBooksHTML(){
 						<h5 class="card-titl-a book_author"><a href="author.html?id=${currentBook.id_author}">${currentBook.name}</a></h5> 
 						<h6 class="card-titl-a book_title"><a href="book.html?id=${currentBook.id_book}"><i>${currentBook.title}</i></a></h6>
 						<div class="book_rating">
-							<p>
-								<span class="rating_text">Rating</span>
-									`+ ratingHTML(currentBook.rating) +
+							<p>`
+								/*<span class="rating_text">Rating</span>
+									`+ ratingHTML(currentBook.rating) */+
 			`
-								<br><span class="price_text">price</span> 
+								<span class="price_text"></span> 
 									<strong class="color-b">€ 
 									`+ priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_eBook) +
 									`																		
@@ -286,10 +284,10 @@ function ratingHTML(rating){
 function priceHTML(support, price_paper, price_eBook){
 	switch(support){
 		case 'eBook':
-			return price_eBook;
+			return parseFloat(price_eBook).toFixed(2);
 		case 'paper':
 		case 'both':
-			return price_paper;
+			return parseFloat(price_paper).toFixed(2);
 		default:
 			return 'NaN';
 	}

@@ -36,7 +36,7 @@ module.exports.getBooksCount = function getBooksCount (req, res, next) {
 
   	BookService.getBooksCount(idgenre, idtheme, rating)
 	.then(function (response) {
-	  response = {'count' : response[0]['count(*)']}
+	  response = response[0];
 	  utils.writeJson(res, response);
 	})
 	.catch(function (response) {

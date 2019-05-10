@@ -50,7 +50,7 @@ exports.booksGET = function(offset, limit, genre, theme, rating) {
 exports.getBooksCount = function(genre, theme, rating){
 	sqlDb = database;
 	
-	var query = sqlDb("book").count();
+	var query = sqlDb("book").count("*");
 	
 	if(theme) 
 		query.from("book")
@@ -61,7 +61,11 @@ exports.getBooksCount = function(genre, theme, rating){
 	if(rating) query.where("rating", rating);
 	if(genre) query.where("id_genre", genre);
 	
-	return query;
+	return query.then(data => {
+		return data.map(e => {
+			return e;
+	  	});
+	});
 }
 
 
