@@ -61,6 +61,22 @@ exports.getBooksByAuthorId = function(offset,limit,authorId) {
 }
 
 /**
+ * Get number of authors in db
+ * return a number
+ **/
+exports.getAuthorsCount = function(offset,limit) {
+	sqlDb = database;
+	
+	var query = sqlDb("author").count("*");
+	
+	return query.then(data => {
+		return data.map(e => {
+			return e;
+	  	});
+	});   
+}
+
+/**
  * Get number of books written by an author in db
  * return a number
  **/

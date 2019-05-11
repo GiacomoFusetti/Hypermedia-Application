@@ -50,6 +50,18 @@ module.exports.getBooksByAuthorId = function getBooksByAuthorId(req, res, next) 
     });
 };
 
+module.exports.getAuthorsCount = function getAuthorsCount(req, res, next) {
+    
+    AuthorService.getAuthorsCount()
+        .then(function (response) {
+            response = response[0];
+            utils.writeJson(res, response);
+        })
+        .catch(function (response) {
+            utils.writeJson(res, response);
+        });
+};
+
 module.exports.getCountBooksByAuthorId = function getCountBooksByAuthorId (req, res, next) {
     var authorId = req.swagger.params['Id_author'].value; 
     

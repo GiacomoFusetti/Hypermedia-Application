@@ -39,6 +39,17 @@ $(function() {
 
 $(document).ready(function(){
     
+    //PAGINATION
+	$("#pagDiv").on("click", "li.page-item", function() {
+  		// remove classes from all
+  		$("li.page-item").removeClass("active");
+      	// add class to the one we clicked
+      	$(this).addClass("active");
+
+		offset = $(this).val() * limit;
+		getWrittenBooks();
+   	});
+    
     getCountWrittenBooks();
 
 	getAuthorsById();
@@ -71,10 +82,11 @@ function getWrittenBooks(){
 			 return response.json();
 	 }).then(function(json) {
 		authorBookJson = json;
+        $("#writtenBookDiv").empty();
 		if(!jQuery.isEmptyObject(authorBookJson)){
 			generatesAuthorBookHTML();
 		}else{
-			$("#writtenDiv").append( 
+			$("#writtenBookDiv").append( 
 				'<h3 class="title-single">No Written Books.</h3>'
 			);
 		}
