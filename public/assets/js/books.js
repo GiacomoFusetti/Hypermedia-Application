@@ -1,4 +1,5 @@
 console.log("Loading books page");
+new WOW().init();
 
 let pageNumber;
 
@@ -12,6 +13,7 @@ let genresGroup = 'group1'; //radiogroup for genres
 let themesGroup = 'group2'; //radiogroup for themes
 let ratingGroup = 'group3'; //radiogroup for rating
 
+let mainFilter;
 let genreid;
 let themeid;
 let rating;
@@ -48,6 +50,7 @@ $(document).ready(function(){
 	$('#allFiltersDiv').on('change', 'input[type=radio]', function() {
 		switch(this.name){
 			case mainGroup:
+				mainFilter = this.value;
 				break;
 			case genresGroup:
 				genreid = this.value;
@@ -81,6 +84,7 @@ function getBooksCount(){
 	if(genreid) query += '&genre=' + genreid;
 	if(themeid) query += '&theme=' + themeid;
 	if(rating) query += '&rating=' + rating;
+	if(mainFilter) query += '&filter=' + mainFilter;
 	
 	fetch('/books/count' + query).then(function(response) {
 		return response.json();
@@ -121,8 +125,7 @@ function getBooks(){
 	if(genreid) query += '&genre=' + genreid;
 	if(themeid) query += '&theme=' + themeid;
 	if(rating) query += '&rating=' + rating;
-	
-	console.log(query);
+	if(mainFilter) query += '&filter=' + mainFilter;
 	
 	fetch('/books' + query).then(function(response) {
 		return response.json();
@@ -238,30 +241,32 @@ function generatesRatingFilterHTML(){
 
 function generatesBooksHTML(){		
 	for(i = 0; i < booksJson.length; i++){
-		var currentBook = booksJson[i];
+		var currentBook = booksJson[i];	
 		$("#booksDiv").append( 
 			`
-				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-					<div class="">
+				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 book-img-margin">
+					<div class="book-img-margin-child wow zoomIn" data-wow-duration="1s">
 						<div class="img-box-a">
 						  <a href="book.html?id=${currentBook.id_book}"><img src="${currentBook.cover_img}" alt="${currentBook.title}" class="img-a img-fluid"></a>
 						</div>
 
-					</div>
-					<div class="book_desc">
-						<h5 class="card-titl-a book_author"><a href="author.html?id=${currentBook.id_author}">${currentBook.name}</a></h5> 
-						<h6 class="card-titl-a book_title"><a href="book.html?id=${currentBook.id_book}"><i>${currentBook.title}</i></a></h6>
-						<div class="book_rating">
-							<p>`
-								/*<span class="rating_text">Rating</span>
-									`+ ratingHTML(currentBook.rating) */+
-			`
-								<span class="price_text"></span> 
-									<strong class="color-b">€ 
-									`+ priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_eBook) +
-									`																		
-									</strong>
-							</p>
+						<div class="book_desc">
+							<ul class="list-unstyled author_list">
+								` + authorListHTML(currentBook.auth_names, currentBook.auth_ids) + `
+							</ul>
+							<h6 class="card-titl-a book_title"><a class="font-90" href="book.html?id=${currentBook.id_book}">${currentBook.title}</a></h6>
+							<div>
+								<p>`
+									/*<span class="rating_text">Rating</span>
+										`+ ratingHTML(currentBook.rating) 
+
+									<span class="price_text"></span>*/ + `
+										<b class="font-90 color-b">€ 
+										`+ priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_eBook) +
+										`																		
+										</b>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -291,4 +296,16 @@ function priceHTML(support, price_paper, price_eBook){
 		default:
 			return 'NaN';
 	}
+}
+
+function authorListHTML(authorsNameJson, authorsIdsJson){
+	var authorsHTML = ``;
+	
+	for(z = 0; z < authorsNameJson.length; z++)
+		authorsHTML += `
+						<li>
+							<h5 class="card-titl-a ` + (z > 0 ? `book_author_li` :  `book_author`) + `"> ` + (z > 0 ? `<a class="font-90"> & </a>` :  ``) + `<a class="font-90" href="author.html?id=${authorsIdsJson[z]}">${authorsNameJson[z]}</a></h5> 
+						</li>
+					   `;
+	return authorsHTML;	
 }
