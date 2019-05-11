@@ -24,3 +24,18 @@ exports.eventsGET = function(offset, limit, current_month) {
 	});
 };
 
+/**
+ * Get number of events in db
+ * return a number
+ **/
+exports.getEventsCount = function(offset,limit) {
+	sqlDb = database;
+	
+	var query = sqlDb("event").count("*");
+	
+	return query.then(data => {
+		return data.map(e => {
+			return e;
+	  	});
+	});   
+}

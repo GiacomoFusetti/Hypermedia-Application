@@ -1,7 +1,6 @@
 console.log("Loading authors page");
 
 let authorsJson;
-
 let pageNumber;
 
 let offset = 0;
@@ -31,7 +30,6 @@ function getAuthors(){
 			 return response.json();
 	 }).then(function(json) {
 		authorsJson = json;
-        console.log("AuthorJson: " + authorsJson);
         $("#authorsDiv").empty();
 		if(!jQuery.isEmptyObject(authorsJson)){
 			generatesHTML();
@@ -66,7 +64,6 @@ function getCountAuthors(){
 		return response.json();
 	 }).then(function(json) {
         pageNumber = json.count;
-        console.log(pageNumber);
 		if(pageNumber){
 			$("#pagDiv").empty(); 
 			pageNumber = Math.ceil(pageNumber/limit);

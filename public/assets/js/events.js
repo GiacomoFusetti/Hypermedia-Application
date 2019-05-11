@@ -4,35 +4,28 @@ let eventsJson;
 let this_month;
 
 let offset = 0;
-let limit = 12;
+let limit = 6;
 
 var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 $(document).ready(function(){
-    $('#first').click(function(e) {
-		$('#second').removeClass('active');
-        $('#third').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
-    $('#second').click(function(e) {
-		$('#first').removeClass('active');
-        $('#third').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
-    $('#third').click(function(e) {
-		$('#first').removeClass('active');
-        $('#second').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
+    
+    //PAGINATION
+	$("#pagDiv").on("click", "li.page-item", function() {
+  		// remove classes from all
+  		$("li.page-item").removeClass("active");
+      	// add class to the one we clicked
+      	$(this).addClass("active");
+
+		offset = $(this).val() * limit;
+		getEvents();
+   	});
     
     $("select.custom-select").change(function(){
         this_month = $(this).children("option:selected").val();
         getEvents();
     });
-    
+    getEventsCount();
 	getEvents();
 });
 
@@ -50,15 +43,30 @@ function getEvents(){
 		return response.json();
 	 }).then(function(json) {
 		eventsJson = json;
-        console.log("EventJson: " + eventsJson);
         $("#eventsDiv").empty();
-        
         if(!jQuery.isEmptyObject(eventsJson)){
 			generatesHTML();
 		}else{    
 			$("#eventsDiv").append( 
 				'<h3 class="title-single">No Events available.</h3>'
 			);
+		}
+	 });
+}
+
+function getEventsCount(){
+    
+	var query = '?offset=' + offset + '&limit=' + limit;
+    
+    fetch('/events/count' + query).then(function(response) {
+		return response.json();
+	 }).then(function(json) {
+        pageNumber = json.count;
+		if(pageNumber){
+			$("#pagDiv").empty(); 
+			pageNumber = Math.ceil(pageNumber/limit);
+            
+			generatesPaginationHTML();
 		}
 	 });
 }
@@ -91,6 +99,18 @@ function generatesHTML(){
                     </div>
                   </div>
                 </div>
+			`
+		);
+	}
+}
+
+function generatesPaginationHTML(){
+	for(i = 0; i < pageNumber; i++){
+		$("#pagDiv").append( 
+			`
+				<li value="${i}" class="page-item` + (i==0 ? ` active` : ``)  + `">
+					<a class="page-link">${i+1}</a>
+				</li>
 			`
 		);
 	}

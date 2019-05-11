@@ -24,3 +24,15 @@ module.exports.eventsGET = function eventsGET (req, res, next) {
             utils.writeJson(res, response);
         });
 };
+
+module.exports.getEventsCount = function getEventsCount(req, res, next) {
+    
+    EventService.getEventsCount()
+        .then(function (response) {
+            response = response[0];
+            utils.writeJson(res, response);
+        })
+        .catch(function (response) {
+            utils.writeJson(res, response);
+        });
+};
