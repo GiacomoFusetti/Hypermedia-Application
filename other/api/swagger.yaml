@@ -406,6 +406,42 @@ paths:
         404:
           description: "Author not found"
       x-swagger-router-controller: "Author"
+  /authors/{Id_author}/count:
+    get:
+      tags:
+      - "author"
+      summary: "Find written book by an author"
+      description: "Returns a author"
+      operationId: "getCountWrittenBooks"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0."
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
+        required: false
+        type: "integer"
+      - in: path
+        name: Id_author
+        description: "ID of author to return"
+        required: true
+        format: "int64"
+        type: integer
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Author"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Author not found"
+      x-swagger-router-controller: "Author"
   /events:
     get:
       tags:
