@@ -160,9 +160,9 @@ paths:
     get:
       tags:
       - "book"
-      summary: "Find related book by ID"
+      summary: "Find related book by Id_book"
       description: "Returns a set of books"
-      operationId: "getRelatedBooksCountById"
+      operationId: "getRelatedBooksById"
       produces:
       - "application/json"
       parameters:
@@ -196,9 +196,9 @@ paths:
     get:
       tags:
       - "book"
-      summary: "Number of related book of book"
+      summary: "Number of related books by Id_book"
       description: "Returns the number of books"
-      operationId: "getRelatedBooksById"
+      operationId: "getRelatedBooksCountById"
       produces:
       - "application/json"
       parameters:
@@ -374,9 +374,9 @@ paths:
     get:
       tags:
       - "author"
-      summary: "Find written book by an author"
-      description: "Returns a author"
-      operationId: "getWrittenBooks"
+      summary: "Find written books by Id_author"
+      description: "Returns a set of books"
+      operationId: "getWrittenBooksById"
       produces:
       - "application/json"
       parameters:
@@ -410,22 +410,12 @@ paths:
     get:
       tags:
       - "author"
-      summary: "Find written book by an author"
-      description: "Returns a author"
-      operationId: "getCountWrittenBooks"
+      summary: "Number of books written by Id_author"
+      description: "Returns a number"
+      operationId: "getWrittenBooksCountById"
       produces:
       - "application/json"
       parameters:
-      - name: "offset"
-        in: "query"
-        description: "Pagination offset. Default is 0."
-        required: false
-        type: "integer"
-      - name: "limit"
-        in: "query"
-        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
-        required: false
-        type: "integer"
       - in: path
         name: Id_author
         description: "ID of author to return"
