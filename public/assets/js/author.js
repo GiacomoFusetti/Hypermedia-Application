@@ -109,7 +109,6 @@ function getCountWrittenBooks(){
 }
 
 function generatesPaginationHTML(){
-    console.log(pageNumber);
 	for(i = 0; i < pageNumber; i++){
 		$("#pagDiv").append( 
 			`

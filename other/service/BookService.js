@@ -146,9 +146,13 @@ exports.getBookById = function(offset, limit, bookId) {
 										//join with Theme
 										.leftJoin('book_theme', {'book2.id_book' :  'book_theme.id_book'})
 										.leftJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
+										//join with Author
+										.innerJoin('book_author', {'book2.id_book' :  'book_author.id_book'})
+										.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
 										.where('book_similarBook.id_book', bookId)
 										.distinct('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
 										.select(sqlDb.raw('ARRAY_AGG(DISTINCT theme.theme_name) as theme_names'))
+										.select(sqlDb.raw('ARRAY_AGG(DISTINCT author.name) as auth_names'), sqlDb.raw('ARRAY_AGG(DISTINCT author.id_author) as auth_ids'))
 										.groupBy('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
 										.orderBy('book2.id_book')
 										.limit(limit)
@@ -183,9 +187,13 @@ exports.getRelatedBooksById = function(offset, limit, bookId) {
 		//join with Theme
 		.leftJoin('book_theme', {'book2.id_book' :  'book_theme.id_book'})
 		.leftJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
+		//join with Author
+		.innerJoin('book_author', {'book2.id_book' :  'book_author.id_book'})
+		.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
 		.where('book_similarBook.id_book', bookId)
 		.distinct('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
 		.select(sqlDb.raw('ARRAY_AGG(DISTINCT theme.theme_name) as theme_names'))
+		.select(sqlDb.raw('ARRAY_AGG(DISTINCT author.name) as auth_names'), sqlDb.raw('ARRAY_AGG(DISTINCT author.id_author) as auth_ids'))
 		.groupBy('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
 		.orderBy('book2.id_book')
 		.limit(limit)

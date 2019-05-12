@@ -7,8 +7,9 @@ let offset = urlParams.get('offset') || 0;
 let limit = urlParams.get('limit') || 6;
 
 let bookId = urlParams.get('id');
-
 let bookJson;
+
+let relatedBookJson;
 
 var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -56,6 +57,18 @@ $(document).ready(function(){
 		$(".h6").html('<i class="far fa-caret-square-up color-b"></i> Books By');
   	});
 	
+	//PAGINATION
+	$("#pagDiv").on("click", "li.page-item", function() {
+  		// remove classes from all
+  		$("li.page-item").removeClass("active");
+      	// add class to the one we clicked
+      	$(this).addClass("active");
+
+		offset = $(this).val() * limit;
+		getRealtedBooks();
+   	});
+	
+    getCountRelatedBooks();	
 	getBookById();
 });
 
@@ -79,12 +92,45 @@ function getBookById(){
  	});
 }
 
+function getCountRelatedBooks(){
+	fetch('/books/' + bookId + '/count').then(function(response) {
+		return response.json();
+	 }).then(function(json) {
+        pageNumber = json.count;
+		if(pageNumber){
+			$("#pagDiv").empty(); 
+			pageNumber = Math.ceil(pageNumber/limit);
+			generatesPaginationHTML();
+		}
+	 });
+}
+
+function getRealtedBooks(){
+    var query = '?offset=' + offset + '&limit=' + limit;
+    
+	fetch('/books/' + bookId + query).then(function(response) {
+        return response.json();
+    }).then(function(json) {
+        relatedBookJson = json;
+		$("#relatedBookDiv").empty();
+        if(!jQuery.isEmptyObject(relatedBookJson)){
+            fillBooks(relatedBookJson.similar_books);
+        }else{
+            $("#relatedBookDiv").append( 
+			    '<h3 class="title-single">No Written Books.</h3>'
+            );
+        }
+    });
+}
+
 // -------------- GENERATES HTML ---------------
 
 function generatesBookHTML(){
 	fillHeader(bookJson.book, bookJson.authors);
 	fillBodyPage(bookJson.book);
 	fillBookDetailsEvent(bookJson.book, bookJson.genre[0], bookJson.themes, bookJson.event);
+	fillBooks(bookJson.similar_books);
+	
 }
 
 function fillHeader(book, author){
@@ -186,6 +232,51 @@ function fillEvent(event){
 	
 }
 
+function generatesPaginationHTML(){
+	for(i = 0; i < pageNumber; i++){
+		$("#pagDiv").append( 
+			`
+				<li value="${i}" class="page-item` + (i==0 ? ` active` : ``)  + `">
+					<a class="page-link">${i+1}</a>
+				</li>
+			`
+		);
+	}
+}
+
+function fillBooks(books){
+    var relatedDiv = ``;
+    for(i = 0; i < books.length; i++){
+        var relBook = books[i];
+        relatedDiv +=
+            `
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 book-img-margin">
+                    <div class="book-img-margin-child>
+						<div id="book" class="img-box-a">
+						  <a href="book.html?id=${relBook.id_book}"><img src="${relBook.cover_img}" alt="${relBook.title}" class="img-a img-fluid"></a>
+						</div>
+
+						<div class="book_desc">
+							<ul class="list-unstyled author_list">
+								` + authorListHTML(relBook.auth_names, relBook.auth_ids) + `
+							</ul>
+							<h6 class="card-titl-a book_title"><a class="font-70" href="book.html?id=${relBook.id_book}">${relBook.title}</a></h6>
+							<div>
+								<p>
+										<b class="font-70 color-b">€ 
+										`+ priceHTML(relBook.support, relBook.price_paper, relBook.price_eBook) +
+										`																		
+										</b>
+								</p>
+							</div>
+						</div>
+					</div>
+                </div>
+            `;
+    }
+    $("#relatedBookDiv").append(relatedDiv);
+}
+
 // -------------- AUXILIARY FUNCTIONS ---------------
 
 function ratingHTML(rating){
@@ -196,4 +287,27 @@ function ratingHTML(rating){
 		star += `<i class="far fa-star color-b" aria-hidden="true"></i>`;
 	return star;
 }
-    
+
+function priceHTML(support, price_paper, price_eBook){
+	switch(support){
+		case 'eBook':
+			return parseFloat(price_eBook).toFixed(2);
+		case 'paper':
+		case 'both':
+			return parseFloat(price_paper).toFixed(2);
+		default:
+			return 'NaN';
+	}
+}
+
+function authorListHTML(authorsNameJson, authorsIdsJson){
+	var authorsHTML = ``;
+	
+	for(z = 0; z < authorsNameJson.length; z++)
+		authorsHTML += `
+						<li>
+							<h5 class="card-titl-a ` + (z > 0 ? `book_author_li` :  `book_author`) + `"> ` + (z > 0 ? `<a class="font-70"> & </a>` :  ``) + `<a class="font-70" href="author.html?id=${authorsIdsJson[z]}">${authorsNameJson[z]}</a></h5> 
+						</li>
+					   `;
+	return authorsHTML;	
+}
