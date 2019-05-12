@@ -8,8 +8,8 @@ let authorBookJson;
 
 let pageNumber;
 
-let offset = 0;
-let limit = 6;
+let offset = urlParams.get('offset') || 0;
+let limit = urlParams.get('limit') || 6;
 
 $(function() {    
     $('.owl-carousel').owlCarousel({
@@ -47,70 +47,71 @@ $(document).ready(function(){
       	$(this).addClass("active");
 
 		offset = $(this).val() * limit;
+        console.log("finocchio");
 		getWrittenBooks();
    	});
-    
     getCountWrittenBooks();
-
+    console.log("finocchio1");
 	getAuthorsById();
-    getWrittenBooks();
 });
 
-function getAuthorsById(){
-    var query = '/' + id_author;
+function getAuthorsById(){    
+    var query = '?offset=' + offset + '&limit=' + limit;
     
-	fetch('/authors' + query).then(function(response) {
-			 return response.json();
+	fetch('/authors/' + id_author + query).then(function(response) {
+		return response.json();
 	 }).then(function(json) {
 		authorJson = json;
-		if(!jQuery.isEmptyObject(authorJson)){
-			generatesAuthorHTML();
+		if(!jQuery.isEmptyObject(authorJson.author)){
+			generatesAuthorBookHTML();
+            if(!jQuery.isEmptyObject(authorJson.books)){
+                fillBooks(authorJson.books, authorJson.author)
+            }else{
+			    $("#writtenBookDiv").append( 
+				    '<h3 class="title-single">No Written Books.</h3>'
+                );
+            }
 		}else{
-			$("#authorDiv").append( 
-				'<h3 class="title-single">No Author not found.</h3>'
-			);
-		}
+			$("#author_title").html("Author not found"); 
+            $("#writtenBookDiv").html('<h3 class="title-single">No Written Books.</h3>');
+		}  
 	 });
 }
 
 function getWrittenBooks(){
-    var queryId = id_author;
-    
     var query = '?offset=' + offset + '&limit=' + limit;
     
-    fetch('/authors/' + queryId + '/written_books' + query).then(function(response) {
-			 return response.json();
-	 }).then(function(json) {
-		authorBookJson = json;
-        $("#writtenBookDiv").empty();
-		if(!jQuery.isEmptyObject(authorBookJson)){
-			generatesAuthorBookHTML();
-		}else{
-			$("#writtenBookDiv").append( 
-				'<h3 class="title-single">No Written Books.</h3>'
-			);
-		}
-	 });
+	fetch('/authors/' + id_author + query).then(function(response) {
+        return response.json();
+    }).then(function(json) {
+        writtenBookJson = json;
+        if(!jQuery.isEmptyObject(writtenBookJson)){
+            fillBooks(writtenBookJson.books, writtenBookJson.author)
+        }else{
+            $("#writtenBookDiv").append( 
+			    '<h3 class="title-single">No Written Books.</h3>'
+            );
+        }
+    });
 }
 
 function getCountWrittenBooks(){
     var query = id_author;
     
-    fetch('/authors/' + query + '/count_books').then(function(response) {
+    fetch('/authors/' + query + '/count').then(function(response) {
 		return response.json();
 	 }).then(function(json) {
         pageNumber = json.count;
-        
 		if(pageNumber){
 			$("#pagDiv").empty(); 
 			pageNumber = Math.ceil(pageNumber/limit);
-            
 			generatesPaginationHTML();
 		}
 	 });
 }
 
 function generatesPaginationHTML(){
+    console.log(pageNumber);
 	for(i = 0; i < pageNumber; i++){
 		$("#pagDiv").append( 
 			`
@@ -122,87 +123,49 @@ function generatesPaginationHTML(){
 	}
 }
 
-function generatesAuthorHTML(){
-    authorJson = authorJson[0];
-    $("#IntroAuthor").append( 
-			`
-                <div class="col-md-12 col-lg-8">
-                  <div class="title-single-box">
-                    <h1 class="title-single">${authorJson.name}</h1>
-                  </div>
-                </div>
-                <div class="col-md-12 col-lg-4">
-                  <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
-                        <a href="../index.html">Home</a>
-                      </li>
-                      <li class="breadcrumb-item">
-                        <a href="authors.html">Authors</a>
-                      </li>
-                      <li class="breadcrumb-item active" aria-current="page">
-                        ${authorJson.name}
-                      </li>
-                    </ol>
-                  </nav>
-                </div>
-              
-            `
-    );
-    $("#authorSingle").append(
-        `
-            <div class="col-sm-12">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="agent-avatar-box">
-                    <img src="${authorJson.photo}" alt="" class="agent-avatar img-fluid">
-                  </div>
-                </div>
-                <div class="col-md-5 section-md-t3">
-                  <div class="agent-info-box">
-                    <div class="agent-title">
-                      <div class="title-box-d">
-                        <h3 class="title-d">Biography</h3>
-                      </div>
-                    </div>
-                    <div class="agent-content mb-3">
-                      <p class="content-d color-text-a">
-                        ${authorJson.bio}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        `
-    );
+function generatesAuthorBookHTML(){
+    fillHeader(authorJson.author)
+    fillBody(authorJson.author)  
 }
 
-function generatesAuthorBookHTML(){
+function fillHeader(author){
+    $("#author_title").html(author.name);
+    $("#author_name").html(author.name);
+}
+
+function fillBody(author){
+    $("#author_photo").attr("src", author.photo);
+    $("#author_body_name").html(author.name);
+    $("#author_bio").html(author.bio);
+}
+
+function fillBooks(book,author){
     var writtenDiv = ``;
-    for(i = 0; i < authorBookJson.length; i++){
-        var authorBook = authorBookJson[i];
+    for(i = 0; i < book.length; i++){
+        var authorBook = book[i];
         writtenDiv +=
             `
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
-                    <div class="">
-                        <div class="img-box-a">
-                          <a href="book.html"><img src="${authorBook.cover_img}" alt="" class="img-a img-fluid"></a>
-                        </div>
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 book-img-margin">
+                    <div class="book-img-margin-child>
+						<div id="book" class="img-box-a">
+						  <a href="book.html?id=${authorBook.id_book}"><img src="${authorBook.cover_img}" alt="${authorBook.title}" class="img-a img-fluid"></a>
+						</div>
 
-                    </div>
-                    <div class="book_desc">
-                        <h5 class="card-titl-a book_author"><a href="author.html?id=${authorBook.id_author}">${authorBook.name}</a></h5> 
-                        <h6 class="card-titl-a book_title"><a href="book.html?id=${authorBook.id_book}"><i>${authorBook.title}</i></a></h6>
-                        <div class="book_rating">
-                            <p>
-                                <strong class="color-b">€ 
-									`+ priceHTML(authorBook.support, authorBook.price_paper, authorBook.price_eBook) +
-									`																		
-								</strong>
-                            </p>
-                        </div>
-                    </div>
+						<div class="book_desc">
+							<ul class="list-unstyled author_list">
+								` + authorListHTML(authorBook.auth_names, authorBook.auth_ids) + `
+							</ul>
+							<h6 class="card-titl-a book_title"><a class="font-70" href="book.html?id=${authorBook.id_book}">${authorBook.title}</a></h6>
+							<div>
+								<p>
+										<b class="font-70 color-b">€ 
+										`+ priceHTML(authorBook.support, authorBook.price_paper, authorBook.price_eBook) +
+										`																		
+										</b>
+								</p>
+							</div>
+						</div>
+					</div>
                 </div>
             `;
     }
@@ -219,4 +182,16 @@ function priceHTML(support, price_paper, price_eBook){
 		default:
 			return 'NaN';
 	}
+}
+
+function authorListHTML(authorsNameJson, authorsIdsJson){
+	var authorsHTML = ``;
+	
+	for(z = 0; z < authorsNameJson.length; z++)
+		authorsHTML += `
+						<li>
+							<h5 class="card-titl-a ` + (z > 0 ? `book_author_li` :  `book_author`) + `"> ` + (z > 0 ? `<a class="font-70"> & </a>` :  ``) + `<a class="font-70" href="author.html?id=${authorsIdsJson[z]}">${authorsNameJson[z]}</a></h5> 
+						</li>
+					   `;
+	return authorsHTML;	
 }

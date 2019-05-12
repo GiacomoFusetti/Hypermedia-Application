@@ -317,17 +317,6 @@ paths:
       operationId: "getAuthorsCount"
       produces:
       - "application/json"
-      parameters:
-      - name: "offset"
-        in: "query"
-        description: "Pagination offset. Default is 0."
-        required: false
-        type: "integer"
-      - name: "limit"
-        in: "query"
-        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
-        required: false
-        type: "integer"
       responses:
         200:
           description: "successful operation"

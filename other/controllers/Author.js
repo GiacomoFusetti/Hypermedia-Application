@@ -26,7 +26,10 @@ module.exports.authorsGET = function authorsGET (req, res, next) {
 module.exports.getAuthorById = function getAuthorById (req, res, next) {
     var authorId = req.swagger.params['Id_author'].value;
     
-    AuthorService.getAuthorById(authorId)
+    req.swagger.params['offset'].value ? offset = req.swagger.params['offset'].value : offset = 0;
+    req.swagger.params['limit'].value ? limit = req.swagger.params['limit'].value : limit = 6;
+    
+    AuthorService.getAuthorById(offset, limit, authorId)
         .then(function (response) {
             utils.writeJson(res, response);
         })
@@ -35,13 +38,13 @@ module.exports.getAuthorById = function getAuthorById (req, res, next) {
         });
 };
 
-module.exports.getBooksByAuthorId = function getBooksByAuthorId(req, res, next) {
+module.exports.getWrittenBooksById = function getWrittenBooksById(req, res, next) {
     var authorId = req.swagger.params['Id_author'].value;
     
     req.swagger.params['offset'].value ? offset = req.swagger.params['offset'].value : offset = 0;
     req.swagger.params['limit'].value ? limit = req.swagger.params['limit'].value : limit = 6;
     
-    AuthorService.getBooksByAuthorId(offset,limit,authorId)
+    AuthorService.getWrittenBooksById(offset,limit,authorId)
     .then(function (response) {
         utils.writeJson(res, response);
     })
@@ -62,10 +65,10 @@ module.exports.getAuthorsCount = function getAuthorsCount(req, res, next) {
         });
 };
 
-module.exports.getCountBooksByAuthorId = function getCountBooksByAuthorId (req, res, next) {
+module.exports.getWrittenBooksCountById = function getWrittenBooksCountById (req, res, next) {
     var authorId = req.swagger.params['Id_author'].value; 
     
-    AuthorService.getCountBooksByAuthorId(authorId)
+    AuthorService.getWrittenBooksCountById(authorId)
         .then(function (response) {
             response = response[0];
             utils.writeJson(res, response);

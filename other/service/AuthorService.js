@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-let { database } = require("./DataLayer");
+let { database } = require('./DataLayer');
 let sqlDb;
 
 /**
@@ -8,7 +8,8 @@ let sqlDb;
  **/
 exports.authorsGET = function(offset, limit) {
     sqlDb = database;
-    return sqlDb("author")
+    return sqlDb('author')
+        .orderBy('author.name')
         .limit(limit)
         .offset(offset)
         .then(data => {
@@ -16,48 +17,62 @@ exports.authorsGET = function(offset, limit) {
             return e;
           });
         });
-};
+}
 
 /**
  * Find Author by ID
- * Returns an author
+ * Returns the author with his written books
  *
  * authorId Long ID of author to return
- * returns Author
  **/
-exports.getAuthorById = function(authorId) {
+exports.getAuthorById = function(offset, limit, authorId) {
 	sqlDb = database;
-	 
-	return sqlDb("author").where({ id_author: authorId })
-        .then(data => {
-          return data.map(e => {
-            return e;
-          });
-        });
-};
+    
+    let results = {};
+    
+    return sqlDb.from('author').select('*').where('author.id_author', authorId).then(result => {
+        results['author']=result[0];
+        return sqlDb.from('author')
+            //join with book
+            .innerJoin('book_author', {'author.id_author' :  'book_author.id_author'})
+            .innerJoin('book', {'book_author.id_book' :  'book.id_book'})
+            //join with Author
+			.innerJoin('book_author as book_author2', {'book.id_book' :  'book_author2.id_book'})
+			.innerJoin('author as author2', {'book_author2.id_author' : 'author2.id_author'})
+            .where('author.id_author', authorId)
+            .distinct('book.id_book', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support') 
+            .select(sqlDb.raw('ARRAY_AGG(DISTINCT author2.name) as auth_names'), sqlDb.raw('ARRAY_AGG(DISTINCT author2.id_author) as auth_ids'))
+            .groupBy('book.id_book', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support')
+            .offset(offset)
+            .limit(limit).then(result => {
+                results['books']=result;
+                return results;
+            });
+    });
+}
 
-/**
- * Find Written books of an author by his ID
- * return a set of books
- *
- **/
-exports.getBooksByAuthorId = function(offset,limit,authorId) {
-    sqlDb = database;
+exports.getWrittenBooksById = function(offset, limit, authorId) {
+	sqlDb = database;
     
-    var query = sqlDb.select("book.id_book", "book.title", "book.price_paper", "book.price_eBook", "book.cover_img", "book.support", "book.rating", "author.name", "author.id_author")
-    
-        .from("book")
+    let results = {};
+
+    return sqlDb.from('author')
+        //join with book
+        .innerJoin('book_author', {'author.id_author' :  'book_author.id_author'})
+        .innerJoin('book', {'book_author.id_book' :  'book.id_book'})
+        //join with Author
+        .innerJoin('book_author as book_author2', {'book.id_book' :  'book_author2.id_book'})
+        .innerJoin('author as author2', {'book_author2.id_author' : 'author2.id_author'})
+        .where('author.id_author', authorId)
+        .distinct('book.id_book', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support') 
+        .select(sqlDb.raw('ARRAY_AGG(DISTINCT author2.name) as auth_names'), sqlDb.raw('ARRAY_AGG(DISTINCT author2.id_author) as auth_ids'))
+        .groupBy('book.id_book', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support')
         .offset(offset)
-        .limit(limit)
-        .innerJoin("book_author", {"book.id_book" :  "book_author.id_book"})
-        .innerJoin("author", {"book_author.id_author" : "author.id_author"})
-        .where("book_author.id_author", authorId);
-    
-    return query.then(data => {
-		return data.map(e => {
-			return e;
-	  	});
-	});
+        .limit(limit).then(result => {
+            results['books']=result;
+            return results;
+        });
+
 }
 
 /**
@@ -67,7 +82,7 @@ exports.getBooksByAuthorId = function(offset,limit,authorId) {
 exports.getAuthorsCount = function(offset,limit) {
 	sqlDb = database;
 	
-	var query = sqlDb("author").count("*");
+	var query = sqlDb('author').count('*');
 	
 	return query.then(data => {
 		return data.map(e => {
@@ -80,15 +95,15 @@ exports.getAuthorsCount = function(offset,limit) {
  * Get number of books written by an author in db
  * return a number
  **/
-exports.getCountBooksByAuthorId = function(authorId){
+exports.getWrittenBooksCountById = function(authorId){
 	sqlDb = database;
 	
-	var query = sqlDb("author").count("*");
+	var query = sqlDb('author').count('*');
 	         
-        query.from("book")
-             .innerJoin("book_author", {"book.id_book" :  "book_author.id_book"})
-			 .innerJoin("author", {"book_author.id_author" : "author.id_author"})
-             .where("book_author.id_author", authorId);
+        query.from('book')
+             .innerJoin('book_author', {'book.id_book' :  'book_author.id_book'})
+			 .innerJoin('author', {'book_author.id_author' : 'author.id_author'})
+             .where('book_author.id_author', authorId);
 	
 	return query.then(data => {
 		return data.map(e => {

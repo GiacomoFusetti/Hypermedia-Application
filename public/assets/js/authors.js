@@ -1,10 +1,11 @@
 console.log("Loading authors page");
+let urlParams = new URLSearchParams(window.location.search);
 
 let authorsJson;
 let pageNumber;
 
-let offset = 0;
-let limit = 6;
+let offset = urlParams.get('offset') || 0;
+let limit = urlParams.get('limit') || 6;
 
 $(document).ready(function(){
     

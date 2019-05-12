@@ -38,3 +38,23 @@
 .color_white{
     color: #f1f1f1; /* Grey text */
 }
+
+.font-70{
+	font-size: 90%;
+}
+
+.book-img-margin{
+	margin: auto 0px;
+}
+
+.book-img-margin-child{
+	
+}
+
+.author_list{
+	margin-bottom: 5px;
+}
+
+.authors-font{
+	font-size: 20px;
+}

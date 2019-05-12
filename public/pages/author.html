@@ -77,11 +77,13 @@
   <!--/ Intro Single star /-->
   <section class="intro-single">
     <div class="container">
-      <div id="IntroAuthor" class="row">
-        <!--<div class="col-md-12 col-lg-8">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">Author_Name</h1>
-            <span class="color-text-a">Author_Surname</span>
+            <h1 id="author_title" class="title-single"><!-- Load From DB--></h1>
+              <div id="authorsDiv">
+                 <!-- Load From DB-->
+              </div>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -93,12 +95,10 @@
               <li class="breadcrumb-item">
                 <a href="authors.html">Authors</a>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
-                Author_Surname
-              </li>
+              <li id="author_name" class="breadcrumb-item active" aria-current="page"><!-- Load From DB --></li>
             </ol>
           </nav>
-        </div>-->
+        </div>
       </div>
     </div>
   </section>
@@ -108,32 +108,27 @@
   <section class="agent-single">
     <div class="container">
       <div id="authorSingle" class="row">
-        <!--<div class="col-sm-12">
+        <div class="col-sm-12">
           <div class="row">
             <div class="col-md-6">
               <div class="agent-avatar-box">
-                <img src="../assets/img/authors/tolkien.jpg" alt="" class="agent-avatar img-fluid">
+                <img id="author_photo" src=""  alt="img" class="agent-avatar img-fluid">
               </div>
             </div>
             <div class="col-md-5 section-md-t3">
               <div class="agent-info-box">
                 <div class="agent-title">
                   <div class="title-box-d">
-                    <h3 class="title-d">Author_Name
-                      <br> Author_Surname</h3>
+                    <h3 id="author_body_name" class="title-d">Bio<!-- Load From DB --></h3>
                   </div>
                 </div>
                 <div class="agent-content mb-3">
-                  <p class="content-d color-text-a">
-                    Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
-                    Vivamus suscipit tortor
-                    eget felis porttitor volutpat. Vivamus suscipit tortor eget felis porttitor volutpat.
-                  </p>
+                  <p id="author_bio" class="content-d color-text-a">Description<!-- Load From DB --></p>
                 </div>
               </div>
             </div>
           </div>
-        </div>-->
+        </div>
       </div>
     </div>
   </section>
@@ -152,15 +147,10 @@
             <div id="writtenBookDiv" class="row">
                 
             </div>
-                <div class="row">
+            <div class="row">
                 <div class="col-sm-12">
                   <nav class="pagination-a">
                     <ul class="pagination justify-content-end">
-                      <!--<li class="page-item">
-                        <a class="page-link" tabindex="-1">
-                          <span class="ion-ios-arrow-back"></span>
-                        </a>
-                      </li>-->
 					  <div id="pagDiv" class="pagination justify-content-end">
 						  <!--<li class="page-item active">
 							<a class="page-link" href="#">1</a>
@@ -172,11 +162,6 @@
 							<a class="page-link" href="#">3</a>
 						  </li>-->
 					  </div>
-                      <!--<li class="page-item next">
-                        <a class="page-link">
-                          <span class="ion-ios-arrow-forward"></span>
-                        </a>
-                      </li>-->
                     </ul>
                   </nav>
                 </div>
