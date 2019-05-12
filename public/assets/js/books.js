@@ -1,6 +1,8 @@
 console.log("Loading books page");
 new WOW().init();
 
+let urlParams = new URLSearchParams(window.location.search);
+
 let pageNumber;
 
 let genreJson;
@@ -13,13 +15,13 @@ let genresGroup = 'group1'; //radiogroup for genres
 let themesGroup = 'group2'; //radiogroup for themes
 let ratingGroup = 'group3'; //radiogroup for rating
 
-let mainFilter;
-let genreid;
-let themeid;
-let rating;
+let mainFilter = urlParams.get('filter');
+let genreid = urlParams.get('genre');
+let themeid = urlParams.get('theme');
+let rating = urlParams.get('rating');
 
-let offset = 0;
-let limit = 12;
+let offset = urlParams.get('offset') || 0;
+let limit = urlParams.get('limit') || 12;
 
 $(document).ready(function(){
 	//BOOKSBY SIDEBAR animation
@@ -69,7 +71,6 @@ $(document).ready(function(){
 		getBooks();
 	});
 	
-	
 	getBooksCount();
 	getGenres();
 	getThemes();
@@ -85,6 +86,8 @@ function getBooksCount(){
 	if(themeid) query += '&theme=' + themeid;
 	if(rating) query += '&rating=' + rating;
 	if(mainFilter) query += '&filter=' + mainFilter;
+	
+	console.log(query);
 	
 	fetch('/books/count' + query).then(function(response) {
 		return response.json();
