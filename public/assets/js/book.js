@@ -81,9 +81,36 @@ function getBookById(){
 
 function generatesBookHTML(){
 	fillHeader(bookJson.book, bookJson.authors)
+	fillMainPage(bookJson.book)
 }
 
 function fillHeader(book, author){
 	$("#titleH1").html(book.title);
+	
+	for(x = 0; x < author.length; x++)
+		$("#authorsDiv").append(
+			(x > 0 ? `<a class="authors-font">& </a>` :  ``) +
+			`	
+				<a class="authors-font" href="author.html?id=${author[x].id_author}" class="color-text-a">${author[x].name}</a>
+			`
+			);
+	
+	$("#ratingP").append(ratingHTML(book.rating));
+	$("#navigationLi").html(book.title);
+}
+
+function fillMainPage(book){
+	
+}
+
+// -------------- AUXILIARY FUNCTIONS ---------------
+
+function ratingHTML(rating){
+	var star = ``;
+	for(x = 0; x < rating; x++)
+		star += `<i class="fas fa-star color-b" aria-hidden="true"></i>`;
+	for(y = 0; y < 5-rating; y++)
+		star += `<i class="far fa-star color-b" aria-hidden="true"></i>`;
+	return star;
 }
     
