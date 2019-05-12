@@ -47,11 +47,9 @@ $(document).ready(function(){
       	$(this).addClass("active");
 
 		offset = $(this).val() * limit;
-        console.log("finocchio");
 		getWrittenBooks();
    	});
     getCountWrittenBooks();
-    console.log("finocchio1");
 	getAuthorsById();
 });
 
@@ -85,6 +83,7 @@ function getWrittenBooks(){
         return response.json();
     }).then(function(json) {
         writtenBookJson = json;
+		$("#writtenBookDiv").empty();
         if(!jQuery.isEmptyObject(writtenBookJson)){
             fillBooks(writtenBookJson.books, writtenBookJson.author)
         }else{
@@ -96,9 +95,8 @@ function getWrittenBooks(){
 }
 
 function getCountWrittenBooks(){
-    var query = id_author;
-    
-    fetch('/authors/' + query + '/count').then(function(response) {
+   
+    fetch('/authors/' + id_author + '/count').then(function(response) {
 		return response.json();
 	 }).then(function(json) {
         pageNumber = json.count;

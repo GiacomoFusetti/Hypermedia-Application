@@ -10,14 +10,16 @@ let bookId = urlParams.get('id');
 
 let bookJson;
 
+var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 
 $(document).ready(function(){
-    $('#paper-button').click(function(e) {
+    $('#pricePaperDiv').on('click', '#paper-button', function(e) {
 		$('#ebook-button').removeClass('active');
 		$(this).addClass('active');
 		e.preventDefault();
 	});
-	$('#ebook-button').click(function(e) {
+	$('#priceEBookDiv').on('click', '#ebook-button', function(e) {
 		$('#paper-button').removeClass('active');
 		$(this).addClass('active');
 		e.preventDefault();
@@ -46,7 +48,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	//PRICES BOX
+	// ?????????
   	$("#booksby").on("hide.bs.collapse", function(){
 		$(".h6").html('<i class="far fa-caret-square-down color-b"></i> Books By');
   	});
@@ -80,8 +82,9 @@ function getBookById(){
 // -------------- GENERATES HTML ---------------
 
 function generatesBookHTML(){
-	fillHeader(bookJson.book, bookJson.authors)
-	fillMainPage(bookJson.book)
+	fillHeader(bookJson.book, bookJson.authors);
+	fillBodyPage(bookJson.book);
+	fillBookDetailsEvent(bookJson.book, bookJson.genre[0], bookJson.themes, bookJson.event);
 }
 
 function fillHeader(book, author){
@@ -99,7 +102,87 @@ function fillHeader(book, author){
 	$("#navigationLi").html(book.title);
 }
 
-function fillMainPage(book){
+function fillBodyPage(book){
+	$("#coverImg").attr("src", book.cover_img);
+	$("#coverImg").attr("alt", book.title);
+	
+	$("#descP").html(book.description);
+	
+	switch(book.support){
+		case 'both':
+			$('#pricePaperDiv').html(`<span id="paper-button" class="price-button active">Paper | € ${parseFloat(book.price_paper).toFixed(2)}</span>`);
+			$('#priceEBookDiv').html(`<span id="ebook-button" class="price-button">eBook | € ${parseFloat(book.price_eBook).toFixed(2)}</span>`);
+			$('#addCartDiv').attr("class", `col-xs-12 col-md-12 col-lg-4 price-box`); 
+			break;
+		case 'paper':
+			$('#pricePaperDiv').html(`<span id="paper-button" class="price-button active">Paper | € ${parseFloat(book.price_paper).toFixed(2)}</span>`);
+			$('#priceEBookDiv').remove();
+			$('#addCartDiv').attr("class", `col-xs-6 col-md-6 col-lg-6 price-box`); 
+			break;
+		case 'eBook':
+			$('#pricePaperDiv').remove();
+			$('#priceEBookDiv').html(`<span id="ebook-button" class="price-button">eBook | € ${parseFloat(book.price_eBook).toFixed(2)}</span>`);
+			$('#addCartDiv').attr("class", `col-xs-6 col-md-6 col-lg-6 price-box`); 
+			break;
+	}
+}
+
+function fillBookDetailsEvent(book, genre, themes, event){
+	var detailsHTML = ``;
+	if(!event[0].id_event){
+		$('#detailsColDiv').attr('class', 'col-md-8 offset-md-2 col-lg-6 offset-lg-3 section-t2 foo');
+		$('#eventDiv').remove();
+	}else{
+		$('#detailsColDiv').attr('class', 'col-md-6 foo');
+		
+		fillEvent(event[0]);
+	}
+	
+	detailsHTML +=
+			`
+				<li class="d-flex justify-content-between">
+					<strong>Book ID:</strong>
+					<span>${book.id_book}</span>
+				</li>
+				<li class="d-flex justify-content-between">
+					<strong>Language:</strong>
+					<span>${book.language}</span>
+				</li>
+				<li class="d-flex justify-content-between">
+					<strong>Pages:</strong>
+					<span>${book.pages}</span>
+				</li>
+				<li class="d-flex justify-content-between">
+					<strong>Genre:</strong>
+					<span><a href="books.html?genre=${genre.id_genre}">${genre.name}</a></span>
+				</li>
+			`;
+		detailsHTML += `
+						<li class="d-flex justify-content-between">
+							<strong>Themes:</strong>
+							<span>
+					`;
+		for(x = 0; x < themes.length; x++)
+			detailsHTML += (x > 0 ? `<a class=""> - </a>` :  ``) +
+				`
+						<a href="books.html?theme=${themes[x].id_theme}">${themes[x].theme_name}</a>
+				`;
+		
+		detailsHTML += `</span>
+					</li>
+						`;
+		$('#detailsListUl').html(detailsHTML);
+	
+	
+}
+
+function fillEvent(event){
+	$('#eventTitleH2').html(event.name);
+	$('#eventLocationSpan').html(event.location);
+	$('#eventDateSpan').html(event.date_day + ' ' + month[event.date_month-1] + ' ' + event.date_year);
+	$('#eventDescP').html(event.desciption.substring(0, 150) + '. . .');
+	$('#eventLinkA').attr('href', 'event.html?id=' + event.id_event);
+	
 	
 }
 

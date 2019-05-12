@@ -9,7 +9,7 @@
         "when" : "from 10:00AM to 11.30AM",
         "location" : "476 5th Ave, New York, NY 10018, United States",
         "city" : "New York",
-        "desciption" : "The famous author of the bestseller \"Fifty Shades of Gray\", <b>E. L. James</b>, presents the last masterpiece of the series: \"Fifty Shades of Red\" at the <strong>New York Public Library</strong>. During the meeting it will be possible to have a signed copy of the book, it is an event not to be missed!",
+        "desciption" : "The famous author of the bestseller \"Fifty Shades of Gray\", <b>E. L. James</b>, presents the last masterpiece of the series: \"Fifty Shades of Red\" at the <b>New York Public Library</b>. During the meeting it will be possible to have a signed copy of the book, it is an event not to be missed!",
         "img" : "../assets/img/events/event-1.jpg"
     },
     
@@ -17,13 +17,13 @@
         "id_event" : 2,
         "id_book" : 1,
         "name" : "Discovering Middle-Earth",
-        "date_day" : 25,
+        "date_day" : 26,
         "date_month" : 6,
         "date_year" : 2019,
         "when" : "from 4:00PM to 5.30PM",
         "location" : "Piazza Gae Aulenti, 1, 20154 Milano MI",
         "city" : "Milan",
-        "desciption" : "Are you ready to immerse yourself in tales of dwarf elves and hobbits? Don't miss the event scheduled for Thursday, June 26 at the RED Feltrinelli in square Gae Aulenti! Parts of the book that has bewitched millions of fans of the fantasy genre will be read: <b>\"The Lord of the Rings - The Fellowship of the Ring\"<\b>. During the event there will be some actors of the famous saga, don't miss the chance to meet your heroes!",
+        "desciption" : "Are you ready to immerse yourself in tales of dwarf elves and hobbits? Don't miss the event scheduled for Thursday, June 26 at the RED Feltrinelli in square Gae Aulenti! Parts of the book that has bewitched millions of fans of the fantasy genre will be read: <b>\"The Lord of the Rings - The Fellowship of the Ring\"</b>. During the event there will be some actors of the famous saga, don't miss the chance to meet your heroes!",
         "img" : "../assets/img/events/event-2.jpg"
     },
     

@@ -73,12 +73,12 @@
 			<div class="row">
 				<div class="col-md-12 col-lg-9">
 					<div class="title-single-box">
-						<h1 id="titleH1" class="title-single"><!-- Load From DB--></h1>
+						<h1 id="titleH1" class="title-single"><!-- Load From DB --></h1>
 						<div id="authorsDiv">
-							<!-- Load From DB-->
+							<!-- Load From DB -->
 						</div>
 						<p id="ratingP">
-							<!-- Load From DB-->
+							<!-- Load From DB -->
 						</p>
 					</div>
 				</div>
@@ -91,7 +91,7 @@
 							<li class="breadcrumb-item">
 								<a href="books.html">Books</a>
 							</li>
-							<li id="navigationLi" class="breadcrumb-item active" aria-current="page"><!-- Load From DB--></li>
+							<li id="navigationLi" class="breadcrumb-item active" aria-current="page"><!-- Load From DB --></li>
 						</ol>
 					</nav>
 				</div>
@@ -106,7 +106,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-lg-4">
-					<img src="../assets/img/books/book-1.jpg" alt="" class="img-fluid">
+					<img id="coverImg" src="" alt="" class="img-fluid"><!-- Load From DB -->
 				</div>
 				<div class="col-md-6 col-lg-8">
 					<div class="row">
@@ -114,23 +114,18 @@
 							<div class="title-box-d">
 								<h3 class="title-d">Description</h3>
 							</div>
-							<p class="color-text-a"> Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Quisque velit nisi, pretium ut lacinia in, elementum id enim. </p>
-							<p class="color-text-a"> Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Quisque velit nisi, pretium ut lacinia in, elementum id enim. </p>
+							<p id="descP" class="color-text-a"><!-- Load From DB --></p>
 						</div>
 					</div>
 
-					<div class="row" style="line-height: 40px;">
-						<div class="col price-box text-center">
-							<div class="text-center">
-								<span id="paper-button" class="price-button active">Paper | € 19.90</span>
-							</div>
+					<div id="pricesRowDiv" class="row" style="line-height: 40px;">
+						<div id="pricePaperDiv" class="col price-box text-center">
+							<!-- Load From DB -->
 						</div>
-						<div class="col price-box text-center">
-							<div class="text-center">
-								<span id="ebook-button" class="price-button">eBook | € 9.90</span>
-							</div>
+						<div id="priceEBookDiv"  class="col price-box text-center">
+							<!-- Load From DB -->
 						</div>
-						<div class="col-xs-12 col-md-12 col-lg-4 price-box">
+						<div id="addCartDiv" class="col-xs-12 col-md-12 col-lg-4 price-box"><!-- Load From DB -->
 							<div class="text-center">
 								<button class="btn btn-success">
 									<span style="margin-right:20px" class="fa fa-shopping-cart fa-lg" aria-hidden="true"></span> Add to Cart </button>
@@ -141,32 +136,13 @@
 			</div>
 			<div class="property-summary">
 				<div class="row">
-					<div class="col-md-6 foo">
+					<div id="detailsColDiv" class="col-md-6 foo">
 						<div class="title-box-d section-t3">
 							<h3 class="title-d">Details</h3>
 						</div>
                         <div class="summary-list">
-                            <ul class="list">
-                                <li class="d-flex justify-content-between">
-                                    <strong>Book ID:</strong>
-                                    <span>1</span>
-                                </li>
-                                <li class="d-flex justify-content-between">
-                                    <strong>Availability:</strong>
-                                    <span>Available</span>
-                                </li>
-                                <li class="d-flex justify-content-between">
-                                    <strong>Language:</strong>
-                                    <span>English</span>
-                                </li>
-                                <li class="d-flex justify-content-between">
-                                    <strong>Pages:</strong>
-                                    <span>666</span>
-                                </li>
-                                <li class="d-flex justify-content-between">
-                                    <strong>Genre:</strong>
-                                    <span>Fantasy</span>
-                                </li>
+                            <ul id="detailsListUl" class="list">
+								<!-- Load From DB -->
                                 <li class="d-flex justify-content-between">
                                     <strong>Themes:</strong>
                                     <span>Friendship - War - Dwarfs</span>
@@ -174,36 +150,36 @@
                             </ul>
                         </div>
 					</div>
-                    <div class="col-md-6">
+                    <div id="eventDiv" class="col-md-6">
 						<div class="card-box-c foo section-t3">
                             <div class="card-header-c d-flex">
                                 <div class="card-box-ico">
                                     <span class="fa fa-calendar-check-o"></span>
                                 </div>
                                 <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Event - Title</h2>
+                                    <h2 id="eventTitleH2" class="title-c">Event - Title</h2>
                                 </div>
                             </div>
                             <div class="card-body-c">
                                 <ul class="list-inline text-center color-a">
                                       <li class="list-inline-item mr-2">
                                         <i class="fas fa-map-marker color-b" aria-hidden="true"></i>
-                                        <span class="color-text-a">Piazza Leonardo da Vinci, 32, 20133 Milano MI</span>
+                                        <span id="eventLocationSpan" class="color-text-a">Piazza Leonardo da Vinci, 32, 20133 Milano MI</span>
                                       </li>
                                       <li class="list-inline-item  color-b"  aria-hidden="true">
                                         <i class="far fa-calendar-check"></i>
-                                        <span class="color-text-a">19 Apr. 2017</span>
+                                        <span id="eventDateSpan" class="color-text-a">19 Apr. 2017</span>
                                       </li>
                                 </ul>
                             </div>
                             <div class="card-body-c">
-                                <p class="content-c">
+                                <p id="eventDescP" class="content-c">
                                     Stay up to date on the presentation events of the book you like the most.
                                 </p>
                             </div>
                             <div class="card-footer-c">
-                                <a href="#" class="link-c link-icon">Read more
-                                <span class="ion-ios-arrow-forward"></span>
+                                <a id="eventLinkA" href="" class="link-c link-icon">Read more
+                                	<span class="ion-ios-arrow-forward"></span>
                                 </a>
                             </div>
                         </div>

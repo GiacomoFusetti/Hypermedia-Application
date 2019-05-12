@@ -93,7 +93,7 @@ function generatesHTML(){
                           </h2>
                         </div>
                         <div class="card-date">
-                          <span class="date-b">${eventsJson[i].date_day} ${month[eventsJson[i].date_month]} ${eventsJson[i].date_year}</span>
+                          <span class="date-b">${eventsJson[i].date_day} ${month[eventsJson[i].date_month-1]} ${eventsJson[i].date_year}</span>
                         </div>
                       </div>
                     </div>
