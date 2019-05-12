@@ -1,4 +1,14 @@
 console.log("Loading book page");
+let urlParams = new URLSearchParams(window.location.search);
+
+let pageNumber;
+
+let offset = urlParams.get('offset') || 0;
+let limit = urlParams.get('limit') || 6;
+
+let bookId = urlParams.get('id');
+
+let bookJson;
 
 
 $(document).ready(function(){
@@ -36,17 +46,44 @@ $(document).ready(function(){
 		}
 	});
 	
-
+	//PRICES BOX
   	$("#booksby").on("hide.bs.collapse", function(){
-		console.log("wewe");
 		$(".h6").html('<i class="far fa-caret-square-down color-b"></i> Books By');
   	});
   	$("#booksby").on("show.bs.collapse", function(){
 		$(".h6").html('<i class="far fa-caret-square-up color-b"></i> Books By');
   	});
+	
+	getBookById();
 });
 
+// -------------- REQUESTS ---------------
 
+function getBookById(){
+	var query = '?offset=' + offset + '&limit=' + limit;
+	
+	console.log(bookId + ' ' + query);
+	
+	fetch('/books/' + bookId + query).then(function(response) {
+		return response.json();
+	}).then(function(json) {
+		bookJson = json;
+		console.log(bookJson);
+		if(!jQuery.isEmptyObject(bookJson)){
+			generatesBookHTML();
+		}else{
+			// TODO
+		}
+ 	});
+}
 
-    
+// -------------- GENERATES HTML ---------------
+
+function generatesBookHTML(){
+	fillHeader(bookJson.book, bookJson.authors)
+}
+
+function fillHeader(book, author){
+	$("#titleH1").html(book.title);
+}
     

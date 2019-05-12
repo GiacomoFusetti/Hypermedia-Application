@@ -50,11 +50,6 @@
     },
     
     {
-        "id_book" : 1,
-        "id_similarBook" : 4 
-    },
-    
-    {
         "id_book" : 2,
         "id_similarBook" : 1 
     },

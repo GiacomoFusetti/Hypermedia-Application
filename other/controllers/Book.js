@@ -49,13 +49,45 @@ module.exports.getBooksCount = function getBooksCount (req, res, next) {
 
 module.exports.getBookById = function getBookById (req, res, next) {
 	
-  var bookId = req.swagger.params['Id_book'].value;
+	req.swagger.params['offset'].value ? offset = req.swagger.params['offset'].value : offset = 0;
+  	req.swagger.params['limit'].value ? limit = req.swagger.params['limit'].value : limit = 6;
 	
-  BookService.getBookById(bookId)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+  	var bookId = req.swagger.params['Id_book'].value;
+	
+  	BookService.getBookById(offset, limit, bookId)
+	.then(function (response) {
+	  	utils.writeJson(res, response);
+	})
+	.catch(function (response) {
+	  	utils.writeJson(res, response);
+	});
 };
+
+module.exports.getRelatedBooksById = function getRelatedBooksById (req, res, next) {
+	
+	req.swagger.params['offset'].value ? offset = req.swagger.params['offset'].value : offset = 0;
+  	req.swagger.params['limit'].value ? limit = req.swagger.params['limit'].value : limit = 6;
+	
+  	var bookId = req.swagger.params['Id_book'].value;
+	
+  	BookService.getRelatedBooksById(offset, limit, bookId)
+	.then(function (response) {
+	  	utils.writeJson(res, response);
+	})
+	.catch(function (response) {
+	  	utils.writeJson(res, response);
+	});
+}
+
+module.exports.getRelatedBooksCountById = function getRelatedBooksCountById (req, res, next) {
+	var bookId = req.swagger.params['Id_book'].value;
+	
+	BookService.getRelatedBooksCountById(bookId)
+	.then(function (response) {
+		response = response[0];
+	  	utils.writeJson(res, response);
+	})
+	.catch(function (response) {
+	  	utils.writeJson(res, response);
+	});
+}

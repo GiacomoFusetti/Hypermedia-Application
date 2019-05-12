@@ -106,39 +106,8 @@ exports.getBooksCount = function(genre, theme, rating, filter){
  * bookId Long ID of book to return
  * returns Book
  **/
-exports.getBookById = function(bookId) {
+exports.getBookById = function(offset, limit, bookId) {
 	sqlDb = database;
-	
-	/*var fields = ['book.id_book', 'book.description', 'book.pages', 'book.our_favorite', 'book.best_seller', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support', 'book.rating'];
-	 
-	var query = sqlDb('book')
-		//join with Author
-		.innerJoin('book_author', {'book.id_book' :  'book_author.id_book'})
-		.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
-		//join with Genre
-		.innerJoin('genre', {'book.id_genre' : 'genre.id_genre'})
-		//join with Theme
-		.innerJoin('book_theme', {'book.id_book' :  'book_theme.id_book'})
-		.innerJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
-		//join with Event
-		.leftJoin('event', {'book.id_book' : 'event.id_book'})
-		.select(['book.id_book', 'book.description', 'book.pages', 'book.our_favorite', 'book.best_seller', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support', 'book.rating',
-				sqlDb.raw('ARRAY_AGG(DISTINCT author.name) as auth_names'),
-				sqlDb.raw('ARRAY_AGG(DISTINCT author.id_author) as auth_ids'),
-				sqlDb.raw('ARRAY_AGG(DISTINCT genre.name) as genre_name'),
-				sqlDb.raw('ARRAY_AGG(DISTINCT genre.id_genre) as genre_id'), 
-				sqlDb.raw('ARRAY_AGG(DISTINCT theme.theme_name) as theme_names'),
-				sqlDb.raw('ARRAY_AGG(DISTINCT theme.id_theme) as theme_ids'),
-				sqlDb.raw('json_agg(DISTINCT event) as event')])
-
-		.where('book.id_book', bookId)
-		.groupBy(fields);
-	
-	return query.then(data => {
-		return data.map(e => {
-			return e;
-	  	});
-	});*/
 	
 	let results = {};
 	
@@ -170,11 +139,76 @@ exports.getBookById = function(bookId) {
 									.where('book.id_book', bookId)
 									.select('event.*').then(result => {
 										results['event']=result;
-										return results;
+										return sqlDb.from('book')
+										//join with SimilarBooks
+										.innerJoin('book_similarBook', {'book.id_book' :  'book_similarBook.id_book'})
+										.innerJoin('book as book2', {'book2.id_book' : 'book_similarBook.id_similarBook'})
+										//join with Theme
+										.leftJoin('book_theme', {'book2.id_book' :  'book_theme.id_book'})
+										.leftJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
+										.where('book_similarBook.id_book', bookId)
+										.distinct('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
+										.select(sqlDb.raw('ARRAY_AGG(DISTINCT theme.theme_name) as theme_names'))
+										.groupBy('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
+										.orderBy('book2.id_book')
+										.limit(limit)
+										.offset(offset).then(result => {
+											results['similar_books']=result;
+											return results;
+											});
 									});
 							});
 					});
 			});
     });
 	
-};
+}
+
+/**
+ * Find related book by ID
+ * Returns a set of books
+ *
+ * bookId Long ID of book to return
+ * returns Book
+ **/
+exports.getRelatedBooksById = function(offset, limit, bookId) {
+	sqlDb = database;
+	
+	let results = {};
+	
+	return sqlDb.from('book')
+		//join with SimilarBooks
+		.innerJoin('book_similarBook', {'book.id_book' :  'book_similarBook.id_book'})
+		.innerJoin('book as book2', {'book2.id_book' : 'book_similarBook.id_similarBook'})
+		//join with Theme
+		.leftJoin('book_theme', {'book2.id_book' :  'book_theme.id_book'})
+		.leftJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
+		.where('book_similarBook.id_book', bookId)
+		.distinct('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
+		.select(sqlDb.raw('ARRAY_AGG(DISTINCT theme.theme_name) as theme_names'))
+		.groupBy('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
+		.orderBy('book2.id_book')
+		.limit(limit)
+		.offset(offset).then(result => {
+			results['similar_books']=result;
+			return results;
+		});
+}
+
+/**
+* Get number of related books of a book by ID
+**/
+exports.getRelatedBooksCountById = function(bookId){
+	sqlDb = database;
+	
+	return sqlDb('book')
+		.count('*')
+		//join with SimilarBooks
+		.innerJoin('book_similarBook', {'book.id_book' :  'book_similarBook.id_book'})
+		.innerJoin('book as book2', {'book2.id_book' : 'book_similarBook.id_similarBook'})
+		.where('book.id_book', bookId).then(data => {
+			return data.map(e => {
+				return e;
+	  	});
+	});
+}
