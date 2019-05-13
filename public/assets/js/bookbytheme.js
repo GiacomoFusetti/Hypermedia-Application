@@ -1,22 +1,22 @@
 console.log("Loading book_by_genre page");
 new WOW().init();
 
-let bookByGenreJson;
+let bookByThemeJson;
 
 $(document).ready(function(){
-	getBookByGenre();
+	getBookByTheme();
 });
 				  
 // -------------- REQUESTS ---------------
 
-function getBookByGenre(){
+function getBookByTheme(){
 	
-	fetch('/books_by_genre').then(function(response) {
+	fetch('/books_by_theme').then(function(response) {
 		return response.json();
 	}).then(function(json) {
-		bookByGenreJson = json;
-		if(!jQuery.isEmptyObject(bookByGenreJson)){
-			generatesBookByGenreHTML();
+		bookByThemeJson = json;
+		if(!jQuery.isEmptyObject(bookByThemeJson)){
+			generatesBookByThemeHTML();
 		}else{
 			// TODO
 		}
@@ -25,21 +25,21 @@ function getBookByGenre(){
 
 // -------------- GENERATES HTML ---------------
 
-function generatesBookByGenreHTML(){
-	
-	for(x = 0; x < bookByGenreJson.length; x++){
-		var genreHTML = ``;
-		var genre = bookByGenreJson[x];
+function generatesBookByThemeHTML(){
+
+	for(x = 0; x < bookByThemeJson.length; x++){
+		var themeHTML = ``;
+		var theme = bookByThemeJson[x];
 		
-		genreHTML += `<div class="property-agent">
+		themeHTML += `<div class="property-agent">
 								<div class="title-box-d section-t1">
-									<h3 class="title-d"><a class="pointer-a" href='books.html?genre=${genre.id_genre}'>${genre.name}</a></h3>
+									<h3 class="title-d"><a class="pointer-a" href='books.html?theme=${theme.id_theme}'>${theme.theme_name}</a></h3>
 								</div>
 							<div class="row">`;
-		for(y = 0; y < genre.books.length; y++){
-			var book = genre.books[y];
-			var authors = genre.books[y].f6
-			genreHTML +=`
+		for(y = 0; y < theme.books.length; y++){
+			var book = theme.books[y];
+			var authors = theme.books[y].f6
+			themeHTML +=`
 						<div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 book-img-margin">
 							<div class="book-img-margin-child wow zoomIn" data-wow-duration="1s">
 								<div class="img-box-a">
@@ -64,8 +64,8 @@ function generatesBookByGenreHTML(){
 						</div>
 						`;
 		}
-		genreHTML += `</div></div>`;
-		$('#bodyDiv').append(genreHTML);		
+		themeHTML += `</div></div>`;
+		$('#bodyDiv').append(themeHTML);		
 	}
 	
 }
