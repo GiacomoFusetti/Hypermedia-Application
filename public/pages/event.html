@@ -78,8 +78,8 @@
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">Event - Title</h1>
-            <span class="color-text-a">Book - Title</span>
+            <h1 id="event_title" class="title-single">Event - Title<!-- Load From DB--></h1>
+            <span id="book_title" class="color-text-a">Book - Title<!-- Load From DB--></span>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -91,7 +91,7 @@
               <li class="breadcrumb-item active" aria-current="page">
                 <a href="../pages/events.html">Events</a>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li id="event_name" class="breadcrumb-item active" aria-current="page">
                   <span>Event - Title</span>
               </li>
             </ol>
@@ -337,6 +337,7 @@
 
   <!-- Template Main Javascript File -->
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/event.js"></script>    
 
 </body>
 </html>

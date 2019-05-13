@@ -14,7 +14,7 @@ exports.eventsGET = function(offset, limit, current_month) {
         .offset(offset)
         .orderBy([{column : 'event.date_year', order: 'desc'}, {column : 'event.date_month', order: 'desc'}, {column : 'event.date_day', order: 'desc'}]);
     if(current_month)
-        query.where('event.date_month',new Date().getMonth() + 2)
+        query.where('event.date_month',new Date().getMonth() + 1)
              .where('event.date_year',new Date().getYear() + 1900);
     
 	return query.then(data => {
@@ -22,6 +22,56 @@ exports.eventsGET = function(offset, limit, current_month) {
 			return e;
 	  	});
 	});
+};
+
+/**
+ * Find Event by ID
+ * Returns the event with with the relatet book
+ *
+ * eventId Long ID of author to return
+ **/
+exports.getEventById = function(eventId) {
+	sqlDb = database;
+    
+    let results = {};
+    
+    return sqlDb.from('event').select('*').where('event.id_event', eventId).then(result => {
+        results['event']=result[0];
+        return sqlDb.from('event')
+            //join with book
+            .innerJoin('book', {'event.id_book' : 'book.id_book'})
+            .where('event.id_event', eventId)
+            .select('book.*').then(result => {
+                    results['book']=result[0];
+                    return sqlDb.from('event')
+                        //join with genre
+                        .innerJoin('book', {'event.id_book' : 'book.id_book'})
+                        .innerJoin('genre', {'book.id_genre' : 'genre.id_genre'})
+                        .where('event.id_event', eventId)
+                        .select('genre.id_genre','genre.name').then(result => {
+                            results['genre']=result[0];
+                            return sqlDb.from('event')
+                                //join with theme
+                                .innerJoin('book', {'event.id_book' : 'book.id_book'})
+                                .innerJoin('book_theme', {'book.id_book' : 'book_theme.id_book'})
+                                .innerJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
+                                .where('event.id_event', eventId)
+                                .select('theme.id_theme', 'theme.theme_name').then(result => {
+                                    results['themes']=result;
+                                    return sqlDb.from('event')
+                                        //join with author
+                                        .innerJoin('book', {'event.id_book' : 'book.id_book'})
+                                        .innerJoin('book_author', {'book.id_book' : 'book_author.id_book'})
+                                        .innerJoin('author', {'book_author.id_author' : 'author.id_author'})
+                                        .where('event.id_event', eventId)
+                                        .select('author.id_author', 'author.name').then(result => {
+                                            results['authors']=result;
+                                            return results;
+                            });
+                        });
+                    });
+                });
+            });
 };
 
 /**
@@ -33,7 +83,7 @@ exports.getEventsCount = function(offset,limit,current_month) {
     
 	var query = sqlDb('event').count('*');
         if(current_month)
-            query.where('event.date_month',new Date().getMonth() + 2)
+            query.where('event.date_month',new Date().getMonth() + 1)
                  .where('event.date_year',new Date().getYear() + 1900);
 	
 	return query.then(data => {
