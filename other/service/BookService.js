@@ -239,7 +239,7 @@ exports.booksByGenreGET = function(offset, limit){
 		.innerJoin('genre', {'book.id_genre' : 'genre.id_genre'})
 		.distinct('genre.id_genre', 'genre.name')
 		.select(sqlDb.raw('JSONB_AGG(DISTINCT(book.id_book, book.title, book.price_paper, book.price_ebook, book.cover_img, book.support, ' + subQuery + ')) as books'))
-		.groupBy('genre.id_genre', 'genre.name')
+		.groupBy('genre.name', 'genre.id_genre')
 		.orderBy('genre.id_genre', 'genre.name')
 		.then(data => {
 			return data.map(e => {
@@ -266,8 +266,9 @@ exports.booksByThemeGET = function(offset, limit){
 		.innerJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
 		.distinct('theme.id_theme', 'theme.theme_name')
 		.select(sqlDb.raw('JSONB_AGG(DISTINCT(book.id_book, book.title, book.price_paper, book.price_ebook, book.cover_img, book.support,' + subQuery + ' )) as books'))
-		.groupBy('theme.id_theme', 'theme.theme_name')
-		.orderBy('theme.id_theme', 'theme.theme_name')
+		.from(sqlDb.raw('book'))
+		.groupBy('theme.theme_name', 'theme.id_theme')
+		.orderBy('theme.theme_name', 'theme.id_theme')
 		.then(data => {
 			return data.map(e => {
 				return e;
