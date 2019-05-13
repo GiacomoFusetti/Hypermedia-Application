@@ -175,6 +175,10 @@ function fillBookDetailsEvent(book, genre, themes, event){
 					<span>${book.pages}</span>
 				</li>
 				<li class="d-flex justify-content-between">
+					<strong>Support:</strong>
+					<span>` + supportHTML(book.support) + `</span>
+				</li>
+				<li class="d-flex justify-content-between">
 					<strong>Genre:</strong>
 					<span><a href="books.html?genre=${genre.id_genre}">${genre.name}</a></span>
 				</li>
@@ -269,6 +273,17 @@ function priceHTML(support, price_paper, price_ebook){
 			return parseFloat(price_paper).toFixed(2);
 		default:
 			return 'NaN';
+	}
+}
+
+function supportHTML(support){
+	switch(support){
+		case 'both':
+			return 'eBook & paper based';
+		case 'eBook':
+		case 'paper':
+		default:
+			return support + ' based';
 	}
 }
 
