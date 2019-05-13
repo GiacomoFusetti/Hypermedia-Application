@@ -11,6 +11,11 @@ let bookJson;
 
 let relatedBookJson;
 
+let bookPrice;
+let bookSupport;
+
+let book = {};
+
 var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 
@@ -19,11 +24,17 @@ $(document).ready(function(){
 		$('#ebook-button').removeClass('active');
 		$(this).addClass('active');
 		e.preventDefault();
+		
+		bookSupport = 'paper';
+		bookPrice = $('#paper-button').attr('value');
 	});
 	$('#priceEBookDiv').on('click', '#ebook-button', function(e) {
 		$('#paper-button').removeClass('active');
 		$(this).addClass('active');
 		e.preventDefault();
+		
+		bookSupport = 'ebook';
+		bookPrice = $('#ebook-button').attr('value');
 	});	
 	// ?????????
   	$("#booksby").on("hide.bs.collapse", function(){
@@ -32,6 +43,18 @@ $(document).ready(function(){
   	$("#booksby").on("show.bs.collapse", function(){
 		$(".h6").html('<i class="far fa-caret-square-up color-b"></i> Books By');
   	});
+	// ADD TO CART ON CLICK
+	$('#addCartDiv').on('click', '#addCartBtn', function(e) {
+		var currentBook = bookJson.book;
+		book['Id_book'] = currentBook.id_book;
+		book['title'] = currentBook.title;
+		book['cover_img'] = currentBook.cover_img;
+		book['price'] = bookPrice;
+		book['support'] = bookSupport;
+		
+		console.log(book);
+		postCurrentBook();
+	});
 	
 	//PAGINATION
 	$("#pagDiv").on("click", "li.page-item", function() {
@@ -99,6 +122,22 @@ function getRealtedBooks(){
     });
 }
 
+function postCurrentBook(){
+	fetch('/cart', {
+    	body: JSON.stringify(book),
+		headers: {
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json'
+		},
+        method: "POST",
+    }).then(function(response) {
+        response.json().then(function(json) {
+			console.log(json);
+			
+        });
+    });
+}
+
 // -------------- GENERATES HTML ---------------
 
 function generatesBookHTML(){
@@ -132,19 +171,25 @@ function fillBodyPage(book){
 	
 	switch(book.support){
 		case 'both':
-			$('#pricePaperDiv').html(`<span id="paper-button" class="price-button active">Paper | € ${parseFloat(book.price_paper).toFixed(2)}</span>`);
-			$('#priceEBookDiv').html(`<span id="ebook-button" class="price-button">eBook | € ${parseFloat(book.price_ebook).toFixed(2)}</span>`);
+			$('#pricePaperDiv').html(`<span id="paper-button" value="${parseFloat(book.price_paper).toFixed(2)}"  class="price-button active">Paper | € ${parseFloat(book.price_paper).toFixed(2)}</span>`);
+			$('#priceEBookDiv').html(`<span id="ebook-button" value="${parseFloat(book.price_ebook).toFixed(2)}" class="price-button">eBook | € ${parseFloat(book.price_ebook).toFixed(2)}</span>`);
 			$('#addCartDiv').attr("class", `col-xs-12 col-md-12 col-lg-4 price-box`); 
+			bookSupport = 'paper';
+			bookPrice = parseFloat(book.price_paper).toFixed(2);
 			break;
 		case 'paper':
-			$('#pricePaperDiv').html(`<span id="paper-button" class="price-button active">Paper | € ${parseFloat(book.price_paper).toFixed(2)}</span>`);
+			$('#pricePaperDiv').html(`<span id="paper-button" value="${parseFloat(book.price_paper).toFixed(2)}" class="price-button active">Paper | € ${parseFloat(book.price_paper).toFixed(2)}</span>`);
 			$('#priceEBookDiv').remove();
 			$('#addCartDiv').attr("class", `col-xs-6 col-md-6 col-lg-6 price-box`); 
+			bookSupport = book.support;
+			bookPrice = parseFloat(book.price_paper).toFixed(2);
 			break;
 		case 'eBook':
 			$('#pricePaperDiv').remove();
-			$('#priceEBookDiv').html(`<span id="ebook-button" class="price-button">eBook | € ${parseFloat(book.price_ebook).toFixed(2)}</span>`);
+			$('#priceEBookDiv').html(`<span id="ebook-button" value="${parseFloat(book.price_ebook).toFixed(2)}" class="price-button active">eBook | € ${parseFloat(book.price_ebook).toFixed(2)}</span>`);
 			$('#addCartDiv').attr("class", `col-xs-6 col-md-6 col-lg-6 price-box`); 
+			bookSupport = book.support;
+			bookPrice = parseFloat(book.price_ebook).toFixed(2);
 			break;
 	}
 }

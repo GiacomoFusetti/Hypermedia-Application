@@ -1,43 +1,58 @@
 'use strict';
 
+let { database } = require('./DataLayer');
+let sqlDb;
 
 /**
  * View the content of the cart
  *
- * cartId Long 
+ * userId integer 
+ * offset integer, limit integer
  * returns Cart
  **/
-exports.cartCartIdGET = function(cartId) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "total" : {
-    "currency" : "eur",
-    "value" : 8.008281904610117E13
-  },
-  "books" : [ {
-    "id" : 0,
-    "title" : "Il deserto dei tartari",
-    "author" : "Dino Buzzati",
-    "price" : {
-      "value" : 10,
-      "currency" : "eur"
-    }
-  }, {
-    "id" : 0,
-    "title" : "Il deserto dei tartari",
-    "author" : "Dino Buzzati",
-    "price" : {
-      "value" : 10,
-      "currency" : "eur"
-    }
-  } ]
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+exports.getCartById = function(offset, limit, userId) {
+
 }
+
+/**
+ * Add a book in the cart
+ *
+ * userId integer
+ * book Book
+ **/
+exports.addBookById = function(userId, book) {
+
+}
+
+/**
+ * Get the number of books in the cart
+ *
+ * userId integer
+ * return integer
+ **/
+exports.getCartCountById = function(userId) {
+
+}
+
+/**
+ * Update a books in the cart
+ *
+ * userId integer
+ * bookId integer
+ * book Book
+ **/
+exports.updateBookById = function(userId, bookId, book) {
+
+}
+
+/**
+ * Delete a books in the cart
+ *
+ * userId integer
+ * bookId integer
+ **/
+exports.deleteBookById = function(userId, bookId) {
+
+}
+
 

@@ -105,7 +105,7 @@ jQuery(document).ready(function($) {
 function postRegister(form) {
     var str = form.serialize()
 
-    fetch('../user/register', {
+    fetch('/user/register', {
         body: str,
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         method: "post",
@@ -126,7 +126,7 @@ function postRegister(form) {
 function postLogin(form) {
     var str = form.serialize()
 
-    fetch('../user/login', {
+    fetch('/user/login', {
         body: str,
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         method: "post",

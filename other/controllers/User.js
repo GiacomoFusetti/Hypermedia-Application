@@ -4,7 +4,6 @@ var utils = require("../utils/writer.js");
 var UserService = require("../service/UserService");
 
 module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
-    console.log("userLoginPOST");
     var email = req.swagger.params["email"].value;
     var password = req.swagger.params["password"].value;
     
@@ -18,7 +17,7 @@ module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
                 req.session.loggedin = true;
                 req.session.user = response[0];
                 req.sessionOptions.maxAge = req.session.maxAge || req.sessionOptions.maxAge
-                //console.log(req.session.user);
+                //console.log(req.session.user.id_user);
             }
             utils.writeJson(res, response);
         }
