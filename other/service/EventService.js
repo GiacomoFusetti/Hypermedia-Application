@@ -14,7 +14,7 @@ exports.eventsGET = function(offset, limit, current_month) {
         .offset(offset)
         .orderBy([{column : 'event.date_year', order: 'desc'}, {column : 'event.date_month', order: 'desc'}, {column : 'event.date_day', order: 'desc'}]);
     if(current_month)
-        query.where('event.date_month',new Date().getMonth() + 1)
+        query.where('event.date_month',new Date().getMonth() + 2)
              .where('event.date_year',new Date().getYear() + 1900);
     
 	return query.then(data => {
@@ -28,10 +28,13 @@ exports.eventsGET = function(offset, limit, current_month) {
  * Get number of events in db
  * return a number
  **/
-exports.getEventsCount = function(offset,limit) {
+exports.getEventsCount = function(offset,limit,current_month) {
 	sqlDb = database;
-	
-	var query = sqlDb("event").count("*");
+    
+	var query = sqlDb('event').count('*');
+        if(current_month)
+            query.where('event.date_month',new Date().getMonth() + 2)
+                 .where('event.date_year',new Date().getYear() + 1900);
 	
 	return query.then(data => {
 		return data.map(e => {

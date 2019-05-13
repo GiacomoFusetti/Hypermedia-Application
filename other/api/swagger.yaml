@@ -456,7 +456,8 @@ paths:
         in: "query"
         description: "Retrive events of the current month."
         required: false
-        type: "integer"  
+        type: "integer"
+        enum: [0, 1]  
       responses:
         200:
           description: "A collection of Events"
@@ -487,6 +488,12 @@ paths:
         description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
         required: false
         type: "integer"
+      - name: "current_month"
+        in: "query"
+        description: "Retrive events of the current month."
+        required: false
+        type: "integer"
+        enum: [0, 1]
       responses:
         200:
           description: "successful operation"

@@ -3,8 +3,9 @@ console.log("Loading events page");
 let eventsJson;
 let this_month;
 
-let offset = 0;
-let limit = 6;
+let urlParams = new URLSearchParams(window.location.search);
+let offset = urlParams.get('offset') || 0;
+let limit = urlParams.get('limit') || 6;
 
 var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -23,6 +24,8 @@ $(document).ready(function(){
     
     $("select.custom-select").change(function(){
         this_month = $(this).children("option:selected").val();
+        offset = 0;
+        getEventsCount();
         getEvents();
     });
     getEventsCount();
@@ -38,11 +41,12 @@ function getPage(num){
 function getEvents(){
     var query = '?offset=' + offset + '&limit=' + limit;
 	if(this_month) query += '&current_month=' + this_month;
-    
+    console.log(query);
 	fetch('/events' + query).then(function(response) {
 		return response.json();
 	 }).then(function(json) {
 		eventsJson = json;
+        console.log(eventsJson);
         $("#eventsDiv").empty();
         if(!jQuery.isEmptyObject(eventsJson)){
 			generatesHTML();
@@ -57,6 +61,8 @@ function getEvents(){
 function getEventsCount(){
     
 	var query = '?offset=' + offset + '&limit=' + limit;
+    
+	if(this_month) query += '&current_month=' + this_month;
     
     fetch('/events/count' + query).then(function(response) {
 		return response.json();

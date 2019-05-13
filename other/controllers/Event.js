@@ -27,7 +27,11 @@ module.exports.eventsGET = function eventsGET (req, res, next) {
 
 module.exports.getEventsCount = function getEventsCount(req, res, next) {
     
-    EventService.getEventsCount()
+    req.swagger.params['offset'].value ? offset = req.swagger.params['offset'].value : offset = 0;
+    req.swagger.params['limit'].value ? limit = req.swagger.params['limit'].value : limit = 6;
+    req.swagger.params['current_month'].value ? current_month = req.swagger.params['current_month'].value : current_month = undefined;
+    
+    EventService.getEventsCount(offset,limit,current_month)
         .then(function (response) {
             response = response[0];
             utils.writeJson(res, response);
