@@ -24,31 +24,7 @@ $(document).ready(function(){
 		$('#paper-button').removeClass('active');
 		$(this).addClass('active');
 		e.preventDefault();
-	});
-        
-    $('.owl-carousel').owlCarousel({
-        margin:10,
-        loop:true,
-        autoWidth:true,
-        items:4
-    })
-	/*--/ Related books owl /--*/
-	$('#books-carousel').owlCarousel({
-		loop: true,
-		margin: 30,
-		responsive: {
-			0: {
-				items: 1,
-			},
-			769: {
-				items: 2,
-			},
-			992: {
-				items: 3,
-			}
-		}
-	});
-	
+	});	
 	// ?????????
   	$("#booksby").on("hide.bs.collapse", function(){
 		$(".h6").html('<i class="far fa-caret-square-down color-b"></i> Books By');
@@ -157,7 +133,7 @@ function fillBodyPage(book){
 	switch(book.support){
 		case 'both':
 			$('#pricePaperDiv').html(`<span id="paper-button" class="price-button active">Paper | € ${parseFloat(book.price_paper).toFixed(2)}</span>`);
-			$('#priceEBookDiv').html(`<span id="ebook-button" class="price-button">eBook | € ${parseFloat(book.price_eBook).toFixed(2)}</span>`);
+			$('#priceEBookDiv').html(`<span id="ebook-button" class="price-button">eBook | € ${parseFloat(book.price_ebook).toFixed(2)}</span>`);
 			$('#addCartDiv').attr("class", `col-xs-12 col-md-12 col-lg-4 price-box`); 
 			break;
 		case 'paper':
@@ -167,7 +143,7 @@ function fillBodyPage(book){
 			break;
 		case 'eBook':
 			$('#pricePaperDiv').remove();
-			$('#priceEBookDiv').html(`<span id="ebook-button" class="price-button">eBook | € ${parseFloat(book.price_eBook).toFixed(2)}</span>`);
+			$('#priceEBookDiv').html(`<span id="ebook-button" class="price-button">eBook | € ${parseFloat(book.price_ebook).toFixed(2)}</span>`);
 			$('#addCartDiv').attr("class", `col-xs-6 col-md-6 col-lg-6 price-box`); 
 			break;
 	}
@@ -218,8 +194,6 @@ function fillBookDetailsEvent(book, genre, themes, event){
 					</li>
 						`;
 		$('#detailsListUl').html(detailsHTML);
-	
-	
 }
 
 function fillEvent(event){
@@ -228,8 +202,6 @@ function fillEvent(event){
 	$('#eventDateSpan').html(event.date_day + ' ' + month[event.date_month-1] + ' ' + event.date_year);
 	$('#eventDescP').html(event.desciption.substring(0, 150) + '. . .');
 	$('#eventLinkA').attr('href', 'event.html?id=' + event.id_event);
-	
-	
 }
 
 function generatesPaginationHTML(){
@@ -264,7 +236,7 @@ function fillBooks(books){
 							<div>
 								<p>
 										<b class="font-70 color-b">€ 
-										`+ priceHTML(relBook.support, relBook.price_paper, relBook.price_eBook) +
+										`+ priceHTML(relBook.support, relBook.price_paper, relBook.price_ebook) +
 										`																		
 										</b>
 								</p>
@@ -288,10 +260,10 @@ function ratingHTML(rating){
 	return star;
 }
 
-function priceHTML(support, price_paper, price_eBook){
+function priceHTML(support, price_paper, price_ebook){
 	switch(support){
 		case 'eBook':
-			return parseFloat(price_eBook).toFixed(2);
+			return parseFloat(price_ebook).toFixed(2);
 		case 'paper':
 		case 'both':
 			return parseFloat(price_paper).toFixed(2);

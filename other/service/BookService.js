@@ -15,12 +15,12 @@ let sqlDb;
 exports.booksGET = function(offset, limit, genre, theme, rating, filter) {
 	sqlDb = database;
 	let results = {};
-	var fields = ['book.id_book', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support', 'book.rating' ];
+	var fields = ['book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.rating' ];
 	
 	var query = sqlDb('book')
 				.innerJoin('book_author', {'book.id_book' :  'book_author.id_book'})
 				.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
-				.select(['book.id_book', 'book.title', 'book.price_paper', 'book.price_eBook', 'book.cover_img', 'book.support', 'book.rating',
+				.select(['book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.rating',
 						sqlDb.raw('ARRAY_AGG(author.name) as auth_names'),
 						sqlDb.raw('ARRAY_AGG(author.id_author) as auth_ids')])
 				.limit(limit)
@@ -150,10 +150,10 @@ exports.getBookById = function(offset, limit, bookId) {
 										.innerJoin('book_author', {'book2.id_book' :  'book_author.id_book'})
 										.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
 										.where('book_similarBook.id_book', bookId)
-										.distinct('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
+										.distinct('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_ebook', 'book2.cover_img', 'book2.support')
 										.select(sqlDb.raw('ARRAY_AGG(DISTINCT theme.theme_name) as theme_names'))
 										.select(sqlDb.raw('ARRAY_AGG(DISTINCT author.name) as auth_names'), sqlDb.raw('ARRAY_AGG(DISTINCT author.id_author) as auth_ids'))
-										.groupBy('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
+										.groupBy('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_ebook', 'book2.cover_img', 'book2.support')
 										.orderBy('book2.id_book')
 										.limit(limit)
 										.offset(offset).then(result => {
@@ -174,6 +174,7 @@ exports.getBookById = function(offset, limit, bookId) {
  *
  * bookId Long ID of book to return
  * returns Book
+ * the relation between books is give by the themes
  **/
 exports.getRelatedBooksById = function(offset, limit, bookId) {
 	sqlDb = database;
@@ -191,10 +192,10 @@ exports.getRelatedBooksById = function(offset, limit, bookId) {
 		.innerJoin('book_author', {'book2.id_book' :  'book_author.id_book'})
 		.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
 		.where('book_similarBook.id_book', bookId)
-		.distinct('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
+		.distinct('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_ebook', 'book2.cover_img', 'book2.support')
 		.select(sqlDb.raw('ARRAY_AGG(DISTINCT theme.theme_name) as theme_names'))
 		.select(sqlDb.raw('ARRAY_AGG(DISTINCT author.name) as auth_names'), sqlDb.raw('ARRAY_AGG(DISTINCT author.id_author) as auth_ids'))
-		.groupBy('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_eBook', 'book2.cover_img', 'book2.support')
+		.groupBy('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_ebook', 'book2.cover_img', 'book2.support')
 		.orderBy('book2.id_book')
 		.limit(limit)
 		.offset(offset).then(result => {
@@ -220,3 +221,55 @@ exports.getRelatedBooksCountById = function(bookId){
 	  	});
 	});
 }
+
+/**
+* Get list of books sorted by genre
+**/
+exports.booksByGenreGET = function(offset, limit){
+	sqlDb = database;
+	
+	var subQuery = '(SELECT JSONB_AGG((author.id_author, author.name)) as authors \
+					 FROM author \
+						INNER JOIN book_author ON book_author.id_author = author.id_author \
+						INNER JOIN book as book2 ON book2.id_book = book_author.id_book  \
+					 WHERE book.id_book = book2.id_book)';
+	
+	return sqlDb.from('book')
+		//join with Genre
+		.innerJoin('genre', {'book.id_genre' : 'genre.id_genre'})
+		.distinct('genre.id_genre', 'genre.name')
+		.select(sqlDb.raw('JSONB_AGG(DISTINCT(book.id_book, book.title, book.price_paper, book.price_ebook, book.cover_img, book.support,' + subQuery + ' )) as books'))
+		.groupBy('genre.id_genre', 'genre.name')
+		.offset(offset).then(data => {
+			return data.map(e => {
+				return e;
+	  		});
+		});
+}
+
+/**
+* Get list of books sorted by theme
+**/
+exports.booksByThemeGET = function(offset, limit){
+	sqlDb = database;
+	
+	var subQuery = '(SELECT JSONB_AGG((author.id_author, author.name)) as authors \
+					 FROM author \
+						INNER JOIN book_author ON book_author.id_author = author.id_author \
+						INNER JOIN book as book2 ON book2.id_book = book_author.id_book  \
+					 WHERE book.id_book = book2.id_book)';
+	
+	return sqlDb.from('book')
+		//join with Theme
+		.innerJoin('book_theme', {'book.id_book' :  'book_theme.id_book'})
+		.innerJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
+		.distinct('theme.id_theme', 'theme.theme_name')
+		.select(sqlDb.raw('JSONB_AGG(DISTINCT(book.id_book, book.title, book.price_paper, book.price_ebook, book.cover_img, book.support,' + subQuery + ' )) as books'))
+		.groupBy('theme.id_theme', 'theme.theme_name')
+		.offset(offset).then(data => {
+			return data.map(e => {
+				return e;
+	  		});
+		});
+}
+

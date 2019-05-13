@@ -156,7 +156,7 @@ function fillBooks(book,author){
 							<div>
 								<p>
 										<b class="font-70 color-b">€ 
-										`+ priceHTML(authorBook.support, authorBook.price_paper, authorBook.price_eBook) +
+										`+ priceHTML(authorBook.support, authorBook.price_paper, authorBook.price_ebook) +
 										`																		
 										</b>
 								</p>
@@ -169,10 +169,10 @@ function fillBooks(book,author){
     $("#writtenBookDiv").append(writtenDiv);
 }
 
-function priceHTML(support, price_paper, price_eBook){
+function priceHTML(support, price_paper, price_ebook){
 	switch(support){
 		case 'eBook':
-			return parseFloat(price_eBook).toFixed(2);
+			return parseFloat(price_ebook).toFixed(2);
 		case 'paper':
 		case 'both':
 			return parseFloat(price_paper).toFixed(2);

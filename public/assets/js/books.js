@@ -265,7 +265,7 @@ function generatesBooksHTML(){
 
 									<span class="price_text"></span>*/ + `
 										<b class="font-90 color-b">€ 
-										`+ priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_eBook) +
+										`+ priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_ebook) +
 										`																		
 										</b>
 								</p>
@@ -289,10 +289,10 @@ function ratingHTML(rating){
 	return star;
 }
 
-function priceHTML(support, price_paper, price_eBook){
+function priceHTML(support, price_paper, price_ebook){
 	switch(support){
 		case 'eBook':
-			return parseFloat(price_eBook).toFixed(2);
+			return parseFloat(price_ebook).toFixed(2);
 		case 'paper':
 		case 'both':
 			return parseFloat(price_paper).toFixed(2);
