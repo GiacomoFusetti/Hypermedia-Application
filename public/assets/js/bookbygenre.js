@@ -1,4 +1,5 @@
 console.log("Loading book_by_genre page");
+new WOW().init();
 
 let bookByGenreJson;
 
@@ -33,25 +34,23 @@ function generatesBookByGenreHTML(){
 		var genre = bookByGenreJson[x];
 		
 		genreHTML += `<div class="property-agent">
-							<div class="row">
 								<div class="title-box-d section-t1">
-									<h3 class="title-d">${genre.name}</h3>
+									<h3 class="title-d"><a class="pointer-a" href='books.html?genre=${genre.id_genre}'>${genre.name}</a></h3>
 								</div>
-							</div>
 							<div class="row">`;
 		for(y = 0; y < genre.books.length; y++){
 			var book = genre.books[y];
 			var authors = genre.books[y].f6
 			genreHTML +=`
 						<div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 book-img-margin">
-							<div class="book-img-margin-child>
-								<div id="book" class="img-box-a">
+							<div class="book-img-margin-child wow zoomIn" data-wow-duration="1s">
+								<div class="img-box-a">
 								  <a href="book.html?id=${book.f1}"><img src="${book.f5}" alt="${book.f2}" class="img-a img-fluid"></a>
 								</div>
 
 								<div class="book_desc">
 									<ul class="list-unstyled author_list">
-										` + /*authorListHTML(relBook.auth_names, relBook.auth_ids) +*/ `
+										` + authorListHTML(book.f7) + `
 									</ul>
 									<h6 class="card-titl-a book_title"><a class="font-70" href="book.html?id=${book.f1}">${book.f2}</a></h6>
 									<div>
@@ -64,6 +63,7 @@ function generatesBookByGenreHTML(){
 									</div>
 								</div>
 							</div>
+						</div>
 						`;
 		}
 		genreHTML += `</div></div>`;
@@ -87,13 +87,14 @@ function priceHTML(support, price_paper, price_ebook){
 	}
 }
 
-function authorListHTML(authorsNameJson, authorsIdsJson){
+function authorListHTML(authorsJson){
 	var authorsHTML = ``;
+	console.log(authorsJson)
 	
-	for(z = 0; z < authorsNameJson.length; z++)
+	for(z = 0; z < authorsJson.length; z++)
 		authorsHTML += `
 						<li>
-							<h5 class="card-titl-a ` + (z > 0 ? `book_author_li` :  `book_author`) + `"> ` + (z > 0 ? `<a class="font-70"> & </a>` :  ``) + `<a class="font-70" href="author.html?id=${authorsIdsJson[z]}">${authorsNameJson[z]}</a></h5> 
+							<h5 class="card-titl-a ` + (z > 0 ? `book_author_li` :  `book_author`) + `"> ` + (z > 0 ? `<a class="font-70"> & </a>` :  ``) + `<a class="font-70" href="author.html?id=${authorsJson[z].f1}">${authorsJson[z].f2}</a></h5> 
 						</li>
 					   `;
 	return authorsHTML;	
