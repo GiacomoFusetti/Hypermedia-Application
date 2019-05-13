@@ -142,7 +142,7 @@ function fillBooks(book,author){
         var authorBook = book[i];
         writtenDiv +=
             `
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 book-img-margin">
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 book-img-margin">
                     <div class="book-img-margin-child>
 						<div id="book" class="img-box-a">
 						  <a href="book.html?id=${authorBook.id_book}"><img src="${authorBook.cover_img}" alt="${authorBook.title}" class="img-a img-fluid"></a>

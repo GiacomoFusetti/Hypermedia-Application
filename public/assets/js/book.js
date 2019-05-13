@@ -226,7 +226,7 @@ function fillBooks(books){
         var relBook = books[i];
         relatedDiv +=
             `
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 book-img-margin">
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 book-img-margin">
                     <div class="book-img-margin-child>
 						<div id="book" class="img-box-a">
 						  <a href="book.html?id=${relBook.id_book}"><img src="${relBook.cover_img}" alt="${relBook.title}" class="img-a img-fluid"></a>

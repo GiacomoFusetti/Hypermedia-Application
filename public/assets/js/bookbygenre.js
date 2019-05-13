@@ -40,7 +40,7 @@ function generatesBookByGenreHTML(){
 			var book = genre.books[y];
 			var authors = genre.books[y].f6
 			genreHTML +=`
-						<div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 book-img-margin">
+						<div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 book-img-margin">
 							<div class="book-img-margin-child wow zoomIn" data-wow-duration="1s">
 								<div class="img-box-a">
 								  <a href="book.html?id=${book.f1}"><img src="${book.f5}" alt="${book.f2}" class="img-a img-fluid"></a>

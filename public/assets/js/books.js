@@ -247,7 +247,7 @@ function generatesBooksHTML(){
 		var currentBook = booksJson[i];	
 		$("#booksDiv").append( 
 			`
-				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 book-img-margin">
+				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 book-img-margin">
 					<div class="book-img-margin-child wow zoomIn" data-wow-duration="1s">
 						<div class="img-box-a">
 						  <a href="book.html?id=${currentBook.id_book}"><img src="${currentBook.cover_img}" alt="${currentBook.title}" class="img-a img-fluid"></a>
