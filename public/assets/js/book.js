@@ -249,7 +249,7 @@ function fillEvent(event){
 	$('#eventTitleH2').html(event.name);
 	$('#eventLocationSpan').html(event.location);
 	$('#eventDateSpan').html(event.date_day + ' ' + month[event.date_month-1] + ' ' + event.date_year);
-	$('#eventDescP').html(event.desciption.substring(0, 150) + '. . .');
+	$('#eventDescP').html(event.description.substring(0, 150) + '. . .');
 	$('#eventLinkA').attr('href', 'event.html?id=' + event.id_event);
 }
 
