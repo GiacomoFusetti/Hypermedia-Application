@@ -79,7 +79,12 @@
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
             <h1 id="event_title" class="title-single">Event - Title<!-- Load From DB--></h1>
-            <span id="book_title" class="color-text-a">Book - Title<!-- Load From DB--></span>
+            <div id="book_title">
+							<!-- Load From DB -->
+			</div>  
+            <p id="authorsDiv">
+							<!-- Load From DB -->
+			</p>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -92,7 +97,7 @@
                 <a href="../pages/events.html">Events</a>
               </li>
               <li id="event_name" class="breadcrumb-item active" aria-current="page">
-                  <span>Event - Title</span>
+                  <span>Event - Title<!-- Load From DB--></span>
               </li>
             </ol>
           </nav>
@@ -108,62 +113,38 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="news-img-box">
-            <img src="../assets/img/slide-3.jpg" alt="" class="img-fluid">
+            <img id="event_img" src="" alt="" class="img-fluid">
           </div>
         </div>
         <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
           <div class="post-information">
             <ul class="list-inline text-center color-a">
-              <li class="list-inline-item">
-                <strong>Date: </strong>
-                <span class="color-text-a">19 Apr. 2017</span>
+              <li id="event_date" class="list-inline-item">
+                <!-- Load from DB -->
               </li>
-              <li class="list-inline-item">
-                <strong>When: </strong>
-                <span class="color-text-a">From 2:00 pm to 6:00 pm </span>
+              <li id="event_when" class="list-inline-item">
+                <!-- Load from DB-->
               </li>
             </ul>
           </div>
-          <div class="post-content color-text-a">
-            <p>
-              <strong>Event</strong> - Description
-            </p>
+          <div class="title-box-d">
+                        <h3 class="title-d">Event description</h3>
+                    </div>
+          <div id="event_description" class="post-content color-text-a">
+            <!--Load from DB-->
           </div>
             
             <div class="row section-t2">
-				<div class="col-md-4">
+				<div id="book_body" class="col-md-4">
                     <a href="book.html"><img src="../assets/img/books/book-1.jpg" alt="" class="img-fluid"></a>
 				</div>
 				<div class="col-md-8 foo">
                     <div class="title-box-d">
-                        <h3 class="title-d">Details</h3>
+                        <h3 class="title-d">Book details</h3>
                     </div>
                     <div class="summary-list">
-                        <ul class="list">
-                            <li class="d-flex justify-content-between">
-                                <strong>Book ID:</strong>
-                                <span>1</span>
-                            </li>
-                            <li class="d-flex justify-content-between">
-                                <strong>Availability:</strong>
-                                <span>Available</span>
-                            </li>
-                            <li class="d-flex justify-content-between">
-                                <strong>Publisher:</strong>
-                                <span>Bompiani</span>
-                            </li>
-                            <li class="d-flex justify-content-between">
-                                <strong>Pages:</strong>
-                                <span>666</span>
-                            </li>
-                            <li class="d-flex justify-content-between">
-                                <strong>Genre:</strong>
-                                <span>Fantasy</span>
-                            </li>
-                            <li class="d-flex justify-content-between">
-                                <strong>Themes:</strong>
-                                <span>Friendship - War - Dwarfs</span>
-                            </li>
+                        <ul id="detailsListUl" class="list">
+                            <!--Load from DB-->
                         </ul>
                     </div>
 				</div>
@@ -176,8 +157,8 @@
 			</div> 
           <div class="contact-map box" >
             <div id="map" class="contact-map">
-              <iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Piazza Leonardo da Vinci, 32, 20133 Milano MI+()&amp;ie=UTF8&amp;iwloc=A&amp;output=embed"
-                width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <!--<iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Piazza Leonardo da Vinci, 32, 20133 Milano MI+()&amp;ie=UTF8&amp;iwloc=A&amp;output=embed"
+                width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>-->
             </div>
           </div>
           <div class="post-footer">
