@@ -90,12 +90,12 @@ function generatesHTML(){
                     <div class="card-overlay">
                       <div class="card-header-b">
                         <div class="card-category-b">
-                          <a href="#" class="category-b"><i class="fas fa-map-marker-alt"></i>
+                          <a class="category-b"><i class="fas fa-map-marker-alt"></i>
                                     ${eventsJson[i].city}</a>
                         </div>
                         <div class="card-title-b">
                           <h2 class="title-2">
-                            <a href="event.html">${eventsJson[i].name}
+                            <a href="event.html?id=${eventsJson[i].id_event}">${eventsJson[i].name}
                           </h2>
                         </div>
                         <div class="card-date">
