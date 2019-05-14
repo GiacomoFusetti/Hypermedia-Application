@@ -12,7 +12,7 @@ module.exports.getCartById = function cartCartIdGET(req, res, next) {
   	req.swagger.params['limit'].value ? limit = req.swagger.params['limit'].value : limit = 5;
 	
 	if (!req.session || !req.session.loggedin) {
-    	utils.writeJson(res, { error: "sorry, you must be authorized" }, 404);
+    	utils.writeJson(res, { error: "sorry, you must be authorized" }, 401);
   	} else {
     	CartService.getCartById(offset, limit, req.session.user.id_user)
       	.then(function(response) {
@@ -30,7 +30,7 @@ module.exports.addBookById = function addBookById(req, res, next) {
 	console.log(book);
 	
 	if (!req.session || !req.session.loggedin) {
-    	utils.writeJson(res, { error: "sorry, you must be authorized" }, 404);
+    	utils.writeJson(res, { error: "sorry, you must be authorized" }, 401);
   	} else {
     	CartService.addBookById(req.session.user.id_user, book)
       	.then(function(response) {
@@ -45,7 +45,7 @@ module.exports.addBookById = function addBookById(req, res, next) {
 module.exports.getCartCountById = function getCartCountById(req, res, next) {
 	
 	if (!req.session || !req.session.loggedin) {
-    	utils.writeJson(res, { error: "sorry, you must be authorized" }, 404);
+    	utils.writeJson(res, { error: "sorry, you must be authorized" }, 401);
   	} else {
     	CartService.getCartCountById(req.session.user.id_user)
       	.then(function(response) {
@@ -63,7 +63,7 @@ module.exports.updateBookById = function updateBookById(req, res, next) {
 	var book = req.swagger.params['book'].value;
 	
 	if (!req.session || !req.session.loggedin) {
-    	utils.writeJson(res, { error: "sorry, you must be authorized" }, 404);
+    	utils.writeJson(res, { error: "sorry, you must be authorized" }, 401);
   	} else {
     	CartService.updateBookById(req.session.user.id_user, bookId, book)
       	.then(function(response) {
@@ -80,7 +80,7 @@ module.exports.deleteBookById = function deleteBookById(req, res, next) {
 	var bookId = req.swagger.params['Id_book'].value;
 	
 	if (!req.session || !req.session.loggedin) {
-    	utils.writeJson(res, { error: "sorry, you must be authorized" }, 404);
+    	utils.writeJson(res, { error: "sorry, you must be authorized" }, 401);
   	} else {
     	CartService.deleteBookById(req.session.user.id_user, bookId)
       	.then(function(response) {

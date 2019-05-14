@@ -50,6 +50,8 @@ exports.userRegisterPOST = function(body) {
     });
 }
 
+// -------------- AUXILIARY FUNCTIONS ---------------
+
 function isInDb(sqlDb, email){
     return sqlDb('user').count('* as count').where({email: email}).then(data =>{
         return (data[0].count > 0) ? true : false;
@@ -68,12 +70,13 @@ function appendToJson(body){
         if (err){
             console.log(err);
         } else {
-        var obj = JSON.parse(data); //now it an object
-        var id_user = obj.length + 1;
-        obj.push({id_user: id_user, name: body.name, email: body.email, password: body.password }); //add data
-        var json = JSON.stringify(obj); //convert it back to json
-        fs.writeFile('other/data_json/user.json', json, 'utf8', function readFileCallback(err){}); // write it back 
-    }});
+			var obj = JSON.parse(data); //now it an object
+			var id_user = obj.length + 1;
+			obj.push({id_user: id_user, name: body.name, email: body.email, password: body.password }); //add data
+			var json = JSON.stringify(obj); //convert it back to json
+			fs.writeFile('other/data_json/user.json', json, 'utf8', function readFileCallback(err){}); // write it back 
+    	}
+	});
 }
 
 

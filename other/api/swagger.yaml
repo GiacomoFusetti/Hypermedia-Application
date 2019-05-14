@@ -635,6 +635,8 @@ paths:
       responses:
         405:
           description: "Invalid input"
+        401:
+          description: "Unauthorized"
       x-swagger-router-controller: "Cart"
   /cart/count:
     get:
