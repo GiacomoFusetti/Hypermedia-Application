@@ -14,10 +14,21 @@ let sqlDb;
 exports.getCartById = function(offset, limit, userId) {
 	sqlDb = database;
 	
-	return sqlDb('cart').select('*')
+	return sqlDb.from('cart')
 		.where('cart.id_user', userId)
+		//join with Book
+		.innerJoin('book', {'book.id_book' :  'cart.id_book'})
+		//join with Author
+		.innerJoin('book_author', {'book.id_book' :  'book_author.id_book'})
+		.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
+		.select('cart.*')
+		.select(sqlDb.raw('ARRAY_AGG(DISTINCT author.name) as auth_names'), sqlDb.raw('ARRAY_AGG(DISTINCT author.id_author) as auth_ids'))
+		.groupBy('cart.id_user', 'cart.id_user', 'cart.id_book', 'cart.support', 'cart.quantity', 'cart.title', 'cart.cover_img', 'cart.price')
+		.limit(limit)
+		.offset(offset)
 		.then(data =>{
         	return data.map(e => {
+				console.log(e);
             	return e;
         	});
     	});
@@ -31,22 +42,34 @@ exports.getCartById = function(offset, limit, userId) {
  **/
 exports.addBookById = function(userId, book) {
 	sqlDb = database;
-	
 	var res = {}
-	console.log(book);
 
 	return isInCart(sqlDb, userId, book).then( inCart =>{
-		console.log(inCart);
         if(inCart){
-			console.log(updateBookQuantity(sqlDb, userId, book));
-			updateJson(userId, book);
-            res = {res: 'Book in cart.'};
-            return res;
-        }else{
-            insertNewBook(sqlDb, userId, book);
+			return updateBookQuantity(sqlDb, userId, book)
+				.then(result => {
+					//console.log("Result", result);	
+					updateJson(userId, book);
 			
-			res = {res: 'Book not in cart.'};
-            return res;
+					res = {res: 'Book ' + book.title.substring(0, 10) + ', quantity updated.'};
+					return res;
+				})
+				.catch(function(e) {
+					console.error('knex update error', e);
+				});
+			
+        }else{
+            return insertNewBook(sqlDb, userId, book)
+				.then(result => {
+					//console.log("Result", result);	
+					appendToJson(userId, book);
+
+					res = {res: 'Book ' + book.title.substring(0, 10) + ' insert in the cart.'};
+					return res;
+				})
+				.catch(function(e) {
+					console.error('knex insert error', e);
+				});
         }
     });
 }
@@ -58,7 +81,23 @@ exports.addBookById = function(userId, book) {
  * return integer
  **/
 exports.getCartCountById = function(userId) {
+	sqlDb = database;
+	
+	var total = 0;
+	var results = {}
+	
+	return sqlDb.from('cart')
+		.select('cart.quantity')
+		.where({'cart.id_user': userId})
+		.then(result => {
+			var total = 0;
+			for(var x = 0; x < result.length; x++)
+				total += parseInt(result[x].quantity, 10);
 
+			results['total_count'] = total;
+			results['distinct_count'] = result.length; 
+			return results;
+		});
 }
 
 /**
@@ -68,9 +107,24 @@ exports.getCartCountById = function(userId) {
  * bookId integer
  * book Book
  **/
-exports.updateBookById = function(userId, bookId, book) {
+exports.updateBookById = function(userId, book) {
 	sqlDb = database;
-
+	
+	return isInCart(sqlDb, userId, book).then( inCart =>{
+        if(inCart){
+			return updateBookQuantity(sqlDb, userId, book)
+				.then(result => {
+					//console.log("Result", result);	
+					updateJson(userId, book);
+			
+					res = {res: 'Book ' + book.title.substring(0, 10) + ', quantity updated.'};
+					return res;
+				})
+				.catch(function(e) {
+					console.error('knex update error', e);
+				});
+        }
+	});
 }
 
 /**
@@ -79,8 +133,26 @@ exports.updateBookById = function(userId, bookId, book) {
  * userId integer
  * bookId integer
  **/
-exports.deleteBookById = function(userId, bookId) {
+exports.deleteBookById = function(userId, book) {
 	sqlDb = database;
+
+	return isInCart(sqlDb, userId, book).then( inCart =>{
+        if(inCart){
+			return deleteBookQuantity(sqlDb, userId, book)
+				.then(result => {
+					//console.log("Result", result);	
+					deleteBookJson(userId, book);
+			
+					res = {res: 'Book ' + book.title.substring(0, 10) + ' deleted from cart.'};
+					return res;
+				})
+				.catch(function(e) {
+					console.error('knex update error', e);
+				});
+        }else{
+
+        }
+    });
 
 }
 
@@ -99,32 +171,32 @@ function isInCart(sqlDb, userId, book){
 }
 
 function insertNewBook(sqlDb, userId, book){
-    return sqlDb('cart').insert({id_user: userId, id_book: book.Id_book, support: book.support, title: book.title, cover_img: book.cover_img, price: book.price, quantity: 1 }).then(data =>{
-        appendToJson(userId, book);
-        return true;
-    });
+    return sqlDb('cart')
+		.insert({id_user: userId, id_book: book.Id_book, support: book.support, title: book.title, cover_img: book.cover_img, price: book.price, quantity: 1 });
 }
 
 function updateBookQuantity(sqlDb, userId, book){
-	
-	return sqlDb('cart')
-		.where({'cart.id_user': userId, 'cart.id_book' : book.Id_book, 'cart.support' : book.support})
-		.increment('quantity', 1)
-		.returning(true);
+
+	return sqlDb.table('cart').select('cart.quantity').where({'cart.id_user': userId, 'cart.id_book' : book.Id_book, 'cart.support' : book.support})
+		.then(result => {
+			var qty = parseInt(result[0].quantity, 10) + 1;
+			
+			if (qty > 0){
+				return sqlDb.table('cart')
+					.where({'cart.id_user': userId, 'cart.id_book' : book.Id_book, 'cart.support' : book.support})
+					.update({quantity: qty})
+					.returning('*');
+			}else{
+				return false;
+			}
+		});
 }
 
-function appendToJson(userId, book){
-	
-    fs.readFile('other/data_json/cart.json', 'utf8', function readFileCallback(err, data){
-        if (err){
-            console.log(err);
-        } else {
-			var obj = JSON.parse(data); //now it an object
-			obj.push({id_user: userId, id_book: book.Id_book, support: book.support, title: book.title, cover_img: book.cover_img, price: book.price, quantity: 1 }); //add data
-			var json = JSON.stringify(obj); //convert it back to json
-			fs.writeFile('other/data_json/cart.json', json, 'utf8', function readFileCallback(err){}); // write it back 
-    	}
-	});
+function deleteBookQuantity(sqlDb, userId, book){
+
+	return sqlDb.table('cart')
+		.where({'cart.id_user': userId, 'cart.id_book' : book.Id_book, 'cart.support' : book.support})
+  		.del();
 }
 
 function updateJson(userId, book){
@@ -133,14 +205,45 @@ function updateJson(userId, book){
         if (err){
             console.log(err);
         } else {
-			var obj = JSON.parse(data); //now it an object
+			var obj = JSON.parse(data); //now it is an object
 			
 			for (var i = 0; i < obj.length; i++){
 				// look for the entry with a matching `code` value
-			  	if (obj[i].id_user == userId && obj[i].id_book == book.Id_book && obj[i].support == book.support){
+			  	if (obj[i].id_user == userId && obj[i].id_book == book.Id_book && obj[i].support == book.support)
 					obj[i].quantity += 1;
-					console.log(obj[i]);
-			  	}
+			}
+			var json = JSON.stringify(obj);
+			fs.writeFile('other/data_json/cart.json', json, 'utf8', function readFileCallback(err){}); // write it back 
+    	}
+	});
+}
+
+function appendToJson(userId, book){
+	
+    fs.readFile('other/data_json/cart.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        } else {
+			var obj = JSON.parse(data); //now it is an object
+			obj.push({id_user: userId, id_book: book.Id_book, support: book.support, title: book.title, cover_img: book.cover_img, price: book.price, quantity: 1 }); //add data
+			var json = JSON.stringify(obj); //convert it back to json
+			fs.writeFile('other/data_json/cart.json', json, 'utf8', function readFileCallback(err){}); // write it back 
+    	}
+	});
+}
+
+function deleteBookJson(userId, book){
+	
+    fs.readFile('other/data_json/cart.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        } else {
+			var obj = JSON.parse(data); //now it is an object
+			
+			for (var i = 0; i < obj.length; i++){
+				// look for the entry with a matching `code` value
+			  	if (obj[i].id_user == userId && obj[i].id_book == book.Id_book && obj[i].support == book.support)
+					delete obj[i];
 			}
 			var json = JSON.stringify(obj);
 			fs.writeFile('other/data_json/cart.json', json, 'utf8', function readFileCallback(err){}); // write it back 

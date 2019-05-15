@@ -4,7 +4,7 @@ var utils = require("../utils/writer.js");
 var CartService = require("../service/CartService.js");
 
 var offset = 0;
-var limit = 0;
+var limit = 5;
 
 module.exports.getCartById = function cartCartIdGET(req, res, next) {
 	
@@ -57,14 +57,13 @@ module.exports.getCartCountById = function getCartCountById(req, res, next) {
 };
 
 module.exports.updateBookById = function updateBookById(req, res, next) {
-	
-	var bookId = req.swagger.params['Id_book'].value;
+
 	var book = req.swagger.params['book'].value;
 	
 	if (!req.session || !req.session.loggedin) {
     	utils.writeJson(res, { error: "sorry, you must be authorized" }, 401);
   	} else {
-    	CartService.updateBookById(req.session.user.id_user, bookId, book)
+    	CartService.updateBookById(req.session.user.id_user, book)
       	.then(function(response) {
         	utils.writeJson(res, response);
       	})
@@ -76,12 +75,12 @@ module.exports.updateBookById = function updateBookById(req, res, next) {
 
 module.exports.deleteBookById = function deleteBookById(req, res, next) {
 
-	var bookId = req.swagger.params['Id_book'].value;
+	var book = req.swagger.params['book'].value;
 	
 	if (!req.session || !req.session.loggedin) {
     	utils.writeJson(res, { error: "sorry, you must be authorized" }, 401);
   	} else {
-    	CartService.deleteBookById(req.session.user.id_user, bookId)
+    	CartService.deleteBookById(req.session.user.id_user, book)
       	.then(function(response) {
         	utils.writeJson(res, response);
       	})

@@ -1,4 +1,3 @@
-checkSession();
 let user;
 
 let pathname = window.location.pathname;
@@ -6,6 +5,8 @@ let pages = "";
         
 if(pathname === '/' || pathname === '/index.html')
 	pages = "pages/";
+
+// -------------- REQUESTS ---------------
 
 function checkSession(){
     fetch('../session', {
@@ -18,12 +19,32 @@ function checkSession(){
         console.log(json);
         user = json;
         toggleLogin(user);
+		getCartCount()
+     });
+}
+
+function getCartCount(){
+    fetch('/cart/count', {
+        method: "GET",
+        credentials: 'include'
+    }).then(function(response) {
+         return response.json();
+     }).then(function(json) {
+        console.log(json.total_count);
+        
+		if(json.total_count == 0)
+        	toggleCartIcon(false);
+		else if(json.total_count > 0){
+			toggleCartIcon(true);
+			$('#cartCount').text(json.total_count);
+		}
      });
 }
 
 function toggleLogin(user){
     $('#navbarLogin').empty();
     if(!jQuery.isEmptyObject(user)){
+		toggleCartIcon(true);
         $('#navbarLogin').append(
             `
             <li class="nav-item dropdown">
@@ -38,6 +59,7 @@ function toggleLogin(user){
             `
          );
     }else{
+		toggleCartIcon(false);
         $('#navbarLogin').append(
             `
             <li class="nav-item"><a class="nav-link" href="${pages}login.html?login">Log in</a></li>
@@ -47,8 +69,17 @@ function toggleLogin(user){
     }
 }
 
-(function ($) {
+function toggleCartIcon(toggle){
+	if(toggle)
+		$('#cartCount').show();
+	else
+		$('#cartCount').hide();
+}
+
+jQuery(document).ready(function($) {
   "use strict";
+	
+	checkSession();
 	
 	//Handle cart button
 	$('.btn-cart').click(function(){
@@ -202,6 +233,6 @@ function toggleLogin(user){
 	});
     
 
-})(jQuery);
+});
 
 

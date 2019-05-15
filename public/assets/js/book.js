@@ -32,7 +32,7 @@ $(document).ready(function(){
 		$(this).addClass('active');
 		e.preventDefault();
 		
-		bookSupport = 'ebook';
+		bookSupport = 'eBook';
 		bookPrice = $('#ebook-button').attr('value');
 	});	
 	// ?????????

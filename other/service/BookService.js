@@ -198,7 +198,8 @@ exports.getRelatedBooksById = function(offset, limit, bookId) {
 		.groupBy('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_ebook', 'book2.cover_img', 'book2.support')
 		.orderBy('book2.id_book')
 		.limit(limit)
-		.offset(offset).then(result => {
+		.offset(offset)
+		.then(result => {
 			results['similar_books']=result;
 			return results;
 		});
