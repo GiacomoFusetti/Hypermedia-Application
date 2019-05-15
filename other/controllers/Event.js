@@ -6,16 +6,16 @@ var EventService = require('../service/EventService.js');
 var offset = 0;
 var limit = 0;
 
-var current_month; 
+var orderBy; 
 
 module.exports.eventsGET = function eventsGET (req, res, next) {
 
     req.swagger.params['offset'].value ? offset = req.swagger.params['offset'].value : offset = 0;
     req.swagger.params['limit'].value ? limit = req.swagger.params['limit'].value : limit = 6;
     
-    req.swagger.params['current_month'].value ? current_month = req.swagger.params['current_month'].value : current_month = undefined;
+    req.swagger.params['orderBy'].value ? orderBy = req.swagger.params['orderBy'].value : orderBy = undefined;
     
-    EventService.eventsGET(offset,limit,current_month)
+    EventService.eventsGET(offset,limit,orderBy)
         .then(function (response) {
             utils.writeJson(res, response);
         })
@@ -38,12 +38,11 @@ module.exports.getEventById = function getEventById (req, res, next) {
 };
 
 module.exports.getEventsCount = function getEventsCount(req, res, next) {
-    
     req.swagger.params['offset'].value ? offset = req.swagger.params['offset'].value : offset = 0;
     req.swagger.params['limit'].value ? limit = req.swagger.params['limit'].value : limit = 6;
-    req.swagger.params['current_month'].value ? current_month = req.swagger.params['current_month'].value : current_month = undefined;
+    req.swagger.params['orderBy'].value ? orderBy = req.swagger.params['orderBy'].value : orderBy = undefined;
     
-    EventService.getEventsCount(offset,limit,current_month)
+    EventService.getEventsCount(offset,limit,orderBy)
         .then(function (response) {
             response = response[0];
             utils.writeJson(res, response);

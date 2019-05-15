@@ -36,13 +36,13 @@ function getEventById(){
 function generatesEventHTML(){
     fillHead(eventsJson.event,eventsJson.authors,eventsJson.book);
     fillBody(eventsJson.event, eventsJson.book,eventsJson.genre,eventsJson.themes);
-    fillBookDetailsEvent(eventsJson.event, eventsJson.book,eventsJson.genre,eventsJson.themes);
+    fillBookDetailsEvent(eventsJson.event, eventsJson.authors, eventsJson.book,eventsJson.genre,eventsJson.themes);
 }
 
 function fillHead(event,author,book){
     $("#event_title").html(event.name);
     $("#event_name").html(event.name);
-    $("#book_title").html(book.title);
+    $("#book_title").html(`<a href="book.html?id=${book.id_book}">${book.title}</a>`);
     for(x = 0; x < author.length; x++)
     $("#authorsDiv").append(
         (x > 0 ? `<a class="authors-font">& </a>` :  ``) +
@@ -80,48 +80,59 @@ function bookHTML(book,authorsNameJson, authorsIdsJson){
 	return authorsHTML;	
 }
 
-function fillBookDetailsEvent(event, book, genre, themes){
+function fillBookDetailsEvent(event, author, book, genre, themes){
     console.log("hwy");
 	var detailsHTML = ``;
 	
 	detailsHTML +=
 			`
 				<li class="d-flex justify-content-between">
-					<strong>Book ID:</strong>
-					<span>${book.id_book}</span>
+					<strong>Title:</strong>
+					<span><a href="book.html?id=${book.id_book}">${book.title}</a></span>
 				</li>
-				<li class="d-flex justify-content-between">
-					<strong>Language:</strong>
-					<span>${book.language}</span>
-				</li>
-				<li class="d-flex justify-content-between">
-					<strong>Pages:</strong>
-					<span>${book.pages}</span>
-				</li>
-				<li class="d-flex justify-content-between">
-					<strong>Support:</strong>
-					<span>` + supportHTML(book.support) + `</span>
-				</li>
-				<li class="d-flex justify-content-between">
-					<strong>Genre:</strong>
-					<span><a href="books.html?genre=${genre.id_genre}">${genre.name}</a></span>
-				</li>
-			`;
-		detailsHTML += `
-						<li class="d-flex justify-content-between">
-							<strong>Themes:</strong>
-							<span>
-					`;
-		for(x = 0; x < themes.length; x++)
-			detailsHTML += (x > 0 ? `<a class=""> - </a>` :  ``) +
-				`
-						<a href="books.html?theme=${themes[x].id_theme}">${themes[x].theme_name}</a>
-				`;
-		
-		detailsHTML += `</span>
-					</li>
-						`;
-		$('#detailsListUl').html(detailsHTML);
+                <li class="d-flex justify-content-between">
+					<strong>Author:</strong>
+					<span>
+            `;
+    for(z = 0; z < author.length; z++)
+		detailsHTML += (z > 0 ? `<a class="font-70"> & </a>` :  ``) + 
+                `<a href="author.html?id=${author[z].id_author}">${author[z].name}</a>`;
+    detailsHTML += 
+            `
+                </span>
+            </li>
+            <li class="d-flex justify-content-between">
+                <strong>Language:</strong>
+                <span>${book.language}</span>
+            </li>
+            <li class="d-flex justify-content-between">
+                <strong>Pages:</strong>
+                <span>${book.pages}</span>
+            </li>
+            <li class="d-flex justify-content-between">
+                <strong>Support:</strong>
+                <span>` + supportHTML(book.support) + `</span>
+            </li>
+            <li class="d-flex justify-content-between">
+                <strong>Genre:</strong>
+                <span><a href="books.html?genre=${genre.id_genre}">${genre.name}</a></span>
+            </li>
+        `;
+    detailsHTML += `
+                    <li class="d-flex justify-content-between">
+                        <strong>Themes:</strong>
+                        <span>
+                `;
+    for(x = 0; x < themes.length; x++)
+        detailsHTML += (x > 0 ? `<a class=""> - </a>` :  ``) +
+            `
+                    <a href="books.html?theme=${themes[x].id_theme}">${themes[x].theme_name}</a>
+            `;
+
+    detailsHTML += `</span>
+                </li>
+                    `;
+    $('#detailsListUl').html(detailsHTML);
 }
 
 function supportHTML(support){

@@ -23,7 +23,11 @@ $(document).ready(function(){
    	});
     
     $("select.custom-select").change(function(){
-        this_month = $(this).children("option:selected").val();
+        option = $(this).children("option:selected").val();
+        
+        switch(option){
+                //TODO
+        }
         offset = 0;
         getEventsCount();
         getEvents();
@@ -40,7 +44,7 @@ function getPage(num){
 
 function getEvents(){
     var query = '?offset=' + offset + '&limit=' + limit;
-	if(this_month) query += '&current_month=' + this_month;
+	if(this_month) query += '&orderBy=' + this_month;
     console.log(query);
 	fetch('/events' + query).then(function(response) {
 		return response.json();

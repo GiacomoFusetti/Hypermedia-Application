@@ -452,11 +452,12 @@ paths:
         description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
         required: false
         type: "integer"
-      - name: "current_month"
+      - name: "orderBy"
         in: "query"
-        description: "Retrive events of the current month."
+        description: "Filter on events."
         required: false
-        type: "integer"  
+        type: "string"
+        enum: ["current_month","latest"]
       responses:
         200:
           description: "A collection of Events"
@@ -487,6 +488,12 @@ paths:
         description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
         required: false
         type: "integer"
+      - name: "orderBy"
+        in: "query"
+        description: "Filter on events."
+        required: false
+        type: "string"
+        enum: ["current_month","latest"]
       responses:
         200:
           description: "successful operation"

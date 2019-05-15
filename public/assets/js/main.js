@@ -152,22 +152,7 @@ function toggleLogin(user){
 		}
 	});
     
-    /*--/ Property owl /--*/
-	$('#property-carousel').owlCarousel({
-		loop: true,
-		margin: 30,
-		responsive: {
-			0: {
-				items: 1,
-			},
-			769: {
-				items: 2,
-			},
-			992: {
-				items: 3,
-			}
-		}
-	});
+
 
 	/*--/ Property owl owl /--*/
 	$('#book-carousel').owlCarousel({

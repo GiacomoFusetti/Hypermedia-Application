@@ -6,16 +6,25 @@ let sqlDb;
 /**
  * Events available in the inventory
  **/
-exports.eventsGET = function(offset, limit, current_month) {
+exports.eventsGET = function(offset, limit, orderBy) {
     sqlDb = database;
     
     var query = sqlDb.select('event.id_event','event.name','event.city','event.date_day','event.date_month','event.date_year','event.img').from("event")
         .limit(limit)
         .offset(offset)
-        .orderBy([{column : 'event.date_year', order: 'desc'}, {column : 'event.date_month', order: 'desc'}, {column : 'event.date_day', order: 'desc'}]);
-    if(current_month)
-        query.where('event.date_month',new Date().getMonth() + 1)
-             .where('event.date_year',new Date().getYear() + 1900);
+        
+    switch(orderBy){
+        case "latest":
+            query.where('event.date_month', '>=', new Date().getMonth() + 1)
+                 .where('event.date_year', '>=', new Date().getYear() + 1900)
+                 .orderBy([{column : 'event.date_year', order: 'asc'}, {column : 'event.date_month', order: 'asc'}, {column : 'event.date_day', order: 'asc'}]);
+            break;  
+        case "current_month":
+            query.where('event.date_month',new Date().getMonth() + 1)
+                 .where('event.date_year',new Date().getYear() + 1900);
+        default:
+           query.orderBy([{column : 'event.date_year', order: 'desc'}, {column : 'event.date_month', order: 'desc'}, {column : 'event.date_day', order: 'desc'}]);
+    }
     
 	return query.then(data => {
 		return data.map(e => {
@@ -78,13 +87,21 @@ exports.getEventById = function(eventId) {
  * Get number of events in db
  * return a number
  **/
-exports.getEventsCount = function(offset,limit,current_month) {
+exports.getEventsCount = function(offset,limit,orderBy) {
 	sqlDb = database;
     
 	var query = sqlDb('event').count('*');
-        if(current_month)
+    
+    switch(orderBy){
+        case "latest":
+            query.where('event.date_month', '>=', new Date().getMonth() + 1)
+                 .where('event.date_year', '>=', new Date().getYear() + 1900)
+            break;  
+        case "current_month":
             query.where('event.date_month',new Date().getMonth() + 1)
                  .where('event.date_year',new Date().getYear() + 1900);
+        default:
+    }
 	
 	return query.then(data => {
 		return data.map(e => {

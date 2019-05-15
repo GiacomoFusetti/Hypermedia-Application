@@ -31,3 +31,15 @@
 .color_white{
     color: #f1f1f1; /* Grey text */
 }
+
+.item{
+  background: #a1def8;
+  padding: 30px 0px;
+  display: block;
+  margin: 5px;
+  color: #FFF;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+}
