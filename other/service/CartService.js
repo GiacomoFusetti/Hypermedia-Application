@@ -1,4 +1,5 @@
 'use strict';
+var fs = require("fs");
 
 let { database } = require('./DataLayer');
 let sqlDb;
@@ -11,7 +12,15 @@ let sqlDb;
  * returns Cart
  **/
 exports.getCartById = function(offset, limit, userId) {
-
+	sqlDb = database;
+	
+	return sqlDb('cart').select('*')
+		.where('cart.id_user', userId)
+		.then(data =>{
+        	return data.map(e => {
+            	return e;
+        	});
+    	});
 }
 
 /**
@@ -21,26 +30,25 @@ exports.getCartById = function(offset, limit, userId) {
  * book Book
  **/
 exports.addBookById = function(userId, book) {
-	console.log(userId);
+	sqlDb = database;
+	
+	var res = {}
+	console.log(book);
 
-	return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples["application/json"] = {
-      author: "Dino Buzzati",
-      price: {
-        currency: "eur",
-        value: 6.027456183070404e14
-      },
-      id: 0,
-      title: "Il deserto dei tartari",
-      status: "available"
-    };
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+	return isInCart(sqlDb, userId, book).then( inCart =>{
+		console.log(inCart);
+        if(inCart){
+			console.log(updateBookQuantity(sqlDb, userId, book));
+			updateJson(userId, book);
+            res = {res: 'Book in cart.'};
+            return res;
+        }else{
+            insertNewBook(sqlDb, userId, book);
+			
+			res = {res: 'Book not in cart.'};
+            return res;
+        }
+    });
 }
 
 /**
@@ -61,6 +69,7 @@ exports.getCartCountById = function(userId) {
  * book Book
  **/
 exports.updateBookById = function(userId, bookId, book) {
+	sqlDb = database;
 
 }
 
@@ -71,33 +80,69 @@ exports.updateBookById = function(userId, bookId, book) {
  * bookId integer
  **/
 exports.deleteBookById = function(userId, bookId) {
+	sqlDb = database;
 
 }
 
 // -------------- AUXILIARY FUNCTIONS ---------------
 
-function isInDb(sqlDb, userId, book){
-    return sqlDb('user').count('* as count').where({email: email}).then(data =>{
-        return (data[0].count > 0) ? true : false;
-    });
+function isInCart(sqlDb, userId, book){
+    return sqlDb('cart').count('* as count')
+		//join with User
+		.innerJoin('user', {'user.id_user' :  'cart.id_user'})
+		//join with Book
+		.innerJoin('book', {'book.id_book' :  'cart.id_book'})
+		.where({'cart.id_user': userId, 'cart.id_book' : book.Id_book, 'cart.support' : book.support})
+		.then(data =>{
+        	return (data[0].count > 0) ? true : false;
+    	});
 }
 
-function insertNewBook(sqlDb, body){
-    return sqlDb('user').insert({name: body.name, email: body.email, password: body.password}).then(data =>{
-        appendToJson(body);
+function insertNewBook(sqlDb, userId, book){
+    return sqlDb('cart').insert({id_user: userId, id_book: book.Id_book, support: book.support, title: book.title, cover_img: book.cover_img, price: book.price, quantity: 1 }).then(data =>{
+        appendToJson(userId, book);
         return true;
     });
 }
 
-function appendToJson(body){
+function updateBookQuantity(sqlDb, userId, book){
+	
+	return sqlDb('cart')
+		.where({'cart.id_user': userId, 'cart.id_book' : book.Id_book, 'cart.support' : book.support})
+		.increment('quantity', 1)
+		.returning(true);
+}
+
+function appendToJson(userId, book){
+	
     fs.readFile('other/data_json/cart.json', 'utf8', function readFileCallback(err, data){
         if (err){
             console.log(err);
         } else {
 			var obj = JSON.parse(data); //now it an object
-			var id_user = obj.length + 1;
-			obj.push({id_user: id_user, name: body.name, email: body.email, password: body.password }); //add data
+			obj.push({id_user: userId, id_book: book.Id_book, support: book.support, title: book.title, cover_img: book.cover_img, price: book.price, quantity: 1 }); //add data
 			var json = JSON.stringify(obj); //convert it back to json
+			fs.writeFile('other/data_json/cart.json', json, 'utf8', function readFileCallback(err){}); // write it back 
+    	}
+	});
+}
+
+function updateJson(userId, book){
+	
+    fs.readFile('other/data_json/cart.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        } else {
+			var obj = JSON.parse(data); //now it an object
+			
+			for (var i = 0; i < obj.length; i++){
+				// look for the entry with a matching `code` value
+			  	if (obj[i].id_user == userId && obj[i].id_book == book.Id_book && obj[i].support == book.support){
+					obj[i].quantity += 1;
+					console.log(obj[i]);
+			  	}
+			}
+			var json = JSON.stringify(obj);
 			fs.writeFile('other/data_json/cart.json', json, 'utf8', function readFileCallback(err){}); // write it back 
     	}
 	});

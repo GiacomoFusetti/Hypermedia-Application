@@ -35,9 +35,9 @@ var swaggerDoc = jsyaml.safeLoad(spec);
 app.use(cookieParser());
 app.use(cookieSession({
     name: "bookStoreSession",
-    keys: ["k1", "k2"],
+    keys: ["k1", "k2"]
     // Cookie Options
-    maxAge: 5 * 60 * 1000 // 5 minutes
+    //,maxAge: 5 * 60 * 1000 // 5 minutes
 }));
 
 // Initialize the Swagger middleware

@@ -25,9 +25,8 @@ module.exports.getCartById = function cartCartIdGET(req, res, next) {
 };
 
 module.exports.addBookById = function addBookById(req, res, next) {
-	var book = req.swagger.params['book'].value;
 	
-	console.log(book);
+	var book = req.swagger.params['book'].value;
 	
 	if (!req.session || !req.session.loggedin) {
     	utils.writeJson(res, { error: "sorry, you must be authorized" }, 401);

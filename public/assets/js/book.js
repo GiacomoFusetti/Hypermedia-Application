@@ -13,7 +13,6 @@ let relatedBookJson;
 
 let bookPrice;
 let bookSupport;
-
 let book = {};
 
 var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
