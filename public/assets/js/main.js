@@ -19,7 +19,7 @@ function checkSession(){
         console.log(json);
         user = json;
         toggleLogin(user);
-		getCartCount()
+		getCartCount();
      });
 }
 
