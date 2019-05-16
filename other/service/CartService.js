@@ -28,7 +28,6 @@ exports.getCartById = function(offset, limit, userId) {
 		.offset(offset)
 		.then(data =>{
         	return data.map(e => {
-				console.log(e);
             	return e;
         	});
     	});
@@ -46,7 +45,7 @@ exports.addBookById = function(userId, book) {
 
 	return isInCart(sqlDb, userId, book).then( inCart =>{
         if(inCart){
-			return updateBookQuantity(sqlDb, userId, book)
+			return updateBookQty(sqlDb, userId, book)
 				.then(result => {
 					//console.log("Result", result);	
 					updateJson(userId, book);
@@ -107,14 +106,14 @@ exports.getCartCountById = function(userId) {
  * bookId integer
  * book Book
  **/
-exports.updateBookById = function(userId, book) {
+exports.updateBookQuantity = function(userId, book) {
 	sqlDb = database;
 	
 	return isInCart(sqlDb, userId, book).then( inCart =>{
         if(inCart){
-			return updateBookQuantity(sqlDb, userId, book)
+			return updateBookQty(sqlDb, userId, book)
 				.then(result => {
-					//console.log("Result", result);	
+					console.log("Result", result);	
 					updateJson(userId, book);
 			
 					res = {res: 'Book ' + book.title.substring(0, 10) + ', quantity updated.'};
@@ -138,7 +137,7 @@ exports.deleteBookById = function(userId, book) {
 
 	return isInCart(sqlDb, userId, book).then( inCart =>{
         if(inCart){
-			return deleteBookQuantity(sqlDb, userId, book)
+			return deleteBook(sqlDb, userId, book)
 				.then(result => {
 					//console.log("Result", result);	
 					deleteBookJson(userId, book);
@@ -175,7 +174,7 @@ function insertNewBook(sqlDb, userId, book){
 		.insert({id_user: userId, id_book: book.Id_book, support: book.support, title: book.title, cover_img: book.cover_img, price: book.price, quantity: 1 });
 }
 
-function updateBookQuantity(sqlDb, userId, book){
+function updateBookQty(sqlDb, userId, book){
 
 	return sqlDb.table('cart').select('cart.quantity').where({'cart.id_user': userId, 'cart.id_book' : book.Id_book, 'cart.support' : book.support})
 		.then(result => {
@@ -192,7 +191,7 @@ function updateBookQuantity(sqlDb, userId, book){
 		});
 }
 
-function deleteBookQuantity(sqlDb, userId, book){
+function deleteBook(sqlDb, userId, book){
 
 	return sqlDb.table('cart')
 		.where({'cart.id_user': userId, 'cart.id_book' : book.Id_book, 'cart.support' : book.support})

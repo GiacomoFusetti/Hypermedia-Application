@@ -2,11 +2,17 @@ console.log('Loading cart page');
 
 let cartBooksJson;
 
+let currentBook = {};
+
 $(document).ready(function(){
-	$('#cartBody').bind('keyup mouseup', function () {
-           
-		var qty = $(this);
-		console.log(qty);
+	$('#cartBody').on('input', 'input[type=number]', function () {  
+		var idx = $(this).attr('id');
+		
+		currentBook['Id_book'] = cartBooksJson[idx].id_book;
+		currentBook['quantity'] = $(this).val();
+		currentBook['support'] = cartBooksJson[idx].support;
+
+		updateCartQty();
 	})
 	
 	getCart();
@@ -31,6 +37,24 @@ function getCart(){
 			//TODO
 		}
         
+     });
+}
+
+function updateCartQty(){
+    fetch('/cart/', {
+		body: JSON.stringify(currentBook),
+        method: "PUT",
+        credentials: 'include',
+		headers: {
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json'
+		}
+    }).then(function(response) {
+         return response.json();
+     }).then(function(json) {
+        console.log(json);
+		
+        generateCartFooterHTML();
      });
 }
 
@@ -70,7 +94,7 @@ function generateCartHTML(){
                             </div>
                             <div class="col-4 col-sm-4 col-md-4 pad">
                                 <div class="quantity">
-                                    <input id="${book.id_book}" type="number" step="1" max="99" min="1" value="${parseInt(book.quantity, 10)}" title="Qty" class="qty" size="4">
+                                    <input id="${x}" type="number" step="1" max="99" min="1" value="${parseInt(book.quantity, 10)}" title="Qty" class="qty" size="4">
                                 </div>
                             </div>
                             <div class="col-2 col-sm-2 col-md-2 text-right">

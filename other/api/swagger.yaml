@@ -649,14 +649,14 @@ paths:
       tags:
       - "cart"
       summary: "Edit the quantity of a book in the cart"
-      operationId: "updateBookById"
+      operationId: "updateBookQuantity"
       consumes:
       - "application/json"
       produces:
       - "application/json"
       parameters:
       - in: "body"
-        name: "body"
+        name: "book"
         description: "Book object that needs to be modified to the cart"
         required: true
         schema:
@@ -664,6 +664,8 @@ paths:
       responses:
         405:
           description: "Invalid input"
+        401:
+          description: "Unauthorized"
       x-swagger-router-controller: "Cart"
     delete:
       tags:
@@ -676,7 +678,7 @@ paths:
       - "application/json"
       parameters:
       - in: "body"
-        name: "body"
+        name: "book"
         description: "Book object that needs to be modified to the cart"
         required: true
         schema:
@@ -684,6 +686,8 @@ paths:
       responses:
         405:
           description: "Invalid input"
+        401:
+          description: "Unauthorized"
       x-swagger-router-controller: "Cart"
   /cart/count:
     get:

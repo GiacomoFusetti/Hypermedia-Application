@@ -56,14 +56,14 @@ module.exports.getCartCountById = function getCartCountById(req, res, next) {
   	}
 };
 
-module.exports.updateBookById = function updateBookById(req, res, next) {
-
+module.exports.updateBookQuantity = function updateBookQuantity(req, res, next) {
+	
 	var book = req.swagger.params['book'].value;
 	
 	if (!req.session || !req.session.loggedin) {
     	utils.writeJson(res, { error: "sorry, you must be authorized" }, 401);
   	} else {
-    	CartService.updateBookById(req.session.user.id_user, book)
+    	CartService.updateBookQuantity(req.session.user.id_user, book)
       	.then(function(response) {
         	utils.writeJson(res, response);
       	})
