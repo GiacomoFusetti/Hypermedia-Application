@@ -13,6 +13,8 @@ $(document).ready(function(){
     getAuthors();
 });
 
+// -------------- REQUESTS ---------------
+
 function getBestBooks(){
 	var query = '?offset=' + offset + '&limit=' + limit + '&filter=1';
     
@@ -22,7 +24,7 @@ function getBestBooks(){
 		booksJson = json;
 		$("#property-carousel").empty();
 		if(!jQuery.isEmptyObject(booksJson)){
-			generatesBestBooksHTML();
+			fillBooksCarousel(booksJson);
 		}else{
 			$("#property-carousel").append( 
 				'<h3 class="title-single">No Books suggested.</h3>'
@@ -40,7 +42,7 @@ function getAuthors(){
 		authorsJson = json;
         $("#authors-carousel").empty();
 		if(!jQuery.isEmptyObject(authorsJson)){
-			generatesAuthorsHTML();
+			fillAuthorsCarousel(authorsJson);
 		}else{
 			$("#authors-carousel").append( 
 				'<h3 class="title-single">No Authors available.</h3>'
@@ -58,7 +60,7 @@ function getEvents(){
 		eventsJson = json;
         $("#new-carousel").empty();
         if(!jQuery.isEmptyObject(eventsJson)){
-			generatesEventsHTML();
+			fillEventsCarousel(eventsJson);
 		}else{    
 			$("#new-carousel").append( 
 				'<h3 class="title-single">No Events available.</h3>'
@@ -67,20 +69,9 @@ function getEvents(){
 	 });
 }
 
-function generatesBestBooksHTML(){
+// -------------- GENERATES HTML ---------------
 
-    fillBookCarousel(booksJson);
-}
-
-function generatesEventsHTML(){
-    fillEventCarousel(eventsJson);
-}
-
-function generatesAuthorsHTML(){
-    fillAuthorCarousel(authorsJson);
-}
-
-function fillBookCarousel(books){
+function fillBooksCarousel(books){
     
     var booksCarousel = ``;
     for(i = 0; i < books.length; i++){
@@ -112,11 +103,11 @@ function fillBookCarousel(books){
                 `;
         
     }
-    $("#property-carousel").append(booksCarousel);
-    carouselProperty();
+    $("#books-carousel").append(booksCarousel);
+    carouselBooks();
 }
 
-function fillAuthorCarousel(authors){
+function fillAuthorsCarousel(authors){
     var authorsCarousel = ``;
     for(w=0;w<authors.length;w++){
         var author = authors[w];
@@ -134,7 +125,7 @@ function fillAuthorCarousel(authors){
     carouselAuthors();
 }
 
-function fillEventCarousel(events){
+function fillEventsCarousel(events){
     var eventCarousel = ``;
     console.log(events);
     for(k = 0; k < events.length; k++){
@@ -170,6 +161,8 @@ function fillEventCarousel(events){
     carouselEvents();
 }
 
+// -------------- AUXILIARY FUNCTIONS ---------------
+
 function priceHTML(support, price_paper, price_ebook){
 	switch(support){
 		case 'eBook':
@@ -194,9 +187,11 @@ function authorListHTML(authorsNameJson, authorsIdsJson){
 	return authorsHTML;	
 }
 
-function carouselProperty(){
+// -------------- CAROUSEL FUNCTIONS ---------------
+
+function carouselBooks(){
         /*--/ Property owl /--*/
-	$('#property-carousel').owlCarousel({
+	$('#books-carousel').owlCarousel({
 		loop: true,
 		margin: 30,
 		responsive: {

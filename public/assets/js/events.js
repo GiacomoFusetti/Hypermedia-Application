@@ -44,6 +44,8 @@ $(document).ready(function(){
 	getEvents();
 });
 
+// -------------- REQUESTS ---------------
+
 function getPage(num){
     console.log("num: " + num);
     offset = (num-1)*limit;
@@ -86,6 +88,8 @@ function getEventsCount(){
 		}
 	 });
 }
+
+// -------------- GENERATES HTML ---------------
 
 function generatesHTML(){
 	for(i = 0; i < eventsJson.length; i++){
