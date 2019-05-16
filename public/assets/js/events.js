@@ -104,7 +104,7 @@ function generatesHTML(){
                         </div>
                         <div class="card-title-b">
                           <h2 class="title-2">
-                            <a href="event.html?id=${eventsJson[i].id_event}">${eventsJson[i].name}
+                            <a class="font-80" href="event.html?id=${eventsJson[i].id_event}">${eventsJson[i].name}</a>
                           </h2>
                         </div>
                         <div class="card-date">

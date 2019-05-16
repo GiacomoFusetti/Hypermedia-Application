@@ -27,6 +27,9 @@
     color: #5c497a;
 }
 
+.font-80{
+    font-size: 80%;
+}
 
 body {
   font-family: 'Poppins', sans-serif;
