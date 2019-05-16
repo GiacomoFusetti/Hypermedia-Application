@@ -1,7 +1,8 @@
-console.log("Loading events page");
 
+let option;
 let eventsJson;
 let this_month;
+let selection;
 
 let urlParams = new URLSearchParams(window.location.search);
 let offset = urlParams.get('offset') || 0;
@@ -26,7 +27,14 @@ $(document).ready(function(){
         option = $(this).children("option:selected").val();
         
         switch(option){
-                //TODO
+            case "1":
+                selection = "current_month";
+                break;
+            case "2":    
+                selection = "latest";
+                break;
+            default:
+                selection = 0;
         }
         offset = 0;
         getEventsCount();
@@ -44,13 +52,12 @@ function getPage(num){
 
 function getEvents(){
     var query = '?offset=' + offset + '&limit=' + limit;
-	if(this_month) query += '&orderBy=' + this_month;
-    console.log(query);
+    
+	if(selection) query += '&orderBy=' + selection;
 	fetch('/events' + query).then(function(response) {
 		return response.json();
 	 }).then(function(json) {
 		eventsJson = json;
-        console.log(eventsJson);
         $("#eventsDiv").empty();
         if(!jQuery.isEmptyObject(eventsJson)){
 			generatesHTML();
@@ -66,8 +73,7 @@ function getEventsCount(){
     
 	var query = '?offset=' + offset + '&limit=' + limit;
     
-	if(this_month) query += '&current_month=' + this_month;
-    
+	if(selection) query += '&orderBy=' + selection;
     fetch('/events/count' + query).then(function(response) {
 		return response.json();
 	 }).then(function(json) {
@@ -82,14 +88,13 @@ function getEventsCount(){
 }
 
 function generatesHTML(){
-    console.log(eventsJson);
 	for(i = 0; i < eventsJson.length; i++){
 		$("#eventsDiv").append( 
 			`
 				<div class="col-md-4">
                   <div class="card-box-b card-shadow news-box">
                     <div class="img-box-b">
-                      <img src="${eventsJson[i].img}" alt="" class="img-b img-fluid">
+                      <img src="${eventsJson[i].img}" alt="${eventsJson[i].name}" class="img-b img-fluid">
                     </div>
                     <div class="card-overlay">
                       <div class="card-header-b">
