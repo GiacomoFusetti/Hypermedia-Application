@@ -50,7 +50,7 @@ exports.addBookById = function(userId, book) {
 					//console.log("Result", result);	
 					updateJson(userId, book);
 			
-					res = {res: 'Book ' + book.title.substring(0, 10) + ', quantity updated.'};
+					res = {res: 'Book <' + book.title.substring(0, 10) + '>, quantity updated.'};
 					return res;
 				})
 				.catch(function(e) {
@@ -63,7 +63,7 @@ exports.addBookById = function(userId, book) {
 					//console.log("Result", result);	
 					appendToJson(userId, book);
 
-					res = {res: 'Book ' + book.title.substring(0, 10) + ' insert in the cart.'};
+					res = {res: 'Book <' + book.title.substring(0, 10) + '> insert in the cart.'};
 					return res;
 				})
 				.catch(function(e) {
@@ -108,15 +108,16 @@ exports.getCartCountById = function(userId) {
  **/
 exports.updateBookQuantity = function(userId, book) {
 	sqlDb = database;
+	var res = {};
 	
 	return isInCart(sqlDb, userId, book).then( inCart =>{
         if(inCart){
 			return updateBookQty(sqlDb, userId, book)
 				.then(result => {
-					console.log("Result", result);	
+					//console.log("Result", result);	
 					updateJson(userId, book);
-			
-					res = {res: 'Book ' + book.title.substring(0, 10) + ', quantity updated.'};
+				
+					res = {res: ('Book <' + book.title.substring(0, 10) + '>, quantity updated.')};
 					return res;
 				})
 				.catch(function(e) {
@@ -134,6 +135,7 @@ exports.updateBookQuantity = function(userId, book) {
  **/
 exports.deleteBookById = function(userId, book) {
 	sqlDb = database;
+	var res = {};
 
 	return isInCart(sqlDb, userId, book).then( inCart =>{
         if(inCart){
@@ -142,7 +144,7 @@ exports.deleteBookById = function(userId, book) {
 					//console.log("Result", result);	
 					deleteBookJson(userId, book);
 			
-					res = {res: 'Book ' + book.title.substring(0, 10) + ' deleted from cart.'};
+					res = {res: 'Book <' + book.title.substring(0, 10) + '> deleted from cart.'};
 					return res;
 				})
 				.catch(function(e) {
@@ -178,7 +180,7 @@ function updateBookQty(sqlDb, userId, book){
 
 	return sqlDb.table('cart').select('cart.quantity').where({'cart.id_user': userId, 'cart.id_book' : book.Id_book, 'cart.support' : book.support})
 		.then(result => {
-			var qty = parseInt(result[0].quantity, 10) + 1;
+			var qty = book.quantity || (parseInt(result[0].quantity, 10) + 1);
 			
 			if (qty > 0){
 				return sqlDb.table('cart')
@@ -205,11 +207,12 @@ function updateJson(userId, book){
             console.log(err);
         } else {
 			var obj = JSON.parse(data); //now it is an object
-			
-			for (var i = 0; i < obj.length; i++){
+			for (var x = 0; x < obj.length; x++){
 				// look for the entry with a matching `code` value
-			  	if (obj[i].id_user == userId && obj[i].id_book == book.Id_book && obj[i].support == book.support)
-					obj[i].quantity += 1;
+			  	if (obj[x].id_user == userId && obj[x].id_book == book.Id_book && obj[x].support == book.support){
+					var qty = obj[x].quantity + 1
+					obj[x].quantity = book.quantity || qty;
+				}
 			}
 			var json = JSON.stringify(obj);
 			fs.writeFile('other/data_json/cart.json', json, 'utf8', function readFileCallback(err){}); // write it back 
@@ -238,11 +241,12 @@ function deleteBookJson(userId, book){
             console.log(err);
         } else {
 			var obj = JSON.parse(data); //now it is an object
-			
 			for (var i = 0; i < obj.length; i++){
 				// look for the entry with a matching `code` value
-			  	if (obj[i].id_user == userId && obj[i].id_book == book.Id_book && obj[i].support == book.support)
-					delete obj[i];
+			  	if (obj[i] && obj[i].id_user == userId && obj[i].id_book == book.Id_book && obj[i].support == book.support){
+					obj.splice(i, 1);
+					break;
+				}
 			}
 			var json = JSON.stringify(obj);
 			fs.writeFile('other/data_json/cart.json', json, 'utf8', function readFileCallback(err){}); // write it back 

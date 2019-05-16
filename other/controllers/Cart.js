@@ -76,6 +76,7 @@ module.exports.updateBookQuantity = function updateBookQuantity(req, res, next) 
 module.exports.deleteBookById = function deleteBookById(req, res, next) {
 
 	var book = req.swagger.params['book'].value;
+	console.log(book);
 	
 	if (!req.session || !req.session.loggedin) {
     	utils.writeJson(res, { error: "sorry, you must be authorized" }, 401);
