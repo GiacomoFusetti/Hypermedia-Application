@@ -41,3 +41,7 @@
     border-radius: 0;
     background-clip: padding-box
 }
+
+.title-pointer{
+	cursor: pointer;
+}

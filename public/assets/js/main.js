@@ -9,7 +9,7 @@ if(pathname === '/' || pathname === '/index.html')
 // -------------- REQUESTS ---------------
 
 function checkSession(){
-    fetch('../session', {
+    fetch('/session', {
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         method: "GET",
         credentials: 'include'

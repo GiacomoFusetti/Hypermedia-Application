@@ -132,6 +132,7 @@ function postCurrentBook(){
     }).then(function(response) {
         response.json().then(function(json) {
 			console.log(json);
+			getCartCount();
 			
         });
     });
