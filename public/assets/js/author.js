@@ -53,6 +53,8 @@ $(document).ready(function(){
 	getAuthorsById();
 });
 
+// -------------- REQUESTS ---------------
+
 function getAuthorsById(){    
     var query = '?offset=' + offset + '&limit=' + limit;
     
@@ -108,6 +110,8 @@ function getCountWrittenBooks(){
 	 });
 }
 
+// -------------- GENERATES HTML ---------------
+
 function generatesPaginationHTML(){
 	for(i = 0; i < pageNumber; i++){
 		$("#pagDiv").append( 
@@ -124,6 +128,8 @@ function generatesAuthorBookHTML(){
     fillHeader(authorJson.author)
     fillBody(authorJson.author)  
 }
+
+// -------------- AUXILIARY FUNCTIONS ---------------
 
 function fillHeader(author){
     $("#author_title").html(author.name);

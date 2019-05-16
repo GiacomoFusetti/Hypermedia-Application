@@ -16,6 +16,8 @@ $(document).ready(function(){
     getEventById();
 });
 
+// -------------- REQUESTS ---------------
+
 function getEventById(){
     
 	fetch('/events/' + id_event).then(function(response) {
@@ -33,11 +35,26 @@ function getEventById(){
 	 });
 }
 
+// -------------- GENERATES HTML ---------------
+
 function generatesEventHTML(){
     fillHead(eventsJson.event,eventsJson.authors,eventsJson.book);
     fillBody(eventsJson.event, eventsJson.book,eventsJson.genre,eventsJson.themes);
     fillBookDetailsEvent(eventsJson.event, eventsJson.authors, eventsJson.book,eventsJson.genre,eventsJson.themes);
 }
+
+function bookHTML(book,authorsNameJson, authorsIdsJson){
+	var authorsHTML = `<h5 class="color-text-a" href="book.html?id=${book.id_book}">${book.title}</h5>`;
+	
+	for(z = 0; z < authorsNameJson.length; z++)
+		authorsHTML += 
+                `
+						<h5 class="card-titl-a ` + (z > 0 ? `book_author_li` :  `book_author`) + `"> ` + (z > 0 ? `<a class="font-70"> & </a>` :  ``) + `<a class="font-70" href="author.html?id=${authorsIdsJson[z]}">${authorsNameJson[z]}</a></h5> 
+				`;
+	return authorsHTML;	
+}
+
+// -------------- AUXILIARY FUNCTIONS ---------------
 
 function fillHead(event,author,book){
     $("#event_title").html(event.name);
@@ -67,17 +84,6 @@ function fillBody(event,book,genre,theme){
     $("#map").html(`<iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=${event.location}+()&amp;ie=UTF8&amp;iwloc=A&amp;output=embed"
                 width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>`);
     
-}
-
-function bookHTML(book,authorsNameJson, authorsIdsJson){
-	var authorsHTML = `<h5 class="color-text-a" href="book.html?id=${book.id_book}">${book.title}</h5>`;
-	
-	for(z = 0; z < authorsNameJson.length; z++)
-		authorsHTML += 
-                `
-						<h5 class="card-titl-a ` + (z > 0 ? `book_author_li` :  `book_author`) + `"> ` + (z > 0 ? `<a class="font-70"> & </a>` :  ``) + `<a class="font-70" href="author.html?id=${authorsIdsJson[z]}">${authorsNameJson[z]}</a></h5> 
-				`;
-	return authorsHTML;	
 }
 
 function fillBookDetailsEvent(event, author, book, genre, themes){

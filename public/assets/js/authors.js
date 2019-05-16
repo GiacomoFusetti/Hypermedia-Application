@@ -24,6 +24,8 @@ $(document).ready(function(){
 	getAuthors();
 });
 
+// -------------- REQUESTS ---------------
+
 function getAuthors(){
     var query = '?offset=' + offset + '&limit=' + limit;
     
@@ -42,21 +44,6 @@ function getAuthors(){
 	 });
 }
 
-function generatesHTML(){	
-	for(i = 0; i < authorsJson.length; i++){
-		$("#authorsDiv").append( 
-			`
-				<div class="col-6 col-md-4">
-                    <div class="card-box-a container_img">
-                        <a href="author.html?id=${authorsJson[i].id_author}"><img src="${authorsJson[i].photo}" class="img-d img-fluid"></a>
-                        <div class="bottom_center"><a href="author.html?id=${authorsJson[i].id_author}" class="color_white">${authorsJson[i].name}</a></div>
-                    </div>
-                </div>
-			`
-		);
-	}
-}
-
 function getCountAuthors(){
     
 	var query = '?offset=' + offset + '&limit=' + limit;
@@ -72,6 +59,24 @@ function getCountAuthors(){
 			generatesPaginationHTML();
 		}
 	 });
+}
+
+// -------------- GENERATES HTML ---------------
+
+function generatesHTML(){
+    
+	for(i = 0; i < authorsJson.length; i++){
+        $("#authorsDiv").append( 
+			`
+				<div class="col-6 col-md-4">
+                    <div class="card-box-a container_img">
+                        <a href="author.html?id=${authorsJson[i].id_author}"><img src="${authorsJson[i].photo}" class="img-d img-fluid"></a>
+                        <div class="bottom_center"><a href="author.html?id=${authorsJson[i].id_author}" class="color_white">${authorsJson[i].name}</a></div>
+                    </div>
+                </div>
+			`
+		);
+	}
 }
 
 function generatesPaginationHTML(){

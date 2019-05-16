@@ -44,6 +44,8 @@ $(document).ready(function(){
 	getEvents();
 });
 
+// -------------- REQUESTS ---------------
+
 function getPage(num){
     console.log("num: " + num);
     offset = (num-1)*limit;
@@ -87,6 +89,8 @@ function getEventsCount(){
 	 });
 }
 
+// -------------- GENERATES HTML ---------------
+
 function generatesHTML(){
 	for(i = 0; i < eventsJson.length; i++){
 		$("#eventsDiv").append( 
@@ -104,7 +108,7 @@ function generatesHTML(){
                         </div>
                         <div class="card-title-b">
                           <h2 class="title-2">
-                            <a href="event.html?id=${eventsJson[i].id_event}">${eventsJson[i].name}
+                            <a class="font-80" href="event.html?id=${eventsJson[i].id_event}">${eventsJson[i].name}</a>
                           </h2>
                         </div>
                         <div class="card-date">
