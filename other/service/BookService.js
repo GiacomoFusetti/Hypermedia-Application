@@ -12,7 +12,7 @@ let sqlDb;
  * limit Integer Maximum number of items per page. Default is 20 and cannot exceed 500. (optional)
  * returns List
  **/
-exports.booksGET = function(offset, limit, genre, theme, rating, filter) {
+exports.booksGET = function(offset, limit, genre, theme, rating, filter, search) {
 	sqlDb = database;
 	let results = {};
 	var fields = ['book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.rating' ];
@@ -51,6 +51,8 @@ exports.booksGET = function(offset, limit, genre, theme, rating, filter) {
 		}
 		query.where(flt, 'true');
 	}
+    if(search)
+        query.where('book.title', 'ilike', '%' + search + '%');
 
 	return query.then(data => {
 		return data.map(e => {
@@ -63,7 +65,7 @@ exports.booksGET = function(offset, limit, genre, theme, rating, filter) {
 /**
 * Get number of books in db
 **/
-exports.getBooksCount = function(genre, theme, rating, filter){
+exports.getBooksCount = function(genre, theme, rating, filter, search){
 	sqlDb = database;
 	
 	var query = sqlDb('book').count('*');
@@ -91,6 +93,9 @@ exports.getBooksCount = function(genre, theme, rating, filter){
 		query.where(flt, 'true');
 	} 
 	
+    if(search)
+        query.where('book.title', 'ilike', '%' + search + '%');
+    
 	return query.then(data => {
 		return data.map(e => {
 			return e;
