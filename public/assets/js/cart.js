@@ -3,8 +3,10 @@ console.log('Loading cart page');
 let cartBooksJson;
 
 let currentBook = {};
-let deleteBook = {};
+let checkOutBooks = [];
+let deleteBook = [];
 let newQty;
+let total = 0;
 
 
 $(document).ready(function(){
@@ -43,28 +45,46 @@ $(document).ready(function(){
 			  'The book has been removed.',
 			  'success'
 			)
-			deleteBook['Id_book'] = cartBooksJson[idx].id_book;
-			deleteBook['support'] = cartBooksJson[idx].support;
-			deleteBook['title'] = cartBooksJson[idx].title;
+			var elem = {};
+			elem['Id_book'] = cartBooksJson[idx].id_book;
+			elem['support'] = cartBooksJson[idx].support;
+			elem['title'] = cartBooksJson[idx].title;
+			deleteBook = [];
+			deleteBook.push(elem);
 
 			delete cartBooksJson[idx];
 			$('#entryCart' + idx).remove();
 			$('#hr' + idx).remove();
-			deleteBookCart();
+			deleteBookCart(deleteBook);
 		  }
 		});
-		
 	});
 	// HANDLE CHECKOUT
 	$(document).on('click', '#checkOutBtn', function (){
 		console.log('CheckOut');
-		Swal.fire({
-			title: 'Confirmed purchase!',
-                html: 'The coupon code has been sent to: <b>' + email + '</b><br>The code is: <b> ' + code + '</b>',
+		if(!jQuery.isEmptyObject(cartBooksJson)){
+			checkOutBooks = []
+			
+			for(var x = 0; x < cartBooksJson.length; x++){
+				var elem = {};
+				if(cartBooksJson[x]){
+					elem['Id_book'] = cartBooksJson[x].id_book;
+					elem['support'] = cartBooksJson[x].support;
+					elem['title'] = cartBooksJson[x].title;
+					checkOutBooks.push(elem);
+				}
+			}
+			deleteBookCart(checkOutBooks);
+			$('#cartBody').remove();
+			
+			Swal.fire({
+				title: 'Confirmed purchase!',
+                html: 'Total amount: € <b>' + total.toFixed(2) + '</b>',
                 type: 'success',
                 confirmButtonColor:'#2eca6a',
-                confirmButtonText: 'Ok, got it!'
-		})
+                confirmButtonText: 'Great!'
+			})
+		}
 	});
 	
 	getCart();
@@ -110,9 +130,10 @@ function updateCartQty(){
      });
 }
 
-function deleteBookCart(){
+function deleteBookCart(bookList){
+	console.log(bookList);
     fetch('/cart/', {
-		body: JSON.stringify(deleteBook),
+		body: JSON.stringify(bookList),
         method: "DELETE",
         credentials: 'include',
 		headers: {
@@ -151,7 +172,7 @@ function generateCartHTML(){
                         <div class="col-12 col-sm-12 col-md-2 text-center">
                                 <a href="book.html?id=${book.id_book}"><img class="img-responsive" src="${book.cover_img}" alt="${book.title}" width="80" height="120"></a>
                         </div>
-                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-5">
+                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-5" style="padding-top: 10px;">
                             <h5 class="product-name"><strong><a class="title-pointer" href="book.html?id=${book.id_book}">${book.title}</a></strong></h5>
 							<h5>
                                 <small>${authorHTML}</small>
@@ -186,13 +207,14 @@ function generateCartHTML(){
 function generateCartFooterHTML(){
 	var cartFooterHTML = ``;
 	
-	var total = 0;
+	total = 0;
 	for(var x = 0; x < cartBooksJson.length; x++){
 		var book = cartBooksJson[x];
 		if(book)
 			total += parseFloat(book.price, 10) * parseInt(book.quantity, 10);
 	}
-	$('#totalPriceDiv').html(`Total price: <b>€ ` + total.toFixed(2) + `</b>`);
+	total ? $('#totalPriceDiv').html(`Total price: <b>€ ` + total.toFixed(2) + `</b>`) : $('#totalPriceDiv').html(``);
 }
 
 // -------------- AUXILIARY FUNCTIONS ---------------
+

@@ -8,10 +8,9 @@ let sqlDb;
  * View the content of the cart
  *
  * userId integer 
- * offset integer, limit integer
  * returns Cart
  **/
-exports.getCartById = function(offset, limit, userId) {
+exports.getCartById = function(userId) {
 	sqlDb = database;
 	
 	return sqlDb.from('cart')
@@ -24,8 +23,6 @@ exports.getCartById = function(offset, limit, userId) {
 		.select('cart.*')
 		.select(sqlDb.raw('ARRAY_AGG(DISTINCT author.name) as auth_names'), sqlDb.raw('ARRAY_AGG(DISTINCT author.id_author) as auth_ids'))
 		.groupBy('cart.id_user', 'cart.id_user', 'cart.id_book', 'cart.support', 'cart.quantity', 'cart.title', 'cart.cover_img', 'cart.price')
-		.limit(limit)
-		.offset(offset)
 		.then(data =>{
         	return data.map(e => {
             	return e;
@@ -133,27 +130,36 @@ exports.updateBookQuantity = function(userId, book) {
  * userId integer
  * bookId integer
  **/
-exports.deleteBookById = function(userId, book) {
+exports.deleteBookById = function(userId, bookList) {
 	sqlDb = database;
 	var res = {};
+	var promises = [];
+	
+	for(var x = 0; x < bookList.length; x++){
+		promises.push(deleteBook(sqlDb, userId, bookList[x]));
+		deleteBookJson(userId, bookList[x]);
+	}
+	
+	return Promise.all(promises)    
+		.then(function(data){
+			res = {res: 'Books deleted from cart.'};
+			return res;
+		}).catch(function(err){
+			console.error('knex update error', err);
+		});
 
-	return isInCart(sqlDb, userId, book).then( inCart =>{
-        if(inCart){
-			return deleteBook(sqlDb, userId, book)
-				.then(result => {
-					//console.log("Result", result);	
-					deleteBookJson(userId, book);
-			
-					res = {res: 'Book <' + book.title.substring(0, 10) + '> deleted from cart.'};
-					return res;
-				})
-				.catch(function(e) {
-					console.error('knex update error', e);
-				});
-        }else{
+	/*return deleteBook(sqlDb, userId, bookList)
+		.then(result => {
+			//console.log("Result", result);	
+			deleteBookJson(userId, bookList);
 
-        }
-    });
+			res = {res: 'Books deleted from cart.'};
+			return res;
+		})
+		.catch(function(e) {
+			console.error('knex update error', e);
+		});
+    });*/
 
 }
 
