@@ -6,6 +6,7 @@ let pageNumber;
 
 let offset = urlParams.get('offset') || 0;
 let limit = urlParams.get('limit') || 6;
+let search = urlParams.get('search') || '';
 
 $(document).ready(function(){
     
@@ -27,7 +28,7 @@ $(document).ready(function(){
 // -------------- REQUESTS ---------------
 
 function getAuthors(){
-    var query = '?offset=' + offset + '&limit=' + limit;
+    var query = '?offset=' + offset + '&limit=' + limit '&search=' + search;
     
 	fetch('/authors' + query).then(function(response) {
 			 return response.json();
@@ -46,7 +47,7 @@ function getAuthors(){
 
 function getCountAuthors(){
     
-	var query = '?offset=' + offset + '&limit=' + limit;
+	var query = '?search=' + search;
     
     fetch('/authors/count' + query).then(function(response) {
 		return response.json();

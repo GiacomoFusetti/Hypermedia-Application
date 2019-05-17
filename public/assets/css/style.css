@@ -41,6 +41,11 @@ ul.dropdown-lr {
   width: 300px;
 }
 
+.search-style {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 
 h1,
 h2,
@@ -1150,7 +1155,7 @@ a:hover {
 /*------/ Property Grid /-----*/
 
 .grid-option {
-  text-align: right;
+  text-align: right !important;
   margin-bottom: 2rem;
 }
 

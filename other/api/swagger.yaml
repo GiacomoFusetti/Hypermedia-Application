@@ -73,6 +73,11 @@ paths:
         required: false
         type: integer
         enum: [0, 1, 2]
+      - name: "search"
+        in: "query"
+        description: "Name of the book to search in the DB"
+        required: false
+        type: "string"
       responses:
         200:
           description: "A collection of Books"
@@ -114,6 +119,11 @@ paths:
         required: false
         type: integer
         enum: [0, 1, 2]
+      - name: "search"
+        in: "query"
+        description: "Name of the book to search in the DB"
+        required: false
+        type: "string"
       responses:
         200:
           description: "successful operation"
@@ -298,6 +308,11 @@ paths:
         description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
         required: false
         type: "integer"
+      - name: "search"
+        in: "query"
+        description: "Name of the author to search in the DB"
+        required: false
+        type: "string"
       responses:
         200:
           description: "A collection of Authors"
@@ -328,6 +343,11 @@ paths:
         description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
         required: false
         type: "integer"
+      - name: "search"
+        in: "query"
+        description: "Name of the author to search in the DB"
+        required: false
+        type: "string"
       responses:
         200:
           description: "successful operation"

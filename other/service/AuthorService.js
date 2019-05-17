@@ -6,17 +6,21 @@ let sqlDb;
 /**
  * Authors available in the inventory
  **/
-exports.authorsGET = function(offset, limit) {
+exports.authorsGET = function(offset, limit, search) {
     sqlDb = database;
-    return sqlDb('author')
-        .orderBy('author.name')
-        .limit(limit)
-        .offset(offset)
-        .then(data => {
-          return data.map(e => {
-            return e;
-          });
-        });
+    
+    var query =  sqlDb('author')
+            .orderBy('author.name')
+            .limit(limit)
+            .offset(offset)
+    if(search)
+        query.where('author.name', 'ilike', '%' + search + '%' )
+           
+    return query.then(data => {
+      return data.map(e => {
+        return e;
+      });
+    });
 }
 
 /**
@@ -79,11 +83,14 @@ exports.getWrittenBooksById = function(offset, limit, authorId) {
  * Get number of authors in db
  * return a number
  **/
-exports.getAuthorsCount = function(offset,limit) {
+exports.getAuthorsCount = function(search) {
 	sqlDb = database;
 	
 	var query = sqlDb('author').count('*');
-	
+    
+    if(search)
+        query.where('author.name', 'ilike', '%' + search + '%' )
+    
 	return query.then(data => {
 		return data.map(e => {
 			return e;

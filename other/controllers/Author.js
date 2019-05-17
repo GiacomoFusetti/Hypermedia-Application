@@ -10,11 +10,13 @@ module.exports.authorsGET = function authorsGET (req, res, next) {
     
     var offset = 0;
     var limit = 0;
+    var search = '';
     
     req.swagger.params['offset'].value ? offset = req.swagger.params['offset'].value : offset = 0;
     req.swagger.params['limit'].value ? limit = req.swagger.params['limit'].value : limit = 20;
+    req.swagger.params['search'].value ? search = req.swagger.params['search'].value : search = undefined;
     
-    AuthorService.authorsGET(offset,limit)
+    AuthorService.authorsGET(offset,limit,search)
         .then(function (response) {
             utils.writeJson(res, response);
         })
@@ -55,7 +57,10 @@ module.exports.getWrittenBooksById = function getWrittenBooksById(req, res, next
 
 module.exports.getAuthorsCount = function getAuthorsCount(req, res, next) {
     
-    AuthorService.getAuthorsCount()
+    var search = '';
+    req.swagger.params['search'].value ? search = req.swagger.params['search'].value : search = undefined;
+    
+    AuthorService.getAuthorsCount(search)
         .then(function (response) {
             response = response[0];
             utils.writeJson(res, response);

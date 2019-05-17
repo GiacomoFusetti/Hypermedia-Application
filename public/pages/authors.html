@@ -22,6 +22,7 @@
         <!-- Main Stylesheet File -->
         <link href="../assets/css/style.css" rel="stylesheet">
         <link href="../assets/css/authorstyle.css" rel="stylesheet">
+        <link href="../assets/css/searchstyle.css" rel="stylesheet">
     </head>
     <body>
         <!--==========================
@@ -73,7 +74,7 @@
                     <div class="col-md-12 col-lg-8">
                         <div class="title-single-box">
                             <h1 class="title-single">Authors</h1>
-                            <span class="color-text-a">Grid Properties</span>
+                            <span class="color-text-a">The authors in our inventory</span>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-4">
@@ -95,87 +96,23 @@
         <!--/ Authors Grid Star /-->
         <section class="agents-grid grid">
             <div class="container">
+                <div class="col-sm-12">
+               <div class="grid-option">
+                  <form>
+                     <input type="text" name="name" class="custom-input form-control form-control-lg form-control-a" placeholder="Search Author">
+                  </form>
+               </div>
+            </div>
                 <div id="authorsDiv" class="row">
-                    <!--<div class="col-md-4">
-                        <div class="card-box-a container_img">
-                            <a href="author.html"><img src="../assets/img/authors/tolkien.jpg" class="img-d img-fluid"></a>
-                            <div class="bottom_center"><a href="author.html" class="color_white">J. R. R. Tolkien</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card-box-a container_img">
-                            <a href="author.html"><img src="../assets/img/authors/rowling.jpg" class="img-d img-fluid"></a>
-                            <div class="bottom_center"><a href="author.html" class="color_white">J. K. Rowling</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card-box-a container_img">
-                            <a href="author.html"><img src="../assets/img/authors/coelho.jpg" class="img-d img-fluid"></a>
-                            <div class="bottom_center"><a href="author.html" class="color_white">Italo Calvino</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card-box-a container_img">
-                            <a href="author.html"><img src="../assets/img/authors/crapanzano.jpg" class="img-d img-fluid"></a>
-                            <div class="bottom_center"><a href="author.html" class="color_white">Alessandro D'Avenia</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card-box-a container_img">
-                            <a href="author.html"><img src="../assets/img/authors/franklin.jpg" class="img-d img-fluid"></a>
-                            <div class="bottom_center"><a href="author.html" class="color_white">Alessandro Barrico</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card-box-a container_img">
-                            <a href="author.html"><img src="../assets/img/authors/james.jpg" class="img-d img-fluid"></a>
-                            <div class="bottom_center"><a href="author.html" class="color_white">Viviana Varese</a></div>
-                        </div>
-                    </div>
-					<div class="col-md-4">
-                        <div class="card-box-a container_img">
-                            <a href="author.html"><img src="../assets/img/authors/mackay.jpg" class="img-d img-fluid"></a>
-                            <div class="bottom_center"><a href="author.html" class="color_white">Viviana Varese</a></div>
-                        </div>
-                    </div>
-					<div class="col-md-4">
-                        <div class="card-box-a container_img">
-                            <a href="author.html"><img src="../assets/img/authors/shakespeare.jpg" class="img-d img-fluid"></a>
-                            <div class="bottom_center"><a href="author.html" class="color_white">Viviana Varese</a></div>
-                        </div>
-                    </div>
-					<div class="col-md-4">
-                        <div class="card-box-a container_img">
-                            <a href="author.html"><img src="../assets/img/authors/galloway.jpg" class="img-d img-fluid"></a>
-                            <div class="bottom_center"><a href="author.html" class="color_white">Viviana Varese</a></div>
-                        </div>
-                    </div>-->
+                    <!--Load from DB-->
                 </div>
                 <div class="row">
                 <div class="col-sm-12">
                   <nav class="pagination-a">
                     <ul class="pagination justify-content-end">
-                      <!--<li class="page-item">
-                        <a class="page-link" tabindex="-1">
-                          <span class="ion-ios-arrow-back"></span>
-                        </a>
-                      </li>-->
-					  <div id="pagDiv" class="pagination justify-content-end">
-						  <!--<li class="page-item active">
-							<a class="page-link" href="#">1</a>
-						  </li>
-						  <li class="page-item">
-							<a class="page-link" href="#">2</a>
-						  </li>
-						  <li class="page-item">
-							<a class="page-link" href="#">3</a>
-						  </li>-->
+                      <div id="pagDiv" class="pagination justify-content-end">
+						  <!--Load from DB-->
 					  </div>
-                      <!--<li class="page-item next">
-                        <a class="page-link">
-                          <span class="ion-ios-arrow-forward"></span>
-                        </a>
-                      </li>-->
                     </ul>
                   </nav>
                 </div>
