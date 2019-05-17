@@ -269,7 +269,7 @@ function fillBooks(books){
     var relatedDiv = ``;
     for(i = 0; i < books.length; i++){
         var relBook = books[i];
-        relatedDiv +=
+        relatedDiv +=/*
             `
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 book-img-margin">
                     <div class="book-img-margin-child>
@@ -293,7 +293,18 @@ function fillBooks(books){
 						</div>
 					</div>
                 </div>
-            `;
+            `*/`<div class="col-xl-2 col-lg-2 col-md-4 col-6">
+				<div class="card">
+				  	<a href="book.html?id=${relBook.id_book}" class="stretched-link"><img class="card-img-top" src="${relBook.cover_img}" alt="${relBook.title}"></a>
+				  	<div class="card-body">
+						<ul class="list-unstyled author_list font-90">` + authorListHTML(relBook.auth_names, relBook.auth_ids) + `</ul>
+						<h4 class="font-90"><a href="book.html?id=${relBook.id_book}">${relBook.title}</a></h4>
+						<b class="font-90 color-b">€ 
+								` + priceHTML(relBook.support, relBook.price_paper, relBook.price_ebook) + `																		
+						</b>
+				  	</div>
+				</div>
+			</div>`;
     }
     $("#relatedBookDiv").append(relatedDiv);
 }

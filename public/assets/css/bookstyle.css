@@ -41,6 +41,52 @@
 /*======================================
 //--//-->   STYLES BOOKS GRID
 ======================================*/
+.card-body {
+	padding: 5px;
+}
+.card{
+	border: none;
+    border-radius: none;
+	
+}
+.card-img-top {
+    width: 100%;
+    height: 19vw;
+    object-fit: contain;
+	object-position: left bottom;
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 993px) {
+	.card-img-top { 
+    	height: 22vw;
+  	}
+	.font-90{
+		font-size: 85%!important;
+	}
+	.font-85{
+		font-size: 83%!important;
+	}
+
+}
+
+/* On screens that are 768px or less, set the background color to blue */
+@media screen and (max-width: 769px) {
+  .card-img-top { 
+  	height: 24vw;
+  }
+}
+
+/* On screens that are 540px or less, set the background color to blue */
+@media screen and (max-width: 541px) {
+	.card-img-top { 
+		height: 55vw;
+	}
+	.font-90{
+		font-size: 90%!important;
+	}
+}
+
 .pointer-a{
 	cursor: pointer;
 }
@@ -49,8 +95,8 @@
 	font-size: 90%;
 }
 
-.font-70{
-	font-size: 90%;
+.font-85{
+	font-size: 85%;
 }
 
 .book-img-margin{
@@ -79,7 +125,7 @@
 }
 
 .book_author{
-    padding-top: 10px; 
+    padding-top: 0px; 
     padding-bottom: 0px;
 	margin: 0px;
 }

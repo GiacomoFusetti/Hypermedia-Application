@@ -79,28 +79,30 @@ function fillBooksCarousel(books){
         var book = books[i];
         booksCarousel += 
                 `
-                    <div class="carousel-item-b">
-                        <div class="card-box-a">
-                            <div class="img-box-a">
-                                <a href="pages/book.html?id=${book.id_book}"><img src="${book.cover_img}" alt="" class="img-a img-fluid" width="200" height="100"></a>
-                            </div>
-                        </div>
-                        <div class="book_desc">
-							<ul class="list-unstyled author_list">
+                    <div class="card carousel-item-b">
+						<a href="pages/book.html?id=${book.id_book}" class="stretched-link"><img class="img-b img-fluid card-img-top" src="${book.cover_img}" alt="${book.title}"></a>
+                        <div class="card-body book_desc">
+							<ul class="list-unstyled author_list font-90">
 								` + authorListHTML(book.auth_names, book.auth_ids) + `
 							</ul>
-							<h6 class="card-titl-a book_title"><a class="font-70" href="pages/book.html?id=${book.id_book}">${book.title}</a></h6>
-							<div>
-								<p>
-										<b class="font-70 color-b">€ 
-										`+ priceHTML(book.support, book.price_paper, book.price_ebook) +
-										`																		
-										</b>
-								</p>
-							</div>
+							<h6 class="font-90"><a href="pages/book.html?id=${book.id_book}">${book.title}</a></h6>
+								<b class="font-90 color-b">€ 
+								`+ priceHTML(book.support, book.price_paper, book.price_ebook) +
+								`																		
+								</b>
 						</div>
                     </div>
-                `;
+                `
+		/*<div class="card wow zoomIn" data-wow-duration="1s">
+				  	<a href="book.html?id=${relBook.id_book}" class="stretched-link"><img class="card-img-top" src="${relBook.cover_img}" alt="${relBook.title}"></a>
+				  	<div class="card-body">
+						<ul class="list-unstyled author_list font-90">` + authorListHTML(relBook.auth_names, relBook.auth_ids) + `</ul>
+						<h4 class="font-90"><a href="book.html?id=${relBook.id_book}">${relBook.title}</a></h4>
+						<b class="font-90 color-b">€ 
+								` + priceHTML(relBook.support, relBook.price_paper, relBook.price_ebook) + `																		
+						</b>
+				  	</div>
+				</div>*/;
         
     }
     $("#books-carousel").append(booksCarousel);
@@ -196,13 +198,13 @@ function carouselBooks(){
 		margin: 30,
 		responsive: {
 			0: {
-				items: 1,
-			},
-			769: {
 				items: 2,
 			},
-			992: {
+			769: {
 				items: 3,
+			},
+			992: {
+				items: 4,
 			}
 		}
 	});

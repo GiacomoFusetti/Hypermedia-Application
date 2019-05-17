@@ -11,32 +11,6 @@ let pageNumber;
 let offset = urlParams.get('offset') || 0;
 let limit = urlParams.get('limit') || 6;
 
-$(function() {    
-    $('.owl-carousel').owlCarousel({
-        margin:10,
-        loop:true,
-        autoWidth:true,
-        items:4
-    });
-	/*--/ Related books owl /--*/
-	$('#books-carousel').owlCarousel({
-		loop: true,
-		margin: 30,
-		responsive: {
-			0: {
-				items: 1,
-			},
-			769: {
-				items: 2,
-			},
-			992: {
-				items: 3,
-			}
-		}
-	});
-
-});
-
 $(document).ready(function(){
     
     //PAGINATION
@@ -146,31 +120,18 @@ function fillBooks(book,author){
     var writtenDiv = ``;
     for(i = 0; i < book.length; i++){
         var authorBook = book[i];
-        writtenDiv +=
-            `
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 book-img-margin">
-                    <div class="book-img-margin-child>
-						<div id="book" class="img-box-a">
-						  <a href="book.html?id=${authorBook.id_book}"><img src="${authorBook.cover_img}" alt="${authorBook.title}" class="img-a img-fluid"></a>
-						</div>
-
-						<div class="book_desc">
-							<ul class="list-unstyled author_list">
-								` + authorListHTML(authorBook.auth_names, authorBook.auth_ids) + `
-							</ul>
-							<h6 class="card-titl-a book_title"><a class="font-70" href="book.html?id=${authorBook.id_book}">${authorBook.title}</a></h6>
-							<div>
-								<p>
-										<b class="font-70 color-b">€ 
-										`+ priceHTML(authorBook.support, authorBook.price_paper, authorBook.price_ebook) +
-										`																		
-										</b>
-								</p>
-							</div>
-						</div>
-					</div>
-                </div>
-            `;
+        writtenDiv +=`<div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
+				<div class="card wow zoomIn" data-wow-duration="1s">
+				  	<a href="book.html?id=${authorBook.id_book}" class="stretched-link"><img class="card-img-top" src="${authorBook.cover_img}" alt="${authorBook.title}"></a>
+				  	<div class="card-body">
+						<ul class="list-unstyled author_list font-90">` + authorListHTML(authorBook.auth_names, authorBook.auth_ids) + `</ul>
+						<h4 class="font-90"><a href="book.html?id=${authorBook.id_book}">${authorBook.title}</a></h4>
+						<b class="font-90 color-b">€ 
+								` + priceHTML(authorBook.support, authorBook.price_paper, authorBook.price_ebook) + `																		
+						</b>
+				  	</div>
+				</div>
+			</div>`;
     }
     $("#writtenBookDiv").append(writtenDiv);
 }
@@ -193,7 +154,7 @@ function authorListHTML(authorsNameJson, authorsIdsJson){
 	for(z = 0; z < authorsNameJson.length; z++)
 		authorsHTML += `
 						<li>
-							<h5 class="card-titl-a ` + (z > 0 ? `book_author_li` :  `book_author`) + `"> ` + (z > 0 ? `<a class="font-70"> & </a>` :  ``) + `<a class="font-70" href="author.html?id=${authorsIdsJson[z]}">${authorsNameJson[z]}</a></h5> 
+							<h5 class="card-titl-a ` + (z > 0 ? `book_author_li` :  `book_author`) + `"> ` + (z > 0 ? `<a class="font-90"> & </a>` :  ``) + `<a class="font-90" href="author.html?id=${authorsIdsJson[z]}">${authorsNameJson[z]}</a></h5> 
 						</li>
 					   `;
 	return authorsHTML;	
