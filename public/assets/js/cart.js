@@ -92,7 +92,7 @@ $(document).ready(function(){
 	});
 	// HANDLE COUPON BUTTON
 	$(document).on('click', '#couponBtn', function(){
-		var couponCode = $('#couponInp').val();
+		var couponCode = $('#couponInp').val().toLowerCase();
 		switch(couponCode){
 			case 'gift10':
 				discount = 10.0;
@@ -251,15 +251,15 @@ function generateCartFooterHTML(){
 		if(book)
 			total += parseFloat(book.price, 10) * parseInt(book.quantity, 10);
 	}
-	total > 0 ? $('#totalPriceDiv').html(`Total price: <b>€ ` + total.toFixed(2) + `</b>`) : $('#totalPriceDiv').html(``);
+	updateTotal();
 }
 
 function updateTotal(){
+	total > 0 ? $('#totalPriceDiv').html(`Total price: <b>€ ` + total.toFixed(2) + `</b>`) : $('#totalPriceDiv').html(``);
 	if(discount > 0 && (total-discount) > 0){
 		$('#totalPriceDiv').append(`<br>Gift Card: <b>- € ` + (discount).toFixed(2) + `</b>`);
 		$('#totalPriceDiv').append(`<br>Total price: <b>€ ` + (total-discount).toFixed(2) + `</b>`);
 	}else{
-		$('#totalPriceDiv').html(`Total price: <b>€ ` + total.toFixed(2) + `</b>`);
 		discount = 0;
 	}
 }
