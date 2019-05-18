@@ -116,7 +116,11 @@ function postRegister(form) {
                 $('#registererror').show();
             }else{
                 $('#registererror').hide();
-                window.location.replace("login.html?login");
+                $('#login-form-link').trigger('click');
+				Toast.fire({
+				  type: 'success',
+				  title: 'Registration done!'
+				})
             }
         });
     });

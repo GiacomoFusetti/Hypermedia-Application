@@ -51,7 +51,6 @@ $(document).ready(function(){
 		book['price'] = bookPrice;
 		book['support'] = bookSupport;
 		
-		console.log(book);
 		postCurrentBook();
 	});
 	
@@ -74,14 +73,11 @@ $(document).ready(function(){
 
 function getBookById(){
 	var query = '?offset=' + offset + '&limit=' + limit;
-	
-	console.log(bookId + ' ' + query);
-	
+		
 	fetch('/books/' + bookId + query).then(function(response) {
 		return response.json();
 	}).then(function(json) {
 		bookJson = json;
-		console.log(bookJson);
 		if(!jQuery.isEmptyObject(bookJson)){
 			generatesBookHTML();
 		}else{
@@ -131,10 +127,21 @@ function postCurrentBook(){
         method: "POST"
     }).then(function(response) {
         response.json().then(function(json) {
-			console.log(json);
 			getCartCount();
 			
-        });
+			var toastType = 'success'
+			var toastTitle = 'Book added to cart';
+
+			if(response.status == 401){
+				toastType = 'warning'
+				toastTitle = 'You must be logged in!';
+			}
+			Toast.fire({
+			  type: toastType,
+			  title: toastTitle
+			})
+
+		});
     });
 }
 
@@ -207,10 +214,6 @@ function fillBookDetailsEvent(book, genre, themes, event){
 	
 	detailsHTML +=
 			`
-				<li class="d-flex justify-content-between">
-					<strong>Book ID:</strong>
-					<span>${book.id_book}</span>
-				</li>
 				<li class="d-flex justify-content-between">
 					<strong>Language:</strong>
 					<span>${book.language}</span>

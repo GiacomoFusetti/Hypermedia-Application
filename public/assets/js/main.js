@@ -2,6 +2,13 @@ let user;
 
 let pathname = window.location.pathname;
 let pages = "";
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
         
 if(pathname === '/' || pathname === '/index.html')
 	pages = "pages/";
@@ -14,14 +21,15 @@ function checkSession(){
         method: "GET",
         credentials: 'include'
     }).then(function(response) {
-         return response.json();
-     }).then(function(json) {
+         return response.json();		
+    }).then(function(json) {
         console.log(json);
         user = json;
-        toggleLogin(user);
-		if(!jQuery.isEmptyObject(user))
+		if(!jQuery.isEmptyObject(user)){
+        	toggleLogin(user);
 			getCartCount();
-     });
+		}
+    });
 }
 
 function getCartCount(){
@@ -31,7 +39,6 @@ function getCartCount(){
     }).then(function(response) {
          return response.json();
      }).then(function(json) {
-        console.log('count_book ' + json.total_count);
         
 		if(json.total_count == 0)
         	toggleCartIcon(false);
@@ -96,10 +103,12 @@ jQuery(document).ready(function($) {
             method: "DELETE",
             credentials: 'include'
         }).then(function(response) {
-             return response.json();
-         }).then(function(json) {
-            user = json;
-            toggleLogin(user);
+			
+			if(response.status == 200){
+				user = response.json;
+				toggleLogin(user);
+				window.location.href = "../index.html";
+			}
          });
     });
   

@@ -75,7 +75,6 @@ function fillBooksCarousel(books){
     
     var booksCarousel = ``;
     for(i = 0; i < books.length; i++){
-        console.log(books[i]);
         var book = books[i];
         booksCarousel += 
                 `
@@ -129,7 +128,6 @@ function fillAuthorsCarousel(authors){
 
 function fillEventsCarousel(events){
     var eventCarousel = ``;
-    console.log(events);
     for(k = 0; k < events.length; k++){
         var event = events[k];
         eventCarousel +=
@@ -183,7 +181,7 @@ function authorListHTML(authorsNameJson, authorsIdsJson){
 	for(z = 0; z < authorsNameJson.length; z++)
 		authorsHTML += `
 						<li>
-							<h5 class="card-titl-a ` + (z > 0 ? `book_author_li` :  `book_author`) + `"> ` + (z > 0 ? `<a class="font-70"> & </a>` :  ``) + `<a class="font-70" href="author.html?id=${authorsIdsJson[z]}">${authorsNameJson[z]}</a></h5> 
+							<h5 class="card-titl-a ` + (z > 0 ? `book_author_li` :  `book_author`) + `"> ` + (z > 0 ? `<a class="font-70"> & </a>` :  ``) + `<a class="font-70" href="pages/author.html?id=${authorsIdsJson[z]}">${authorsNameJson[z]}</a></h5> 
 						</li>
 					   `;
 	return authorsHTML;	

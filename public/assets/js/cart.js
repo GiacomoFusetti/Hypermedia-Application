@@ -7,15 +7,7 @@ let checkOutBooks = [];
 let deleteBook = [];
 let newQty;
 let total = 0;
-
 let discount = 0;
-
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000
-});
 
 
 $(document).ready(function(){
@@ -83,18 +75,19 @@ $(document).ready(function(){
 					checkOutBooks.push(elem);
 				}
 			}
-			cartBooksJson = {};
-			discount = 0;
-			deleteBookCart(checkOutBooks);
-			$('#cartBody').remove();
 			
 			Swal.fire({
 				title: 'Confirmed purchase!',
-                html: 'Total amount: € <b>' + total.toFixed(2) + '</b>',
+                html: 'Total amount: € <b>' + (total-discount).toFixed(2) + '</b>',
                 type: 'success',
                 confirmButtonColor:'#2eca6a',
                 confirmButtonText: 'Great!'
 			})
+			cartBooksJson = {};
+			discount = 0;
+			deleteBookCart(checkOutBooks);
+			$('#cartBody').remove();
+			$('#couponInp').val('');
 		}
 	});
 	// HANDLE COUPON BUTTON
@@ -143,16 +136,16 @@ function getCart(){
         method: "GET",
         credentials: 'include'
     }).then(function(response) {
-         return response.json();
-     }).then(function(json) {
-		cartBooksJson = json;
+         return response.json();		
+    }).then(function(json) {
 		
+        cartBooksJson = json;		
 		if(!jQuery.isEmptyObject(cartBooksJson)){
 			generateCartHTML();
 			generateCartFooterHTML();
 		}else{
 			//TODO
-		}		
+		}
      });
 }
 
@@ -166,13 +159,13 @@ function updateCartQty(){
 		  'Content-Type': 'application/json'
 		}
     }).then(function(response) {
-         return response.json();
-     }).then(function(json) {
-		console.log(json);
-		
-        generateCartFooterHTML();
-		//update cart icon number
-		getCartCount();
+
+		if(response.status = 200){
+			generateCartFooterHTML();
+			//update cart icon number
+			getCartCount();
+			updateTotal();
+		}
      });
 }
 
@@ -187,13 +180,12 @@ function deleteBookCart(bookList){
 		  'Content-Type': 'application/json'
 		}
     }).then(function(response) {
-         return response.json();
-     }).then(function(json) {
-        console.log(json);
-		
-		generateCartFooterHTML();
-		//update cart icon number
-		getCartCount();
+         if(response.status = 200){
+			generateCartFooterHTML();
+			//update cart icon number
+			getCartCount();
+			updateTotal(); 
+		}
      });
 }
 
@@ -260,12 +252,16 @@ function generateCartFooterHTML(){
 			total += parseFloat(book.price, 10) * parseInt(book.quantity, 10);
 	}
 	total > 0 ? $('#totalPriceDiv').html(`Total price: <b>€ ` + total.toFixed(2) + `</b>`) : $('#totalPriceDiv').html(``);
-	discount > 0 ? $('#totalPriceDiv').append(`Gift Card: <b>- € ` + (total- discount).toFixed(2) + `</b>`) : $('#totalPriceDiv').append(``);
 }
 
 function updateTotal(){
-	discount > 0 ? $('#totalPriceDiv').append(`<br>Gift Card: <b>- € ` + (discount).toFixed(2) + `</b>`) : $('#totalPriceDiv').append(``);
-	total > 0 ? $('#totalPriceDiv').append(`<br>Total price: <b>€ ` + (total-discount).toFixed(2) + `</b>`) : $('#totalPriceDiv').append(``);
+	if(discount > 0 && (total-discount) > 0){
+		$('#totalPriceDiv').append(`<br>Gift Card: <b>- € ` + (discount).toFixed(2) + `</b>`);
+		$('#totalPriceDiv').append(`<br>Total price: <b>€ ` + (total-discount).toFixed(2) + `</b>`);
+	}else{
+		$('#totalPriceDiv').html(`Total price: <b>€ ` + total.toFixed(2) + `</b>`);
+		discount = 0;
+	}
 }
 
 // -------------- AUXILIARY FUNCTIONS ---------------
