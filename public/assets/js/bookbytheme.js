@@ -40,7 +40,7 @@ function generatesBookByThemeHTML(){
 			var currentBook = theme.books[y];
 			var authors = theme.books[y].f6
 			themeHTML +=`
-						<div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
+						<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
 							<div class="card wow zoomIn" data-wow-duration="1s">
 								<a href="book.html?id=${currentBook.f1}" class="stretched-link"><img class="card-img-top" src="${currentBook.f5}" alt="${currentBook.f2}"></a>
 								<div class="card-body">
