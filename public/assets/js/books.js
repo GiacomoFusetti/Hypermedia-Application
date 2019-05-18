@@ -19,6 +19,7 @@ let mainFilter = urlParams.get('filter');
 let genreid = urlParams.get('genre');
 let themeid = urlParams.get('theme');
 let rating = urlParams.get('rating');
+let search = urlParams.get('search') || '';
 
 let offset = urlParams.get('offset') || 0;
 let limit = urlParams.get('limit') || 12;
@@ -127,11 +128,13 @@ function getBooks(){
 	if(themeid) query += '&theme=' + themeid;
 	if(rating) query += '&rating=' + rating;
 	if(mainFilter) query += '&filter=' + mainFilter;
-	
+    if(search) query += '&search=' + search;
+	console.log(query);
 	fetch('/books' + query).then(function(response) {
 		return response.json();
 	}).then(function(json) {
 		booksJson = json;
+        console.log(booksJson);
 		$("#booksDiv").empty();
 		if(!jQuery.isEmptyObject(booksJson)){
 			generatesBooksHTML();
@@ -323,4 +326,11 @@ function authorListHTML(authorsNameJson, authorsIdsJson){
 						</li>
 					   `;
 	return authorsHTML;	
+}
+
+function myFunction() {
+    var input = document.getElementById("search");
+    search = input.value.toUpperCase();
+    console.log("search: " + search);
+    getBooks();
 }

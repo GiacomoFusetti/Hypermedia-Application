@@ -58,3 +58,21 @@
 .authors-font{
 	font-size: 20px;
 }
+
+/*======================================
+//--//-->   STYLE SEARCH INSERT FORM 
+======================================*/
+
+@media screen and (min-width: 399px) {
+    .search-position{
+        margin-left: auto !important;
+        width: 50% !important;        
+    }
+}
+
+@media screen and (min-width: 767px) {
+    .search-position{
+        margin-left: auto !important;
+        width: 25% !important;        
+    }
+}

@@ -92,3 +92,12 @@ function generatesPaginationHTML(){
 		);
 	}
 }
+
+// -------------- AUXILIARY FUNCTIONS ---------------
+
+function myFunction() {
+    var input = document.getElementById("search");
+    search = input.value.toUpperCase();
+    console.log("search" + search);
+    getAuthors();
+}
