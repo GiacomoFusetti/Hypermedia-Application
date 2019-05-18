@@ -2,7 +2,7 @@
     {
         "id_event" : 1,
         "id_book" : 16,
-        "name" : "Author E. L. James meets the fans",
+        "name" : "E. L. James meets the fans.",
         "date_day" : 14,
         "date_month" : 7,
         "date_year" : 2019,
@@ -17,7 +17,7 @@
     {
         "id_event" : 2,
         "id_book" : 1,
-        "name" : "Discovering Middle-Earth",
+        "name" : "Discovering Middle-Earth.",
         "date_day" : 26,
         "date_month" : 6,
         "date_year" : 2019,
@@ -32,7 +32,7 @@
     {
         "id_event" : 3,
         "id_book" : 4,
-        "name" : "Paulo Coelho presents The Spy",
+        "name" : "Coelho presents The Spy.",
         "date_day" : 13,
         "date_month" : 9,
         "date_year" : 2019,
@@ -47,7 +47,7 @@
     {
         "id_event" : 4,
         "id_book" : 12,
-        "name" : "The Four - are we really free to choose?",
+        "name" : "Are we really to choose?",
         "date_day" : 31,
         "date_month" : 8,
         "date_year" : 2019,

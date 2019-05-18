@@ -101,5 +101,6 @@ function myFunction() {
     
     if(search.trim() != ''){ 
         getAuthors();
+        getCountAuthors();
     };
 }

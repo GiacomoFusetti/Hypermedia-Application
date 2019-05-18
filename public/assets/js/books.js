@@ -87,6 +87,7 @@ function getBooksCount(){
 	if(themeid) query += '&theme=' + themeid;
 	if(rating) query += '&rating=' + rating;
 	if(mainFilter) query += '&filter=' + mainFilter;
+    if(search) query += '&search=' + search;
 	
 	fetch('/books/count' + query).then(function(response) {
 		return response.json();
@@ -334,5 +335,6 @@ function myFunction() {
     
     if(search.trim() != ''){ 
         getBooks();
+        getBooksCount();
     };
 }
