@@ -129,12 +129,12 @@ function getBooks(){
 	if(rating) query += '&rating=' + rating;
 	if(mainFilter) query += '&filter=' + mainFilter;
     if(search) query += '&search=' + search;
-	console.log(query);
+	
 	fetch('/books' + query).then(function(response) {
 		return response.json();
 	}).then(function(json) {
 		booksJson = json;
-        console.log(booksJson);
+        
 		$("#booksDiv").empty();
 		if(!jQuery.isEmptyObject(booksJson)){
 			generatesBooksHTML();
@@ -331,7 +331,7 @@ function authorListHTML(authorsNameJson, authorsIdsJson){
 function myFunction() {
     var input = document.getElementById("search");
     search = input.value.toUpperCase();
-    console.log("search: " + search);
+    
     if(search.trim() != ''){ 
         getBooks();
     };
