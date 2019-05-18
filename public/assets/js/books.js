@@ -276,7 +276,7 @@ function generatesBooksHTML(){
 			`
 		);*/
 		$("#booksDiv").append( 
-			`<div class="col-xl-3 col-lg-3 col-md-4 col-6">
+			`<div class="col-xl-3 col-lg-3 col-md-4 col-6 padding-col">
 				<div class="card wow zoomIn" data-wow-duration="1s">
 				  	<a href="book.html?id=${currentBook.id_book}" class="stretched-link"><img class="card-img-top" src="${currentBook.cover_img}" alt="${currentBook.title}"></a>
 				  	<div class="card-body">

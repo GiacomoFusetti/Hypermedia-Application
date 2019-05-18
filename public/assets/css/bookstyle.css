@@ -41,6 +41,11 @@
 /*======================================
 //--//-->   STYLES BOOKS GRID
 ======================================*/
+.padding-col{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
 .card-body {
 	padding: 5px;
 }

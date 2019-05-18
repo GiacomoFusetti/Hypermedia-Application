@@ -8,6 +8,15 @@ let deleteBook = [];
 let newQty;
 let total = 0;
 
+let discount = 0;
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
+
 
 $(document).ready(function(){
 	// HANDLE QUANTITY INPUT
@@ -74,6 +83,8 @@ $(document).ready(function(){
 					checkOutBooks.push(elem);
 				}
 			}
+			cartBooksJson = {};
+			discount = 0;
 			deleteBookCart(checkOutBooks);
 			$('#cartBody').remove();
 			
@@ -85,6 +96,41 @@ $(document).ready(function(){
                 confirmButtonText: 'Great!'
 			})
 		}
+	});
+	// HANDLE COUPON BUTTON
+	$(document).on('click', '#couponBtn', function(){
+		var couponCode = $('#couponInp').val();
+		switch(couponCode){
+			case 'gift10':
+				discount = 10.0;
+				break;
+			case 'gift20':
+				discount = 20.0;
+				break;
+			case 'gift30':
+				discount = 30.0;
+				break;
+			case 'gift50':
+				discount = 50.0;
+				break;
+			default:
+				discount = 0.0;
+		}
+		var toastType = 'success'
+		var toastTitle = 'Valid Promo Code';
+		
+		if(discount > total){
+			toastType = 'warning'
+			toastTitle = 'The total must be greater than the discount!';
+		}else if(!discount){
+			toastType = 'error'
+			toastTitle = 'Invalid code!';
+		}
+		Toast.fire({
+		  type: toastType,
+		  title: toastTitle
+		})
+		updateTotal();
 	});
 	
 	getCart();
@@ -213,7 +259,13 @@ function generateCartFooterHTML(){
 		if(book)
 			total += parseFloat(book.price, 10) * parseInt(book.quantity, 10);
 	}
-	total ? $('#totalPriceDiv').html(`Total price: <b>€ ` + total.toFixed(2) + `</b>`) : $('#totalPriceDiv').html(``);
+	total > 0 ? $('#totalPriceDiv').html(`Total price: <b>€ ` + total.toFixed(2) + `</b>`) : $('#totalPriceDiv').html(``);
+	discount > 0 ? $('#totalPriceDiv').append(`Gift Card: <b>- € ` + (total- discount).toFixed(2) + `</b>`) : $('#totalPriceDiv').append(``);
+}
+
+function updateTotal(){
+	discount > 0 ? $('#totalPriceDiv').append(`<br>Gift Card: <b>- € ` + (discount).toFixed(2) + `</b>`) : $('#totalPriceDiv').append(``);
+	total > 0 ? $('#totalPriceDiv').append(`<br>Total price: <b>€ ` + (total-discount).toFixed(2) + `</b>`) : $('#totalPriceDiv').append(``);
 }
 
 // -------------- AUXILIARY FUNCTIONS ---------------

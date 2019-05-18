@@ -137,8 +137,8 @@ exports.deleteBookById = function(userId, bookList) {
 	
 	for(var x = 0; x < bookList.length; x++){
 		promises.push(deleteBook(sqlDb, userId, bookList[x]));
-		deleteBookJson(userId, bookList[x]);
 	}
+	deleteBookJson(userId, bookList);
 	
 	return Promise.all(promises)    
 		.then(function(data){
@@ -240,18 +240,20 @@ function appendToJson(userId, book){
 	});
 }
 
-function deleteBookJson(userId, book){
+function deleteBookJson(userId, bookList){
 	
     fs.readFile('other/data_json/cart.json', 'utf8', function readFileCallback(err, data){
         if (err){
             console.log(err);
         } else {
 			var obj = JSON.parse(data); //now it is an object
-			for (var i = 0; i < obj.length; i++){
-				// look for the entry with a matching `code` value
-			  	if (obj[i] && obj[i].id_user == userId && obj[i].id_book == book.Id_book && obj[i].support == book.support){
-					obj.splice(i, 1);
-					break;
+			for(var x = 0; x < bookList.length; x++){
+				for (var i = 0; i < obj.length; i++){
+					// look for the entry with a matching `code` value
+					if (obj[i] && obj[i].id_user == userId && obj[i].id_book == bookList[x].Id_book && obj[i].support == bookList[x].support){
+						obj.splice(i, 1);
+						break;
+					}
 				}
 			}
 			var json = JSON.stringify(obj);

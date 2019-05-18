@@ -19,7 +19,8 @@ function checkSession(){
         console.log(json);
         user = json;
         toggleLogin(user);
-		getCartCount();
+		if(!jQuery.isEmptyObject(user))
+			getCartCount();
      });
 }
 
@@ -30,13 +31,13 @@ function getCartCount(){
     }).then(function(response) {
          return response.json();
      }).then(function(json) {
-        console.log(json.total_count);
+        console.log('count_book ' + json.total_count);
         
 		if(json.total_count == 0)
         	toggleCartIcon(false);
 		else if(json.total_count > 0){
 			toggleCartIcon(true);
-			$('#cartCount').text(json.total_count);
+			$('span.cartCount').text(json.total_count);
 		}
      });
 }
@@ -71,9 +72,9 @@ function toggleLogin(user){
 
 function toggleCartIcon(toggle){
 	if(toggle)
-		$('#cartCount').show();
+		$('span.cartCount').show();
 	else
-		$('#cartCount').hide();
+		$('span.cartCount').hide();
 }
 
 jQuery(document).ready(function($) {
