@@ -332,5 +332,7 @@ function myFunction() {
     var input = document.getElementById("search");
     search = input.value.toUpperCase();
     console.log("search: " + search);
-    getBooks();
+    if(search.trim() != ''){ 
+        getBooks();
+    };
 }
