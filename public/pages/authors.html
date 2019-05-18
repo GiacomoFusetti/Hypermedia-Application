@@ -97,12 +97,15 @@
         <section class="agents-grid grid">
             <div class="container">
                 <div class="col-sm-12">
-               <div class="grid-option">
-                  <form>
-                     <input type="text" name="name" class="custom-input form-control form-control-lg form-control-a" placeholder="Search Author">
-                  </form>
-               </div>
-            </div>
+                    <div class="grid-option">
+                      <div class="input-group w-25">
+                          <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+                          <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+                          </div>
+                      </div>
+                    </div>
+                </div>
                 <div id="authorsDiv" class="row">
                     <!--Load from DB-->
                 </div>
@@ -199,7 +202,7 @@
                                 </li>
                                 <li class="list-inline-item">
                                     <a href="#">
-                                    <i class="fab fa-dribbble" aria-hidden="true"></i>
+                                    <i class="fab fa-linkedin" aria-hidden="true"></i>
                                     </a>
                                 </li>
                             </ul>

@@ -28,12 +28,13 @@ $(document).ready(function(){
 // -------------- REQUESTS ---------------
 
 function getAuthors(){
-    var query = '?offset=' + offset + '&limit=' + limit '&search=' + search;
+    var query = '?offset=' + offset + '&limit=' + limit + '&search=' + search;
     
 	fetch('/authors' + query).then(function(response) {
 			 return response.json();
 	 }).then(function(json) {
 		authorsJson = json;
+        console
         $("#authorsDiv").empty();
 		if(!jQuery.isEmptyObject(authorsJson)){
 			generatesHTML();
