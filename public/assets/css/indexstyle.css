@@ -2,7 +2,7 @@
 //--//-->   STYLES INDEX
 ======================================*/
 
-/* New Booksa */
+/* New Books */
 .book_rating{
     text-align: center;
 }
@@ -43,6 +43,23 @@
   border-radius: 3px;
   text-align: center;
 }
+
+.title-wrap {
+    padding-bottom: 2rem;
+}
+
+/* On screens that are 576px or less */
+@media screen and (max-width: 576px) {
+  	.title-a {
+		font-size: 1.9rem;
+		font-weight: 600;
+	}
+	
+	.title-link {
+    	padding-top: 2.5rem;
+	}
+}
+
 
 /*======================================
 //--//-->   STYLES BOOK-CAROUSEL

@@ -61,7 +61,7 @@
 	object-position: left bottom;
 }
 
-/* On screens that are 992px or less, set the background color to blue */
+/* On screens that are 992px or less */
 @media screen and (max-width: 993px) {
 	.card-img-top { 
     	height: 22vw;
@@ -75,14 +75,14 @@
 
 }
 
-/* On screens that are 768px or less, set the background color to blue */
+/* On screens that are 768px or less */
 @media screen and (max-width: 769px) {
   .card-img-top { 
   	height: 24vw;
   }
 }
 
-/* On screens that are 540px or less, set the background color to blue */
+/* On screens that are 540px or less*/
 @media screen and (max-width: 541px) {
 	.card-img-top { 
 		height: 55vw;
