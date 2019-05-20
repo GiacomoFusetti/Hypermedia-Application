@@ -8,6 +8,7 @@ let pageNumber;
 let genreJson;
 let themeJson;
 let booksJson;
+let input = '';
 
 let radioId = 2;
 let mainGroup = 'group0';
@@ -330,11 +331,13 @@ function authorListHTML(authorsNameJson, authorsIdsJson){
 }
 
 function myFunction() {
-    var input = document.getElementById("search");
-    search = input.value.toUpperCase();
+    var newInput = document.getElementById("search");
     
-    if(search.trim() != ''){ 
+    search = newInput.value.toUpperCase();
+    
+    if(search.trim() != '' || search != input){
+        input = newInput.value.toUpperCase();
         getBooks();
-        getBooksCount();
+        getCountBooks();
     };
 }

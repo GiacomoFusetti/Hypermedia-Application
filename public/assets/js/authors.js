@@ -8,6 +8,8 @@ let offset = urlParams.get('offset') || 0;
 let limit = urlParams.get('limit') || 6;
 let search = urlParams.get('search') || '';
 
+let input = '';
+
 $(document).ready(function(){
     
     //PAGINATION
@@ -96,10 +98,12 @@ function generatesPaginationHTML(){
 // -------------- AUXILIARY FUNCTIONS ---------------
 
 function myFunction() {
-    var input = document.getElementById("search");
-    search = input.value.toUpperCase();
+    var newInput = document.getElementById("search");
     
-    if(search.trim() != ''){ 
+    search = newInput.value.toUpperCase();
+    
+    if(search.trim() != '' || search != input){
+        input = newInput.value.toUpperCase();
         getAuthors();
         getCountAuthors();
     };
