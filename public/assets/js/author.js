@@ -64,7 +64,7 @@ function getWrittenBooks(){
             fillBooks(writtenBookJson.books, writtenBookJson.author)
         }else{
             $("#writtenBookDiv").append( 
-			    '<h3 class="title-single">No Written Books.</h3>'
+			    '<div class="col-12"> <h3 class="title-single">No Written Books.</h3> </div>'
             );
         }
     });
@@ -112,7 +112,6 @@ function fillHeader(author){
 
 function fillBody(author){
     $("#author_photo").attr("src", author.photo);
-    $("#author_body_name").html(author.name);
     $("#author_bio").html(author.bio);
 }
 

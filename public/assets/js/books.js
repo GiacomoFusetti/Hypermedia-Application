@@ -337,7 +337,7 @@ function myFunction() {
     
     search = newInput.value.toUpperCase();
     
-    if(search.trim() != '' || search != input){
+    if(search.trim() != '' || search.trim() != input.trim()){
         input = newInput.value.toUpperCase();
         getBooks();
         getBooksCount();

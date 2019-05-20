@@ -65,7 +65,7 @@ function getEvents(){
 			generatesHTML();
 		}else{    
 			$("#eventsDiv").append( 
-				'<h3 class="title-single">No Events available.</h3>'
+				'<div class="col-12"><h3 class="title-single">No Events available.</h3></div>'
 			);
 		}
 	 });

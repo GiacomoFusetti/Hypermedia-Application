@@ -86,7 +86,9 @@ $(document).ready(function(){
 			cartBooksJson = {};
 			discount = 0;
 			deleteBookCart(checkOutBooks);
-			$('#cartBody').remove();
+			$("#cartBody").html( 
+				'<div class="col-12"><h3 class="title-single">The cart is empty.</h3></div>'
+			);
 			$('#couponInp').val('');
 		}
 	});
@@ -144,7 +146,9 @@ function getCart(){
 			generateCartHTML();
 			generateCartFooterHTML();
 		}else{
-			//TODO
+			$("#cartBody").append( 
+				'<div class="col-12"><h3 class="title-single">The cart is empty.</h3></div>'
+			);
 		}
      });
 }

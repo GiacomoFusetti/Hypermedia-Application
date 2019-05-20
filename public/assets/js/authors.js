@@ -42,7 +42,7 @@ function getAuthors(){
 			generatesHTML();
 		}else{
 			$("#authorsDiv").append( 
-				'<h3 class="title-single">No Authors available.</h3>'
+				'<div class="col-12"><h3 class="title-single">No Authors available.</h3></div>'
 			);
 		}
 	 });
@@ -102,7 +102,7 @@ function myFunction() {
     
     search = newInput.value.toUpperCase();
     
-    if(search.trim() != '' || search != input){
+    if(search.trim() != '' || search.trim() != input.trim()){
         input = newInput.value.toUpperCase();
         getAuthors();
         getCountAuthors();
