@@ -122,7 +122,7 @@ function fillBooks(book,author){
         var authorBook = book[i];
         writtenDiv +=`<div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
 				<div class="card wow zoomIn" data-wow-duration="1s">
-				  	<a href="book.html?id=${authorBook.id_book}" class="stretched-link"><img class="card-img-top" src="${authorBook.cover_img}" alt="${authorBook.title}"></a>
+				  	<a href="book.html?id=${authorBook.id_book}" class="stretched-link"><img class="card-img-top-list" src="${authorBook.cover_img}" alt="${authorBook.title}"></a>
 				  	<div class="card-body">
 						<ul class="list-unstyled author_list font-90">` + authorListHTML(authorBook.auth_names, authorBook.auth_ids) + `</ul>
 						<h4 class="font-90"><a href="book.html?id=${authorBook.id_book}">${authorBook.title}</a></h4>

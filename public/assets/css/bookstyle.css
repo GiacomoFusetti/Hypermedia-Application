@@ -56,9 +56,26 @@
 }
 .card-img-top {
     width: 100%;
-    height: 19vw;
+    height: 15vw;
     object-fit: contain;
 	object-position: left bottom;
+}
+
+.card-img-top-list { 
+  	width: 100%;
+    height: 12vw;
+    object-fit: contain;
+	object-position: left bottom;
+}
+
+/* On screens that are 1200px or less */
+@media screen and (max-width: 1200px) {
+  .card-img-top { 
+  	height: 19vw;
+  }
+  .card-img-top-list { 
+  	height: 19vw;
+  }
 }
 
 /* On screens that are 992px or less */
@@ -72,6 +89,9 @@
 	.font-85{
 		font-size: 83%!important;
 	}
+	.card-img-top-list { 
+  		height: 26vw;
+    }
 
 }
 
@@ -80,6 +100,9 @@
   .card-img-top { 
   	height: 24vw;
   }
+	.card-img-top-list { 
+  		height: 24vw;
+  	}
 }
 
 /* On screens that are 540px or less*/
@@ -90,6 +113,9 @@
 	.font-90{
 		font-size: 90%!important;
 	}
+	.card-img-top-list { 
+  		height: 55vw;
+  	}
 }
 
 .pointer-a{
@@ -203,16 +229,11 @@ header.card-header:hover{
 //--//-->   STYLE SEARCH INSERT FORM 
 ======================================*/
 
-@media screen and (min-width: 399px) {
-    .search-position{
-        margin-left: auto !important;
-        width: 50% !important;        
-    }
+.search-position{
+	margin-left: auto !important;
+	width: 200px !important;  
 }
 
-@media screen and (min-width: 767px) {
-    .search-position{
-        margin-left: auto !important;
-        width: 25% !important;        
-    }
+.search{
+	border-radius: 0;
 }

@@ -142,7 +142,9 @@ function getBooks(){
 			generatesBooksHTML();
 		}else{
 			$("#booksDiv").append( 
-				'<h3 class="title-single">No Books available with the current filters selection.</h3>'
+				`<div class="col-12">
+					<h3 class="title-single">No Books available with the current filters selection.</h3>
+				</div>`
 			);
 		}
  	});
@@ -338,6 +340,6 @@ function myFunction() {
     if(search.trim() != '' || search != input){
         input = newInput.value.toUpperCase();
         getBooks();
-        getCountBooks();
-    };
+        getBooksCount();
+    }
 }

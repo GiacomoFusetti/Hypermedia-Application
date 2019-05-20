@@ -71,16 +71,11 @@
 //--//-->   STYLE SEARCH INSERT FORM 
 ======================================*/
 
-@media screen and (min-width: 399px) {
-    .search-position{
-        margin-left: auto !important;
-        width: 50% !important;        
-    }
+.search-position{
+	margin-left: auto !important;
+	width: 200px !important; 
 }
 
-@media screen and (min-width: 767px) {
-    .search-position{
-        margin-left: auto !important;
-        width: 25% !important;        
-    }
+.search{
+	border-radius: 0;
 }

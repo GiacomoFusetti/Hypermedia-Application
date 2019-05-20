@@ -298,7 +298,7 @@ function fillBooks(books){
                 </div>
             `*/`<div class="col-xl-2 col-lg-2 col-md-4 col-6">
 				<div class="card">
-				  	<a href="book.html?id=${relBook.id_book}" class="stretched-link"><img class="card-img-top" src="${relBook.cover_img}" alt="${relBook.title}"></a>
+				  	<a href="book.html?id=${relBook.id_book}" class="stretched-link"><img class="card-img-top-list" src="${relBook.cover_img}" alt="${relBook.title}"></a>
 				  	<div class="card-body">
 						<ul class="list-unstyled author_list font-90">` + authorListHTML(relBook.auth_names, relBook.auth_ids) + `</ul>
 						<h4 class="font-90"><a href="book.html?id=${relBook.id_book}">${relBook.title}</a></h4>
