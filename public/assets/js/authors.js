@@ -23,6 +23,16 @@ $(document).ready(function(){
 		getAuthors();
    	});
     
+    $(document).on('input', '#search', function () {  
+        search = $('#search').val();
+        
+        if(search.trim() != '' || search.trim() != input.trim()){
+            input = search;
+            getAuthors();
+            getCountAuthors();
+        };
+	});
+    
     getCountAuthors();
 	getAuthors();
 });
@@ -93,18 +103,4 @@ function generatesPaginationHTML(){
 			`
 		);
 	}
-}
-
-// -------------- AUXILIARY FUNCTIONS ---------------
-
-function myFunction() {
-    var newInput = document.getElementById("search");
-    
-    search = newInput.value.toUpperCase();
-    
-    if(search.trim() != '' || search.trim() != input.trim()){
-        input = newInput.value.toUpperCase();
-        getAuthors();
-        getCountAuthors();
-    };
 }

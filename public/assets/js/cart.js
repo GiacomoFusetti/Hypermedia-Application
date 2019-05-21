@@ -1,14 +1,12 @@
 console.log('Loading cart page');
 
 let cartBooksJson;
-
 let currentBook = {};
 let checkOutBooks = [];
 let deleteBook = [];
 let newQty;
 let total = 0;
 let discount = 0;
-
 
 $(document).ready(function(){
 	// HANDLE QUANTITY INPUT
@@ -267,6 +265,3 @@ function updateTotal(){
 		discount = 0;
 	}
 }
-
-// -------------- AUXILIARY FUNCTIONS ---------------
-

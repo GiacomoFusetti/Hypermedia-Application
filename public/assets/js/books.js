@@ -72,7 +72,17 @@ $(document).ready(function(){
 		getBooksCount();
 		getBooks();
 	});
-	
+	//SEARCH
+    $(document).on('input', '#search', function () {  
+        search = $('#search').val();
+        
+        if(search.trim() != '' || search.trim() != input.trim()){
+            input = search;
+            getBooks();
+            getBooksCount();
+        };
+	});
+    
 	getBooksCount();
 	getGenres();
 	getThemes();
@@ -330,16 +340,4 @@ function authorListHTML(authorsNameJson, authorsIdsJson){
 						</li>
 					   `;
 	return authorsHTML;	
-}
-
-function myFunction() {
-    var newInput = document.getElementById("search");
-    
-    search = newInput.value.toUpperCase();
-    
-    if(search.trim() != '' || search.trim() != input.trim()){
-        input = newInput.value.toUpperCase();
-        getBooks();
-        getBooksCount();
-    }
 }
