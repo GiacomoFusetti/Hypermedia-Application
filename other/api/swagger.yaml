@@ -86,7 +86,9 @@ paths:
             items:
               $ref: "#/definitions/Book"
         404:
-          description: "Unexpected error"
+          description: "Book not found"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Book"
   /books/count:
     get:
@@ -129,6 +131,10 @@ paths:
           description: "successful operation"
           schema:
             type: "integer"
+        404:
+          description: "Book not found"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Book"
   /books/{Id_book}:
     get:
@@ -165,6 +171,8 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Book not found"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Book"
   /books/{Id_book}/related_books:
     get:
@@ -201,6 +209,8 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Book not found"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Book"
   /books/{Id_book}/count:
     get:
@@ -227,6 +237,8 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Book not found"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Book"
   /books_by_genre:
     get:
@@ -257,6 +269,8 @@ paths:
               $ref: "#/definitions/Book"
         404:
           description: "Unexpected error"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Book"
   /books_by_theme:
     get:
@@ -287,6 +301,8 @@ paths:
               $ref: "#/definitions/Book"
         404:
           description: "Unexpected error"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Book"
   /authors:
     get:
@@ -322,6 +338,8 @@ paths:
               $ref: "#/definitions/Author"
         404:
           description: "Unexpected error"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Author"
   /authors/count:
     get:
@@ -353,6 +371,10 @@ paths:
           description: "successful operation"
           schema:
             type: "integer"
+        404:
+          description: "Unexpected error"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Author"
   /authors/{Id_author}:
     get:
@@ -389,6 +411,8 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Author not found"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Author"
   /authors/{Id_author}/written_books:
     get:
@@ -425,6 +449,8 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Author not found"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Author"
   /authors/{Id_author}/count:
     get:
@@ -451,6 +477,8 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Author not found"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Author"
   /events:
     get:
@@ -487,6 +515,8 @@ paths:
               $ref: "#/definitions/Event"
         404:
           description: "Unexpected error"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Event"
   /events/count:
     get:
@@ -519,6 +549,10 @@ paths:
           description: "successful operation"
           schema:
             type: "integer"
+        404:
+          description: "Unexpected error"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Event"
   /events/{Id_event}:
     get:
@@ -545,6 +579,8 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Event not found"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Event"
   /user/login:
     post:
@@ -571,8 +607,10 @@ paths:
           description: "succesfull login"
         400:
           description: "bad request"
-        404:
+        401:
           description: "unauthorized"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "User"
   /user/logout:
     delete:
@@ -590,8 +628,10 @@ paths:
           description: "succesfull logout"
         400:
           description: "bad request"
-        404:
+        401:
           description: "unauthorized"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "User"
   /user/register:
     post:
@@ -613,8 +653,10 @@ paths:
       responses:
         200:
           description: "succesfull registration"
-        404:
+        401:
           description: "unauthorized"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "User"
   /cart:
     get:
@@ -629,8 +671,10 @@ paths:
           description: "succesful operartion"
           schema:
             $ref: "#/definitions/Cart"
-        404:
+        401:
           description: "unauthorized"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Cart"
     post:
       tags:
@@ -652,7 +696,9 @@ paths:
         405:
           description: "Invalid input"
         401:
-          description: "Unauthorized"
+          description: "unauthorized"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Cart"
     put:
       tags:
@@ -674,7 +720,9 @@ paths:
         405:
           description: "Invalid input"
         401:
-          description: "Unauthorized"
+          description: "unauthorized"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Cart"
     delete:
       tags:
@@ -698,7 +746,9 @@ paths:
         405:
           description: "Invalid input"
         401:
-          description: "Unauthorized"
+          description: "unauthorized"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Cart"
   /cart/count:
     get:
@@ -713,8 +763,10 @@ paths:
           description: "succesful operartion"
           schema:
             $ref: "#/definitions/Cart"
-        404:
+        401:
           description: "unauthorized"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Cart"
   /faq:
     get:
@@ -730,7 +782,9 @@ paths:
           schema:
             $ref: "#/definitions/Faq"
         404:
-          description: "unauthorized"
+          description: "unexpected error"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Faq"
   /genres:
     get:
@@ -746,7 +800,9 @@ paths:
           schema:
             $ref: "#/definitions/Genre"
         404:
-          description: "unauthorized"
+          description: "unexpected error"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Genre"
   /themes:
     get:
@@ -762,9 +818,10 @@ paths:
           schema:
             $ref: "#/definitions/Theme"
         404:
-          description: "unauthorized"
+          description: "unexpected error"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Theme"    
-    
   /session:
     get:
       tags:
@@ -777,32 +834,34 @@ paths:
           description: "Current session"
         404:
           description: "Unexpected error"
+        500:
+          description: "Internal Error"
       x-swagger-router-controller: "Session"
 definitions:
   User:
     type: "object"
     properties:
-      id:
+      id_user:
         type: "integer"
       name:
         type: "string"
       email:
         type: "string"
+      password:
+        type: "string"
     title: "User"
     description: "A user"
     example:
-      id: 1
+      id_user: 1
       name: "Giacomo"
-      address: "DEIB"
-      creditcard: "xyzabc"
+      email: "gicomo.fuse@mail.com"
+      password: "giafus1"
   Author:
     type: "object"
     properties:
-      id:
+      id_author:
         type: "integer"
       name:
-        type: "string"
-      surname:
         type: "string"
       bio:
         type: "string"
@@ -811,15 +870,14 @@ definitions:
     title: "Author"
     description: "An author"
     example:
-      id: 1
+      id_author: 1
       name: "Giacomo"
-      surname: "Fuse"
       bio: "not today"
       photo: "pathname"
   Event:
     type: "object"
     properties:
-      id:
+      id_event:
         type: "integer"
       id_book:
         type: "integer"
@@ -827,101 +885,115 @@ definitions:
         type: "string"
       date:
         type: "string"
+      when:
+        type: "string"
+      location:
+        type: "string"
+      city:
+        type: "string"
       description:
         type: "string"
-      image:
+      img:
+        type: "string"
+      location_img:
         type: "string"
     title: "Event"
     description: "An event"
     example:
-      id: 1
-      id_book: "1"
+      id_event: 1
+      id_book: 1
       name: "Cool event"
       date: "1 Jan 2019"
+      when: "from 4:00PM to 5.30PM"
+      location: "Piazza Gae Aulenti, 1, 20154 Milano MI"
+      city: "Milan"
       description: "book presentation"
-      image: "pathname"
+      img: "pathname"
+      location_img: "pathname"
   Cart:
     type: "object"
     properties:
-      total:
-        $ref: "#/definitions/Amount"
-      books:
-        type: "array"
-        items:
-          $ref: "#/definitions/Book"
+      id_user: 
+        type: "integer"
+      id_book: 
+        type: "integer"
+      support:
+        type: "string"
+        enum:
+        - "paper"
+        - "ebook"
+      title:
+        type: "string"
+      cover_img:
+        type: "string"
+      price:
+        type: "number"
+      quantity:
+        type: "integer"
     title: "Cart"
     description: "Order for books"
     example:
-      total:
-        currency: "eur"
-        value: 80082819046101.171875
-      books:
-      - id: 0
-        title: "Il deserto dei tartari"
-        author: "Dino Buzzati"
-        price:
-          value: 10
-          currency: "eur"
-      - id: 0
-        title: "Il deserto dei tartari"
-        author: "Dino Buzzati"
-        price:
-          value: 10
-          currency: "eur"
+      id_user: 1
+      id_book: 1
+      support: "paper"
+      title: "Romeo and Juliet"
+      cover_img: "pathname"
+      price: 13.80
+      quantity: 2
   Book:
     type: "object"
-    required:
-    - "price"
-    - "title"
     properties:
-      id:
+      id_book:
         type: "integer"
-        format: "int64"
       id_genre:
         type: "integer"
-        format: "int64"
-      id_themes:
-        type: "integer"
-        format: "int64"
       title:
         type: "string"
       description:
         type: "string"
+      price_paper:
+        type: "number"
+      price_ebook:
+        type: "number"
       cover_img:
         type: "string"
-      pages:
-        type: "string"
-      rating:
-        type: "integer"
-      price:
-        $ref: "#/definitions/Amount"
-      status:
-        type: "string"
-        description: "book availability in the inventory"
-        enum:
-        - "available"
-        - "out of stock"
       support:
         type: "string"
-        description: "book support in the inventory"
         enum:
-        - "paper_based"
+        - "paper"
         - "ebook"
         - "both"
+      pages:
+        type: "integer"
+      rating:
+        description: "an integer number between 1 and 5"
+        type: "integer"
+      language:
+        type: "string"
+      our_favorite:
+        type: "boolean"
+      best_seller:
+        type: "boolean"
     title: "Book"
     description: "A book for sale in the store"
     example:
-      id: 0
-      title: "Il deserto dei tartari"
-      author: "Dino Buzzati"
-      price:
-        value: 10
-        currency: "eur"
-      status: "available"
+      id_book: 1
+      id_genre: 1
+      title: "The Lord of the Ring - The Fellowship of the Ring"
+      description: "an Amazing book!"
+      price_paper: 12.40
+      price_ebook: 5.90
+      cover_img: "pathname"
+      support: "both"
+      pages: 480
+      rating: 5
+      language: "English"
+      our_favorite: True
+      best_seller: True
   Faq:
     type: "object"
     properties:
-      id:
+      id_faq:
         type: "integer"
       question:
         type: "string"
@@ -930,55 +1002,33 @@ definitions:
     title: "Faq"
     description: "A Faq"
     example:
-      id: 1
+      id_faq: 1
       question: "What is love?"
       answer: "baby don't hurt me"
   Genre:
     type: "object"
     properties:
-      id:
+      id_genre:
         type: "integer"
       name:
         type: "string"
     title: "Genre"
     description: "A Genre"
     example:
-      id: 1
+      id_genre: 1
       name: "Fantasy"
   Theme:
     type: "object"
     properties:
-      id:
+      id_theme:
         type: "integer"
       name:
         type: "string"
     title: "Theme"
     description: "A Theme"
     example:
-      id: 1
+      id_theme: 1
       name: "War"
-  Amount:
-    type: "object"
-    required:
-    - "currency"
-    - "value"
-    properties:
-      value:
-        type: "number"
-        format: "double"
-        minimum: 0.01
-        maximum: 1000000000000000
-      currency:
-        $ref: "#/definitions/Currency"
-    description: "Price\n"
-    example:
-      currency: "eur"
-      value: 11
-  Currency:
-    type: "string"
-    pattern: "^[A-Z]{3,3}$"
-    description: "some description\n"
-    example: "eur"
 externalDocs:
   description: "Find out more about Swagger"
   url: "http://swagger.io"

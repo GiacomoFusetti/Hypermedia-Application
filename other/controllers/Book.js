@@ -26,7 +26,8 @@ module.exports.booksGET = function booksGET (req, res, next) {
 	
   	BookService.booksGET(offset, limit, idgenre, idtheme, rating, filter, search)
 	.then(function (response) {
-  		utils.writeJson(res, response);
+		console.log('we')
+  		utils.writeJson(res, response, 200);
 	})
 	.catch(function (response) {
 	  	utils.writeJson(res, response);
