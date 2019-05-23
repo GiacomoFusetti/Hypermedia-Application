@@ -8,6 +8,7 @@ let limit = urlParams.get('limit') || 6;
 
 let bookId = urlParams.get('id');
 let bookJson;
+let eventsJson;
 
 let relatedBookJson;
 
@@ -63,6 +64,15 @@ $(document).ready(function(){
 
 		offset = $(this).val() * limit;
 		getRealtedBooks();
+   	});
+	//PAGINATION EVENTS
+	$("#pagDivEvents").on("click", "li.page-item", function() {
+  		// remove classes from all
+  		$("li.page-item").removeClass("active");
+      	// add class to the one we clicked
+      	$(this).addClass("active");
+		
+		fillEvent($(this).val())
    	});
 	
     getCountRelatedBooks();	
@@ -201,15 +211,17 @@ function fillBodyPage(book){
 	}
 }
 
-function fillBookDetailsEvent(book, genre, themes, event){
+function fillBookDetailsEvent(book, genre, themes, events){
 	var detailsHTML = ``;
-	if(!event[0].id_event){
+	if(jQuery.isEmptyObject(events)){
 		$('#detailsColDiv').attr('class', 'col-md-8 offset-md-2 col-lg-6 offset-lg-3 section-t2 foo');
 		$('#eventDiv').remove();
 	}else{
+		eventsJson = events;
 		$('#detailsColDiv').attr('class', 'col-md-6 foo');
-		
-		fillEvent(event[0]);
+		if(eventsJson.length > 1)
+			generatesPaginationHTMLEvents(eventsJson.length)
+		fillEvent(0);
 	}
 	
 	detailsHTML +=
@@ -251,12 +263,25 @@ function fillBookDetailsEvent(book, genre, themes, event){
 		$('#detailsListUl').html(detailsHTML);
 }
 
-function fillEvent(event){
+function fillEvent(idx){
+	event = eventsJson[idx];
 	$('#eventTitleH2').html(event.name);
-	$('#eventLocationSpan').html(event.location);
+	$('#eventLocationSpan').html(event.city);
 	$('#eventDateSpan').html(event.date_day + ' ' + month[event.date_month-1] + ' ' + event.date_year);
 	$('#eventDescP').html(event.description.substring(0, 150) + '. . .');
 	$('#eventLinkA').attr('href', 'event.html?id=' + event.id_event);
+}
+
+function generatesPaginationHTMLEvents(eventsCount){
+	for(i = 0; i < eventsCount; i++){
+		$("#pagDivEvents").append( 
+			`
+				<li value="${i}" class="page-item` + (i==0 ? ` active` : ``)  + `">
+					<a class="page-link">${i+1}</a>
+				</li>
+			`
+		);
+	}
 }
 
 function generatesPaginationHTML(){

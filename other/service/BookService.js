@@ -140,7 +140,7 @@ exports.getBookById = function(offset, limit, bookId) {
 								results['themes']=result;
 								return sqlDb.from('book')
 									//join with Event
-									.leftJoin('event', {'book.id_book' : 'event.id_book'})
+									.innerJoin('event', {'book.id_book' : 'event.id_book'})
 									.where('book.id_book', bookId)
 									.select('event.*').then(result => {
 										results['event']=result;
