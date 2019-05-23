@@ -170,9 +170,9 @@ function fillHeader(book, author){
 	
 	for(x = 0; x < author.length; x++)
 		$("#authorsDiv").append(
-			(x > 0 ? `<a class="authors-font">& </a>` :  ``) +
+			(x > 0 ? `<a>& </a>` :  ``) +
 			`	
-				<a class="authors-font" href="author.html?id=${author[x].id_author}" class="color-text-a">${author[x].name}</a>
+				<a href="author.html?id=${author[x].id_author}" class="color-text-a">${author[x].name}</a>
 			`
 			);
 	
@@ -183,7 +183,10 @@ function fillHeader(book, author){
 function fillBodyPage(book){
 	$("#coverImg").attr("src", book.cover_img);
 	$("#coverImg").attr("alt", book.title);
-	
+    console.log(book.best_seller);
+	if(book.best_seller=='true'){
+        $("#over").attr("src", "../assets/img/best-seller.png");
+    }
 	$("#descP").html(book.description);
 	
 	switch(book.support){
@@ -257,9 +260,9 @@ function fillBookDetailsEvent(book, genre, themes, events){
 		detailsHTML += `</span>
 					</li>
 						`;
-        if(book.best_seller){
+        /*if(book.best_seller){
             detailsHTML += `<img src="../assets/img/best-seller.png">`;
-        }
+        }*/
 		$('#detailsListUl').html(detailsHTML);
 }
 
@@ -324,7 +327,7 @@ function fillBooks(books){
 						</div>
 					</div>
                 </div>
-            `*/`<div class="col-xl-2 col-lg-2 col-md-4 col-6">
+            `*/`<div class="col-xl-2 col-lg-2 col-md-3 col-6">
 				<div class="card">
 				  	<a href="book.html?id=${relBook.id_book}" class="stretched-link"><img class="card-img-top-list" src="${relBook.cover_img}" alt="${relBook.title}"></a>
 				  	<div class="card-body">

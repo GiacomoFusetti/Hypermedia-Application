@@ -15,12 +15,12 @@ let sqlDb;
 exports.booksGET = function(offset, limit, genre, theme, rating, filter, search) {
 	sqlDb = database;
 	let results = {};
-	var fields = ['book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.rating' ];
+	var fields = ['book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.rating', 'book.best_seller', 'book.our_favorite' ];
 	
 	var query = sqlDb('book')
 				.innerJoin('book_author', {'book.id_book' :  'book_author.id_book'})
 				.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
-				.select(['book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.rating',
+				.select(['book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.rating',         'book.best_seller', 'book.our_favorite',
 						sqlDb.raw('ARRAY_AGG(author.name) as auth_names'),
 						sqlDb.raw('ARRAY_AGG(author.id_author) as auth_ids')])
 				.limit(limit)

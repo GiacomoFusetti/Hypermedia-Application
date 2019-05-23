@@ -68,6 +68,10 @@
 	object-position: left bottom;
 }
 
+.overlap-img {
+    z-index: 1500;
+}
+
 /* On screens that are 1200px or less */
 @media screen and (max-width: 1200px) {
   .card-img-top { 
@@ -223,6 +227,29 @@
 
 header.card-header:hover{
 	background-color: #adadad;
+}
+
+/*======================================
+//--//-->   OVERLAPPING IMG 
+======================================*/
+
+.frame{
+  position:relative;
+}
+.frame img{
+  width: 100%;
+  position:relative;
+}
+.frame img#coverImg{
+  z-index: 5;
+  position: relative;
+}
+.frame img#over{
+  z-index: 10;
+  top: 10px;
+  left: 10px;
+  width: 30%;
+  position: absolute;
 }
 
 /*======================================

@@ -260,45 +260,20 @@ function generatesRatingFilterHTML(){
 function generatesBooksHTML(){		
 	for(i = 0; i < booksJson.length; i++){
 		var currentBook = booksJson[i];	
-		/*$("#booksDiv").append( 
-			`
-				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 book-img-margin">
-					<div class="frame2 book-img-margin-child wow zoomIn" data-wow-duration="1s">
-						<div class="frame img-box-a">
-						  <a href="book.html?id=${currentBook.id_book}"><span class="helper"></span><img src="${currentBook.cover_img}" alt="${currentBook.title}" class="img-a img-fluid"></a>
-						</div>
-
-						<div class="">
-							<ul class="list-unstyled author_list">
-								` + authorListHTML(currentBook.auth_names, currentBook.auth_ids) + `
-							</ul>
-							<h6 class="card-titl-a book_title"><a class="font-90" href="book.html?id=${currentBook.id_book}">${currentBook.title}</a></h6>
-							<div>
-								<p>`
-									/*<span class="rating_text">Rating</span>
-										`+ ratingHTML(currentBook.rating) 
-
-									<span class="price_text"></span>*/ /*+ `
-										<b class="font-90 color-b">€ 
-										`+ priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_ebook) +
-										`																		
-										</b>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			`
-		);*/
+		console.log(currentBook.best_seller);
 		$("#booksDiv").append( 
 			`<div class="col-xl-3 col-lg-3 col-md-4 col-6 padding-col">
 				<div class="card wow zoomIn" data-wow-duration="1s">
-				  	<a href="book.html?id=${currentBook.id_book}" class="stretched-link"><img class="card-img-top" src="${currentBook.cover_img}" alt="${currentBook.title}"></a>
-				  	<div class="card-body">
+				  	<div class="frame">
+                        <a href="book.html?id=${currentBook.id_book}" class="stretched-link"><img class="card-img-top" src="${currentBook.cover_img}" alt="${currentBook.title}">
+                    ` + bestSellerHTML(currentBook.best_seller) + `  	
+                        </a>
+                    </div>
+                    <div class="card-body">
 						<ul class="list-unstyled author_list font-90">` + authorListHTML(currentBook.auth_names, currentBook.auth_ids) + `</ul>
 						<h4 class="font-90"><a href="book.html?id=${currentBook.id_book}">${currentBook.title}</a></h4>
 						<b class="font-90 color-b">€ 
-								` + priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_ebook) + `																		
+								` + priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_ebook) + `						
 						</b>
 				  	</div>
 				</div>
@@ -340,4 +315,11 @@ function authorListHTML(authorsNameJson, authorsIdsJson){
 						</li>
 					   `;
 	return authorsHTML;	
+}
+
+function bestSellerHTML(best_seller){
+    console.log(best_seller);
+    if(best_seller=='true')
+        return `<img id="over" src="../assets/img/best-seller.png">`;
+    return ``;
 }
