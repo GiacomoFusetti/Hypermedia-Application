@@ -260,20 +260,18 @@ function generatesRatingFilterHTML(){
 function generatesBooksHTML(){		
 	for(i = 0; i < booksJson.length; i++){
 		var currentBook = booksJson[i];	
-		console.log(currentBook.best_seller);
+        
 		$("#booksDiv").append( 
 			`<div class="col-xl-3 col-lg-3 col-md-4 col-6 padding-col">
 				<div class="card wow zoomIn" data-wow-duration="1s">
-				  	<div class="frame">
-                        <a href="book.html?id=${currentBook.id_book}" class="stretched-link"><img class="card-img-top" src="${currentBook.cover_img}" alt="${currentBook.title}">
-                    ` + bestSellerHTML(currentBook.best_seller) + `  	
-                        </a>
-                    </div>
-                    <div class="card-body">
+				  	<div class="frame"><a href="book.html?id=${currentBook.id_book}" class="stretched-link"><img class="card-img-top" src="${currentBook.cover_img}" alt="${currentBook.title}"></a>
+                    ` + bestSellerHTML(currentBook.best_seller) +`
+                </div>
+				  	<div class="card-body">
 						<ul class="list-unstyled author_list font-90">` + authorListHTML(currentBook.auth_names, currentBook.auth_ids) + `</ul>
 						<h4 class="font-90"><a href="book.html?id=${currentBook.id_book}">${currentBook.title}</a></h4>
 						<b class="font-90 color-b">€ 
-								` + priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_ebook) + `						
+								` + priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_ebook) + `																		
 						</b>
 				  	</div>
 				</div>

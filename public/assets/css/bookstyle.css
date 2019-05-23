@@ -246,9 +246,9 @@ header.card-header:hover{
 }
 .frame img#over{
   z-index: 10;
-  top: 10px;
-  left: 10px;
-  width: 30%;
+  top: 5px;
+  left: 5px;
+  width: 20%;
   position: absolute;
 }
 
