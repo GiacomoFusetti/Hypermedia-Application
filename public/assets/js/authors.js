@@ -1,4 +1,5 @@
 console.log("Loading authors page");
+
 let urlParams = new URLSearchParams(window.location.search);
 
 let authorsJson;

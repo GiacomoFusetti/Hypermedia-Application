@@ -27,8 +27,6 @@ tags:
   description: "Available genres"
 - name: "theme"
   description: "Available Themes"
-- name: "session"
-  description: "get current session"
 schemes:
 - "http"
 paths:
@@ -582,6 +580,25 @@ paths:
         500:
           description: "Internal Error"
       x-swagger-router-controller: "Event"
+  /user:
+    get:
+      tags:
+        - "user"
+      summary: "get current User"
+      description: "get current User"
+      operationId: "userGET"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Current user"
+          schema:
+            $ref: "#/definitions/User"
+        404:
+          description: "Unexpected error"
+        500:
+          description: "Internal Error"
+      x-swagger-router-controller: "User"
   /user/login:
     post:
       tags:
@@ -822,21 +839,6 @@ paths:
         500:
           description: "Internal Error"
       x-swagger-router-controller: "Theme"    
-  /session:
-    get:
-      tags:
-        - "session"
-      operationId: "sessionGET"
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "Current session"
-        404:
-          description: "Unexpected error"
-        500:
-          description: "Internal Error"
-      x-swagger-router-controller: "Session"
 definitions:
   User:
     type: "object"

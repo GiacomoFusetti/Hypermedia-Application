@@ -3,6 +3,19 @@
 var utils = require("../utils/writer.js");
 var UserService = require("../service/UserService");
 
+
+module.exports.userGET = function userGET(req, res, next) {
+    //console.log("userGET");
+    var response = []
+    
+    if(req.session.loggedin) 
+        response = req.session.user;
+    else
+		response = {error: 'User not found'};
+	utils.writeJson(res, response, 200);
+    
+};
+
 module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
     var email = req.swagger.params["email"].value;
     var password = req.swagger.params["password"].value;

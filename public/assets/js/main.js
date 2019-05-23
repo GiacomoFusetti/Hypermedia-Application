@@ -15,20 +15,21 @@ if(pathname === '/' || pathname === '/index.html')
 
 // -------------- REQUESTS ---------------
 
-function checkSession(){
-    fetch('/session', {
+function getUser(){
+    fetch('/user', {
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         method: "GET",
         credentials: 'include'
     }).then(function(response) {
-         return response.json();		
+        return response.json();		
     }).then(function(json) {
-        console.log(json);
-        user = json;
-		if(!jQuery.isEmptyObject(user)){
-        	toggleLogin(user);
-			getCartCount();
-		}
+		if(!json.error){
+			user = json;
+			if(!jQuery.isEmptyObject(user)){
+				toggleLogin(user);
+				getCartCount();
+			}
+		} 
     });
 }
 
@@ -87,7 +88,7 @@ function toggleCartIcon(toggle){
 jQuery(document).ready(function($) {
   "use strict";
 	
-	checkSession();
+	getUser();
 	
 	//Handle cart button
 	$('.btn-cart').click(function(){
