@@ -1,3 +1,5 @@
+console.log("Loading Home page");
+
 let booksJson;
 let authorsJson;
 let eventsJson;
