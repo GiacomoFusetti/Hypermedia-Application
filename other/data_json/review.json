@@ -1,0 +1,152 @@
+[
+    {
+        "id_review" : 1,
+        "id_book" : 1,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 2,
+        "id_book" : 1,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 3,
+        "id_book" : 1,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 4,
+        "id_book" : 2,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 5,
+        "id_book" : 2,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 6,
+        "id_book" : 3,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 7,
+        "id_book" : 4,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 8,
+        "id_book" : 4,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 9,
+        "id_book" : 5,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 10,
+        "id_book" : 6,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 11,
+        "id_book" : 7,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 12,
+        "id_book" : 8,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 13,
+        "id_book" : 8,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 14,
+        "id_book" : 9,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 15,
+        "id_book" : 10,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 16,
+        "id_book" : 11,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 17,
+        "id_book" : 12,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 18,
+        "id_book" : 12,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 19,
+        "id_book" : 13,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 20,
+        "id_book" : 14,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 21,
+        "id_book" : 15,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 22,
+        "id_book" : 15,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 23,
+        "id_book" : 16,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 24,
+        "id_book" : 16,
+        "writer" : "",
+        "text" : ""
+    },
+	{
+        "id_review" : 25,
+        "id_book" : 16,
+        "writer" : "",
+        "text" : ""
+    }
+]
