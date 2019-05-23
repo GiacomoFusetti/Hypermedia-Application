@@ -81,7 +81,10 @@ function fillBooksCarousel(books){
         booksCarousel += 
                 `
                     <div class="card carousel-item-b">
+                        <div class="frame">
 						<a href="pages/book.html?id=${book.id_book}" class="stretched-link"><img class="img-b img-fluid card-img-top" src="${book.cover_img}" alt="${book.title}"></a>
+                        ` + bestSellerHTML(book.best_seller) + `
+                        </div>
                         <div class="card-body book_desc">
 							<ul class="list-unstyled author_list font-90">
 								` + authorListHTML(book.auth_names, book.auth_ids) + `
@@ -246,4 +249,11 @@ function carouselEvents(){
 			}
 		}
 	});
+}
+
+function bestSellerHTML(best_seller){
+    console.log(best_seller);
+    if(best_seller=='true')
+        return `<img id="over" src="../assets/img/best-seller.png">`;
+    return ``;
 }

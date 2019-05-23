@@ -16,6 +16,29 @@
 }
 
 /*======================================
+//--//-->   OVERLAPPING IMG 
+======================================*/
+
+.frame{
+  position:relative;
+}
+.frame img{
+  width: 100%;
+  position:relative;
+}
+.frame img#coverImg{
+  z-index: 5;
+  position: relative;
+}
+.frame img#over{
+  z-index: 10;
+  top: 5px;
+  left: 5px;
+  width: 20%;
+  position: absolute;
+}
+
+/*======================================
 //--//-->   STYLES CART BUTTON
 ======================================*/
 
