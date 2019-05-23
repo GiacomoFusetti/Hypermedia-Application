@@ -46,11 +46,11 @@ $(document).ready(function(){
 	// ADD TO CART ON CLICK
 	$('#addCartDiv').on('click', '#addCartBtn', function(e) {
 		var currentBook = bookJson.book;
-		book['Id_book'] = currentBook.id_book;
+		book['Id_book'] = parseInt(currentBook.id_book);
 		book['title'] = currentBook.title;
 		book['cover_img'] = currentBook.cover_img;
-		book['price'] = bookPrice;
-		book['support'] = bookSupport;
+		book['price'] = parseFloat(bookPrice);
+		book['support'] = bookSupport.toLocaleLowerCase();
 		
 		postCurrentBook();
 	});
@@ -121,20 +121,21 @@ function getRealtedBooks(){
             fillBooks(relatedBookJson.similar_books);
         }else{
             $("#relatedBookDiv").append( 
-			    '<h3 class="title-single">No Written Books.</h3>'
+			    '<h3 class="title-single">No Related Books.</h3>'
             );
         }
     });
 }
 
 function postCurrentBook(){
-	fetch('/cart', {
-    	body: JSON.stringify(book),
+	fetch('/cart/', {
+		body: JSON.stringify(book),
+        method: "POST",
+        credentials: 'include',
 		headers: {
 		  'Accept': 'application/json',
 		  'Content-Type': 'application/json'
-		},
-        method: "POST"
+		}
     }).then(function(response) {
         response.json().then(function(json) {
 			getCartCount();
@@ -183,7 +184,6 @@ function fillHeader(book, author){
 function fillBodyPage(book){
 	$("#coverImg").attr("src", book.cover_img);
 	$("#coverImg").attr("alt", book.title);
-    console.log(book.best_seller);
 	if(book.best_seller=='true'){
         $("#over").attr("src", "../assets/img/best-seller.png");
     }

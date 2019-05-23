@@ -42,6 +42,7 @@ module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
 module.exports.userRegisterPOST = function userRegisterPOST(req, res, next) {
     console.log("userRegisterPOST");
     var body = req.swagger.params["body"].value;
+	console.log(body);
     
     UserService.userRegisterPOST(body).then(function(response) {
         utils.writeJson(res, response);

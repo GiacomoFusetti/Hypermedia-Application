@@ -26,6 +26,7 @@ function getUser(){
 		if(!json.error){
 			user = json;
 			if(!jQuery.isEmptyObject(user)){
+				console.log(user);
 				toggleLogin(user);
 				getCartCount();
 			}

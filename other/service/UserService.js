@@ -58,20 +58,29 @@ function isInDb(sqlDb, email){
     });
 }
 
-function insertNewUser(sqlDb, body){
-    return sqlDb('user').insert({name: body.name, email: body.email, password: body.password}).then(data =>{
-        appendToJson(body);
-        return true;
+function getUserCount(sqlDb){
+    return sqlDb('user').count('* as count').then(data =>{
+        return data[0].count;
     });
 }
 
-function appendToJson(body){
+function insertNewUser(sqlDb, body){
+	return sqlDb('user').count('* as count').then(data =>{
+        var id = parseInt(data[0].count) + 1;
+		return sqlDb('user').insert({id_user: id, name: body.name, email: body.email, password: body.password}).then(data =>{
+			appendToJson(body, id);
+			return true;
+		});
+    });
+}
+
+function appendToJson(body, id){
     fs.readFile('other/data_json/user.json', 'utf8', function readFileCallback(err, data){
         if (err){
             console.log(err);
         } else {
 			var obj = JSON.parse(data); //now it an object
-			var id_user = obj.length + 1;
+			var id_user = id;
 			obj.push({id_user: id_user, name: body.name, email: body.email, password: body.password }); //add data
 			var json = JSON.stringify(obj); //convert it back to json
 			fs.writeFile('other/data_json/user.json', json, 'utf8', function readFileCallback(err){}); // write it back 

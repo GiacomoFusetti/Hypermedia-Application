@@ -704,7 +704,7 @@ paths:
       - "application/json"
       parameters:
       - in: "body"
-        name: "book"
+        name: "body"
         description: "Book object that needs to be added to the cart"
         required: true
         schema:
@@ -728,7 +728,7 @@ paths:
       - "application/json"
       parameters:
       - in: "body"
-        name: "book"
+        name: "body"
         description: "Book object that needs to be modified to the cart"
         required: true
         schema:
@@ -752,11 +752,11 @@ paths:
       - "application/json"
       parameters:
       - in: "body"
-        name: "book"
+        name: "body"
         description: "Book object that needs to be modified to the cart"
         required: true
         schema:
-          type: array
+          type: "array"
           items: 
             $ref: "#/definitions/Cart"
       responses:
@@ -915,8 +915,6 @@ definitions:
   Cart:
     type: "object"
     properties:
-      id_user: 
-        type: "integer"
       id_book: 
         type: "integer"
       support:
@@ -930,8 +928,6 @@ definitions:
         type: "string"
       price:
         type: "number"
-      quantity:
-        type: "integer"
     title: "Cart"
     description: "Order for books"
     example:

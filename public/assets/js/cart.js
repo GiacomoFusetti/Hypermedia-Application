@@ -17,9 +17,9 @@ $(document).ready(function(){
 		if(newQty < 1 || typeof newQty == 'number') newQty = 1;
 		else if(newQty > 99) newQty = 99;
 		
-		currentBook['Id_book'] = cartBooksJson[idx].id_book;
-		currentBook['quantity'] = newQty;
-		currentBook['support'] = cartBooksJson[idx].support;
+		currentBook['Id_book'] = parseInt(cartBooksJson[idx].id_book);
+		currentBook['quantity'] = parseInt(newQty);
+		currentBook['support'] = cartBooksJson[idx].support.toLowerCase();
 		currentBook['title'] = cartBooksJson[idx].title;
 
 		cartBooksJson[idx].quantity = newQty;
@@ -45,8 +45,8 @@ $(document).ready(function(){
 			  'success'
 			)
 			var elem = {};
-			elem['Id_book'] = cartBooksJson[idx].id_book;
-			elem['support'] = cartBooksJson[idx].support;
+			elem['Id_book'] = parseInt(cartBooksJson[idx].id_book);
+			elem['support'] = cartBooksJson[idx].support.toLowerCase();
 			elem['title'] = cartBooksJson[idx].title;
 			deleteBook = [];
 			deleteBook.push(elem);
@@ -60,7 +60,6 @@ $(document).ready(function(){
 	});
 	// HANDLE CHECKOUT
 	$(document).on('click', '#checkOutBtn', function (){
-		console.log('CheckOut');
 		if(!jQuery.isEmptyObject(cartBooksJson)){
 			checkOutBooks = []
 			
@@ -172,7 +171,6 @@ function updateCartQty(){
 }
 
 function deleteBookCart(bookList){
-	console.log(bookList);
     fetch('/cart/', {
 		body: JSON.stringify(bookList),
         method: "DELETE",
