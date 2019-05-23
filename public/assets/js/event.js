@@ -80,7 +80,9 @@ function fillBody(event,book,genre,theme){
     $("#event_description").html(`<p>
                 ${event.description}
             </p>`);
-    $("#book_body").html(`<a href="book.html?id=${book.id_book}"><img src="${book.cover_img}" alt="img" class="img-fluid"></a>`);
+    $("#book_body").html(`<a href="book.html?id=${book.id_book}"><img src="${book.cover_img}" alt="img" class="img-fluid"></a>`
+                        + bestSellerHTML(book.best_seller));
+    
     $("#map").html(`<iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=${event.location}+()&amp;ie=UTF8&amp;iwloc=A&amp;output=embed"
                 width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>`);
     
@@ -135,4 +137,11 @@ function supportHTML(support){
 		default:
 			return support + ' based';
 	}
+}
+
+function bestSellerHTML(best_seller){
+    console.log(best_seller);
+    if(best_seller=='true')
+        return `<img id="over" src="../assets/img/best-seller.png">`;
+    return ``;
 }
