@@ -245,6 +245,9 @@ function fillBookDetailsEvent(book, genre, themes, event){
 		detailsHTML += `</span>
 					</li>
 						`;
+        if(book.best_seller){
+            detailsHTML += `<img src="../assets/img/best-seller.png">`;
+        }
 		$('#detailsListUl').html(detailsHTML);
 }
 

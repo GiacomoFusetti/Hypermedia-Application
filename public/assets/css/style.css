@@ -63,6 +63,10 @@ ul.dropdown-lr {
   align-items: flex-end;
 }
 
+.img-center {
+    text-align: center;
+}
+
 h1,
 h2,
 h3,
@@ -1023,6 +1027,7 @@ a:hover {
 
 .intro-single {
   padding: 10rem 0 3rem;
+  padding-top: 8rem;
 }
 
 .intro-single .title-single-box {
@@ -1040,6 +1045,7 @@ a:hover {
 
 .intro-single .breadcrumb-box {
   padding: 1rem 0 0 .5rem;
+  padding-top: 0rem;
 }
 
 .intro-single .breadcrumb {
@@ -1376,6 +1382,7 @@ a:hover {
 
 .card-body-c {
   padding: .5rem .5rem 0 .5rem;
+  text-align: justify;
 }
 
 .card-footer-c {
@@ -2032,6 +2039,10 @@ footer .credits {
   .property-contact {
     margin-top: 2.5rem;
   }
+    
+  .property-agent {
+    margin-top: 2.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2080,10 +2091,6 @@ footer .credits {
     padding-bottom: 1rem;
   }
 
-  .property-agent {
-    margin-top: 2.5rem;
-  }
-
   .card-box-c {
     margin-bottom: 2rem;
   }
@@ -2101,4 +2108,16 @@ footer .credits {
   .box-collapse .title-box-d .title-d {
     font-size: 1.3rem;
   }
+}
+
+@media screen and (max-width: 978px) {
+    
+    .book-details {
+        padding-top: 20px;
+    }
+    
+    .author-bio {
+        padding-top: 20px;
+    }
+
 }

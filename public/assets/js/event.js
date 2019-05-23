@@ -87,26 +87,11 @@ function fillBody(event,book,genre,theme){
 }
 
 function fillBookDetailsEvent(event, author, book, genre, themes){
-    console.log("hwy");
+    
 	var detailsHTML = ``;
 	
 	detailsHTML +=
 			`
-				<li class="d-flex justify-content-between">
-					<strong>Title:</strong>
-					<span><a href="book.html?id=${book.id_book}">${book.title}</a></span>
-				</li>
-                <li class="d-flex justify-content-between">
-					<strong>Author:</strong>
-					<span>
-            `;
-    for(z = 0; z < author.length; z++)
-		detailsHTML += (z > 0 ? `<a class="font-70"> & </a>` :  ``) + 
-                `<a href="author.html?id=${author[z].id_author}">${author[z].name}</a>`;
-    detailsHTML += 
-            `
-                </span>
-            </li>
             <li class="d-flex justify-content-between">
                 <strong>Language:</strong>
                 <span>${book.language}</span>
