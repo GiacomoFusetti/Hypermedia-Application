@@ -2,151 +2,151 @@
     {
         "id_review" : 1,
         "id_book" : 1,
-        "writer" : "",
-        "text" : ""
+        "writer" : "The Nation",
+        "text" : "There are very few works of genius in recent literature. This is one."
     },
 	{
         "id_review" : 2,
         "id_book" : 1,
-        "writer" : "",
-        "text" : ""
+        "writer" : "New York Herald Tribune",
+        "text" : "Filled with marvels and strange terrors . . . an extraordinary, distinguished piece of work."
     },
 	{
         "id_review" : 3,
         "id_book" : 1,
-        "writer" : "",
-        "text" : ""
+        "writer" : "The New York Times",
+        "text" : "An extraordinary work—pure excitement, unencumbered narrative, moral warmth, bare-faced rejoicing in beauty, but excitement most of all."
     },
 	{
         "id_review" : 4,
         "id_book" : 2,
-        "writer" : "",
-        "text" : ""
+        "writer" : "New York Herald Tribune",
+        "text" : "It is destined to survive our time"
     },
 	{
         "id_review" : 5,
         "id_book" : 2,
-        "writer" : "",
-        "text" : ""
+        "writer" : "J. Mc Kellan",
+        "text" : "The Lord of the Rings is a special kind of fiction, midway between medieval romance and modern novel."
     },
 	{
         "id_review" : 6,
         "id_book" : 3,
-        "writer" : "",
-        "text" : ""
+        "writer" : "The Sunday Times",
+        "text" : "The English-speaking world is divided between those who have read The Lord of the Rings and those who are about to read them."
     },
 	{
         "id_review" : 7,
         "id_book" : 4,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Los Angeles Times",
+        "text" : "Coelho, whose books have sold more than 200 million copies worldwide, has taken the Mata Hara story and fashioned it into a short dynamo of a novel."
     },
 	{
         "id_review" : 8,
         "id_book" : 4,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Paste Magazine",
+        "text" : "Coelho has created a portrait of an anachronistic woman, who was destroyed by her times and became a legend."
     },
 	{
         "id_review" : 9,
         "id_book" : 5,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Entertainment",
+        "text" : "Shakespeare's masterpiece, the work that the whole world knows"
     },
 	{
         "id_review" : 10,
         "id_book" : 6,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Simone Regazzoni, author of the essay Harry Potter and philosophy",
+        "text" : "If it were not children's literature we would recognize that it is an authentic world novel due to its capacity for linguistic invention, the construction of an articulated mythology and the creation of a real and fantastic universe."
     },
 	{
         "id_review" : 11,
         "id_book" : 7,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Baltimore Sun",
+        "text" : "The fact that, once the pieces are arranged, everything looks natural represents a tribute to the author's consummate narrative skills. No other result could have seemed equally plausible."
     },
 	{
         "id_review" : 12,
         "id_book" : 8,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Stephen King",
+        "text" : "Reading it is an incomparable recreation, pure history from beginning to end."
     },
 	{
         "id_review" : 13,
         "id_book" : 8,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Mirror",
+        "text" : "Spellbinding, enchanting, bewitching stuff"
     },
 	{
         "id_review" : 14,
         "id_book" : 9,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Independent",
+        "text" : "I’ve yet to meet a ten­year­old who hasn’t been entranced by its witty, complex plot and the character of the eponymous Harry"
     },
 	{
         "id_review" : 15,
         "id_book" : 10,
-        "writer" : "",
-        "text" : ""
+        "writer" : "EATER",
+        "text" : "Whether you’re a grill master or just want to learn about beef, Franklin Steak dives deep into the art and science of cooking steak, making it a welcome addition to any meat-lover’s collection."
     },
 	{
         "id_review" : 16,
         "id_book" : 11,
         "writer" : "",
-        "text" : ""
+        "text" : "The L.A.-centric recipes you want right now! With chefs building on rich immigrant cultures, dynamic ingredient combinations, and bountiful markets, Aleksandra’s book showcases the recipes that make L.A. one of the most exciting places, anywhere, to eat."
     },
 	{
         "id_review" : 17,
         "id_book" : 12,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Jonah Berger, author of Contagious",
+        "text" : "This is that rare book that not only informs but entertains. You’ll never look at these four companies the same way again."
     },
 	{
         "id_review" : 18,
         "id_book" : 12,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Philip Elmer-DeWitt, Fortune",
+        "text" : "If there is a blunter, more opinionated, faster-talking expert on the Internet than Scott Galloway, I haven’t come across him. Or her."
     },
 	{
         "id_review" : 19,
         "id_book" : 13,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Derek Sivers, author of Anything You Want",
+        "text" : "The Algebra of Happiness offers raw and vulnerable wisdom, delivered with heart. We all can learn from Galloway’s mistakes and insights."
     },
 	{
         "id_review" : 20,
         "id_book" : 14,
-        "writer" : "",
-        "text" : ""
+        "writer" : "The Guardian",
+        "text" : "What every woman wants. Obviously."
     },
 	{
         "id_review" : 21,
-        "id_book" : 15,
-        "writer" : "",
-        "text" : ""
+        "id_book" : 14,
+        "writer" : "Entertainment",
+        "text" : "Scandalous, hot, the bestseller you can't stop talking about."
     },
 	{
         "id_review" : 22,
         "id_book" : 15,
-        "writer" : "",
-        "text" : ""
+        "writer" : "The New York Times",
+        "text" : "Fifty shades is the erotic novel that has thrilled all American women: they spread the word on facebook, in the gym, at home, with friends, with husbands..."
     },
 	{
         "id_review" : 23,
         "id_book" : 16,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Los Angeles Times",
+        "text" : "Unpredictable, unstoppable, unforgettable: the most sensational publishing case of the last few years."
     },
 	{
         "id_review" : 24,
         "id_book" : 16,
-        "writer" : "",
-        "text" : ""
+        "writer" : "The Nation",
+        "text" : "Romantic, liberating and totally addictive, this is a novel that will obsess you, possess you, and stay with you forever."
     },
 	{
         "id_review" : 25,
         "id_book" : 16,
-        "writer" : "",
-        "text" : ""
+        "writer" : "Entertainment Weekly",
+        "text" : "In a class by itself."
     }
 ]

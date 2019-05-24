@@ -77,6 +77,9 @@ function fillBody(event,book,genre,theme){
     $("#event_when").html(
         `<strong>When: </strong>
                 <span class="color-text-a">${event.when}</span>`);
+    $("#event_where").html(
+        `<strong>Where: </strong>
+                <span class="color-text-a">${event.city}</span>`);
     $("#event_description").html(`<p>
                 ${event.description}
             </p>`);

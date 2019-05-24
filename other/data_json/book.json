@@ -138,7 +138,7 @@
     {
         "id_book" : 9,
         "id_genre" : 3,
-        "title" : "Harry Potter and the Goblet of Fire book",
+        "title" : "Harry Potter and the Goblet of Fire",
         "description" : "When the Quidditch World Cup is disrupted by Voldemort's rampaging supporters alongside the resurrection of the terrifying Dark Mark, it is obvious to Harry Potter that, far from weakening, Voldemort is getting stronger. Back at Hogwarts for his fourth year, Harry is astonished to be chosen by the Goblet of Fire to represent the school in the Triwizard Tournament. The competition is dangerous, the tasks terrifying, and true courage is no guarantee of survival - especially when the darkest forces are on the rise.",
         "price_paper" : 9.99,
         "price_ebook" : 5.15,
