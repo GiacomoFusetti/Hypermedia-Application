@@ -22,15 +22,14 @@ module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
     
     UserService.userLoginPOST(email, password).then(function(response) {
         if(response.length==0) {
-            res.status(404);
-            //res.send({ error: "404", title: "404: File Not Found" });
-            utils.writeJson(res, response);
+            utils.writeJson(res, response, 404);
         } else {
             if(!req.session.loggedin) {
                 req.session.loggedin = true;
                 req.session.user = response[0];
                 req.sessionOptions.maxAge = req.session.maxAge || req.sessionOptions.maxAge
                 //console.log(req.session.user.id_user);
+		response = {ok: 'User ' + response.name + ' succesfully logged in.'};
             }
             utils.writeJson(res, response);
         }
@@ -45,6 +44,7 @@ module.exports.userRegisterPOST = function userRegisterPOST(req, res, next) {
 	console.log(body);
     
     UserService.userRegisterPOST(body).then(function(response) {
+	console.log(response);
         utils.writeJson(res, response);
     }).catch(function(response) {
         utils.writeJson(res, response);
