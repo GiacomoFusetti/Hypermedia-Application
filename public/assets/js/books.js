@@ -310,7 +310,6 @@ function generatesBooksHTML(){
 
 function fillFilterActive(){
 	var result = '';
-	console.log(bookCount)
 	
 	if(bookCount > 0){
 		result += (offset + 1) + ' - ';

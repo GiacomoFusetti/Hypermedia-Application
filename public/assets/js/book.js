@@ -132,14 +132,14 @@ function postCurrentBook(){
 		}
     }).then(function(response) {
         response.json().then(function(json) {
-			getCartCount();
-			
 			var toastType = 'success'
 			var toastTitle = 'Book added to cart';
 
-			if(response.status == 401){
+			if(json.status == 401){
 				toastType = 'warning'
 				toastTitle = 'You must be logged in!';
+			}else{
+				getCartCount();
 			}
 			Toast.fire({
 				type: toastType,
