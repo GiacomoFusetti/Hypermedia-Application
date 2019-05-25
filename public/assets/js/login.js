@@ -120,9 +120,6 @@ function postRegister(form) {
 				Toast.fire({
 				  type: 'success',
 				  title: 'Registration done!',
-                  onClose: () => {
-                     $('.swal2-container').remove();
-                  }
 				})
             }
         });
