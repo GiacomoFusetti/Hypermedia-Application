@@ -4,6 +4,7 @@ new WOW().init();
 let urlParams = new URLSearchParams(window.location.search);
 
 let pageNumber;
+let bookCount;
 
 let genreJson;
 let themeJson;
@@ -88,6 +89,31 @@ $(document).ready(function(){
 	getThemes();
 	generatesRatingFilterHTML();
 	getBooks();
+	
+	// SET FILTERS WHEN APPEAR IN PATHQUERY
+	if(mainFilter || genreid || themeid){
+		$("#filtersHeader").click();
+		
+		if(mainFilter){
+			$("#radio" + mainGroup + mainFilter).click();
+		}if(genreid){
+			var timer = setInterval(function() {
+				 if ($('#genreHeader')) {
+					clearInterval(timer);
+					$("#genreHeader").click();
+					$("#radio" + genresGroup + genreid).click();
+				 }
+			}, 100);
+		}if(themeid){
+			var timer = setInterval(function() {
+				 if ($('#themeHeader')) {
+					clearInterval(timer);
+					$("#themeHeader").click();
+					$("#radio" + themesGroup + themeid).click(); 
+				 }
+			}, 100);
+		}
+	}
 });
 
 // -------------- REQUESTS ---------------
@@ -103,10 +129,10 @@ function getBooksCount(){
 	fetch('/books/count' + query).then(function(response) {
 		return response.json();
 	}).then(function(json) {
-		pageNumber = json.count;
-		if(pageNumber){
+		bookCount = json.count;
+		if(bookCount){
 			$("#paginationDiv").empty(); 
-			pageNumber = Math.ceil(pageNumber/limit);
+			pageNumber = Math.ceil(bookCount/limit);
 			generatesPaginationHTML();
 		}
  	});
@@ -157,6 +183,7 @@ function getBooks(){
 				</div>`
 			);
 		}
+		fillFilterActive();
  	});
 }
 
@@ -178,11 +205,11 @@ function generatesPaginationHTML(){
 function generatesGenresFilterHTML(){
 	var genresHTML = 
 		`
-			<div class="filter-div-title" data-toggle="collapse" data-target="#genreDiv"><i class="fa fa-angle-right color-b"></i> <a>Genre</a></div>
+			<div id="genreHeader" class="filter-div-title" data-toggle="collapse" data-target="#genreDiv"><i class="fa fa-angle-right color-b"></i> <a>Genre</a></div>
 			<div id="genreDiv" class="collapse">
 				<div class="form-check">
-					<input name="${genresGroup}" type="radio" id="radio${++radioId}" value="0" checked>
-					<label for="radio${radioId}">All</label>
+					<input name="${genresGroup}" type="radio" id="radio${genresGroup + 0}" value="0" checked>
+					<label for="radio${genresGroup + 0}">All</label>
 				</div>
 		`;
 	for(i = 0; i < genreJson.length; i++){
@@ -190,8 +217,8 @@ function generatesGenresFilterHTML(){
 		genresHTML += 
 			`
 				<div class="form-check">
-					<input name="${genresGroup}" type="radio" id="radio${++radioId}" value="${currentGenre.id_genre}">
-					<label for="radio${radioId}">${currentGenre.name}</label>
+					<input name="${genresGroup}" type="radio" id="radio${genresGroup + (i+1)}" value="${currentGenre.id_genre}">
+					<label for="radio${genresGroup + (i+1)}">${currentGenre.name}</label>
 				</div>
 			`
 	}	
@@ -203,11 +230,11 @@ function generatesGenresFilterHTML(){
 function generatesThemesFilterHTML(){
 	var themesHTML = 
 		`
-			<div class="filter-div-title" data-toggle="collapse" data-target="#themeDiv"><i class="fa fa-angle-right color-b"></i> <a>Theme</a></div>
+			<div id="themeHeader" class="filter-div-title" data-toggle="collapse" data-target="#themeDiv"><i class="fa fa-angle-right color-b"></i> <a>Theme</a></div>
 			<div id="themeDiv" class="collapse">
 				<div class="form-check">
-					<input name="${themesGroup}" type="radio" id="radio${++radioId}" value="0" checked>
-					<label for="radio${radioId}">All</label>
+					<input name="${themesGroup}" type="radio" id="radio${themesGroup + 0}" value="0" checked>
+					<label for="radio${themesGroup + 0}">All</label>
 				</div>
 		`;
 	for(i = 0; i < themeJson.length; i++){
@@ -215,8 +242,8 @@ function generatesThemesFilterHTML(){
 		themesHTML += 
 			`
 				<div class="form-check">
-					<input name="${themesGroup}" type="radio" id="radio${++radioId}" value="${currentTheme.id_theme}">
-					<label for="radio${radioId}">${currentTheme.theme_name}</label>
+					<input name="${themesGroup}" type="radio" id="radio${themesGroup + (i+1)}" value="${currentTheme.id_theme}">
+					<label for="radio${themesGroup + (i+1)}">${currentTheme.theme_name}</label>
 				</div>
 			`
 	}
@@ -229,19 +256,19 @@ function generatesRatingFilterHTML(){
 	var maxrating = 5;
 	var ratingHTML = 
 		`
-			<div class="filter-div-title" data-toggle="collapse" data-target="#ratingDiv"><i class="fa fa-angle-right color-b"></i> <a>Rating</a></div>
+			<div id="ratingHeader" class="filter-div-title" data-toggle="collapse" data-target="#ratingDiv"><i class="fa fa-angle-right color-b"></i> <a>Rating</a></div>
 			<div id="ratingDiv" class="collapse">
 				<div class="form-check">
-					<input name="${ratingGroup}" type="radio" id="radio${++radioId}" value="0" checked>
-					<label for="radio${radioId}">All</label>
+					<input name="${ratingGroup}" type="radio" id="radio${ratingGroup + 0}" value="0" checked>
+					<label for="radio${ratingGroup + 0}">All</label>
 				</div>
 		`;
 	for(i = 0; i < maxrating; i++){
 		ratingHTML += 
 			`
 				<div class="form-check">
-					<input name="${ratingGroup}" type="radio" id="radio${++radioId}" value="${maxrating-i}">
-					<label for="radio${radioId}">
+					<input name="${ratingGroup}" type="radio" id="radio${ratingGroup + (i+1)}" value="${maxrating-i}">
+					<label for="radio${ratingGroup + (i+1)}">
 			`;
 		for(x = i; x < maxrating; x++){
 			ratingHTML += `<i class="fas fa-star color-b" aria-hidden="true"></i>`;
@@ -278,6 +305,29 @@ function generatesBooksHTML(){
 			</div>`
 		);
 	}
+}
+
+function fillFilterActive(){
+	var result = '';
+	console.log(bookCount)
+	
+	if(bookCount > 0){
+		result += (offset + 1) + '-';
+		if(limit > (bookCount - offset))
+			result += bookCount + ' results';
+		else
+			result += limit + ' of ' + bookCount + ' results'
+	}else{
+		result = 'no results';
+	}
+	
+	if(genreid && genreid != 0) result += ' for <b>' + genreJson[parseInt(genreid) - 1].name + '</b>';
+	if(themeid && themeid != 0) result += ' for <b>' + themeJson[parseInt(themeid) - 1].theme_name + '</b>';
+	if(rating && rating != 0) result += ' for <b>' + rating + ' stars</b>';
+	if(mainFilter && mainFilter != 0) result += ' for <b>' + ((mainFilter == 1) ? 'BestSeller' : 'OurSuggestion') + '</b>';
+    	if(search) result += ': <i>' + search + '</i>';
+	
+	$('#filterActive').html(result);
 }
 
 // -------------- AUXILIARY FUNCTIONS ---------------
