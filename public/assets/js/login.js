@@ -140,7 +140,6 @@ function postLogin(form) {
     }).then(function(response) {
          return response.json();
      }).then(function(json) {
-        console.log(json);
         
         if(jQuery.isEmptyObject(json)){
             $('#loginerror').show();
