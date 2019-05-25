@@ -147,20 +147,6 @@ exports.deleteBookById = function(userId, bookList) {
 		}).catch(function(err){
 			console.error('knex update error', err);
 		});
-
-	/*return deleteBook(sqlDb, userId, bookList)
-		.then(result => {
-			//console.log("Result", result);	
-			deleteBookJson(userId, bookList);
-
-			res = {res: 'Books deleted from cart.'};
-			return res;
-		})
-		.catch(function(e) {
-			console.error('knex update error', e);
-		});
-    });*/
-
 }
 
 // -------------- AUXILIARY FUNCTIONS ---------------
