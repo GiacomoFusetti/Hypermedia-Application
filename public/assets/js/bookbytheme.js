@@ -46,7 +46,7 @@ function generatesBookByThemeHTML(){
                                 ` + bestSellerHTML(currentBook.f7) + `
                                 </div>
 								<div class="card-body">
-									<ul class="list-unstyled author_list font-90">` + authorListHTML(currentBook.f7) + `</ul>
+									<ul class="list-unstyled author_list font-90">` + authorListHTML(currentBook.f8) + `</ul>
 									<h4 class="font-90"><a href="book.html?id=${currentBook.f1}">${currentBook.f2}</a></h4>
 									<b class="font-90 color-b">€ 
 											` + priceHTML(currentBook.f6, currentBook.f3, currentBook.f4) + `																		
