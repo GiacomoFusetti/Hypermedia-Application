@@ -78,7 +78,7 @@
 
 .card-img-top-list { 
   	width: 100%;
-    height: 12vw;
+    height: 17vw;
     object-fit: contain;
 	object-position: left bottom;
 }
@@ -120,7 +120,7 @@
   	height: 24vw;
   }
 	.card-img-top-list { 
-  		height: 24vw;
+  		height: 29vw;
   	}
 }
 

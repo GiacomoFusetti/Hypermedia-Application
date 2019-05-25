@@ -50,6 +50,7 @@ $(document).ready(function(){
 
 		offset = $(this).val() * limit;
 		getBooks();
+		fillFilterActive();
    	});
 	//FILTERS
 	$('#allFiltersDiv').on('change', 'input[type=radio]', function() {
@@ -83,10 +84,10 @@ $(document).ready(function(){
             getBooksCount();
         };
 	});
-    
-	getBooksCount();
+
 	getGenres();
 	getThemes();
+	getBooksCount();
 	generatesRatingFilterHTML();
 	getBooks();
 	
@@ -134,6 +135,7 @@ function getBooksCount(){
 			$("#paginationDiv").empty(); 
 			pageNumber = Math.ceil(bookCount/limit);
 			generatesPaginationHTML();
+			fillFilterActive();
 		}
  	});
 }
@@ -183,7 +185,6 @@ function getBooks(){
 				</div>`
 			);
 		}
-		fillFilterActive();
  	});
 }
 
@@ -290,7 +291,7 @@ function generatesBooksHTML(){
         
 		$("#booksDiv").append( 
 			`<div class="col-xl-3 col-lg-3 col-md-4 col-6 padding-col">
-				<div class="card wow zoomIn" data-wow-duration="1s">
+				<div class="card">
 				  	<div class="frame"><a href="book.html?id=${currentBook.id_book}" class="stretched-link"><img class="card-img-top" src="${currentBook.cover_img}" alt="${currentBook.title}"></a>
                     ` + bestSellerHTML(currentBook.best_seller) + `
                     </div>
@@ -312,20 +313,19 @@ function fillFilterActive(){
 	console.log(bookCount)
 	
 	if(bookCount > 0){
-		result += (offset + 1) + '-';
+		result += (offset + 1) + ' - ';
 		if(limit > (bookCount - offset))
 			result += bookCount + ' results';
 		else
 			result += limit + ' of ' + bookCount + ' results'
-	}else{
+	}else
 		result = 'no results';
-	}
 	
-	if(genreid && genreid != 0) result += ' for <b>' + genreJson[parseInt(genreid) - 1].name + '</b>';
-	if(themeid && themeid != 0) result += ' for <b>' + themeJson[parseInt(themeid) - 1].theme_name + '</b>';
-	if(rating && rating != 0) result += ' for <b>' + rating + ' stars</b>';
-	if(mainFilter && mainFilter != 0) result += ' for <b>' + ((mainFilter == 1) ? 'BestSeller' : 'OurSuggestion') + '</b>';
-    	if(search) result += ': <i>' + search + '</i>';
+	if(genreid && genreid != 0) result += ' - <b>' + genreJson[parseInt(genreid) - 1].name + '</b>';
+	if(themeid && themeid != 0) result += ' - <b>' + themeJson[parseInt(themeid) - 1].theme_name + '</b>';
+	if(rating && rating != 0) result += ' - <b>' + rating + ' stars</b>';
+	if(mainFilter && mainFilter != 0) result += ' - <b>' + ((mainFilter == 1) ? 'BestSeller' : 'OurSuggestion') + '</b>';
+    	if(search) result += ': <i>\'' + search + '\'</i>';
 	
 	$('#filterActive').html(result);
 }
