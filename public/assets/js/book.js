@@ -36,13 +36,6 @@ $(document).ready(function(){
 		bookSupport = 'eBook';
 		bookPrice = $('#ebook-button').attr('value');
 	});	
-	// ?????????
-  	$("#booksby").on("hide.bs.collapse", function(){
-		$(".h6").html('<i class="far fa-caret-square-down color-b"></i> Books By');
-  	});
-  	$("#booksby").on("show.bs.collapse", function(){
-		$(".h6").html('<i class="far fa-caret-square-up color-b"></i> Books By');
-  	});
 	// ADD TO CART ON CLICK
 	$('#addCartDiv').on('click', '#addCartBtn', function(e) {
 		var currentBook = bookJson.book;
@@ -149,13 +142,9 @@ function postCurrentBook(){
 				toastTitle = 'You must be logged in!';
 			}
 			Toast.fire({
-			  type: toastType,
-			  title: toastTitle,
-              onClose: () => {
-                 $('.swal2-container').remove();
-              }
+				type: toastType,
+				title: toastTitle
 			})
-
 		});
     });
 }
@@ -345,31 +334,8 @@ function fillBooks(books){
     for(i = 0; i < books.length; i++){
         var relBook = books[i];
 
-        relatedDiv +=/*
-            `
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 book-img-margin">
-                    <div class="book-img-margin-child>
-						<div id="book" class="img-box-a">
-						  <a href="book.html?id=${relBook.id_book}"><img src="${relBook.cover_img}" alt="${relBook.title}" class="img-a img-fluid"></a>
-						</div>
-
-						<div class="book_desc">
-							<ul class="list-unstyled author_list">
-								` + authorListHTML(relBook.auth_names, relBook.auth_ids) + `
-							</ul>
-							<h6 class="card-titl-a book_title"><a class="font-70" href="book.html?id=${relBook.id_book}">${relBook.title}</a></h6>
-							<div>
-								<p>
-										<b class="font-70 color-b">€ 
-										`+ priceHTML(relBook.support, relBook.price_paper, relBook.price_ebook) +
-										`																		
-										</b>
-								</p>
-							</div>
-						</div>
-					</div>
-                </div>
-            `*/`<div class="col-xl-2 col-lg-2 col-md-3 col-6">
+        relatedDiv +=`
+			<div class="col-xl-2 col-lg-2 col-md-3 col-6">
 				<div class="card">
 				  	<div class="frame">
                     <a href="book.html?id=${relBook.id_book}" class="stretched-link"><img class="card-img-top-list" src="${relBook.cover_img}" alt="${relBook.title}"></a>
