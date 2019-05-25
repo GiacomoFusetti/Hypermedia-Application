@@ -37,15 +37,13 @@ exports.userRegisterPOST = function(body) {
     
     return isInDb(sqlDb, body.email).then( inDb =>{
         if(inDb){
-            var obj = {error: 'Email already used.'};
-            return obj;
+            return {error: 'Email already used.'};
         }else{
-            insertNewUser(sqlDb, body);
-            return sqlDb('user').where({email: body.email}).select('*').then(data =>{
-                return data.map(e => {
-                    return e;
-                });
-            });
+            return insertNewUser(sqlDb, body).then( added =>{
+			if(added)
+				return {ok: 'User Registered.'};
+			return {error: 'User NOT Registered.'};
+		});
         }
     });
 }
@@ -55,12 +53,6 @@ exports.userRegisterPOST = function(body) {
 function isInDb(sqlDb, email){
     return sqlDb('user').count('* as count').where({email: email}).then(data =>{
         return (data[0].count > 0) ? true : false;
-    });
-}
-
-function getUserCount(sqlDb){
-    return sqlDb('user').count('* as count').then(data =>{
-        return data[0].count;
     });
 }
 
