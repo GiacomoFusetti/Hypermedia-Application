@@ -120,7 +120,10 @@ $(document).ready(function(){
 		}
 		Toast.fire({
 		  type: toastType,
-		  title: toastTitle
+		  title: toastTitle,
+          onClose: () => {
+              $('.swal2-container').remove();
+          }
 		})
 		updateTotal();
 	});

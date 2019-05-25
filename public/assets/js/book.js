@@ -116,6 +116,7 @@ function getRealtedBooks(){
         return response.json();
     }).then(function(json) {
         relatedBookJson = json;
+        
 		$("#relatedBookDiv").empty();
         if(!jQuery.isEmptyObject(relatedBookJson)){
             fillBooks(relatedBookJson.similar_books);
@@ -149,7 +150,10 @@ function postCurrentBook(){
 			}
 			Toast.fire({
 			  type: toastType,
-			  title: toastTitle
+			  title: toastTitle,
+              onClose: () => {
+                 $('.swal2-container').remove();
+              }
 			})
 
 		});
@@ -163,7 +167,8 @@ function generatesBookHTML(){
 	fillBodyPage(bookJson.book);
 	fillBookDetailsEvent(bookJson.book, bookJson.genre[0], bookJson.themes, bookJson.event);
 	fillBooks(bookJson.similar_books);
-	
+	fillReview(bookJson.review);
+    fillInterview(bookJson.book);
 }
 
 function fillHeader(book, author){
@@ -227,7 +232,7 @@ function fillBookDetailsEvent(book, genre, themes, events){
 		fillEvent(0);
 	}
 	
-	detailsHTML +=
+	detailsHTML += favoriteHTML(book.our_favorite) +
 			`
 				<li class="d-flex justify-content-between">
 					<strong>Language:</strong>
@@ -275,6 +280,42 @@ function fillEvent(idx){
 	$('#eventLinkA').attr('href', 'event.html?id=' + event.id_event);
 }
 
+function fillReview(bookRev){
+    var bookReview = ``;
+
+    for(y = 0; y < bookRev.length ; y++){
+        var rev = bookRev[y];
+        
+        bookReview += `
+                        <div class="font-i rev-align">
+                        "${rev.text}"
+                        </div>
+                        <div class="writer">
+                        <strong>${rev.writer}</strong>
+                        </div>
+                        <br>
+                      `;
+    }
+    
+    $("#book_review").append(bookReview);
+}
+
+function fillInterview(book){
+    var interviewHTML = ``;
+    if(book.interview){
+        
+        interviewHTML += `
+                    <div class="title-box-d section-t2">
+                         <h3 id="author_interview" class="title-d">Author's interview</h3>
+                    </div>
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe width="560" height="315" src="${book.interview}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                     `;
+    }
+    $("#author_interview").append(interviewHTML);
+}
+
 function generatesPaginationHTMLEvents(eventsCount){
 	for(i = 0; i < eventsCount; i++){
 		$("#pagDivEvents").append( 
@@ -303,6 +344,7 @@ function fillBooks(books){
     var relatedDiv = ``;
     for(i = 0; i < books.length; i++){
         var relBook = books[i];
+
         relatedDiv +=/*
             `
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 book-img-margin">
@@ -329,12 +371,15 @@ function fillBooks(books){
                 </div>
             `*/`<div class="col-xl-2 col-lg-2 col-md-3 col-6">
 				<div class="card">
-				  	<a href="book.html?id=${relBook.id_book}" class="stretched-link"><img class="card-img-top-list" src="${relBook.cover_img}" alt="${relBook.title}"></a>
-				  	<div class="card-body">
+				  	<div class="frame">
+                    <a href="book.html?id=${relBook.id_book}" class="stretched-link"><img class="card-img-top-list" src="${relBook.cover_img}" alt="${relBook.title}"></a>
+                    ` + bestSellerHTML(relBook.best_seller) + `
+				  	</div>
+                    <div class="card-body">
 						<ul class="list-unstyled author_list font-90">` + authorListHTML(relBook.auth_names, relBook.auth_ids) + `</ul>
 						<h4 class="font-90"><a href="book.html?id=${relBook.id_book}">${relBook.title}</a></h4>
 						<b class="font-90 color-b">€ 
-								` + priceHTML(relBook.support, relBook.price_paper, relBook.price_ebook) + `																		
+								` + priceHTML(relBook.support, relBook.price_paper, relBook.price_ebook) + `								
 						</b>
 				  	</div>
 				</div>
@@ -387,4 +432,25 @@ function authorListHTML(authorsNameJson, authorsIdsJson){
 						</li>
 					   `;
 	return authorsHTML;	
+}
+
+function favoriteHTML(favorite){
+    var our_favoriteHTML = ``;
+    
+    if(favorite == 'true'){
+        
+        our_favoriteHTML = `
+                        <li class="d-flex justify-content-between">
+					       <strong>Favorite:</strong>
+					       <span>Yes</span>
+		                </li>
+                       `;
+    }
+    return our_favoriteHTML;
+}
+
+function bestSellerHTML(best_seller){
+    if(best_seller=='true')
+        return `<img id="over" src="../assets/img/best-seller.png">`;
+    return ``;
 }

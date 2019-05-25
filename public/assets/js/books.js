@@ -316,7 +316,7 @@ function authorListHTML(authorsNameJson, authorsIdsJson){
 }
 
 function bestSellerHTML(best_seller){
-    console.log(best_seller);
+    
     if(best_seller=='true')
         return `<img id="over" src="../assets/img/best-seller.png">`;
     return ``;

@@ -119,7 +119,10 @@ function postRegister(form) {
                 $('#login-form-link').trigger('click');
 				Toast.fire({
 				  type: 'success',
-				  title: 'Registration done!'
+				  title: 'Registration done!',
+                  onClose: () => {
+                     $('.swal2-container').remove();
+                  }
 				})
             }
         });

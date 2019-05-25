@@ -24,7 +24,6 @@ function getEventById(){
 		return response.json();
 	 }).then(function(json) {
 		eventsJson = json;
-        console.log("hey");
         if(!jQuery.isEmptyObject(eventsJson)){
 			generatesEventHTML();
 		}else{    
@@ -143,7 +142,6 @@ function supportHTML(support){
 }
 
 function bestSellerHTML(best_seller){
-    console.log(best_seller);
     if(best_seller=='true')
         return `<img id="over" src="../assets/img/best-seller.png">`;
     return ``;

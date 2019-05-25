@@ -42,8 +42,10 @@ function generatesBookByGenreHTML(){
 			genreHTML +=`
 						<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6"">
 							<div class="card wow zoomIn" data-wow-duration="1s">
-								<a href="book.html?id=${currentBook.f1}" class="stretched-link"><img class="card-img-top-list" src="${currentBook.f5}" alt="${currentBook.f2}"></a>
-								<div class="card-body">
+								<div class="frame"><a href="book.html?id=${currentBook.f1}" class="stretched-link"><img class="card-img-top-list" src="${currentBook.f5}" alt="${currentBook.f2}"></a>
+								` + bestSellerHTML(currentBook.f7) + `
+                                </div>
+                                <div class="card-body">
 									<ul class="list-unstyled author_list font-90">` + authorListHTML(currentBook.f7) + `</ul>
 									<h4 class="font-90"><a href="book.html?id=${currentBook.f1}">${currentBook.f2}</a></h4>
 									<b class="font-90 color-b">€ 
@@ -85,4 +87,10 @@ function authorListHTML(authorsJson){
 						</li>
 					   `;
 	return authorsHTML;	
+}
+
+function bestSellerHTML(best_seller){
+    if(best_seller=='true')
+        return `<img id="over" src="../assets/img/best-seller.png">`;
+    return ``;
 }

@@ -12,6 +12,7 @@
         "pages" : 480,
         "rating" : 5,
         "language" : "English",
+        "interview" : "",
         "our_favorite" : true,
         "best_seller" : true        
     },
@@ -29,6 +30,7 @@
         "pages" : 416,
         "rating" : 4,
         "language" : "English",
+        "interview" : "",
         "our_favorite" : true,
         "best_seller" : true        
     },
@@ -45,6 +47,7 @@
         "support" : "both",
         "pages" : 512,
         "rating" : 4,
+        "interview" : "",
         "language" : "English",
         "our_favorite" : false,
         "best_seller" : true        
@@ -63,6 +66,7 @@
         "pages" : 208,
         "rating" : 2,
         "language" : "English",
+        "interview" : "",
         "our_favorite" : false,
         "best_seller" : false        
     },
@@ -80,6 +84,7 @@
         "pages" : 240,
         "rating" : 3,
         "language" : "English",
+        "interview" : "",
         "our_favorite" : false,
         "best_seller" : true        
     },
@@ -97,6 +102,7 @@
         "pages" : 294,
         "rating" : 5,
         "language" : "English",
+        "interview" : "https://www.youtube.com/embed/zHb-CyXy4Sw",
         "our_favorite" : true,
         "best_seller" : true        
     },
@@ -114,6 +120,7 @@
         "pages" : 289,
         "rating" : 4,
         "language" : "English",
+        "interview" : "",
         "our_favorite" : false,
         "best_seller" : true        
     },
@@ -131,6 +138,7 @@
         "pages" : 341,
         "rating" : 4,
         "language" : "English",
+        "interview" : "",
         "our_favorite" : false,
         "best_seller" : false        
     },
@@ -148,6 +156,7 @@
         "pages" : 571,
         "rating" : 5,
         "language" : "English",
+        "interview" : "",
         "our_favorite" : false,
         "best_seller" : true        
     },
@@ -165,6 +174,7 @@
         "pages" : 224,
         "rating" : 4,
         "language" : "English",
+        "interview" : "https://www.youtube.com/embed/f_x8iYwfNfI",
         "our_favorite" : true,
         "best_seller" : false        
     },
@@ -182,6 +192,7 @@
         "pages" : 256,
         "rating" : 2,
         "language" : "English",
+        "interview" : "",
         "our_favorite" : false,
         "best_seller" : false        
     },
@@ -199,6 +210,7 @@
         "pages" : 336,
         "rating" : 3,
         "language" : "English",
+        "interview" : "https://www.youtube.com/embed/0vIEe_E3VDQ",
         "our_favorite" : true,
         "best_seller" : true        
     },
@@ -216,6 +228,7 @@
         "pages" : 256,
         "rating" : 5,
         "language" : "English",
+        "interview" : "",
         "our_favorite" : true,
         "best_seller" : false        
     },
@@ -233,6 +246,7 @@
         "pages" : 528,
         "rating" : 4,
         "language" : "English",
+        "interview" : "https://www.youtube.com/embed/Fpm_1iERyoU",
         "our_favorite" : true,
         "best_seller" : true        
     },
@@ -250,6 +264,7 @@
         "pages" : 560,
         "rating" : 3,
         "language" : "English",
+        "interview" : "",
         "our_favorite" : false,
         "best_seller" : false        
     },
@@ -267,6 +282,7 @@
         "pages" : 592,
         "rating" : 4,
         "language" : "English",
+        "interview" : "",
         "our_favorite" : false,
         "best_seller" : false        
     }

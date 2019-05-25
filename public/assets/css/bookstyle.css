@@ -17,31 +17,46 @@
   border: 3px solid #2eca6a;
 }
 
-.price-box{
+.price-box {
     padding: 20px 10px 20px 10px;
     line-height: 45px;
 }
 
-.col-centered{
+.col-centered {
     float: none;
     margin: 0 auto;
     display: inherit;
 }
 
-.book_carousel{
+.book_carousel {
     width: 175px!important;
     margin-right: 10px!important;
 }
 
-.authors-font{
+.authors-font {
 	font-size: 20px;
 }
 
+/*======================================
+//--//-->   STYLES BOOKS REVIEW
+======================================*/
+
+.font-i {
+    font-style: italic;
+}
+
+.rev-align {
+    text-align: center;
+}
+
+.writer {
+    text-align: right;
+}
 
 /*======================================
 //--//-->   STYLES BOOKS GRID
 ======================================*/
-.padding-col{
+.padding-col {
 	padding-left: 10px;
 	padding-right: 10px;
 }
@@ -122,27 +137,27 @@
   	}
 }
 
-.pointer-a{
+.pointer-a {
 	cursor: pointer;
 }
 
-.font-90{
+.font-90 {
 	font-size: 90%;
 }
 
-.font-85{
+.font-85 {
 	font-size: 85%;
 }
 
-.book-img-margin{
+.book-img-margin {
 	margin: auto 0px;
 }
 
-.book-img-margin-child{
+.book-img-margin-child {
 	
 }
 
-.author_list{
+.author_list {
 	margin-bottom: 5px;
 }
 
@@ -150,16 +165,16 @@
     margin-bottom: 0px;
 }
 
-.book_desc{
+.book_desc {
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.book_rating{
+.book_rating {
     text-align: center;
 }
 
-.book_author{
+.book_author {
     padding-top: 0px; 
     padding-bottom: 0px;
 	margin: 0px;
@@ -171,12 +186,12 @@
 	margin: 0px;
 }
 
-.book_title{
+.book_title {
     padding-top: 0px;
 }
 
 .price_text,
-.rating_text{
+.rating_text {
     display: inline;
 }
 
@@ -208,24 +223,24 @@
 //--//-->   STYLES BOOKS FILTERS
 ======================================*/
 
-.filter-div-title{
+.filter-div-title {
 	cursor: pointer;
 }
 
-.filters-body{
+.filters-body {
 	flex: 1 1 auto;
     padding: 10px 0px 10px 5px;
 }
 
-.form-check{
+.form-check {
 	 padding: 0px 10px 0px 10px;
 }
 
-.card-header{
+.card-header {
 	cursor: pointer !important;
 }
 
-header.card-header:hover{
+header.card-header:hover {
 	background-color: #adadad;
 }
 
@@ -233,11 +248,11 @@ header.card-header:hover{
 //--//-->   STYLE SEARCH INSERT FORM 
 ======================================*/
 
-.search-position{
+.search-position {
 	margin-left: auto !important;
 	width: 200px !important;  
 }
 
-.search{
+.search {
 	border-radius: 0;
 }

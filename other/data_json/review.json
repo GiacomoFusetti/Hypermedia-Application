@@ -9,7 +9,7 @@
         "id_review" : 2,
         "id_book" : 1,
         "writer" : "New York Herald Tribune",
-        "text" : "Filled with marvels and strange terrors . . . an extraordinary, distinguished piece of work."
+        "text" : "Filled with marvels and strange terrors...an extraordinary, distinguished piece of work."
     },
 	{
         "id_review" : 3,
@@ -81,7 +81,7 @@
         "id_review" : 14,
         "id_book" : 9,
         "writer" : "Independent",
-        "text" : "I’ve yet to meet a ten­year­old who hasn’t been entranced by its witty, complex plot and the character of the eponymous Harry"
+        "text" : "I’ve yet to meet a ten year old who hasn’t been entranced by its witty, complex plot and the character of the eponymous Harry"
     },
 	{
         "id_review" : 15,
