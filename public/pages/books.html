@@ -106,16 +106,21 @@
   <section class="property-grid grid">
     <div class="category page">
         <div class="container">
-            <div class="col-sm-12">
-                    <div class="grid-option">
-                      <div class="input-group search-position">
-                          <input type="text" id="search" class="form-control search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
-                          <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
-                          </div>
-                        </div>
-                    </div>
-            </div>
+		<div class="row">
+			<div class="col-12 col-md-8">
+				<span id="filterActive">1-16 of 155 results for Samsung : "samsung s10"</span>
+			</div>
+			<div class="col-12 col-md-4">
+				<div class="grid-option">
+				  <div class="input-group search-position">
+					  <input type="text" id="search" class="form-control search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+					  <div class="input-group-append">
+						<span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
             <div class="page-body">
                 <div class="row">
                     <!-- ========================================= SIDEBAR ========================================= -->
@@ -135,28 +140,24 @@
                             </article> <!-- card-group-item.// -->
 
                             <article class="card-group-item">
-                                <header class="card-header" data-toggle="collapse" data-target="#filters">
+                                <header id="filtersHeader" class="card-header" data-toggle="collapse" data-target="#filters">
                                     <h6 id="h6filters" class="h6_sidebar_margin"><i class="far fa-caret-square-down color-b"></i> Filters </h6>
                                 </header>
                                 <div class="filter-content collapse" id="filters">
                                     <div class="filters-body">
                                         <div id='filtersDiv'>
-                                            
-											<div class="form-check">
-												<input name="group0" type="radio" id="radio0" value="0" checked>
-												<label for="radio0">All</label>
-											</div>
-											<div class="form-check">
-												<input name="group0" type="radio" id="radio1" value="1">
-												<label for="radio1">Best Seller</label>
-											</div>
-											<div class="form-check">
-												<input name="group0" type="radio" id="radio2" value="2">
-												<label for="radio2">Our Suggestion</label>
-											</div>
-                                            
-                                            
-                                            
+						<div class="form-check">
+							<input name="group0" type="radio" id="radiogroup00" value="0" checked>
+							<label for="radiogroup00">All</label>
+						</div>
+						<div class="form-check">
+							<input name="group0" type="radio" id="radiogroup01" value="1">
+							<label for="radiogroup01">Best Seller</label>
+						</div>
+						<div class="form-check">
+							<input name="group0" type="radio" id="radiogroup02" value="2">
+							<label for="radiogroup02">Our Suggestion</label>
+						</div>
                                         </div>
                                     </div> <!-- card-body.// -->
                                 </div>
