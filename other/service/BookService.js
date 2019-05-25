@@ -70,10 +70,8 @@ exports.getBooksCount = function(genre, theme, rating, filter, search){
 	var query = sqlDb('book').count('*');
 	
 	if(theme) 
-		query.from('book')
-			.innerJoin('book_theme', {'book.id_book' :  'book_theme.id_book'})
+		query.innerJoin('book_theme', {'book.id_book' :  'book_theme.id_book'})
 			.innerJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
-			.select('theme.theme_name')
 			.where('theme.id_theme', theme);
 	if(rating) query.where('rating', rating);
 	if(genre) query.where('id_genre', genre);
@@ -91,7 +89,6 @@ exports.getBooksCount = function(genre, theme, rating, filter, search){
 		}
 		query.where(flt, 'true');
 	} 
-	
     if(search)
         query.where('book.title', 'ilike', '%' + search + '%');
     
