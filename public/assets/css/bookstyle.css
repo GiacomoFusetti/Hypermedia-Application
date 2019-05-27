@@ -78,13 +78,21 @@
 
 .card-img-top-list { 
   	width: 100%;
-    height: 17vw;
+    height: 12vw;
     object-fit: contain;
 	object-position: left bottom;
 }
 
 .overlap-img {
-    z-index: 1500;
+    z-index: 1500
+}
+
+/* On screens that are 1200px or less */
+@media screen and (max-width: 1919px) {
+
+  .card-img-top-list { 
+  	height: 17vw;
+  }
 }
 
 /* On screens that are 1200px or less */

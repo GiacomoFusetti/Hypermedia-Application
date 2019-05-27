@@ -59,13 +59,13 @@ $(document).ready(function(){
 		getRealtedBooks();
    	});
 	//PAGINATION EVENTS
-	$("#pagDivEvents").on("click", "li.page-item", function() {
+	$("#pills-event").on("click", "li.page-item", function() {
   		// remove classes from all
   		$("li.page-item").removeClass("active");
       	// add class to the one we clicked
       	$(this).addClass("active");
 		
-		fillEvent($(this).val())
+		fillEvent(eventsJson, $(this).val())
    	});
 	
     getCountRelatedBooks();	
@@ -154,10 +154,16 @@ function postCurrentBook(){
 function generatesBookHTML(){
 	fillHeader(bookJson.book, bookJson.authors);
 	fillBodyPage(bookJson.book);
-	fillBookDetailsEvent(bookJson.book, bookJson.genre[0], bookJson.themes, bookJson.event);
-	fillBooks(bookJson.similar_books);
+	
+	fillBookDetails(bookJson.book, bookJson.genre[0], bookJson.themes);
 	fillReview(bookJson.review);
-    fillInterview(bookJson.book);
+	
+	fillEvent(bookJson.event, 0);
+    fillInterview(bookJson.book.interview);
+	if(jQuery.isEmptyObject(eventsJson) && !bookJson.book.interview)
+		$('#tabRow').remove();
+	
+	fillBooks(bookJson.similar_books);
 }
 
 function fillHeader(book, author){
@@ -208,20 +214,8 @@ function fillBodyPage(book){
 	}
 }
 
-function fillBookDetailsEvent(book, genre, themes, events){
-	var detailsHTML = ``;
-	if(jQuery.isEmptyObject(events)){
-		$('#detailsColDiv').attr('class', 'col-md-8 offset-md-2 col-lg-6 offset-lg-3 section-t2 foo');
-		$('#eventDiv').remove();
-	}else{
-		eventsJson = events;
-		$('#detailsColDiv').attr('class', 'col-md-6 foo');
-		if(eventsJson.length > 1)
-			generatesPaginationHTMLEvents(eventsJson.length)
-		fillEvent(0);
-	}
-	
-	detailsHTML += favoriteHTML(book.our_favorite) +
+function fillBookDetails(book, genre, themes){
+	var detailsHTML = favoriteHTML(book.our_favorite) +
 			`
 				<li class="d-flex justify-content-between">
 					<strong>Language:</strong>
@@ -260,15 +254,6 @@ function fillBookDetailsEvent(book, genre, themes, events){
 		$('#detailsListUl').html(detailsHTML);
 }
 
-function fillEvent(idx){
-	event = eventsJson[idx];
-	$('#eventTitleH2').html(event.name);
-	$('#eventLocationSpan').html(event.city);
-	$('#eventDateSpan').html(event.date_day + ' ' + month[event.date_month-1] + ' ' + event.date_year);
-	$('#eventDescP').html(event.description.substring(0, 150) + '. . .');
-	$('#eventLinkA').attr('href', 'event.html?id=' + event.id_event);
-}
-
 function fillReview(bookRev){
     var bookReview = ``;
 
@@ -289,32 +274,94 @@ function fillReview(bookRev){
     $("#book_review").append(bookReview);
 }
 
-function fillInterview(book){
-    var interviewHTML = ``;
-    if(book.interview){
-        
-        interviewHTML += `
-                    <div class="title-box-d section-t2">
-                         <h3 id="author_interview" class="title-d">Author's interview</h3>
-                    </div>
-                    <div class="embed-responsive embed-responsive-16by9">
-                      <iframe width="560" height="315" src="${book.interview}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                     `;
-    }
-    $("#author_interview").append(interviewHTML);
+function fillEvent(events, idx){
+	eventsJson = events;
+	
+    if(!jQuery.isEmptyObject(eventsJson)){
+        event = eventsJson[idx];
+		
+		var eventHTML = `
+                    <div class="card-box-c foo">
+                            <div class="card-header-c d-flex">
+                                <div class="card-box-ico">
+                                    <span class="fa fa-calendar-check-o"></span>
+                                </div>
+                                <div class="card-title-c align-self-center">
+                                    <h2 id="eventTitleH2" class="title-c">${event.name}</h2>
+                                </div>
+                            </div>
+                            <div class="card-body-c">
+                                <ul class="list-inline text-center color-a">
+                                      <li class="list-inline-item mr-2">
+                                        <i class="fas fa-map-marker color-b" aria-hidden="true"></i>
+                                        <span id="eventLocationSpan" class="color-text-a">${event.city}</span>
+                                      </li>
+                                      <li class="list-inline-item  color-b"  aria-hidden="true">
+                                        <i class="far fa-calendar-check"></i>
+                                        <span id="eventDateSpan" class="color-text-a">${event.date_day + ' ' + month[event.date_month-1] + ' ' + event.date_year}</span>
+                                      </li>
+                                </ul>
+                            </div>
+                            <div class="card-body-c">
+                                <p id="eventDescP" class="content-c">
+                                    ${event.description.substring(0, 300) + '</b> . . .'}
+                                </p>
+                            </div>
+                            <div class="card-footer-c">
+                                <a id="eventLinkA" href="event.html?id=${event.id_event}" class="link-c link-icon">Read more 
+                                	<span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>
+							<nav class="pagination-a">
+								<ul class="pagination justify-content-end">
+								  <div id="pagDivEvents" class="pagination justify-content-end">
+									  <!-- Load from JS -->` + generatesPaginationHTMLEvents(eventsJson.length, idx) + `
+								  </div>
+								</ul>
+							</nav>
+                        </div>
+                   `;
+		
+        $("#pills-event").html(eventHTML);
+    }else{
+		$("#tabEventsLi").remove();
+		$("#pills-event").remove();
+		
+		$("#pills-interview-tab").addClass("active");
+		$("#pills-interview-tab").attr("aria-selected", true);
+		$("#pills-interview").addClass("show active");
+	}
+    
 }
 
-function generatesPaginationHTMLEvents(eventsCount){
-	for(i = 0; i < eventsCount; i++){
-		$("#pagDivEvents").append( 
-			`
-				<li value="${i}" class="page-item` + (i==0 ? ` active` : ``)  + `">
-					<a class="page-link">${i+1}</a>
-				</li>
-			`
-		);
+function fillInterview(interview){
+    if(interview){
+        var interviewHTML = `
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe width="560" height="315" src="${interview}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                     `;
+		$("#pills-interview").append(interviewHTML);
+    }else{
+		$("#tabInterviewLi").remove();
+		$("#pills-interview").remove();
 	}
+    
+}
+
+function generatesPaginationHTMLEvents(eventsCount, idx){
+	var eventPag = ``;
+	if(eventsCount > 1){
+		for(i = 0; i < eventsCount; i++){
+			eventPag +=
+				`
+					<li value="${i}" class="page-item` + (i==idx ? ` active` : ``)  + `">
+						<a class="page-link">${i+1}</a>
+					</li>
+				`;
+		}
+	}
+	return eventPag;
 }
 
 function generatesPaginationHTML(){

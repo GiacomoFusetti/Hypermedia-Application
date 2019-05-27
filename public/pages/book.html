@@ -141,7 +141,7 @@
 			</div>
 			<div class="property-summary">
 				<div class="row">
-					<div id="detailsColDiv" class="col-md-6 foo">
+					<div id="detailsColDiv" class="col-12 col-lg-6">
 						<div class="title-box-d section-t1">
 							<h3 class="title-d">Details</h3>
 						</div>
@@ -151,60 +151,34 @@
                             </ul>
                         </div>
 					</div>
-                    <div id="eventDiv" class="col-md-6">
-						<div class="card-box-c foo section-t3">
-                            <div class="card-header-c d-flex">
-                                <div class="card-box-ico">
-                                    <span class="fa fa-calendar-check-o"></span>
-                                </div>
-                                <div class="card-title-c align-self-center">
-                                    <h2 id="eventTitleH2" class="title-c"><!-- Load From DB --></h2>
-                                </div>
-                            </div>
-                            <div class="card-body-c">
-                                <ul class="list-inline text-center color-a">
-                                      <li class="list-inline-item mr-2">
-                                        <i class="fas fa-map-marker color-b" aria-hidden="true"></i>
-                                        <span id="eventLocationSpan" class="color-text-a"><!-- Load From DB --></span>
-                                      </li>
-                                      <li class="list-inline-item  color-b"  aria-hidden="true">
-                                        <i class="far fa-calendar-check"></i>
-                                        <span id="eventDateSpan" class="color-text-a"><!-- Load From DB --></span>
-                                      </li>
-                                </ul>
-                            </div>
-                            <div class="card-body-c">
-                                <p id="eventDescP" class="content-c">
-                                    <!-- Load From DB -->
-                                </p>
-                            </div>
-                            <div class="card-footer-c">
-                                <a id="eventLinkA" href="" class="link-c link-icon">Read more <!-- Load From DB -->
-                                	<span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-							<nav class="pagination-a">
-								<ul class="pagination justify-content-end">
-								  <div id="pagDivEvents" class="pagination justify-content-end">
-									  <!-- Load from DB -->
-								  </div>
-								</ul>
-							</nav>
-                        </div>
-					</div>
-				</div>
-                <div class="row">
-                    <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-3">
-                        <div class="title-box-d section-t2">
-                             <h3 class="title-d">Book review</h3>
-                        </div>
+					<div class="col-12 col-lg-6">
+						<div class="title-box-d section-t1">
+							<h3 class="title-d">Reviews</h3>
+						</div>
                         <div id="book_review" class="post-content color-text-a text-al-j">
                              <!--Load from DB-->
-                        </div>
-                        <div id="author_interview">
-                             <!--Load from DB-->
-                        </div>
-                    </div>
+                    	</div>
+					</div>
+				</div>
+                <div id="tabRow" class="row">
+					<div class="col-lg-10 offset-lg-1">
+						  <ul class="nav nav-pills-a nav-pills mb-3 section-t1" id="pills-tab" role="tablist">
+							  	<li id="tabEventsLi" class="nav-item">
+								  <a class="nav-link active" id="pills-event-tab" data-toggle="pill" href="#pills-event" role="tab" aria-controls="pills-event" aria-selected="true">Events</a>
+								</li>
+								<li id="tabInterviewLi" class="nav-item">
+								  <a class="nav-link" id="pills-interview-tab" data-toggle="pill" href="#pills-interview" role="tab" aria-controls="pills-interview" aria-selected="false">Interview</a>
+								</li>
+						  </ul>
+						  <div class="tab-content" id="pills-tabContent">
+							  	<div class="tab-pane fade show active" id="pills-event" role="tabpanel" aria-labelledby="pills-event-tab">
+								  	<!--Load from DB-->
+								</div>
+								<div class="tab-pane fade" id="pills-interview" role="tabpanel" aria-labelledby="pills-interview-tab">
+									<!--Load from DB-->
+								</div>
+						  </div>
+					</div>
                 </div>
             </div>
 		</div>
