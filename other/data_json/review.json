@@ -1,10 +1,4 @@
 [
-    {
-        "id_review" : 1,
-        "id_book" : 1,
-        "writer" : "The Nation",
-        "text" : "There are very few works of genius in recent literature. This is one."
-    },
 	{
         "id_review" : 2,
         "id_book" : 1,
@@ -142,11 +136,5 @@
         "id_book" : 16,
         "writer" : "The Nation",
         "text" : "Romantic, liberating and totally addictive, this is a novel that will obsess you, possess you, and stay with you forever."
-    },
-	{
-        "id_review" : 25,
-        "id_book" : 16,
-        "writer" : "Entertainment Weekly",
-        "text" : "In a class by itself."
     }
 ]

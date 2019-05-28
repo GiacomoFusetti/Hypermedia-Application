@@ -11,7 +11,7 @@
     
     {
         "id_genre" : 3,
-        "name" : "Children's Middle Grade"
+        "name" : "Children"
     },
     
     {
@@ -21,7 +21,7 @@
     
     {
         "id_genre" : 5,
-        "name" : "Historical Fiction"
+        "name" : "History"
     },
         
     {
@@ -36,7 +36,7 @@
     
     {
         "id_genre" : 8,
-        "name" : "Contemporary Romance"
+        "name" : "Romance"
     }
     
 ]
