@@ -5,7 +5,6 @@ var UserService = require("../service/UserService");
 
 
 module.exports.userGET = function userGET(req, res, next) {
-    //console.log("userGET");
     var response = []
     
     if(req.session.loggedin) 
@@ -39,12 +38,9 @@ module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
 };
 
 module.exports.userRegisterPOST = function userRegisterPOST(req, res, next) {
-    console.log("userRegisterPOST");
     var body = req.swagger.params["body"].value;
-	console.log(body);
     
     UserService.userRegisterPOST(body).then(function(response) {
-	console.log(response);
         utils.writeJson(res, response);
     }).catch(function(response) {
         utils.writeJson(res, response);
@@ -52,8 +48,6 @@ module.exports.userRegisterPOST = function userRegisterPOST(req, res, next) {
 };
 
 module.exports.userLogoutDELETE = function userLogoutDELETE(req, res, next) {
-    console.log("userLogoutDELETE");
-    
     req.session = null;
     
     utils.writeJson(res, []);
