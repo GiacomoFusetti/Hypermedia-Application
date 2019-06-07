@@ -104,6 +104,8 @@ jQuery(document).ready(function($) {
 
 function postRegister(form) {
     var str = form.serialize()
+	console.log('reg');
+	console.log(str);
 
     fetch('/user/register', {
         body: str,
@@ -129,6 +131,8 @@ function postRegister(form) {
 
 function postLogin(form) {
     var str = form.serialize()
+	console.log('log');
+	console.log(str);
 
     fetch('/user/login', {
         body: str,

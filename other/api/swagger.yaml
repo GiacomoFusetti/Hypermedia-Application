@@ -599,6 +599,31 @@ paths:
         500:
           description: "Internal Error"
       x-swagger-router-controller: "User"
+  /user/register:
+    post:
+      tags:
+      - "user"
+      summary: "Register"
+      description: "Register into the store"
+      operationId: "userRegisterPOST"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "succesfull registration"
+        401:
+          description: "unauthorized"
+        500:
+          description: "Internal Error"
+      x-swagger-router-controller: "User"
   /user/login:
     post:
       tags:
@@ -645,31 +670,6 @@ paths:
           description: "succesfull logout"
         400:
           description: "bad request"
-        401:
-          description: "unauthorized"
-        500:
-          description: "Internal Error"
-      x-swagger-router-controller: "User"
-  /user/register:
-    post:
-      tags:
-      - "user"
-      summary: "Register"
-      description: "Register into the store"
-      operationId: "userRegisterPOST"
-      consumes:
-      - "application/x-www-form-urlencoded"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: true
-        schema:
-          $ref: "#/definitions/User"
-      responses:
-        200:
-          description: "succesfull registration"
         401:
           description: "unauthorized"
         500:

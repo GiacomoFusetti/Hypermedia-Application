@@ -10,10 +10,9 @@ let sqlDb;
 exports.genresGET = function() {
     sqlDb = database;
     //console.log("genreService.js");    
-    return sqlDb("genre")
+    return sqlDb("genre").orderBy('id_genre')
         .then(data => {
-          return data.map(e => {
-            return e;
-          });
+			data.sort((a, b) => parseInt(a.id_genre) - parseInt(b.id_genre));
+          	return data;
         });
 };

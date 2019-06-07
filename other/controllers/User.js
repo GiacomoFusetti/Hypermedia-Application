@@ -3,6 +3,11 @@
 var utils = require("../utils/writer.js");
 var UserService = require("../service/UserService");
 
+function checkEmail(email){
+	var emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
+	return emailExp.test(email)
+}
+
 
 module.exports.userGET = function userGET(req, res, next) {
     var response = []
@@ -39,12 +44,18 @@ module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
 
 module.exports.userRegisterPOST = function userRegisterPOST(req, res, next) {
     var body = req.swagger.params["body"].value;
-    
-    UserService.userRegisterPOST(body).then(function(response) {
-        utils.writeJson(res, response);
-    }).catch(function(response) {
-        utils.writeJson(res, response);
-    });
+	console.log(body);
+	console.log(body.email);
+	console.log(checkEmail(body.email));
+    if(checkEmail(body.email)){
+		UserService.userRegisterPOST(body).then(function(response) {
+			utils.writeJson(res, response);
+		}).catch(function(response) {
+			utils.writeJson(res, response);
+		});
+	}else{
+		utils.writeJson(res, {error: 'Invalid Email.'}, 400);
+	}
 };
 
 module.exports.userLogoutDELETE = function userLogoutDELETE(req, res, next) {

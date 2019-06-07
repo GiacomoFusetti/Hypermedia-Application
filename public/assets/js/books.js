@@ -326,6 +326,8 @@ function fillFilterActive(){
 	if(mainFilter && mainFilter != 0) result += ' - <b>' + ((mainFilter == 1) ? 'BestSeller' : 'OurSuggestion') + '</b>';
     	if(search) result += ': <i>\'' + search + '\'</i>';
 	
+	console.log(result);
+	
 	$('#filterActive').html(result);
 }
 
