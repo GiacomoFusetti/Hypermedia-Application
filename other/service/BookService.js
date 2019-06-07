@@ -26,7 +26,7 @@ exports.booksGET = function(offset, limit, genre, theme, rating, filter, search)
 				.limit(limit)
 				.offset(offset)
 				.groupBy(fields)
-				.orderBy('book.title');
+				.orderBy('book.title', 'desc');
 	
 	if(theme) 
 		query.from('book')
