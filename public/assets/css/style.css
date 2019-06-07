@@ -1428,6 +1428,17 @@ a:hover {
   margin-left: -40px;
 }
 
+.title-c-style {
+  background-color: white;
+  margin-bottom: 0px;
+}
+
+h2.title-c-style:hover {
+  color: #2eca6a;
+  text-decoration: none;
+  transition: all .5s ease;
+}
+
 /*======================================
 //--//-->   AGENTS - CARD-D
 ======================================*/
