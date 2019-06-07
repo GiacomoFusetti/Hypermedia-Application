@@ -26,40 +26,27 @@ function getBookByGenre(){
 // -------------- GENERATES HTML ---------------
 
 function generatesBookByGenreHTML(){
-	
-	for(x = 0; x < bookByGenreJson.length; x++){
-		var genreHTML = ``;
-		var genre = bookByGenreJson[x];
-		
-		genreHTML += `<div class="property-agent">
-								<div class="title-box-d section-t1">
-									<h3 class="title-d"><a class="pointer-a" href='books.html?genre=${genre.id_genre}'>${genre.name}</a></h3>
-								</div>
-							<div class="row">`;
-		for(y = 0; y < genre.books.length; y++){
-			var currentBook = genre.books[y];
-			var authors = genre.books[y].f6
-			genreHTML +=`
-						<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6"">
-							<div class="card wow zoomIn" data-wow-duration="1s">
-								<div class="frame"><a href="book.html?id=${currentBook.f1}" class="stretched-link"><img class="card-img-top-list" src="${currentBook.f5}" alt="${currentBook.f2}"></a>
-								` + bestSellerHTML(currentBook.f7) + `
+    
+    for(x = 0; x < bookByGenreJson.length; x++){
+        var genre = bookByGenreJson[x];    
+        $('#bodyDiv').append( 
+                `<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+                    <div class="tab-content">
+                        <div class="tab-pane active  wow fadeInUp" id="grid" role="tabpanel">
+                            <div class="category-books books grid-view">
+                                <div class="property-agent">
+                                    <div class="title-box-d section-t1">
+                                        <h3 class="title-d">
+                                            <a class="pointer-a" href='books.html?genre=${genre.id_genre}'>${genre.name}</a>
+                                        </h3>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-									<ul class="list-unstyled author_list font-90">` + authorListHTML(currentBook.f8) + `</ul>
-									<h4 class="font-90"><a href="book.html?id=${currentBook.f1}">${currentBook.f2}</a></h4>
-									<b class="font-90 color-b">€ 
-											` + priceHTML(currentBook.f6, currentBook.f3, currentBook.f4) + `																		
-									</b>
-								</div>
-							</div>
-						</div>
-						`;
-		}
-		genreHTML += `</div></div>`;
-		$('#bodyDiv').append(genreHTML);		
-	}
-	
+                            </div>
+                        </div> 
+                    </div>
+                </div>`
+        );
+    }	
 }
 
 
