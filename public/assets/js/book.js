@@ -290,7 +290,7 @@ function fillEvent(events, idx){
                                     <span class="fa fa-calendar-check-o"></span>
                                 </div>
                                 <div class="card-title-c align-self-center">
-                                    <h2 id="eventTitleH2" class="title-c">${event.name}</h2>
+                                    <h2 id="eventTitleH2" class="title-c title-c-style">${event.name}</h2>
                                 </div>
                             </div>
                             <div class="card-body-c">

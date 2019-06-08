@@ -16,8 +16,10 @@ let mainGroup = 'group0';
 let genresGroup = 'group1'; //radiogroup for genres
 let themesGroup = 'group2'; //radiogroup for themes
 let ratingGroup = 'group3'; //radiogroup for rating
+let formatGroup = 'group4'; //radiogroup for book's format
 
 let mainFilter = urlParams.get('filter');
+let formatFilter = urlParams.get('format');
 let genreid = urlParams.get('genre');
 let themeid = urlParams.get('theme');
 let rating = urlParams.get('rating');
@@ -57,7 +59,12 @@ $(document).ready(function(){
 		switch(this.name){
 			case mainGroup:
 				mainFilter = this.value;
+                console.log(mainFilter);
 				break;
+            case formatGroup:
+                formatFilter = this.value;
+                console.log(formatFilter);
+                break;
 			case genresGroup:
 				genreid = this.value;
 				break;
@@ -89,15 +96,18 @@ $(document).ready(function(){
 	getThemes();
 	getBooksCount();
 	generatesRatingFilterHTML();
+    generatesformatFilterHTML();
 	getBooks();
 	
 	// SET FILTERS WHEN APPEAR IN PATHQUERY
-	if(mainFilter || genreid || themeid){
+	if(mainFilter || genreid || themeid || formatFilter){
 		$("#filtersHeader").click();
 		
 		if(mainFilter){
 			$("#radio" + mainGroup + mainFilter).click();
-		}if(genreid){
+		}if(formatFilter){
+            $("#radio" + formatGroup + formatFilter).click();
+        }if(genreid){
 			var timer = setInterval(function() {
 				 if ($('#genreHeader')) {
 					clearInterval(timer);
@@ -125,6 +135,7 @@ function getBooksCount(){
 	if(themeid) query += '&theme=' + themeid;
 	if(rating) query += '&rating=' + rating;
 	if(mainFilter) query += '&filter=' + mainFilter;
+    if(formatFilter) query += '&format=' + formatFilter;
     if(search) query += '&search=' + search;
 	
 	fetch('/books/count' + query).then(function(response) {
@@ -168,8 +179,9 @@ function getBooks(){
 	if(themeid) query += '&theme=' + themeid;
 	if(rating) query += '&rating=' + rating;
 	if(mainFilter) query += '&filter=' + mainFilter;
+    if(formatFilter) query += '&format=' + formatFilter;
     if(search) query += '&search=' + search;
-	
+	console.log(query);
 	fetch('/books' + query).then(function(response) {
 		return response.json();
 	}).then(function(json) {
@@ -285,10 +297,31 @@ function generatesRatingFilterHTML(){
 	);
 }
 
+function generatesformatFilterHTML(){
+    var formatHTML = `
+        <div id="formatHeader" class="filter-div-title" data-toggle="collapse" data-target="#formatDiv"><i class="fa fa-angle-right color-b"></i> <a>Format</a></div>
+			<div id="formatDiv" class="collapse">
+				<div class="form-check">
+					<input name="group4" type="radio" id="radio${formatGroup + 0}" value="0" checked>
+					<label for="radio${formatGroup + 0}">All</label>
+				</div>
+                <div class="form-check">
+					<input name="group4" type="radio" id="radio${formatGroup + 1}" value="1">
+					<label for="radio${formatGroup + 1}">Paper</label>
+				</div>
+                <div class="form-check">
+					<input name="group4" type="radio" id="radio${formatGroup + 2}" value="2">
+					<label for="radio${formatGroup + 2}">eBook</label>
+				</div>
+            </div>
+        </div>
+    `;
+    $("#filtersDiv").append(formatHTML);
+}
+
 function generatesBooksHTML(){		
 	for(i = 0; i < booksJson.length; i++){
-		var currentBook = booksJson[i];	
-        
+		var currentBook = booksJson[i];
 		$("#booksDiv").append( 
 			`<div class="col-xl-3 col-lg-3 col-md-4 col-6 padding-col">
 				<div class="card">
@@ -325,8 +358,11 @@ function fillFilterActive(){
 	if(rating && rating != 0) result += ' - <b>' + rating + ' stars</b>';
 	if(mainFilter && mainFilter != 0) result += ' - <b>' + ((mainFilter == 1) ? 'BestSeller' : 'OurSuggestion') + '</b>';
     	if(search) result += ': <i>\'' + search + '\'</i>';
+    
+	if(formatFilter && formatFilter != 0) result += ' - <b>' + ((formatFilter == 1) ? 'Paper' : 'eBook') + '</b>';
+    	if(search) result += ': <i>\'' + search + '\'</i>';
 	
-	console.log(result);
+    console.log(result);
 	
 	$('#filterActive').html(result);
 }

@@ -12,7 +12,7 @@ let sqlDb;
  * limit Integer Maximum number of items per page. Default is 20 and cannot exceed 500. (optional)
  * returns List
  **/
-exports.booksGET = function(offset, limit, genre, theme, rating, filter, search) {
+exports.booksGET = function(offset, limit, genre, theme, rating, filter, search, format) {
 	sqlDb = database;
 	let results = {};
 	var fields = ['book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.rating', 'book.best_seller', 'book.our_favorite', 'book.interview' ];
@@ -51,9 +51,22 @@ exports.booksGET = function(offset, limit, genre, theme, rating, filter, search)
 		}
 		query.where(flt, 'true');
 	}
+    if(format){
+		var vrs;
+		switch(format){
+			case 1:
+				vrs = 'paper';
+				break;
+			case 2:
+				vrs = 'eBook';
+				break;
+			default:
+				return;
+		}
+		query.where('support', vrs);
+	}
     if(search)
         query.where('book.title', 'ilike', '%' + search + '%');
-
 	return query.then(data => {
 		return data.map(e => {
 			return e;
@@ -64,7 +77,7 @@ exports.booksGET = function(offset, limit, genre, theme, rating, filter, search)
 /**
 * Get number of books in db
 **/
-exports.getBooksCount = function(genre, theme, rating, filter, search){
+exports.getBooksCount = function(genre, theme, rating, filter, search, format){
 	sqlDb = database;
 	
 	var query = sqlDb('book').count('*');
@@ -88,7 +101,21 @@ exports.getBooksCount = function(genre, theme, rating, filter, search){
 				return;
 		}
 		query.where(flt, 'true');
-	} 
+	}
+    if(format){
+		var vrs;
+		switch(format){
+			case 1:
+				vrs = 'paper';
+				break;
+			case 2:
+				vrs = 'eBook';
+				break;
+			default:
+				return;
+		}
+		query.where('support', vrs);
+	}
     if(search)
         query.where('book.title', 'ilike', '%' + search + '%');
     
