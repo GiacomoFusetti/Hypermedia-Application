@@ -66,7 +66,7 @@ $(document).ready(function(){
 			for(var x = 0; x < cartBooksJson.length; x++){
 				var elem = {};
 				if(cartBooksJson[x]){
-					elem['Id_book'] = cartBooksJson[x].id_book;
+					elem['Id_book'] =  parseInt(cartBooksJson[x].id_book);
 					elem['support'] = cartBooksJson[x].support;
 					elem['title'] = cartBooksJson[x].title;
 					checkOutBooks.push(elem);
@@ -84,7 +84,7 @@ $(document).ready(function(){
 			discount = 0;
 			deleteBookCart(checkOutBooks);
 			$("#cartBody").html( 
-				'<div class="col-12"><h3 class="title-single">The cart is empty.</h3></div>'
+				'<div class="col-12"><h3 class="title-single">The cart is empty. Go <a href="../pages/books.html"><u>shopping</u></a>!</h3></div>'
 			);
 			$('#couponInp').val('');
 		}
@@ -143,8 +143,8 @@ function getCart(){
 			generateCartHTML();
 			generateCartFooterHTML();
 		}else{
-			$("#cartBody").append( 
-				'<div class="col-12"><h3 class="title-single">The cart is empty.</h3></div>'
+			$("#cartBody").html( 
+				'<div class="col-12"><h3 class="title-single">The cart is empty. Go <a href="../pages/books.html"><u>shopping</u></a>!</h3></div>'
 			);
 		}
      });
@@ -161,7 +161,7 @@ function updateCartQty(){
 		}
     }).then(function(response) {
 
-		if(response.status = 200){
+		if(response.status === 200){
 			generateCartFooterHTML();
 			//update cart icon number
 			getCartCount();
@@ -171,6 +171,7 @@ function updateCartQty(){
 }
 
 function deleteBookCart(bookList){
+	console.log(JSON.stringify(bookList));
     fetch('/cart/', {
 		body: JSON.stringify(bookList),
         method: "DELETE",
@@ -180,11 +181,12 @@ function deleteBookCart(bookList){
 		  'Content-Type': 'application/json'
 		}
     }).then(function(response) {
-         if(response.status = 200){
+         if(response.status === 200){
 			generateCartFooterHTML();
 			//update cart icon number
 			getCartCount();
-			updateTotal(); 
+			updateTotal();
+			getCart();
 		}
      });
 }

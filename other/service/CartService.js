@@ -40,34 +40,41 @@ exports.addBookById = function(userId, book) {
 	sqlDb = database;
 	var res = {}
 
-	return isInCart(sqlDb, userId, book).then( inCart =>{
-        if(inCart){
-			return updateBookQty(sqlDb, userId, book)
-				.then(result => {
-					//console.log("Result", result);	
-					updateJson(userId, book);
-			
-					res = {res: 'Book <' + book.title.substring(0, 10) + '>, quantity updated.'};
-					return res;
-				})
-				.catch(function(e) {
-					console.error('knex update error', e);
-				});
-			
-        }else{
-            return insertNewBook(sqlDb, userId, book)
-				.then(result => {
-					//console.log("Result", result);	
-					appendToJson(userId, book);
+	return isInDb(sqlDb, book).then( inDb =>{
+		if(inDb){
+			return isInCart(sqlDb, userId, book).then( inCart =>{
+				if(inCart){
+					return updateBookQty(sqlDb, userId, book)
+						.then(result => {
+							//console.log("Result", result);	
+							updateJson(userId, book);
 
-					res = {res: 'Book <' + book.title.substring(0, 10) + '> insert in the cart.'};
-					return res;
-				})
-				.catch(function(e) {
-					console.error('knex insert error', e);
-				});
-        }
-    });
+							res = {res: 'Book <' + book.title.substring(0, 10) + '>, quantity updated.'};
+							return res;
+						})
+						.catch(function(e) {
+							console.error('knex update error', e);
+						});
+
+				}else{
+					return insertNewBook(sqlDb, userId, book)
+						.then(result => {
+							//console.log("Result", result);	
+							appendToJson(userId, book);
+
+							res = {res: 'Book <' + book.title.substring(0, 10) + '> insert in the cart.'};
+							return res;
+						})
+						.catch(function(e) {
+							console.error('knex insert error', e);
+						});
+				}
+			});
+		}else{
+			res = {error: 'Book not in the inventory.'};
+			return res;
+		}
+	});
 }
 
 /**
@@ -107,20 +114,27 @@ exports.updateBookQuantity = function(userId, book) {
 	sqlDb = database;
 	var res = {};
 	
-	return isInCart(sqlDb, userId, book).then( inCart =>{
-        if(inCart){
-			return updateBookQty(sqlDb, userId, book)
-				.then(result => {
-					//console.log("Result", result);	
-					updateJson(userId, book);
-				
-					res = {res: ('Book <' + book.title.substring(0, 10) + '>, quantity updated.')};
-					return res;
-				})
-				.catch(function(e) {
-					console.error('knex update error', e);
-				});
-        }
+	return isInDb(sqlDb, book).then( inDb =>{
+		if(inDb){
+			return isInCart(sqlDb, userId, book).then( inCart =>{
+				if(inCart){
+					return updateBookQty(sqlDb, userId, book)
+						.then(result => {
+							//console.log("Result", result);	
+							updateJson(userId, book);
+
+							res = {res: ('Book <' + book.title.substring(0, 10) + '>, quantity updated.')};
+							return res;
+						})
+						.catch(function(e) {
+							console.error('knex update error', e);
+						});
+				}
+			});
+		}else{
+			res = {error: 'Book not in the inventory.'};
+			return res;
+		}
 	});
 }
 
@@ -151,15 +165,11 @@ exports.deleteBookById = function(userId, bookList) {
 
 // -------------- AUXILIARY FUNCTIONS ---------------
 
-function isInDb(sqlDb, userId, book){
-    return sqlDb('cart').count('* as count')
-		//join with User
-		.innerJoin('user', {'user.id_user' :  'cart.id_user'})
-		//join with Book
-		.innerJoin('book', {'book.id_book' :  'cart.id_book'})
-		.where({'cart.id_user': userId, 'cart.id_book' : book.Id_book, 'cart.support' : book.support})
+function isInDb(sqlDb, book){
+    return sqlDb('book')
+		.where({'book.id_book': book.Id_book, 'book.title' : book.title})
 		.then(data =>{
-        	return (data[0].count > 0) ? true : false;
+        	return (data[0]) ? true : false;
     	});
 }
 
