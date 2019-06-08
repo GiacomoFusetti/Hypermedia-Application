@@ -14,9 +14,12 @@ let sqlDb;
  **/
 exports.userLoginPOST = function(email, password) {
     sqlDb = database;
-    console.log("UserService - LoginPOST");
 
-    return sqlDb('user').where({email: email, password:  password}).select('*').then(data =>{
+    return sqlDb('user')
+		.where('email', 'ilike', email)
+		.where({password:  password})
+		.select('id_user', 'name', 'email').then(data =>{
+		if(data.length < 1) return {error: 'Email or password wrong!.'};
         return data.map(e => {
             return e;
         });
@@ -31,15 +34,14 @@ exports.userLoginPOST = function(email, password) {
  * body User 
  * no response value expected for this operation
  **/
-exports.userRegisterPOST = function(body) {
+exports.userRegisterPOST = function(name, email, pass) {
     sqlDb = database;
-    console.log("UserService - RegisterPOST");
     
-    return isInDb(sqlDb, body.email).then( inDb =>{
+    return isInDb(sqlDb, email).then( inDb =>{
         if(inDb){
             return {error: 'Email already used.'};
         }else{
-            return insertNewUser(sqlDb, body).then( added =>{
+            return insertNewUser(sqlDb, name, email, pass).then( added =>{
 			if(added)
 				return {ok: 'User Registered.'};
 			return {error: 'User NOT Registered.'};
@@ -56,24 +58,24 @@ function isInDb(sqlDb, email){
     });
 }
 
-function insertNewUser(sqlDb, body){
+function insertNewUser(sqlDb, name, email, pass){
 	return sqlDb('user').count('* as count').then(data =>{
         var id = parseInt(data[0].count) + 1;
-		return sqlDb('user').insert({id_user: id, name: body.name, email: body.email, password: body.password}).then(data =>{
-			appendToJson(body, id);
+		return sqlDb('user').insert({id_user: id, name: name, email: email, password: pass}).then(data =>{
+			appendToJson(name, email, pass, id);
 			return true;
 		});
     });
 }
 
-function appendToJson(body, id){
+function appendToJson(name, email, pass, id){
     fs.readFile('other/data_json/user.json', 'utf8', function readFileCallback(err, data){
         if (err){
             console.log(err);
         } else {
 			var obj = JSON.parse(data); //now it an object
 			var id_user = id;
-			obj.push({id_user: id_user, name: body.name, email: body.email, password: body.password }); //add data
+			obj.push({id_user: id_user, name: name, email: email, password: pass }); //add data
 			var json = JSON.stringify(obj); //convert it back to json
 			fs.writeFile('other/data_json/user.json', json, 'utf8', function readFileCallback(err){}); // write it back 
     	}

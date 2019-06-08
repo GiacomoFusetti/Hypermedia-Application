@@ -69,7 +69,13 @@ paths:
         in: "query"
         description: "All/bestSeller/OurSugestion filter."
         required: false
-        type: integer
+        type: "integer"
+        enum: [0, 1, 2]
+      - name: "format"
+        in: "query"
+        description: "All/paper/ebook filter."
+        required: false
+        type: "integer"
         enum: [0, 1, 2]
       - name: "search"
         in: "query"
@@ -118,6 +124,12 @@ paths:
         description: "All/bestSeller/OurSugestion filter."
         required: false
         type: integer
+        enum: [0, 1, 2]
+      - name: "format"
+        in: "query"
+        description: "All/paper/ebook filter."
+        required: false
+        type: "integer"
         enum: [0, 1, 2]
       - name: "search"
         in: "query"
@@ -611,16 +623,27 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
+      - name: "name"
+        in: "formData"
         required: true
-        schema:
-          $ref: "#/definitions/User"
+        type: "string"
+      - name: "email"
+        in: "formData"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "formData"
+        required: true
+        type: "string"
+      - name: "confirmpassword"
+        in: "formData"
+        required: true
+        type: "string"
       responses:
         200:
           description: "succesfull registration"
-        401:
-          description: "unauthorized"
+        400:
+          description: "bad request"
         500:
           description: "Internal Error"
       x-swagger-router-controller: "User"
@@ -649,8 +672,6 @@ paths:
           description: "succesfull login"
         400:
           description: "bad request"
-        401:
-          description: "unauthorized"
         500:
           description: "Internal Error"
       x-swagger-router-controller: "User"
@@ -668,10 +689,6 @@ paths:
       responses:
         200:
           description: "succesfull logout"
-        400:
-          description: "bad request"
-        401:
-          description: "unauthorized"
         500:
           description: "Internal Error"
       x-swagger-router-controller: "User"
@@ -687,7 +704,7 @@ paths:
         200:
           description: "succesful operartion"
           schema:
-            $ref: "#/definitions/Cart"
+            $ref: "#/definitions/Cart-Item"
         401:
           description: "unauthorized"
         500:
@@ -710,8 +727,10 @@ paths:
         schema:
           $ref: "#/definitions/Cart"
       responses:
-        405:
-          description: "Invalid input"
+        200:
+          description: "succesful operartion"
+        400:
+          description: "bad request"
         401:
           description: "unauthorized"
         500:
@@ -734,8 +753,10 @@ paths:
         schema:
           $ref: "#/definitions/Cart"
       responses:
-        405:
-          description: "Invalid input"
+        200:
+          description: "succesful operartion"
+        400:
+          description: "bad request"
         401:
           description: "unauthorized"
         500:
@@ -760,8 +781,10 @@ paths:
           items: 
             $ref: "#/definitions/Cart"
       responses:
-        405:
-          description: "Invalid input"
+        200:
+          description: "succesful operartion"
+        400:
+          description: "bad request"
         401:
           description: "unauthorized"
         500:
@@ -778,8 +801,6 @@ paths:
       responses:
         200:
           description: "succesful operartion"
-          schema:
-            $ref: "#/definitions/Cart"
         401:
           description: "unauthorized"
         500:
@@ -849,15 +870,12 @@ definitions:
         type: "string"
       email:
         type: "string"
-      password:
-        type: "string"
     title: "User"
     description: "A user"
     example:
       id_user: 1
       name: "Giacomo"
-      email: "gicomo.fuse@mail.com"
-      password: "giafus1"
+      email: "gia.fuse@mail.com"
   Author:
     type: "object"
     properties:
@@ -915,7 +933,7 @@ definitions:
   Cart:
     type: "object"
     properties:
-      id_book: 
+      Id_book: 
         type: "integer"
       support:
         type: "string"
@@ -928,16 +946,61 @@ definitions:
         type: "string"
       price:
         type: "number"
+      quantity:
+        type: "integer"
     title: "Cart"
     description: "Order for books"
     example:
-      id_user: 1
-      id_book: 1
+      Id_book: 4
+      title: "The Spy"
+      cover_img: "../assets/img/books/book-8.jpg"
+      price: 14.7
       support: "paper"
-      title: "Romeo and Juliet"
-      cover_img: "pathname"
-      price: 13.80
       quantity: 2
+  Cart-Item:
+    type: "object"
+    properties:
+      id_user: 
+        type: "integer"
+      id_book: 
+        type: "integer"
+      quantity:
+        type: "integer"
+      title:
+        type: "string"
+      support:
+        type: "string"
+        enum:
+        - "paper"
+        - "ebook"
+      cover_img:
+        type: "string"
+      price:
+        type: "number"
+      auth_names:
+        type: "array"
+        items: 
+          type: "string"
+      auth_ids:
+        type: "array"
+        items: 
+          type: "integer"
+    title: "Cart"
+    description: "Order for books"
+    example:
+      id_user: 4
+      id_book: 4
+      support: "paper"
+      quantity: 2
+      title: "The Spy"
+      cover_img: "../assets/img/books/book-8.jpg"
+      price: 14.7
+      auth_names: [
+        "Paulo Coelho"
+      ]
+      auth_ids: [
+        3
+      ]
   Book:
     type: "object"
     properties:

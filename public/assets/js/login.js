@@ -91,13 +91,8 @@ jQuery(document).ready(function($) {
     });
     $('form.registerForm').submit(function() {
         validate = checkInputs($('form.registerForm'));
-        
-        if($("#psw").val() === $("#confirmpsw").val()){
-            if (validate) postRegister($('form.registerForm'));
-        }else{
-            $("#spanRegisterError").text("Passwords must be equal.");
-            $('#registererror').show();
-        }
+		
+        if (validate) postRegister($('form.registerForm'));
         return false;
     });
 });
@@ -113,6 +108,7 @@ function postRegister(form) {
         method: "post",
     }).then(function(response) {
         response.json().then(function(json) {
+			console.log(json);
             if(json.error){
                 $("#spanRegisterError").text(json.error);
                 $('#registererror').show();
@@ -141,8 +137,8 @@ function postLogin(form) {
     }).then(function(response) {
          return response.json();
      }).then(function(json) {
-        
-        if(jQuery.isEmptyObject(json)){
+        console.log(json);
+        if(json.error){
             $('#loginerror').show();
         }else{
             $('#loginerror').hide();

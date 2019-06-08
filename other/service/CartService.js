@@ -151,6 +151,18 @@ exports.deleteBookById = function(userId, bookList) {
 
 // -------------- AUXILIARY FUNCTIONS ---------------
 
+function isInDb(sqlDb, userId, book){
+    return sqlDb('cart').count('* as count')
+		//join with User
+		.innerJoin('user', {'user.id_user' :  'cart.id_user'})
+		//join with Book
+		.innerJoin('book', {'book.id_book' :  'cart.id_book'})
+		.where({'cart.id_user': userId, 'cart.id_book' : book.Id_book, 'cart.support' : book.support})
+		.then(data =>{
+        	return (data[0].count > 0) ? true : false;
+    	});
+}
+
 function isInCart(sqlDb, userId, book){
     return sqlDb('cart').count('* as count')
 		//join with User

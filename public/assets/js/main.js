@@ -1,4 +1,4 @@
-let user;
+let user = {};
 
 let pathname = window.location.pathname;
 let pages = "";
@@ -23,13 +23,11 @@ function getUser(){
     }).then(function(response) {
         return response.json();		
     }).then(function(json) {
+		console.log(json);
 		if(!json.error){
 			user = json;
-			if(!jQuery.isEmptyObject(user)){
-				console.log(user);
-				toggleLogin(user);
-				getCartCount();
-			}
+			toggleLogin(user);
+			getCartCount();
 		} 
     });
 }

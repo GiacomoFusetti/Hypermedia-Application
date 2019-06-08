@@ -122,6 +122,9 @@ function getRealtedBooks(){
 }
 
 function postCurrentBook(){
+	
+	console.log(JSON.stringify(book));
+	
 	fetch('/cart/', {
 		body: JSON.stringify(book),
         method: "POST",
