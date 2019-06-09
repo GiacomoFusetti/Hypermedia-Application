@@ -63,7 +63,7 @@ exports.booksGET = function(offset, limit, genre, theme, rating, filter, search,
 			default:
 				return;
 		}
-		query.where('support', vrs);
+		query.where('support', vrs).orWhere('support', 'both');
 	}
     if(search)
         query.where('book.title', 'ilike', '%' + search + '%');
@@ -114,7 +114,7 @@ exports.getBooksCount = function(genre, theme, rating, filter, search, format){
 			default:
 				return;
 		}
-		query.where('support', vrs);
+		query.where('support', vrs).orWhere('support', 'both');
 	}
     if(search)
         query.where('book.title', 'ilike', '%' + search + '%');
