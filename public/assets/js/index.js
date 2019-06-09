@@ -138,26 +138,23 @@ function fillEventsCarousel(events){
         eventCarousel +=
             `
                  <div class="carousel-item-b">
-                    <div class="card-box-b card-shadow">
-                        <div class="img-box-b">
-                          <a href="pages/event.html?id=${event.id_event}"><img src="${event.img}" alt="${event.name}" class="img-b img-fluid"></a>
-                        </div>
-                        <div class="card-overlay">
-                          <div class="card-header-b">
-                            <div class="card-category-b">
-                              <a class="category-b"><i class="fas fa-map-marker-alt"></i>
-                                        ${event.city}</a>
-                            </div>
-                            <div class="card-title-b">
-                              <h2 class="title-2">
-                                <a class="font-80" href="pages/event.html?id=${event.id_event}">${event.name}</a>
-                              </h2>
-                            </div>
-                            <div class="card-date">
-                              <span class="date-b">${event.date_day} ${month[event.date_month-1]} ${event.date_year}</span>
-                            </div>
-                          </div>
-                        </div>
+                    <div class="card-box-b card-shadow container_img">               
+                        <a href="pages/event.html?id=${event.id_event}">
+							 <img src="${event.img}" alt="${event.name}" class="img-b img-fluid">
+							 <div class="card-header-b">
+								<div class="card-category-b">
+									<a class="category-b"><i class="fas fa-map-marker-alt"></i> ${event.city}</a>
+								</div>
+								<div class="card-title-b">
+								  	<h2 class="title-2">
+										<a class="font-80" href="pages/event.html?id=${event.id_event}">${event.name}</a>
+								  	</h2>
+								</div>
+								<div class="card-date">
+								  	<span class="date-b">${event.date_day} ${month[event.date_month-1]} ${event.date_year}</span>
+								</div>
+							</div>
+						</a>
                      </div>
                   </div>
             `;

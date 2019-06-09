@@ -96,28 +96,27 @@ function generatesHTML(){
 		$("#eventsDiv").append( 
 			`
 				<div class="col-md-4">
-                  <div class="card-box-b card-shadow news-box">
-                    <div class="img-box-b">
-                      <img src="${eventsJson[i].img}" alt="${eventsJson[i].name}" class="img-b img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                      <div class="card-header-b">
-                        <div class="card-category-b">
-                          <a class="category-b"><i class="fas fa-map-marker-alt"></i>
-                                    ${eventsJson[i].city}</a>
-                        </div>
-                        <div class="card-title-b">
-                          <h2 class="title-2">
-                            <a class="font-80" href="event.html?id=${eventsJson[i].id_event}">${eventsJson[i].name}</a>
-                          </h2>
-                        </div>
-                        <div class="card-date">
-                          <span class="date-b">${eventsJson[i].date_day} ${month[eventsJson[i].date_month-1]} ${eventsJson[i].date_year}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+					<div class="carousel-item-b">
+						<div class="card-box-b card-shadow container_img">               
+							<a href="event.html?id=${eventsJson[i].id_event}">
+								 <img src="${eventsJson[i].img}" alt="${eventsJson[i].name}" class="img-b img-fluid">
+								 <div class="card-header-b">
+									<div class="card-category-b">
+										<a class="category-b"><i class="fas fa-map-marker-alt"></i> ${eventsJson[i].city}</a>
+									</div>
+									<div class="card-title-b">
+										<h2 class="title-2">
+											<a class="font-80" href="event.html?id=${eventsJson[i].id_event}">${eventsJson[i].name}</a>
+										</h2>
+									</div>
+									<div class="card-date">
+										<span class="date-b">${eventsJson[i].date_day} ${month[eventsJson[i].date_month-1]} ${eventsJson[i].date_year}</span>
+									</div>
+								</div>
+							</a>
+						 </div>
+					  </div>
+				</div>	
 			`
 		);
 	}

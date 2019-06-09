@@ -45,3 +45,23 @@
 .title-pointer{
 	cursor: pointer;
 }
+
+.footer-btn{
+	padding: 10px;
+}
+
+.checkout-btn{
+	padding: 10px;
+}
+.pull-right-div{
+	float: right;
+}
+
+@media screen and (max-width: 767px) {
+    .checkout-btn{
+		padding-right: 0px;
+	}
+	.pull-right-div{
+		float: left;
+	}
+}
