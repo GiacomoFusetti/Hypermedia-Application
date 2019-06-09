@@ -63,10 +63,11 @@ exports.booksGET = function(offset, limit, genre, theme, rating, filter, search,
 			default:
 				return;
 		}
-		query.where('support', vrs).orWhere('support', 'both');
+		query.whereRaw('(support = ? OR support = \'both\')', [vrs])
 	}
     if(search)
         query.where('book.title', 'ilike', '%' + search + '%');
+	
 	return query.then(data => {
 		return data.map(e => {
 			return e;
@@ -114,7 +115,7 @@ exports.getBooksCount = function(genre, theme, rating, filter, search, format){
 			default:
 				return;
 		}
-		query.where('support', vrs).orWhere('support', 'both');
+		query.whereRaw('(support = ? OR support = \'both\')', [vrs])
 	}
     if(search)
         query.where('book.title', 'ilike', '%' + search + '%');

@@ -8,6 +8,7 @@ $(function() {
 		$("#login-form").delay(100).fadeIn(100);
  		$("#register-form").fadeOut(100);
 		$('#register-form-link').removeClass('active');
+		$('#loginerror').hide();
 		$(this).addClass('active');
 		e.preventDefault();
 	});
@@ -17,6 +18,7 @@ $(function() {
 		$("#register-form").delay(100).fadeIn(100);
  		$("#login-form").fadeOut(100);
 		$('#login-form-link').removeClass('active');
+		$('#registererror').hide();
 		$(this).addClass('active');
 		e.preventDefault();
 	});
@@ -99,8 +101,6 @@ jQuery(document).ready(function($) {
 
 function postRegister(form) {
     var str = form.serialize()
-	console.log('reg');
-	console.log(str);
 
     fetch('/user/register', {
         body: str,
@@ -108,7 +108,6 @@ function postRegister(form) {
         method: "post",
     }).then(function(response) {
         response.json().then(function(json) {
-			console.log(json);
             if(json.error){
                 $("#spanRegisterError").text(json.error);
                 $('#registererror').show();
@@ -127,8 +126,6 @@ function postRegister(form) {
 
 function postLogin(form) {
     var str = form.serialize()
-	console.log('log');
-	console.log(str);
 
     fetch('/user/login', {
         body: str,
@@ -137,7 +134,6 @@ function postLogin(form) {
     }).then(function(response) {
          return response.json();
      }).then(function(json) {
-        console.log(json);
         if(json.error){
             $('#loginerror').show();
         }else{

@@ -122,9 +122,6 @@ function getRealtedBooks(){
 }
 
 function postCurrentBook(){
-	
-	console.log(JSON.stringify(book));
-	
 	fetch('/cart/', {
 		body: JSON.stringify(book),
         method: "POST",
@@ -138,7 +135,7 @@ function postCurrentBook(){
 			var toastType = 'success'
 			var toastTitle = 'Book added to cart';
 
-			if(json.status == 401){
+			if(json.error){
 				toastType = 'warning'
 				toastTitle = 'You must be logged in!';
 			}else{

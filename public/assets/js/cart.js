@@ -259,6 +259,7 @@ function generateCartFooterHTML(){
 function updateTotal(){
 	total > 0 ? $('#totalPriceDiv').html(`Total price: <b>€ ` + total.toFixed(2) + `</b>`) : $('#totalPriceDiv').html(``);
 	if(discount > 0 && (total-discount) > 0){
+		$('#totalPriceDiv').html(`Subtotal: <b>€ ` + total.toFixed(2) + `</b>`)
 		$('#totalPriceDiv').append(`<br>Gift Card: <b>- € ` + (discount).toFixed(2) + `</b>`);
 		$('#totalPriceDiv').append(`<br>Total price: <b>€ ` + (total-discount).toFixed(2) + `</b>`);
 	}else{
