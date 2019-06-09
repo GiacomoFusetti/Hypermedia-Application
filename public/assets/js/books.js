@@ -96,17 +96,31 @@ $(document).ready(function(){
 	getThemes();
 	getBooksCount();
 	generatesRatingFilterHTML();
-    generatesformatFilterHTML();
+    generatesFormatFilterHTML();
 	getBooks();
 	
 	// SET FILTERS WHEN APPEAR IN PATHQUERY
-	if(mainFilter || genreid || themeid || formatFilter){
+	if(mainFilter || genreid || themeid || rating || formatFilter || search){
 		$("#filtersHeader").click();
 		
 		if(mainFilter){
 			$("#radio" + mainGroup + mainFilter).click();
-		}if(formatFilter){
-            $("#radio" + formatGroup + formatFilter).click();
+		}if(rating){
+			var timer = setInterval(function() {
+				 if ($('#ratingHeader')) {
+					clearInterval(timer);
+					$("#ratingHeader").click();
+					$("#radio" + ratingGroup + rating).click();
+				 }
+			}, 100);
+        }if(formatFilter){
+			var timer = setInterval(function() {
+				 if ($('#formatHeader')) {
+					clearInterval(timer);
+					$("#formatHeader").click();
+					$("#radio" + formatGroup + formatFilter).click();
+				 }
+			}, 100);
         }if(genreid){
 			var timer = setInterval(function() {
 				 if ($('#genreHeader')) {
@@ -123,6 +137,9 @@ $(document).ready(function(){
 					$("#radio" + themesGroup + themeid).click(); 
 				 }
 			}, 100);
+		}
+		if(search){
+			$('#search').val(search);
 		}
 	}
 });
@@ -280,8 +297,8 @@ function generatesRatingFilterHTML(){
 		ratingHTML += 
 			`
 				<div class="form-check">
-					<input name="${ratingGroup}" type="radio" id="radio${ratingGroup + (i+1)}" value="${maxrating-i}">
-					<label for="radio${ratingGroup + (i+1)}">
+					<input name="${ratingGroup}" type="radio" id="radio${ratingGroup + (maxrating-i)}" value="${maxrating-i}">
+					<label for="radio${ratingGroup + (maxrating-i)}">
 			`;
 		for(x = i; x < maxrating; x++){
 			ratingHTML += `<i class="fas fa-star color-b" aria-hidden="true"></i>`;
@@ -297,20 +314,20 @@ function generatesRatingFilterHTML(){
 	);
 }
 
-function generatesformatFilterHTML(){
+function generatesFormatFilterHTML(){
     var formatHTML = `
         <div id="formatHeader" class="filter-div-title" data-toggle="collapse" data-target="#formatDiv"><i class="fa fa-angle-right color-b"></i> <a>Format</a></div>
 			<div id="formatDiv" class="collapse">
 				<div class="form-check">
-					<input name="group4" type="radio" id="radio${formatGroup + 0}" value="0" checked>
+					<input name="${formatGroup}" type="radio" id="radio${formatGroup + 0}" value="0" checked>
 					<label for="radio${formatGroup + 0}">All</label>
 				</div>
                 <div class="form-check">
-					<input name="group4" type="radio" id="radio${formatGroup + 1}" value="1">
+					<input name="${formatGroup}" type="radio" id="radio${formatGroup + 1}" value="1">
 					<label for="radio${formatGroup + 1}">Paper</label>
 				</div>
                 <div class="form-check">
-					<input name="group4" type="radio" id="radio${formatGroup + 2}" value="2">
+					<input name="${formatGroup}" type="radio" id="radio${formatGroup + 2}" value="2">
 					<label for="radio${formatGroup + 2}">eBook</label>
 				</div>
             </div>
@@ -356,13 +373,9 @@ function fillFilterActive(){
 	if(genreid && genreid != 0) result += ' - <b>' + genreJson[parseInt(genreid) - 1].name + '</b>';
 	if(themeid && themeid != 0) result += ' - <b>' + themeJson[parseInt(themeid) - 1].theme_name + '</b>';
 	if(rating && rating != 0) result += ' - <b>' + rating + ' stars</b>';
-	if(mainFilter && mainFilter != 0) result += ' - <b>' + ((mainFilter == 1) ? 'BestSeller' : 'OurSuggestion') + '</b>';
-    	if(search) result += ': <i>\'' + search + '\'</i>';
-    
+	if(mainFilter && mainFilter != 0) result += ' - <b>' + ((mainFilter == 1) ? 'BestSeller' : 'OurSuggestion') + '</b>';   
 	if(formatFilter && formatFilter != 0) result += ' - <b>' + ((formatFilter == 1) ? 'Paper' : 'eBook') + '</b>';
-    	if(search) result += ': <i>\'' + search + '\'</i>';
-	
-    console.log(result);
+    if(search) result += ': <i>\'' + search + '\'</i>';
 	
 	$('#filterActive').html(result);
 }
