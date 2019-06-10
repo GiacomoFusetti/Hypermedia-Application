@@ -59,11 +59,9 @@ $(document).ready(function(){
 		switch(this.name){
 			case mainGroup:
 				mainFilter = this.value;
-                console.log(mainFilter);
 				break;
             case formatGroup:
                 formatFilter = this.value;
-                console.log(formatFilter);
                 break;
 			case genresGroup:
 				genreid = this.value;
@@ -100,48 +98,7 @@ $(document).ready(function(){
 	getBooks();
 	
 	// SET FILTERS WHEN APPEAR IN PATHQUERY
-	if(mainFilter || genreid || themeid || rating || formatFilter || search){
-		$("#filtersHeader").click();
-		
-		if(mainFilter){
-			$("#radio" + mainGroup + mainFilter).click();
-		}if(rating){
-			var timer = setInterval(function() {
-				 if ($('#ratingHeader')) {
-					clearInterval(timer);
-					$("#ratingHeader").click();
-					$("#radio" + ratingGroup + rating).click();
-				 }
-			}, 100);
-        }if(formatFilter){
-			var timer = setInterval(function() {
-				 if ($('#formatHeader')) {
-					clearInterval(timer);
-					$("#formatHeader").click();
-					$("#radio" + formatGroup + formatFilter).click();
-				 }
-			}, 100);
-        }if(genreid){
-			var timer = setInterval(function() {
-				 if ($('#genreHeader')) {
-					clearInterval(timer);
-					$("#genreHeader").click();
-					$("#radio" + genresGroup + genreid).click();
-				 }
-			}, 100);
-		}if(themeid){
-			var timer = setInterval(function() {
-				 if ($('#themeHeader')) {
-					clearInterval(timer);
-					$("#themeHeader").click();
-					$("#radio" + themesGroup + themeid).click(); 
-				 }
-			}, 100);
-		}
-		if(search){
-			$('#search').val(search);
-		}
-	}
+	handleInPathFilters();
 });
 
 // -------------- REQUESTS ---------------
@@ -198,7 +155,7 @@ function getBooks(){
 	if(mainFilter) query += '&filter=' + mainFilter;
     if(formatFilter) query += '&format=' + formatFilter;
     if(search) query += '&search=' + search;
-	console.log(query);
+
 	fetch('/books' + query).then(function(response) {
 		return response.json();
 	}).then(function(json) {
@@ -420,4 +377,75 @@ function bestSellerHTML(best_seller){
     if(best_seller=='true')
         return `<img id="over" src="../assets/img/best-seller.png">`;
     return ``;
+}
+
+function handleInPathFilters(){
+	if(mainFilter || genreid || themeid || rating || formatFilter || search){
+		$("#filtersHeader").click();
+		
+		if(mainFilter){
+			$("#radio" + mainGroup + mainFilter).click();
+		}if(rating){
+			var timer = setInterval(function() {
+				 if ($('#ratingHeader')) {
+					clearInterval(timer);
+					$("#ratingHeader").click();
+					$("#radio" + ratingGroup + rating).click();
+				 }
+			}, 100);
+        }if(formatFilter){
+			var timer = setInterval(function() {
+				 if ($('#formatHeader')) {
+					clearInterval(timer);
+					$("#formatHeader").click();
+					$("#radio" + formatGroup + formatFilter).click();
+				 }
+			}, 100);
+        }if(genreid){
+			var timer = setInterval(function() {
+				 if ($('#genreHeader')) {
+					clearInterval(timer);
+					if(window.location.href.split('&').pop() == 'bygenrex') {
+						//$("input[name='" + genresGroup + "']").attr('disabled', true);
+						$("#genreHeader").hide();
+						$('#genreDiv').hide();
+						$('#h1Title').append(' - ' + genreJson[parseInt(genreid) - 1].name);
+						$('#navList').append(`
+							<li class="breadcrumb-item active" aria-current="page">
+                				By Genre
+              				</li>
+						`);
+						$('#homeLi').html(`<a href="books.html">Books</a>`);
+					}else{
+						$("#genreHeader").click();
+						$("#radio" + genresGroup + genreid).click();
+					}
+				 }
+			}, 100);
+			
+		}if(themeid){
+			var timer = setInterval(function() {
+				 if ($('#themeHeader')) {
+					clearInterval(timer);
+					if(window.location.href.split('&').pop() == 'bythemex') {
+						//$("input[name='" + themesGroup + "']").attr('disabled', true);
+						$("#themeHeader").hide();
+						$('#themeDiv').hide();
+						$('#h1Title').append(' - ' + themeJson[parseInt(themeid) - 1].theme_name);
+						$('#navList').append(`
+							<li class="breadcrumb-item active" aria-current="page">
+                				By Theme
+              				</li>
+						`);
+						$('#homeLi').html(`<a href="books.html">Books</a>`);
+					}else{
+						$("#themeHeader").click();
+						$("#radio" + themesGroup + themeid).click(); 
+					}
+				 }
+			}, 100);
+		}
+		if(search)
+			$('#search').val(search);
+	}
 }

@@ -49,9 +49,7 @@ function generatesThemeHTML(){
         
         themeHTML += `
                         <li  class="item-list-a"><i class="fa fa-angle-right"></i>
-                            
-                                <a class="pointer-a link_style list-font" href='books.html?genre=${theme.id_theme}'>${theme.theme_name}</a>
-                            
+                           <a class="pointer-a link_style list-font" href='books.html?theme=${theme.id_theme}&bythemex'>${theme.theme_name}</a>
                         </li>
                      `;
     }

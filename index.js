@@ -40,6 +40,12 @@ app.use(cookieSession({
     //,maxAge: 5 * 60 * 1000 // 5 minutes
 }));
 
+// /BACKEND API Documentation
+app.get('/backend/main');
+app.get('/backend/spec');
+
+
+
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function(middleware) {
   // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
@@ -58,14 +64,21 @@ swaggerTools.initializeMiddleware(swaggerDoc, function(middleware) {
 
 Promise.all(setupDataLayer()).then(() => {
     // Start the server
+	// Serve the Swagger documents and Swagger UI
+  	//   http://localhost:8080/docs => Swagger UI
+ 	//   http://localhost:8080/api-docs => Swagger document
     http.createServer(app).listen(serverPort, function() {
       console.log(
-        "Your server is listening on port %d (http://localhost:%d)",
+        "\tYour server is listening on port %d (http://localhost:%d)",
         serverPort,
         serverPort
       );
       console.log(
-        "Swagger-ui is available on http://localhost:%d/docs",
+        "\tSwagger-ui is available on http://localhost:%d/docs",
+        serverPort
+      );
+	  console.log(
+        "\tSwagger document is available on http://localhost:%d/api-docs",
         serverPort
       );
     });

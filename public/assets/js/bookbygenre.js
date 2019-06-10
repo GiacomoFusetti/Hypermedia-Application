@@ -49,9 +49,7 @@ function generatesGenreHTML(){
         
         genreHTML += `
                         <li  class="item-list-a"><i class="fa fa-angle-right"></i>
-                            
-                                <a class="pointer-a link_style list-font" href='books.html?genre=${genre.id_genre}'>${genre.name}</a>
-                            
+                            <a class="pointer-a link_style list-font" href='books.html?genre=${genre.id_genre}&bygenrex'>${genre.name}</a>
                         </li>
                      `;
     }
