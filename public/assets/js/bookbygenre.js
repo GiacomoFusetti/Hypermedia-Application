@@ -39,14 +39,14 @@ function generatesGenreHTML(){
         var genre = genreJson[x];
         if(!genre.name.toUpperCase().startsWith(list[z])){
             z++;
-            //stampare la nuova lettera di list
+            
             genreHTML += `
                             </ul></li></div>
                             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
                                 <li class="list-unstyled"><div class="title-box-d"><h3 class="title-d">` + list[z] + `</h3></div><ul class="list-unstyled">
                          `;
         }
-        //stampo genre nella lista non ordinata
+        
         genreHTML += `
                         <li  class="item-list-a"><i class="fa fa-angle-right"></i>
                             
@@ -59,6 +59,8 @@ function generatesGenreHTML(){
     $('#bodyDiv').html(genreHTML);
 }
 
+// -------------- AUXILIARY FUNCTIONS ---------------
+
 function generatesLetterList(){
     
     for(y = 0; y <genreJson.length; y++){
@@ -67,5 +69,4 @@ function generatesLetterList(){
             list.push(letter);
         }
     }
-    console.log(list);
 }
