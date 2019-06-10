@@ -45,7 +45,7 @@ exports.getAuthorById = function(offset, limit, authorId) {
 			.innerJoin('author as author2', {'book_author2.id_author' : 'author2.id_author'})
             .where('author.id_author', authorId)
             .distinct('book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.best_seller', 'book.our_favorite') 
-            .select(sqlDb.raw('ARRAY_AGG(DISTINCT author2.name) as auth_names'), sqlDb.raw('ARRAY_AGG(DISTINCT author2.id_author) as auth_ids'))
+			.select(sqlDb.raw('ARRAY_AGG(author2.name) AS auth_names'), sqlDb.raw('ARRAY_AGG(author2.id_author) AS auth_ids'))
             .groupBy('book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.best_seller', 'book.our_favorite')
             .offset(offset)
             .limit(limit).then(result => {
@@ -69,7 +69,7 @@ exports.getWrittenBooksById = function(offset, limit, authorId) {
         .innerJoin('author as author2', {'book_author2.id_author' : 'author2.id_author'})
         .where('author.id_author', authorId)
         .distinct('book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.best_seller', 'book.our_favorite') 
-        .select(sqlDb.raw('ARRAY_AGG(DISTINCT author2.name) as auth_names'), sqlDb.raw('ARRAY_AGG(DISTINCT author2.id_author) as auth_ids'))
+        .select(sqlDb.raw('ARRAY_AGG(author2.name) AS auth_names'), sqlDb.raw('ARRAY_AGG(author2.id_author) AS auth_ids'))
         .groupBy('book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.best_seller', 'book.our_favorite')
         .offset(offset)
         .limit(limit).then(result => {

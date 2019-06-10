@@ -1,4 +1,13 @@
 /*======================================
+//--//-->   STYLES BOOK by genre/theme
+======================================*/
+
+.link_style{
+	font-size: 90%;
+	
+}
+
+/*======================================
 //--//-->   STYLES BOOK 
 ======================================*/
 
@@ -87,9 +96,11 @@
     z-index: 1500
 }
 
-/* On screens that are 1200px or less */
-@media screen and (max-width: 1919px) {
-
+/* On screens that are 1920px or less */
+@media screen and (max-width: 1400px) {
+  .card-img-top {
+	  height: 21vw;
+	}
   .card-img-top-list { 
   	height: 17vw;
   }
@@ -125,7 +136,7 @@
 /* On screens that are 768px or less */
 @media screen and (max-width: 769px) {
   .card-img-top { 
-  	height: 24vw;
+  	height: 28vw;
   }
 	.card-img-top-list { 
   		height: 29vw;
@@ -135,7 +146,7 @@
 /* On screens that are 540px or less*/
 @media screen and (max-width: 541px) {
 	.card-img-top { 
-		height: 55vw;
+		height: 60vw;
 	}
 	.font-90{
 		font-size: 90%!important;

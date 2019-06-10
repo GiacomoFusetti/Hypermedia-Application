@@ -20,7 +20,7 @@ exports.booksGET = function(offset, limit, genre, theme, rating, filter, search,
 	var query = sqlDb('book')
 				.innerJoin('book_author', {'book.id_book' :  'book_author.id_book'})
 				.innerJoin('author', {'book_author.id_author' : 'author.id_author'})
-				.select(['book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.rating',         'book.best_seller', 'book.our_favorite', 'book.interview',
+				.select(['book.id_book', 'book.title', 'book.price_paper', 'book.price_ebook', 'book.cover_img', 'book.support', 'book.rating', 'book.best_seller', 'book.our_favorite', 'book.interview',
 						sqlDb.raw('ARRAY_AGG(author.name) as auth_names'),
 						sqlDb.raw('ARRAY_AGG(author.id_author) as auth_ids')])
 				.limit(limit)
@@ -176,16 +176,12 @@ exports.getBookById = function(offset, limit, bookId) {
                                             //join with SimilarBooks
                                             .innerJoin('book_similarBook', {'book.id_book' :  'book_similarBook.id_book'})
                                             .innerJoin('book as book2', {'book2.id_book' : 'book_similarBook.id_similarBook'})
-                                            //join with Theme
-                                            .leftJoin('book_theme', {'book2.id_book' :  'book_theme.id_book'})
-                                            .leftJoin('theme', {'book_theme.id_theme' : 'theme.id_theme'})
                                             //join with Author
                                             .innerJoin('book_author', {'book2.id_book' :  'book_author.id_book'})
-                                            .innerJoin('author', {'book_author.id_author' : 'author.id_author'})
+                                            .innerJoin('author as author2', {'book_author.id_author' : 'author2.id_author'})
                                             .where('book_similarBook.id_book', bookId)
                                             .distinct('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_ebook', 'book2.cover_img', 'book2.support', 'book2.best_seller', 'book2.interview')
-                                            .select(sqlDb.raw('ARRAY_AGG(DISTINCT theme.theme_name) as theme_names'))
-                                            .select(sqlDb.raw('ARRAY_AGG(DISTINCT author.name) as auth_names'), sqlDb.raw('ARRAY_AGG(DISTINCT author.id_author) as auth_ids'))
+                                            .select(sqlDb.raw('ARRAY_AGG( author2.name) AS auth_names'), sqlDb.raw('ARRAY_AGG( author2.id_author) AS auth_ids'))
                                             .groupBy('book2.id_book', 'book2.title', 'book2.price_paper', 'book2.price_ebook', 'book2.cover_img', 'book2.support', 'book2.best_seller', 'book2.interview')
                                             .orderBy('book2.id_book')
                                             .limit(limit)
