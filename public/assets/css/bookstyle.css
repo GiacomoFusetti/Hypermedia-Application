@@ -4,9 +4,32 @@
 
 .link_style{
 	font-size: 90%;
-	
 }
 
+.title-box-d .title-d:after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 4px;
+  background-color: #2eca6a;
+  bottom: 10px;
+  left: 0;
+}
+
+.title-box-d {
+    padding-bottom: 0.5rem;
+    position: relative;
+    margin-bottom: 0rem;
+}
+
+.list-unstyled {
+    padding-left: 15px;
+    list-style: none;
+}
+
+.list-font {
+    font-size: large;
+}
 /*======================================
 //--//-->   STYLES BOOK 
 ======================================*/
