@@ -32,7 +32,7 @@ function generatesThemeHTML(){
     
     var themeHTML = `
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                            <li class="list-unstyled"><div class="title-box-d"><h3 class="title-d">` + list[0] + `</h3></div><ul class="list-unstyled">`;
+                            <li class="list-by"><div class="title-box-d"><h3 class="title-d">` + list[0] + `</h3></div><ul class="list-unstyled">`;
     
     var z = 0;
     for(x = 0; x < themesJson.length; x++){
@@ -43,7 +43,7 @@ function generatesThemeHTML(){
             themeHTML += `
                             </ul></li></div>
                             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                                <li class="list-unstyled"><div class="title-box-d"><h3 class="title-d">` + list[z] + `</h3></div><ul class="list-unstyled">
+                                <li class="list-by"><div class="title-box-d"><h3 class="title-d">` + list[z] + `</h3></div><ul class="list-unstyled">
                          `;
         }
         
