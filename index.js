@@ -43,8 +43,8 @@ app.use(cookieSession({
 // /BACKEND API Documentation
 app.get('/backend/main');
 app.get('/backend/spec');
-
-
+app.get('/backend/swaggerui');
+app.get('/backend/app');
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function(middleware) {
@@ -69,7 +69,7 @@ Promise.all(setupDataLayer()).then(() => {
  	//   http://localhost:8080/api-docs => Swagger document
     http.createServer(app).listen(serverPort, function() {
       console.log(
-        "\tYour server is listening on port %d (http://localhost:%d)",
+        "Your server is listening on port %d (http://localhost:%d)",
         serverPort,
         serverPort
       );
