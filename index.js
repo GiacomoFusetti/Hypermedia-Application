@@ -42,8 +42,14 @@ app.use(cookieSession({
 
 // /BACKEND API Documentation
 app.get('/backend/main');
-app.get('/backend/spec');
-app.get('/backend/swaggerui');
+app.get('/backend/spec', function (req, res){
+	const fullUrl = req.protocol + '://' + req.get('host');
+    res.redirect(fullUrl + '/api-docs');
+});
+app.get('/backend/swaggerui', function (req, res){
+	const fullUrl = req.protocol + '://' + req.get('host');
+    res.redirect(fullUrl + '/docs');
+});
 app.get('/backend/app');
 
 // Initialize the Swagger middleware
