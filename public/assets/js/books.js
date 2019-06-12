@@ -305,9 +305,11 @@ function generatesBooksHTML(){
 				  	<div class="card-body">
 						<ul class="list-unstyled author_list font-90">` + authorListHTML(currentBook.auth_names, currentBook.auth_ids) + `</ul>
 						<h4 class="font-90"><a href="book.html?id=${currentBook.id_book}">${currentBook.title}</a></h4>
-						<b class="font-90 color-b">€ 
-								` + priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_ebook) + `																		
-						</b>
+						
+							<b class="font-90 color-b">€ 
+									` + priceHTML(currentBook.support, currentBook.price_paper, currentBook.price_ebook) + `																		
+							</b>
+						
 				  	</div>
 				</div>
 			</div>`
@@ -380,9 +382,9 @@ function bestSellerHTML(best_seller){
 }
 
 function handleInPathFilters(){
+	$("#filtersHeader").click();
 	if(mainFilter || genreid || themeid || rating || formatFilter || search){
-		$("#filtersHeader").click();
-		
+
 		if(mainFilter){
 			$("#radio" + mainGroup + mainFilter).click();
 		}if(rating){
@@ -409,7 +411,7 @@ function handleInPathFilters(){
 						//$("input[name='" + genresGroup + "']").attr('disabled', true);
 						$("#genreHeader").hide();
 						$('#genreDiv').hide();
-						$('#h1Title').append(' - ' + genreJson[parseInt(genreid) - 1].name);
+						$('#h1Title').append(' by genre: ' + genreJson[parseInt(genreid) - 1].name);
 						$('#navList').append(`
 							<li class="breadcrumb-item active" aria-current="page">
                 				By Genre
@@ -431,7 +433,7 @@ function handleInPathFilters(){
 						//$("input[name='" + themesGroup + "']").attr('disabled', true);
 						$("#themeHeader").hide();
 						$('#themeDiv').hide();
-						$('#h1Title').append(' - ' + themeJson[parseInt(themeid) - 1].theme_name);
+						$('#h1Title').append(' by theme: ' + themeJson[parseInt(themeid) - 1].theme_name);
 						$('#navList').append(`
 							<li class="breadcrumb-item active" aria-current="page">
                 				By Theme

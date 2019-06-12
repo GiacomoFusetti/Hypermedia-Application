@@ -99,7 +99,7 @@
 .card{
 	border: none;
     border-radius: none;
-	
+	height: 100%;
 }
 .card-img-top {
     width: 100%;
