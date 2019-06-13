@@ -10,11 +10,27 @@ let discount = 0;
 
 $(document).ready(function(){
 	// HANDLE QUANTITY INPUT
-	$('#cartBody').on('input', 'input[type=number]', function () {  
+	/*$('#cartBody').on('input', 'input[type=number]', function () {  
 		var idx = $(this).attr('id');
 		newQty = $(this).val();
 		
 		if(newQty < 1 || typeof newQty == 'number') newQty = 1;
+		else if(newQty > 99) newQty = 99;
+		
+		currentBook['Id_book'] = parseInt(cartBooksJson[idx].id_book);
+		currentBook['quantity'] = parseInt(newQty);
+		currentBook['support'] = cartBooksJson[idx].support.toLowerCase();
+		currentBook['title'] = cartBooksJson[idx].title;
+
+		cartBooksJson[idx].quantity = newQty;
+		$(this).val(newQty);
+		updateCartQty();
+	});*/
+	$('#cartBody').on('blur', 'input[type=number]', function () {
+		var idx = $(this).attr('id');
+		newQty = parseInt($(this).val());
+		
+		if(newQty < 1 || typeof newQty !== 'number' || Number.isNaN(newQty)) newQty = 1;
 		else if(newQty > 99) newQty = 99;
 		
 		currentBook['Id_book'] = parseInt(cartBooksJson[idx].id_book);

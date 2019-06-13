@@ -17,10 +17,10 @@ tags:
   description: "Available authors"
 - name: "event"
   description: "Available events"
-- name: "cart"
-  description: "Access to the cart"
 - name: "user"
   description: "Operations about user"
+- name: "cart"
+  description: "Access to the cart"
 - name: "faq"
   description: "Operations about faq"
 - name: "genre"
@@ -47,7 +47,7 @@ paths:
         type: "integer"
       - name: "limit"
         in: "query"
-        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
+        description: "Maximum number of items per page. Default is 12."
         required: false
         type: "integer"
       - name: "genre"
@@ -79,7 +79,7 @@ paths:
         enum: [0, 1, 2]
       - name: "search"
         in: "query"
-        description: "Name of the book to search in the DB"
+        description: "Title of the book to search in the database"
         required: false
         type: "string"
       responses:
@@ -88,9 +88,9 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Book"
+              $ref: "#/definitions/Book-List"
         404:
-          description: "Book not found"
+          description: "Books not found"
         500:
           description: "Internal Error"
       x-swagger-router-controller: "Book"
@@ -133,7 +133,7 @@ paths:
         enum: [0, 1, 2]
       - name: "search"
         in: "query"
-        description: "Name of the book to search in the DB"
+        description: "Title of the book to search in the database"
         required: false
         type: "string"
       responses:
@@ -214,7 +214,7 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/Book"
+            $ref: "#/definitions/Book-List"
         400:
           description: "Invalid ID supplied"
         404:
@@ -242,75 +242,11 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/Book"
+            type: "integer"
         400:
           description: "Invalid ID supplied"
         404:
           description: "Book not found"
-        500:
-          description: "Internal Error"
-      x-swagger-router-controller: "Book"
-  /books_by_genre:
-    get:
-      tags:
-      - "book"
-      summary: "Books available in the inventory by genre"
-      description: "List of books available in the inventory by genre"
-      operationId: "booksByGenreGET"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "offset"
-        in: "query"
-        description: "Pagination offset. Default is 0."
-        required: false
-        type: "integer"
-      - name: "limit"
-        in: "query"
-        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
-        required: false
-        type: "integer"
-      responses:
-        200:
-          description: "A collection of Books by genre"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Book"
-        404:
-          description: "Unexpected error"
-        500:
-          description: "Internal Error"
-      x-swagger-router-controller: "Book"
-  /books_by_theme:
-    get:
-      tags:
-      - "book"
-      summary: "Books available in the inventory by theme"
-      description: "List of books available in the inventory by theme"
-      operationId: "booksByThemeGET"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "offset"
-        in: "query"
-        description: "Pagination offset. Default is 0."
-        required: false
-        type: "integer"
-      - name: "limit"
-        in: "query"
-        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
-        required: false
-        type: "integer"
-      responses:
-        200:
-          description: "A collection of Books by theme"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Book"
-        404:
-          description: "Unexpected error"
         500:
           description: "Internal Error"
       x-swagger-router-controller: "Book"
@@ -336,7 +272,7 @@ paths:
         type: "integer"
       - name: "search"
         in: "query"
-        description: "Name of the author to search in the DB"
+        description: "Name of the author to search in the database"
         required: false
         type: "string"
       responses:
@@ -345,7 +281,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Author"
+              $ref: "#/definitions/Author-List"
         404:
           description: "Unexpected error"
         500:
@@ -368,12 +304,12 @@ paths:
         type: "integer"
       - name: "limit"
         in: "query"
-        description: "Maximum number of items per page. Default is 20 and cannot exceed 500."
+        description: "Maximum number of items per page. Default is 6."
         required: false
         type: "integer"
       - name: "search"
         in: "query"
-        description: "Name of the author to search in the DB"
+        description: "Name of the author to search in the database"
         required: false
         type: "string"
       responses:
@@ -454,7 +390,9 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/Author"
+            type: "array"
+            items:
+                $ref: "#/definitions/Book-List"
         400:
           description: "Invalid ID supplied"
         404:
@@ -482,7 +420,7 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/Author"
+            type: "integer"
         400:
           description: "Invalid ID supplied"
         404:
@@ -522,7 +460,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Event"
+              $ref: "#/definitions/Event-List"
         404:
           description: "Unexpected error"
         500:
@@ -704,7 +642,9 @@ paths:
         200:
           description: "succesful operartion"
           schema:
-            $ref: "#/definitions/Cart-Item"
+            type: "array"
+            items:
+              $ref: "#/definitions/Cart-Item"
         401:
           description: "unauthorized"
         500:
@@ -801,6 +741,8 @@ paths:
       responses:
         200:
           description: "succesful operartion"
+          schema:
+            type: "integer"
         401:
           description: "unauthorized"
         500:
@@ -887,13 +829,51 @@ definitions:
         type: "string"
       photo:
         type: "string"
+      books:
+        type: "array"
+        items:
+          $ref: "#/definitions/Book-List"
     title: "Author"
     description: "An author"
     example:
-      id_author: 1
-      name: "Giacomo"
-      bio: "not today"
-      photo: "pathname"
+      id_author: 3
+      name: "Paulo Coelho"
+      bio: "Paulo Coelho’s life..."
+      photo: "../assets/img/authors/coelho.jpg"
+      books: [{
+        id_book: 5,
+        title: "Romeo and Juliet",
+        price_paper: 10.5,
+        price_ebook: 4.5,
+        cover_img: "../assets/img/books/book-9.jpg",
+        support: "paper",
+        best_seller: "true",
+        our_favorite: "false",
+        auth_names: [
+          "William Shakespeare"
+        ],
+        auth_ids: [
+          4
+        ]
+      }]
+  Author-List:
+    type: "object"
+    properties:
+      id_author:
+        type: "integer"
+      name:
+        type: "string"
+      bio:
+        type: "string"
+      photo:
+        type: "string"
+    title: "Author-List"
+    description: "An author"
+    example:
+      id_author: 3
+      name: "Paulo Coelho"
+      bio: "Paulo Coelho’s life..."
+      photo: "../assets/img/authors/coelho.jpg"
   Event:
     type: "object"
     properties:
@@ -903,8 +883,12 @@ definitions:
         type: "integer"
       name:
         type: "string"
-      date:
-        type: "string"
+      date_day:
+        type: "integer"
+      date_month:
+        type: "integer"
+      date_year:
+        type: "integer"
       when:
         type: "string"
       location:
@@ -917,19 +901,83 @@ definitions:
         type: "string"
       location_img:
         type: "string"
+      book:
+        type: "array"
+        items:
+          $ref: "#/definitions/Book"
     title: "Event"
     description: "An event"
     example:
       id_event: 1
       id_book: 1
-      name: "Cool event"
-      date: "1 Jan 2019"
-      when: "from 4:00PM to 5.30PM"
-      location: "Piazza Gae Aulenti, 1, 20154 Milano MI"
-      city: "Milan"
-      description: "book presentation"
-      img: "pathname"
-      location_img: "pathname"
+      name: "Coelho presents The Spy"
+      date_day: 13
+      date_month: 9
+      date_year: 2019
+      when: "from 11:00AM to 12.30AM"
+      location: "College Green, Dublin 2, D02 VR66, Ireland"
+      city: "Dublin"
+      description: "In the evocative library..."
+      img: "../assets/img/events/event-3.jpg"
+      location_img: "../assets/img/events/event3.jpg"
+      book: [{
+        id_book: 4,
+        id_genre: 5,
+        title: "The Spy",
+        description: "In his new novel, Paulo Coelho...",
+        price_paper: 14.70,
+        price_ebook: 9.90,
+        cover_img: "../assets/img/books/book-8.jpg",
+        support: "both",
+        pages: 208,
+        rating: 2,
+        language: "English",
+        interview: "",
+        our_favorite: False,
+        best_seller: False,
+        authors: [{
+          name: "Paulo Coelho",
+          id_author: 3
+        }],
+        genre: [{
+          name: "History",
+          id_genre: 5
+        }],
+        themes: [{
+          theme_name: "Love",
+          id_theme: 8
+        },{
+          theme_name: "Erotism",
+          id_theme: 7
+        }]
+      }]
+  Event-List:
+    type: "object"
+    properties:
+      id_event:
+        type: "integer"
+      name:
+        type: "string"
+      city:
+        type: "string"
+      date_day:
+        type: "integer"
+      date_month:
+        type: "integer"
+      date_year:
+        type: "integer"
+      img:
+        type: "string"
+    title: "Event-List"
+    description: "An event"
+    example:
+      id_event: 3
+      name: "Coelho presents The Spy"
+      city: "Dublin"
+      date_day: 13
+      date_month: 9
+      date_year: 2019
+      img: "../assets/img/events/event-3.jpg"
   Cart:
     type: "object"
     properties:
@@ -985,7 +1033,7 @@ definitions:
         type: "array"
         items: 
           type: "integer"
-    title: "Cart"
+    title: "Cart-Item"
     description: "Order for books"
     example:
       id_user: 4
@@ -1031,26 +1079,182 @@ definitions:
         type: "integer"
       language:
         type: "string"
+      interview:
+        type: "string"
       our_favorite:
         type: "boolean"
       best_seller:
         type: "boolean"
+      authors:
+        type: "array"
+        items: 
+          type: "object"
+          properties:
+            name:
+              type: "string"
+            id_author:
+              type: "integer"
+      genre:
+        type: "array"
+        items:
+          $ref: "#/definitions/Genre"
+      review:
+        type: "array"
+        items:
+          $ref: "#/definitions/Review"
+      themes:
+        type: "array"
+        items:
+          $ref: "#/definitions/Theme"
+      event:
+        type: "array"
+        items:
+          $ref: "#/definitions/Event"
+      similar_books:
+        type: "array"
+        items:
+          $ref: "#/definitions/Book-List"
     title: "Book"
     description: "A book for sale in the store"
     example:
-      id_book: 1
-      id_genre: 1
-      title: "The Lord of the Ring - The Fellowship of the Ring"
-      description: "an Amazing book!"
-      price_paper: 12.40
-      price_ebook: 5.90
-      cover_img: "pathname"
+      id_book: 4
+      id_genre: 5
+      title: "The Spy"
+      description: "In his new novel, Paulo Coelho..."
+      price_paper: 14.70
+      price_ebook: 9.90
+      cover_img: "../assets/img/books/book-8.jpg"
       support: "both"
-      pages: 480
-      rating: 5
+      pages: 208
+      rating: 2
       language: "English"
-      our_favorite: True
-      best_seller: True
+      interview: ""
+      our_favorite: False
+      best_seller: False
+      authors: [{
+        name: "Paulo Coelho",
+        id_author: 3
+      }]
+      genre: [{
+        name: "History",
+        id_genre: 5
+      }]
+      review: [{
+        id_review: 8,
+        id_book: 4,
+        writer: "Los Angeles Times",
+        text: "Coelho has created a portrait of an anachronistic woman, who was destroyed by her times and became a legend."
+      }]
+      themes: [{
+        theme_name: "Love",
+        id_theme: 8
+      },{
+        theme_name: "Erotism",
+        id_theme: 7
+      }]
+      event: [{
+        id_event: 3,
+        id_book: 4,
+        name: "Coelho presents The Spy",
+        date_day: 13,
+        date_month: 9,
+        date_year": 2019,
+        when: "from 11:00AM to 12.30AM",
+        location": "College Green, Dublin 2, D02 VR66, Ireland",
+        cit": "Dublin",
+        description": "In the evocative library of the Trinity Collage in Dublin, the book by Paulo Coelho <b>\"The Spy\"</b> is presented, a compelling story of Mata Hari, a woman capable of making her way in society by arousing jealousy and envy. During the event it will be possible to obtain a copy signed by the author, the world famous writer in fact will be present during the event and will answer the questions of the present public. So don't miss this unmissable opportunity!",
+        img: "../assets/img/events/event-3.jpg",
+        location_img: "../assets/img/events/event3.jpg"
+      }]
+      similar_books: [{
+        id_book: 1,
+        title: "The Lord of the Ring - The Fellowship of the Ring",
+        price_paper: 12.4,
+        price_ebook: 5.9,
+        cover_img: "../assets/img/books/book-1.jpg",
+        support: "both",
+        best_seller: "true",
+        interview: "https://www.youtube.com/embed/yFexwNCYenI",
+        auth_names: [
+          "J. R. R. Tolkien"
+        ],
+        auth_ids: [
+          1
+        ]
+      }]
+  Book-List:
+    type: "object"
+    properties:
+      id_book:
+        type: "integer"
+      title:
+        type: "string"
+      price_paper:
+        type: "number"
+      price_ebook:
+        type: "number"
+      cover_img:
+        type: "string"
+      support:
+        type: "string"
+        enum:
+        - "paper"
+        - "ebook"
+        - "both"
+      rating:
+        description: "an integer number between 1 and 5"
+        type: "integer"
+      our_favorite:
+        type: "boolean"
+      best_seller:
+        type: "boolean"
+      interview:
+        type: "string"
+      auth_names:
+        type: "array"
+        items: 
+          type: "string"
+      auth_ids:
+        type: "array"
+        items: 
+          type: "integer"
+    title: "Book-List"
+    description: "A book for sale in the store"
+    example:
+      id_book: 4
+      title: "The Spy"
+      price_paper: 14.70
+      price_ebook: 9.90
+      cover_img: "../assets/img/books/book-8.jpg"
+      support: "both"
+      rating: 2
+      our_favorite: False
+      best_seller: False
+      interview: ""
+      auth_names: [
+        "Paulo Coelho"
+      ]
+      auth_ids: [
+        3
+      ]
+  Review:
+    type: "object"
+    properties:
+      id_review:
+        type: "integer"
+      id_book:
+        type: "integer"
+      writer:
+        type: "string"
+      text:
+        type: "string"
+    title: "Review"
+    description: "A review of a book"
+    example:
+      id_review: 8
+      id_book: 4
+      writer: "Los Angeles Times"
+      text: "Coelho has created a portrait of an anachronistic woman, who was destroyed by her times and became a legend."
   Faq:
     type: "object"
     properties:
@@ -1064,8 +1268,8 @@ definitions:
     description: "A Faq"
     example:
       id_faq: 1
-      question: "What is love?"
-      answer: "baby don't hurt me"
+      question: "Can I order by email or fax?"
+      answer: "We do not accept orders by fax or email..."
   Genre:
     type: "object"
     properties:
@@ -1083,13 +1287,13 @@ definitions:
     properties:
       id_theme:
         type: "integer"
-      name:
+      theme_name:
         type: "string"
     title: "Theme"
     description: "A Theme"
     example:
       id_theme: 1
-      name: "War"
+      theme_name: "War"
 externalDocs:
   description: "Find out more about Swagger"
   url: "http://swagger.io"

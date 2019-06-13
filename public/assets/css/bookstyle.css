@@ -286,6 +286,10 @@ header.card-header:hover {
 	background-color: #adadad;
 }
 
+.active_filter {
+	padding-bottom: 10px;
+}
+
 /*======================================
 //--//-->   STYLE SEARCH INSERT FORM 
 ======================================*/
