@@ -51,8 +51,9 @@ $(document).ready(function(){
       	$(this).addClass("active");
 
 		offset = $(this).val() * limit;
-		getBooks();
-		fillFilterActive();
+		Promise.all(getBooks()).then(() => {
+			fillFilterActive();
+		});
    	});
 	//FILTERS
 	$('#allFiltersDiv').on('change', 'input[type=radio]', function() {
@@ -89,16 +90,16 @@ $(document).ready(function(){
             getBooksCount();
         };
 	});
-
-	getGenres();
-	getThemes();
-	getBooksCount();
-	generatesRatingFilterHTML();
-    generatesFormatFilterHTML();
-	getBooks();
 	
 	// SET FILTERS WHEN APPEAR IN PATHQUERY
-	handleInPathFilters();
+	Promise.all([getGenres(), getThemes(), getBooksCount(), getBooks()]).then(() => {
+		handleInPathFilters();
+		fillFilterActive();
+	});
+
+	generatesRatingFilterHTML();
+    generatesFormatFilterHTML();
+	
 });
 
 // -------------- REQUESTS ---------------
@@ -112,7 +113,7 @@ function getBooksCount(){
     if(formatFilter) query += '&format=' + formatFilter;
     if(search) query += '&search=' + search;
 	
-	fetch('/books/count' + query).then(function(response) {
+	return fetch('/books/count' + query).then(function(response) {
 		return response.json();
 	}).then(function(json) {
 		bookCount = json.count;
@@ -120,13 +121,12 @@ function getBooksCount(){
 			$("#paginationDiv").empty(); 
 			pageNumber = Math.ceil(bookCount/limit);
 			generatesPaginationHTML();
-			fillFilterActive();
 		}
  	});
 }
 
 function getGenres(){
-	fetch('/genres').then(function(response) {
+	return fetch('/genres').then(function(response) {
 		return response.json();
 	}).then(function(json) {
 		genreJson = json;
@@ -137,7 +137,7 @@ function getGenres(){
 }
 
 function getThemes(){
-	fetch('/themes').then(function(response) {
+	return fetch('/themes').then(function(response) {
 		return response.json();
 	}).then(function(json) {
 		themeJson = json;
@@ -156,7 +156,7 @@ function getBooks(){
     if(formatFilter) query += '&format=' + formatFilter;
     if(search) query += '&search=' + search;
 
-	fetch('/books' + query).then(function(response) {
+	return fetch('/books' + query).then(function(response) {
 		return response.json();
 	}).then(function(json) {
 		booksJson = json;
