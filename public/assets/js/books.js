@@ -77,8 +77,9 @@ $(document).ready(function(){
 				return;
 		}
 		offset = 0;
-		getBooksCount();
-		getBooks();
+		Promise.all([getBooksCount(), getBooks()]).then(() => {
+			fillFilterActive();
+		});
 	});
 	//SEARCH
     $(document).on('input', '#search', function () {  
@@ -86,8 +87,9 @@ $(document).ready(function(){
         
         if(search.trim() != '' || search.trim() != input.trim()){
             input = search;
-            getBooks();
-            getBooksCount();
+            Promise.all([getBooksCount(), getBooks()]).then(() => {
+				fillFilterActive();
+			});
         };
 	});
 	
