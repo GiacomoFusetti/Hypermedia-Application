@@ -1,0 +1,5 @@
+#Discarding node_modules
+node_modules/**
+
+#Discarding package-lock
+package-lock.json

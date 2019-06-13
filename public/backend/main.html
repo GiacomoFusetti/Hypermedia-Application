@@ -1,82 +1,141 @@
-<h1>Documentation of the Backend part</h1>
-<blockquote>
-    <p>Deliverable D1</p>
-</blockquote>
-<h2>General group information</h2>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;/*margin:0px auto;*/}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#669;background-color:#e8edff;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#039;background-color:#b9c9fe;}
-.tg .tg-phtq{background-color:#D2E4FC;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}</style>
-<div class="tg-wrap"><table class="tg">
-  <tr>
-    <th class="tg-0pky">Member nr.</th>
-    <th class="tg-0pky">Role</th>
-    <th class="tg-0pky">First name</th>
-    <th class="tg-0pky">Last name</th>
-    <th class="tg-0pky">Matricola</th>
-    <th class="tg-0pky">Email address</th>
-  </tr>
-  <tr>
-    <td class="tg-phtq">1</td>
-    <td class="tg-phtq">administrator</td>
-    <td class="tg-phtq">Giovanni Maria</td>
-    <td class="tg-phtq">Gianola</td>
-    <td class="tg-phtq">894107</td>
-	  <td class="tg-phtq"><a href="mailto:giovannimaria.gianola@mail.polimi.it">giovannimaria.gianola@mail.polimi.it</a></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">2</td>
-    <td class="tg-0pky">member</td>
-    <td class="tg-0pky">Giacomo</td>
-    <td class="tg-0pky">Fusetti</td>
-    <td class="tg-0pky">883808</td>
-	  <td class="tg-0pky"><a href="mailto:giacomo.fusetti@mail.polimi.it">giacomo.fusetti@mail.polimi.it</a><br></td>
-  </tr>
-</table></div>
-<h2>Links to other deliverables</h2>
-<ul>
-    <li>Deliverable D0: the web application is accessible at <a href="https://bookstore-hype.herokuapp.com/">this address</a>.</li>
-    <li>Deliverable D2: the YAML or JSON file containing the specification of the app API can be found at <a href="/backend/spec">this address</a>.</li>
-    <li>Deliverable D3: the SwaggerUI page of the same API is available at <a href="/backend/swaggerui">this address</a>.</li>
-    <li>Deliverable D4: the source code of D0 is available as a zip file at <a href="https://example.com/backend/app.zip">this address</a>.</li>
-    <li>Deliverable D5: the address of the online source control repository is available <a href="https://github.com/GiacomoFusetti/Hypermedia-Application">this address</a>. We hereby declare that this is a private repository and, upon request, we will give access to the instructors.</li>
-</ul>
-<h2>Specification</h2>
-<h3>Web Architecture</h3>
-<p>Describe here, with a diagram, the components of your web application and how 3 they interact. Highlight which parts belong to the application layer, data layer or presentation layer. How did you ensure that HTML is not rendered server side?</p>
-<h3>API</h3>
-<h4>REST compliance</h4>
-<p>Describe here to what extent did you follow REST principles and what are the reasons for which you might have decided to diverge. Note, you must not describe the whole API here, just the design decisions.</p>
-<h4>OpenAPI Resource models</h4>
-<p>Describe here synthetically, which models you have introduced for resources.</p>
-<h3>Data model</h3>
-<p>Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?</p>
-<h2>Implementation</h2>
-<h3>Tools used</h3>
-<p>Describe here which tools, languages and frameworks did you use for the backend of the application.</p>
-<h3>Discussion</h3>
-<p>Describe here:</p>
-<ul>
-    <li>How did you make sure your web application adheres to the provided OpenAPI specification?</li>
-    <li>Why do you think your web application adheres to common practices to partition the web application (static assets vs. application data)</li>
-    <li>Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc..).</li>
-    <li>Which technology did you use (relational or a no-SQL database) for managing the data model?</li>
-</ul>
-<h2>Other information</h2>
-<h3>Task assignment</h3>
-<p>Describe here how development tasks have been subdivided among members of the group, e.g.:</p>
-<ul>
-    <li>Foo worked on front end (80%) and OpenAPI Spec (20% of the time)</li>
-    <li>Bar worked on ....</li>
-</ul>
-<h3>Analysis of existing API</h3>
-<p>4 Describe here if you have found relevant APIs that have inspired the OpenAPI specification and why (at least two).</p>
-<h3>Learning outcome</h3>
-<p>What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you've learned in your everyday life? Examples:</p>
-<ul>
-    <li>Foo learned to write SQL queries and Javascript but wanted to know more about caching, he's probably going to create his own startup with what she has learned</li>
-    <li>Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for asynchronous code.. 4.2 Template for emails sent to the instructor concerning problems with the backend To streamline the resolution of problems, we highly recommend to fill up this form with the description of the issue you are having. We realize there is a lot of data requested here. We ask only that you do your best to provide as much information as possible so we can better help you.</li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Backend</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<!-- Favicons -->
+		<link href="../assets/img/favicon.png" rel="icon">
+		<link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	</head>
+	<body>
+		<h1>Documentation of the Backend part</h1>
+		<blockquote>
+			<p>Deliverable D1</p>
+		</blockquote>
+		<h2>General group information</h2>
+		<style type="text/css">
+			.tg  {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;/*margin:0px auto;*/}
+			.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#669;background-color:#e8edff;}
+			.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#039;background-color:#b9c9fe;}
+			.tg .tg-phtq{background-color:#D2E4FC;border-color:inherit;text-align:left;vertical-align:top}
+			.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+			@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}
+		</style>
+		<div class="tg-wrap">
+			<table class="tg">
+				<tr>
+					<th class="tg-0pky">Member nr.</th>
+					<th class="tg-0pky">Role</th>
+					<th class="tg-0pky">First name</th>
+					<th class="tg-0pky">Last name</th>
+					<th class="tg-0pky">Matricola</th>
+					<th class="tg-0pky">Email address</th>
+				</tr>
+				<tr>
+					<td class="tg-phtq">1</td>
+					<td class="tg-phtq">administrator</td>
+					<td class="tg-phtq">Giovanni Maria</td>
+					<td class="tg-phtq">Gianola</td>
+					<td class="tg-phtq">894107</td>
+					<td class="tg-phtq"><a href="mailto:giovannimaria.gianola@mail.polimi.it">giovannimaria.gianola@mail.polimi.it</a></td>
+				</tr>
+				<tr>
+					<td class="tg-0pky">2</td>
+					<td class="tg-0pky">member</td>
+					<td class="tg-0pky">Giacomo</td>
+					<td class="tg-0pky">Fusetti</td>
+					<td class="tg-0pky">883808</td>
+					<td class="tg-0pky"><a href="mailto:giacomo.fusetti@mail.polimi.it">giacomo.fusetti@mail.polimi.it</a><br></td>
+				</tr>
+			</table>
+		</div>
+		<h2>Links to other deliverables</h2>
+		<ul>
+			<li>Deliverable D0: the web application is accessible at <a href="https://bookstore-hype.herokuapp.com/">this address</a>.</li>
+			<li>Deliverable D2: the YAML or JSON file containing the specification of the app API can be found at <a href="/backend/spec">this address</a>.</li>
+			<li>Deliverable D3: the SwaggerUI page of the same API is available at <a href="/backend/swaggerui">this address</a>.</li>
+			<li>Deliverable D4: the source code of D0 is available as a zip file at <a href="https://example.com/backend/app.zip">this address</a>.</li>
+			<li>Deliverable D5: the address of the online source control repository is available <a href="https://github.com/GiacomoFusetti/Hypermedia-Application">this address</a>. We hereby declare that this is a private repository and, upon request, we will give access to the instructors.</li>
+		</ul>
+		<h2>Specification</h2>
+		<h3>Web Architecture</h3>
+		<p>Describe here, with a diagram, the components of your web application and how 3 they interact. Highlight which parts belong to the application layer, data layer or presentation layer. How did you ensure that HTML is not rendered server side?</p>
+		<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile modified=\&quot;2019-06-13T07:54:55.561Z\&quot; host=\&quot;www.draw.io\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36\&quot; etag=\&quot;QUGFn4G73CYhhD8WdnlZ\&quot; version=\&quot;10.7.7\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;D-jfsjTzrfXFGVfMGQJh\&quot; name=\&quot;3-tier web app\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+		<h3>API</h3>
+		<h4>REST compliance</h4>
+		<p>Describe here to what extent did you follow REST principles and what are the reasons for which you might have decided to diverge. Note, you must not describe the whole API here, just the design decisions.</p>
+		
+		<p>REST is a client-server architecture. The client and the server both have a different set of concerns. The server stores and/or manipulates information and makes it available to the user in an efficient manner. The client takes that information and displays it to the user and/or uses it to perform subsequent requests for information. This separation of concerns allows both the client and the server to evolve independently as it only requires that the interface stays the same.
+
+		REST is stateless. That means the communication between the client and the server always contains all the information needed to perform the request. There is no session state in the server, it is kept entirely on the client's side. If access to a resource requires authentication, then the client needs to authenticate itself with every request.
+
+		REST is cacheable. The client, the server and any intermediary components can all cache resources in order to improve performance.
+
+		REST provides a uniform interface between components. This simplifies the architecture, as all components follow the same rules to speak to one another. It also makes it easier to understand the interactions between the different components of the system. A number of constraints are required to achieve this. They are covered in the rest of the chapter.
+
+		REST is a layered system. Individual components cannot see beyond the immediate layer with which they are interacting. This means that a client connecting to an intermediate component, like a proxy, has no knowledge of what lies beyond. This allows components to be independent and thus easily replaceable or extendable.
+
+		REST optionally provides code on demand. Code may be downloaded to extend client functionality. This is optional however because the client may not be able to download or run this code, and so a REST component cannot rely on it being executed.</p>
+		
+		<h4>OpenAPI Resource models</h4>
+		<p>Describe here synthetically, which models you have introduced for resources.</p>
+		<h3>Data model</h3>
+		<p>Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?</p>
+		<p>Each database entity is mapped with specific Http requests. In order to retrive specific data from the database, different API corresponds to specific queries. For instance if we want to retrieve all the information of a single book, the request GET /books/{Id_book} is mapped with a specific query which return all the book details, the writer the planned events, the genre, the themes and the similar books, making the right joins between table. For each table a GET request is provided. Two tables work in a slithgly different way: Cart and User. In order to enhance the privacy of a client, to perform any request and query on the Cart table, an user must be authenticated. Each authenticated user can manipulate just his own entries in the cart table, which means that each Http requests are performed only on the user's cart. In the same way, the Get /user request retrieve data only of the current authenticated user.</p>
+		<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile modified=\&quot;2019-06-13T08:06:01.262Z\&quot; host=\&quot;www.draw.io\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36\&quot; etag=\&quot;U73WFabj2fwjpmwUbG9b\&quot; version=\&quot;10.7.7\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;3FDNu-NCp1H8x6HwmCf6\&quot; name=\&quot;ER Diagram - DB\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+		<h2>Implementation</h2>
+		<h3>Tools used</h3>
+		<p>Describe here which tools, languages and frameworks did you use for the backend of the application.</p>
+		<h3>Discussion</h3>
+		<p>Describe here:</p>
+		<ul>
+			<li>How did you make sure your web application adheres to the provided OpenAPI specification?</li>
+			<li>Why do you think your web application adheres to common practices to partition the web application (static assets vs. application data)</li>
+			<li>Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc..).</li>
+			<li>Which technology did you use (relational or a no-SQL database) for managing the data model?</li>
+		</ul>
+		<h2>Other information</h2>
+		<h3>Task assignment</h3>
+		<p>Describe here how development tasks have been subdivided among members of the group, e.g.:</p>
+		<ul>
+			<li>Foo worked on front end (80%) and OpenAPI Spec (20% of the time)</li>
+			<li>Bar worked on ....</li>
+		</ul>
+		<h3>Analysis of existing API</h3>
+		<p>4 Describe here if you have found relevant APIs that have inspired the OpenAPI specification and why (at least two).</p>
+		<h3>Learning outcome</h3>
+		<p>What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you've learned in your everyday life? Examples:</p>
+		<ul>
+			<li>Foo learned to write SQL queries and Javascript but wanted to know more about caching, he's probably going to create his own startup with what she has learned</li>
+			<li>Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for asynchronous code.. 4.2 Template for emails sent to the instructor concerning problems with the backend To streamline the resolution of problems, we highly recommend to fill up this form with the description of the issue you are having. We realize there is a lot of data requested here. We ask only that you do your best to provide as much information as possible so we can better help you.</li>
+		</ul>
+		<h2>Team</h2>
+		<ul>
+			<li>Team administrator name; email</li>
+			<li>Team member n.1 name; email</li>
+			<li>Team member n.2 name; email</li>
+		</ul>
+		<h2>Relevant links</h2>
+		<p>Put here the link to your repository. Invite one of the teachers as administrators/members of the team in order for them to be able to access it.</p>
+		<h2>What are you trying to achieve</h2>
+		<ul>
+			<li>Goal: <em>describe what are you trying to achieve here</em></li>
+			<li>Complete, non-ambiguous steps to reproduce the issue from your repo. These are the steps that the teachers will follow when trying investigate your issue; if it is a command line invocation, please copy and paste the complete command with its arguments, options etc..</li>
+		</ul>
+		<ol>
+			<li><em>describe step 1 here</em></li>
+			<li><em>describe step 2 here</em></li>
+			<li>...</li>
+		</ol>
+		<ul>
+			<li>Expected results: <em>what is your expected outcome</em> 5</li>
+		</ul>
+		<h2>Describe what you get</h2>
+		<ul>
+			<li>Actual results: <em>what outcome do you get instead?</em>. Remember, "It doesn't work" is not a problem statement.</li>
+			<li>Do you get any error message, log, stack trace? put it here COPY THE ERROR MESSAGE, INCLUDING STACK TRACE HERE</li>
+		</ul>
+		<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+	</body>
+</html>
