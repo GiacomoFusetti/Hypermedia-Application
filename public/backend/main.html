@@ -80,20 +80,71 @@
 		
 		<h4>OpenAPI Resource models</h4>
 		<p>Describe here synthetically, which models you have introduced for resources.</p>
+		<p>Each resources are provided in json form with all the details of the resource. We provide some custom requests in order to perform data filtering exploiting several interchangeable in "query" parameters. Let's take the GET /books request as example.
+		</p>8 non mandatory parameters are provided in order to filter books:<p>
+		<ol>
+			<li><b>offset</b>: [integer] pagination offset. default is 0.</li>
+			<li><b>limit</b>: [integer] maximum number of items per page. default is 12.</li>
+			<li><b>genre</b>: [integer] id of the genre. default 0: no filter</li>
+			<li><b>theme</b>: [integer] id of the genre. default 0: no filter</li>
+			<li><b>rating</b>: [integer: 1-5] rating score. each book are rated with a score between 1 and 5. default 0: no filter</li>
+			<li><b>filter</b>: [enum: [0,1,2]]
+				<ul>
+					<li>0: no filter</li>
+					<li>1: select all the Best Seller books.</li>
+					<li>2: select all the Our Seggested books.</li>
+				</ul>
+			</li>
+			
+			<li><b>format</b>: [enum: [0,1,2]]
+				<ul>
+					<li>0: no filter.</li>
+					<li>1: select all the paper-based books (not exclusive).</li>
+					<li>2: select all digital-based books (not exclusive).</li>
+				</ul>
+			</li>
+			<li><b>search</b>: [string] select books searching for the title (partial string are allowed). default ' ': no filter</li>			
+		</ol>
+		Few examples of request in order to better understand the filtering procedure:
+		<ul>
+			<li> GET <a href="/books?genre=1">/books?genre=1</a> retrieve the first 12 books in the inventory with the genre: Fantasy.</li>
+			<li> GET <a href="/books?offset=0&limit=5&filter=1">/books?offset=0&limit=5&filter=1</a> retrieve the first 5 best seller books in the inventory.</li>
+			<li> GET <a href="/books?offset=0&limit=6&genre=4&theme=11&filter=1&format=2&search=four">/books?offset=0&limit=6&genre=4&theme=11&filter=1&format=2&search=four</a> retrieve the first 6 best seller books in the inventory with genre Technology, theme Educational, digital-based and contains the string 'four' in the title.</li>
+		</ul>
+		<p>A similar filtering procedure are available for Authors and Events as well. Full description and working testing of the API are provided in <a href="/backend/swaggerui">D3 Deliverable</a>.</p>
+		<ul>
+			<li> GET <a href="/authors?limit=6&search=tolk">/authors?limit=6&search=tolk</a> retrieve the first 6 authors in the inventory which contain the string 'tolk' in the name.</li>
+			<li> GET <a href="/events?offset=0&limit=6&orderBy=current_month">/events?offset=0&limit=6&orderBy=current_month</a> retrieve the first 6 events planned for the current month.</li>
+		</ul>
+		<p>Finally, some resources are available only if the user is authenticated into the system, such as Cart resources. Once an user is registered and then authenticated to the system, a session cookie is initialized with the user details. Each time an Http request on Cart are performed, the controller checks if an user is logged in the system, and the details of the logged user are used in order to perform queries and retrieve data.</p>
 		<h3>Data model</h3>
 		<p>Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?</p>
-		<p>Each database entity is mapped with specific Http requests. In order to retrive specific data from the database, different API corresponds to specific queries. For instance if we want to retrieve all the information of a single book, the request GET /books/{Id_book} is mapped with a specific query which return all the book details, the writer the planned events, the genre, the themes and the similar books, making the right joins between table. For each table a GET request is provided. Two tables work in a slithgly different way: Cart and User. In order to enhance the privacy of a client, to perform any request and query on the Cart table, an user must be authenticated. Each authenticated user can manipulate just his own entries in the cart table, which means that each Http requests are performed only on the user's cart. In the same way, the Get /user request retrieve data only of the current authenticated user.</p>
+		<p>Each database entity is mapped with specific Http requests. In order to retrive specific data from the database, different API corresponds to specific queries. For instance if we want to retrieve all the information of a single book, the request GET /books/{Id_book} is mapped with a specific query which return all the book details, the writer the planned events, the genre, the themes and the similar books, making the right joins between tables. For each table a GET request is provided. Two tables work in a slithgly different way: Cart and User. In order to enhance the privacy of a client, to perform any request and query on the Cart table, an user must be authenticated. Each authenticated user can manipulate just his own entries in the cart table, which means that each Http requests are performed only on the logged user's cart. In the same way, the Get /user request retrieve data only of the current authenticated user.</p>
 		<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile modified=\&quot;2019-06-13T08:06:01.262Z\&quot; host=\&quot;www.draw.io\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36\&quot; etag=\&quot;U73WFabj2fwjpmwUbG9b\&quot; version=\&quot;10.7.7\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;3FDNu-NCp1H8x6HwmCf6\&quot; name=\&quot;ER Diagram - DB\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
 		<h2>Implementation</h2>
 		<h3>Tools used</h3>
 		<p>Describe here which tools, languages and frameworks did you use for the backend of the application.</p>
+		<ul>
+			<li><p><a href="https://expressjs.com/"><b>express</b></a>: is the web application framework we used to create the server.</p></li>
+			<li><p><a href="https://www.npmjs.com/package/body-parser"><b>body-parser</b></a>: parse incoming request bodies in a middleware before your handlers, available under the <i>req.body</i> property.</p></li>
+			<li><p><a href="https://www.npmjs.com/package/cookie-parser"><b>cookie-parser</b></a> & <a href="https://www.npmjs.com/package/cookie-session"><b>cookie-session</b></a>: middlewares for cookie and session management.</p></li>
+			<li><p><a href="https://www.npmjs.com/package/yaml-js"><b>js-yaml</b></a>: YAML parser.</p></li>
+			<li><p><a href="https://www.npmjs.com/package/knex"><b>knex</b></a>: is a SQL query builder for Postgres and several others DBMS.</p></li>
+			<li><p><a href="https://lodash.com/"><b>lodash</b></a>: provides utility functions for the management of data structures.</p></li>
+			<li><p><a href="https://www.npmjs.com/package/swagger-tools"><b>swagger-tools</b></a>: provides various tools for integrating and interacting with Swagger.</p></li>
+			<li><p><a href="https://www.npmjs.com/package/pg"><b>pg</b></a>: PostgreSQL client for Node.js.</p></li>
+		</ul>
 		<h3>Discussion</h3>
 		<p>Describe here:</p>
 		<ul>
 			<li>How did you make sure your web application adheres to the provided OpenAPI specification?</li>
+			<p>The web application has been developed following the OpenAPI specification previously defined using the swagger editor. Each possible request are well defined in the .yaml file at the following link <a href="/backend/spec">/backend/spec</a>.</p>
 			<li>Why do you think your web application adheres to common practices to partition the web application (static assets vs. application data)</li>
+			<p>Because we developed the main pages dynamically retriving data usign GET requests. All the other parts, such as the layout, the images and texts of side pages are static.</p>
 			<li>Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc..).</li>
+			<p>In order to provide the possibility for an user to insert a book in the cart and then to buy it, we give the possibility to register and the log into the system via appropriate POST requests. Once the authentication has taken place we set a True flag in <i>req.session.loggedin</i> and the corresponding user details (Id, name, email) in <i>req.session.user</i>. This allow the system to check if an user is currently logged in the system and give him the permission to manage his own cart. For learning purpose the session does not run out.</p>
 			<li>Which technology did you use (relational or a no-SQL database) for managing the data model?</li>
+			<p>We decided to use PostgreSQL, a free, powerful, open source object-relational DBMS.</p>
 		</ul>
 		<h2>Other information</h2>
 		<h3>Task assignment</h3>
@@ -103,39 +154,14 @@
 			<li>Bar worked on ....</li>
 		</ul>
 		<h3>Analysis of existing API</h3>
-		<p>4 Describe here if you have found relevant APIs that have inspired the OpenAPI specification and why (at least two).</p>
+		<p>Describe here if you have found relevant APIs that have inspired the OpenAPI specification and why (at least two).</p>
 		<h3>Learning outcome</h3>
 		<p>What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you've learned in your everyday life? Examples:</p>
 		<ul>
 			<li>Foo learned to write SQL queries and Javascript but wanted to know more about caching, he's probably going to create his own startup with what she has learned</li>
 			<li>Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for asynchronous code.. 4.2 Template for emails sent to the instructor concerning problems with the backend To streamline the resolution of problems, we highly recommend to fill up this form with the description of the issue you are having. We realize there is a lot of data requested here. We ask only that you do your best to provide as much information as possible so we can better help you.</li>
 		</ul>
-		<h2>Team</h2>
-		<ul>
-			<li>Team administrator name; email</li>
-			<li>Team member n.1 name; email</li>
-			<li>Team member n.2 name; email</li>
-		</ul>
-		<h2>Relevant links</h2>
-		<p>Put here the link to your repository. Invite one of the teachers as administrators/members of the team in order for them to be able to access it.</p>
-		<h2>What are you trying to achieve</h2>
-		<ul>
-			<li>Goal: <em>describe what are you trying to achieve here</em></li>
-			<li>Complete, non-ambiguous steps to reproduce the issue from your repo. These are the steps that the teachers will follow when trying investigate your issue; if it is a command line invocation, please copy and paste the complete command with its arguments, options etc..</li>
-		</ul>
-		<ol>
-			<li><em>describe step 1 here</em></li>
-			<li><em>describe step 2 here</em></li>
-			<li>...</li>
-		</ol>
-		<ul>
-			<li>Expected results: <em>what is your expected outcome</em> 5</li>
-		</ul>
-		<h2>Describe what you get</h2>
-		<ul>
-			<li>Actual results: <em>what outcome do you get instead?</em>. Remember, "It doesn't work" is not a problem statement.</li>
-			<li>Do you get any error message, log, stack trace? put it here COPY THE ERROR MESSAGE, INCLUDING STACK TRACE HERE</li>
-		</ul>
+		
 		<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
 	</body>
 </html>
