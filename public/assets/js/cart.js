@@ -187,7 +187,6 @@ function updateCartQty(){
 }
 
 function deleteBookCart(bookList){
-	console.log(JSON.stringify(bookList));
     fetch('/cart/', {
 		body: JSON.stringify(bookList),
         method: "DELETE",
