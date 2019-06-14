@@ -119,7 +119,6 @@ function fillBooks(book,author){
     var writtenDiv = ``;
     for(i = 0; i < book.length; i++){
         var authorBook = book[i];
-        console.log(authorBook);
         writtenDiv +=`<div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6">
 				<div class="card wow zoomIn" data-wow-duration="1s">
 				  	<div class="frame"><a href="book.html?id=${authorBook.id_book}" class="stretched-link"><img class="card-img-top-list" src="${authorBook.cover_img}" alt="${authorBook.title}"></a>
@@ -163,7 +162,6 @@ function authorListHTML(authorsNameJson, authorsIdsJson){
 }
 
 function bestSellerHTML(best_seller){
-    console.log(best_seller);
     if(best_seller=='true')
         return `<img id="over" src="../assets/img/best-seller.png">`;
     return ``;
