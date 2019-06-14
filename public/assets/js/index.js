@@ -96,18 +96,7 @@ function fillBooksCarousel(books){
 								</b>
 						</div>
                     </div>
-                `
-		/*<div class="card wow zoomIn" data-wow-duration="1s">
-				  	<a href="book.html?id=${relBook.id_book}" class="stretched-link"><img class="card-img-top" src="${relBook.cover_img}" alt="${relBook.title}"></a>
-				  	<div class="card-body">
-						<ul class="list-unstyled author_list font-90">` + authorListHTML(relBook.auth_names, relBook.auth_ids) + `</ul>
-						<h4 class="font-90"><a href="book.html?id=${relBook.id_book}">${relBook.title}</a></h4>
-						<b class="font-90 color-b">€ 
-								` + priceHTML(relBook.support, relBook.price_paper, relBook.price_ebook) + `																		
-						</b>
-				  	</div>
-				</div>*/;
-        
+                `        
     }
     $("#books-carousel").append(booksCarousel);
     carouselBooks();
@@ -121,7 +110,7 @@ function fillAuthorsCarousel(authors){
             `
                 <div class="carousel-item-b">
                     <div class="card-box-a container_img">
-                        <a href="pages/author.html?id=${author.id_author}"><img src="${author.photo}" class="img-d img-fluid"></a>
+                        <a href="pages/author.html?id=${author.id_author}"><img src="${author.photo}" class="img-d img-fluid" alt="${author.name}"></a>
                         <div class="bottom_center"><a href="pages/author.html?id=${author.id_author}" class="color_white">${author.name}</a></div>
                     </div>
                 </div>
@@ -250,6 +239,6 @@ function carouselEvents(){
 
 function bestSellerHTML(best_seller){
     if(best_seller=='true')
-        return `<img id="over" src="../assets/img/best-seller.png">`;
+        return `<img id="over" src="../assets/img/best-seller.png" alt="best_seller">`;
     return ``;
 }
