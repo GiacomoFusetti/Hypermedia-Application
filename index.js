@@ -41,8 +41,15 @@ app.use(cookieSession({
 }));
 
 // /BACKEND API Documentation
-app.get('/backend/main');
+app.get('/backend/main', function (req, res){
+	const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+    res.redirect(fullUrl + '.html');
+});
 app.get('/backend/spec', function (req, res){
+	const fullUrl = req.protocol + '://' + req.get('host');
+    res.redirect(fullUrl + '/api-docs');
+});
+app.get('/backend/spec.yaml', function (req, res){
 	const fullUrl = req.protocol + '://' + req.get('host');
     res.redirect(fullUrl + '/api-docs');
 });
@@ -50,7 +57,9 @@ app.get('/backend/swaggerui', function (req, res){
 	const fullUrl = req.protocol + '://' + req.get('host');
     res.redirect(fullUrl + '/docs');
 });
-app.get('/backend/app');
+app.get('/backend/app.zip', function (req, res){
+	res.download('./app.zip');
+});
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function(middleware) {

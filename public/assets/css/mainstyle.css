@@ -1,0 +1,26 @@
+/*======================================
+//--//-->   STYLES MAIN BACKEND
+======================================*/
+
+body {
+	padding: 0px 10px 0px 10px;
+	font-size: 20px;
+}
+
+p, li {
+	text-align: justify;
+}
+
+.geDiagramContainer,
+.mxgraph {
+	margin: 30px auto 0px;
+    max-width: 100%;
+    border: 1px solid transparent;
+    position: relative;
+    touch-action: none;
+    cursor: pointer;
+    overflow: hidden;
+    width: 804px;
+    height: 867px;
+	margin:0px auto;
+}
