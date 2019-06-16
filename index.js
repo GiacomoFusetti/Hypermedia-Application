@@ -2,8 +2,7 @@
 
 var fs = require("fs"),
   path = require("path"),
-  http = require("http"),
-  https = require("https");
+  http = require("http");
 
 const express = require("express");
 const app = express();
@@ -20,12 +19,6 @@ var jsyaml = require("js-yaml");
 var serverPort = process.env.PORT || 8080;
 
 let { setupDataLayer } = require("./other/service/DataLayer");
-
-var httpsOptions = {
-  key: fs.readFileSync('./other/encryption/server.key'),
-  cert: fs.readFileSync('./other/encryption/server.cert')
-	
-};
 
 // swaggerRouter configuration
 var options = {
@@ -87,25 +80,9 @@ swaggerTools.initializeMiddleware(swaggerDoc, function(middleware) {
 Promise.all(setupDataLayer()).then(() => {
     // Start the server
 	// Serve the Swagger documents and Swagger UI
-  	//   https://localhost:8080/docs => Swagger UI
- 	//   https://localhost:8080/api-docs => Swagger document
-    https.createServer(httpsOptions, app).listen(serverPort, function() {
-      console.log(
-        "Your server is listening on port %d (https://localhost:%d)",
-        serverPort,
-        serverPort
-      );
-      console.log(
-        "\tSwagger-ui is available on https://localhost:%d/docs",
-        serverPort
-      );
-	  console.log(
-        "\tSwagger document is available on https://localhost:%d/api-docs",
-        serverPort
-      );
-    });
-	
-	 http.createServer(app).listen(8000, function() {
+  	//   http://localhost:8080/docs => Swagger UI
+ 	//   http://localhost:8080/api-docs => Swagger document
+    http.createServer(app).listen(serverPort, function() {
       console.log(
         "Your server is listening on port %d (http://localhost:%d)",
         serverPort,
