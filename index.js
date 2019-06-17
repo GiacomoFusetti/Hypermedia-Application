@@ -59,6 +59,7 @@ app.get('/backend/spec.yaml', function (req, res){
 });
 app.get('/backend/swaggerui', function (req, res){
 	const fullUrl = req.protocol + '://' + req.get('host');
+	console.log(fullUrl);
     res.redirect(fullUrl + '/docs');
 });
 app.get('/backend/app.zip', function (req, res){
