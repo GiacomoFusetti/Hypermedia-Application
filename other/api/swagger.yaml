@@ -28,6 +28,7 @@ tags:
 - name: "theme"
   description: "Available Themes"
 schemes:
+- "https"
 - "http"
 paths:
   /books:
