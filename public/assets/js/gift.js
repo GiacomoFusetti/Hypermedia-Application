@@ -105,7 +105,7 @@ jQuery(document).ready(function($) {
                 title: 'Confirmed purchase!',
                 html: 'The coupon code has been sent to: <b>' + email + '</b><br>The code is: <b> ' + code + '</b>',
                 type: 'success',
-                confirmButtonColor:'#2eca6a',
+                confirmButtonColor:'#00983d',
                 confirmButtonText: 'Ok, got it!'
             })
         }

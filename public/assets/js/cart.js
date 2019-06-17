@@ -93,7 +93,7 @@ $(document).ready(function(){
 				title: 'Confirmed purchase!',
                 html: 'Total amount: € <b>' + (total-discount).toFixed(2) + '</b>',
                 type: 'success',
-                confirmButtonColor:'#2eca6a',
+                confirmButtonColor:'#00983d',
                 confirmButtonText: 'Great!'
 			})
 			cartBooksJson = {};

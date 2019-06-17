@@ -6,7 +6,7 @@
   width: 100%;
   position: absolute;
   z-index: 2;
-  background-color: #2eca6a;
+  background-color: #00983d;
   margin-top: 100%;
 }
 
@@ -28,7 +28,7 @@
 .container_img .bottom_center {
   position: absolute; /* Position the background text */
   bottom: 0; /* At the bottom. Use top:0 to append it to the top */
-  background: #2eca6a; /* Fallback color */
+  background: #00983d; /* Fallback color */
   background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
   color: #f1f1f1; /* Grey text */
   width: 100%; /* Full width */

@@ -11,7 +11,7 @@
   position: absolute;
   width: 25px;
   height: 4px;
-  background-color: #2eca6a;
+  background-color: #00983d;
   bottom: 10px;
   left: 0;
 }
@@ -46,7 +46,7 @@
 }
 
 .price-button.active {
-  border: 3px solid #2eca6a;
+  border: 3px solid #00983d;
 }
 
 .price-box {
