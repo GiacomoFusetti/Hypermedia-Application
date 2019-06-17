@@ -47,7 +47,7 @@ exports.addBookById = function(userId, book) {
 					return updateBookQty(sqlDb, userId, book)
 						.then(result => {
 							//console.log("Result", result);	
-							updateJson(userId, book);
+							//updateJson(userId, book);
 
 							res = {res: 'Book <' + book.title.substring(0, 10) + '>, quantity updated.'};
 							return res;
@@ -60,7 +60,7 @@ exports.addBookById = function(userId, book) {
 					return insertNewBook(sqlDb, userId, book)
 						.then(result => {
 							//console.log("Result", result);	
-							appendToJson(userId, book);
+							//appendToJson(userId, book);
 
 							res = {res: 'Book <' + book.title.substring(0, 10) + '> insert in the cart.'};
 							return res;
@@ -121,7 +121,7 @@ exports.updateBookQuantity = function(userId, book) {
 					return updateBookQty(sqlDb, userId, book)
 						.then(result => {
 							//console.log("Result", result);	
-							updateJson(userId, book);
+							//updateJson(userId, book);
 
 							res = {res: ('Book <' + book.title.substring(0, 10) + '>, quantity updated.')};
 							return res;
@@ -152,7 +152,7 @@ exports.deleteBookById = function(userId, bookList) {
 	for(var x = 0; x < bookList.length; x++){
 		promises.push(deleteBook(sqlDb, userId, bookList[x]));
 	}
-	deleteBookJson(userId, bookList);
+	//deleteBookJson(userId, bookList);
 	
 	return Promise.all(promises)    
 		.then(function(data){

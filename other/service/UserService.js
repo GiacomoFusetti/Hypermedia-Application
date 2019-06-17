@@ -62,7 +62,7 @@ function insertNewUser(sqlDb, name, email, pass){
 	return sqlDb('user').count('* as count').then(data =>{
         var id = parseInt(data[0].count) + 1;
 		return sqlDb('user').insert({id_user: id, name: name, email: email, password: pass}).then(data =>{
-			appendToJson(name, email, pass, id);
+			//appendToJson(name, email, pass, id);
 			return true;
 		});
     });
