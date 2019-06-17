@@ -46,19 +46,19 @@ app.use(cookieSession({
 
 // /BACKEND API Documentation
 app.get('/backend/main', function (req, res){
-	const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+	const fullUrl = swaggerDoc.schemes + '://' + req.get('host') + req.originalUrl;
     res.redirect(fullUrl + '.html');
 });
 app.get('/backend/spec', function (req, res){
-	const fullUrl = req.protocol + '://' + req.get('host');
+	const fullUrl = swaggerDoc.schemes + '://' + req.get('host');
     res.redirect(fullUrl + '/api-docs');
 });
 app.get('/backend/spec.yaml', function (req, res){
-	const fullUrl = req.protocol + '://' + req.get('host');
+	const fullUrl = swaggerDoc.schemes + '://' + req.get('host');
     res.redirect(fullUrl + '/api-docs');
 });
 app.get('/backend/swaggerui', function (req, res){
-	const fullUrl = req.protocol + '://' + req.get('host');
+	const fullUrl = swaggerDoc.schemes + '://' + req.get('host');
 	console.log(fullUrl);
     res.redirect(fullUrl + '/docs');
 });
