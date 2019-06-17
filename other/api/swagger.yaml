@@ -29,7 +29,6 @@ tags:
   description: "Available Themes"
 schemes:
 - "https"
-- "http"
 paths:
   /books:
     get:

@@ -30,6 +30,10 @@ var options = {
 // The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
 var spec = fs.readFileSync(path.join(__dirname, "./other/api/swagger.yaml"), "utf8");
 var swaggerDoc = jsyaml.safeLoad(spec);
+if (process.env.NODE_ENV === 'development') {
+  	swaggerDoc.host = "localhost:" + serverPort;
+	swaggerDoc.schemes = ["http"];
+}
 
 // Add cookies to responses
 app.use(cookieParser());
@@ -83,19 +87,9 @@ Promise.all(setupDataLayer()).then(() => {
   	//   http://localhost:8080/docs => Swagger UI
  	//   http://localhost:8080/api-docs => Swagger document
     http.createServer(app).listen(serverPort, function() {
-      console.log(
-        "Your server is listening on port %d (http://localhost:%d)",
-        serverPort,
-        serverPort
-      );
-      console.log(
-        "\tSwagger-ui is available on http://localhost:%d/docs",
-        serverPort
-      );
-	  console.log(
-        "\tSwagger document is available on http://localhost:%d/api-docs",
-        serverPort
-      );
+      console.log("Your server is listening on port %d (" + swaggerDoc.schemes + "://" + swaggerDoc.host + ")", serverPort);
+      console.log("\tSwagger-ui is available on " + swaggerDoc.schemes + "://" + swaggerDoc.host + "/docs");
+	  console.log("\tSwagger document is available on " + swaggerDoc.schemes + "://" + swaggerDoc.host + "/api-docs");
     });
   });
 });
