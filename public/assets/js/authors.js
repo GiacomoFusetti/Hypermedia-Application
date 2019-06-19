@@ -22,6 +22,7 @@ $(document).ready(function(){
 
 		offset = $(this).val() * limit;
 		getAuthors();
+		scrollOnTop();
    	});
     
     $(document).on('input', '#search', function () {  
