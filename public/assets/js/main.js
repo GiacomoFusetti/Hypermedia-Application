@@ -56,11 +56,11 @@ function toggleLogin(user){
         $('#navbarLogin').append(
             `
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                <a class="nav-link dropdownb dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Welcome ${user.name}!
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-content" aria-labelledby="navbarDropdown">
                     <a id="logOutButton" class="dropdown-item" href="#">Log out</a>
                 </div>
             </li>
