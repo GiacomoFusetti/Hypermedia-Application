@@ -51,8 +51,9 @@ $(document).ready(function(){
       	$(this).addClass("active");
 
 		offset = $(this).val() * limit;
-		Promise.all(getBooks()).then(() => {
+		Promise.all([getBooks()]).then(() => {
 			fillFilterActive();
+			scrollOnTop();
 		});
    	});
 	//FILTERS

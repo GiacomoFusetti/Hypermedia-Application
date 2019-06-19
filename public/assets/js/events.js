@@ -21,6 +21,7 @@ $(document).ready(function(){
 
 		offset = $(this).val() * limit;
 		getEvents();
+		scrollOnTop();
    	});
     
     $("select.custom-select").change(function(){

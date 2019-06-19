@@ -84,6 +84,11 @@ function toggleCartIcon(toggle){
 		$('span.cartCount').hide();
 }
 
+function scrollOnTop(){
+	window.scrollTo(0, 0);
+    return false;
+}
+
 jQuery(document).ready(function($) {
   "use strict";
 	
